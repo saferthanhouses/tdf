@@ -1,0 +1,8 @@
+{
+  "name": "tdf-app",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@tdf-mono/db-client": "*"
+  }
+}

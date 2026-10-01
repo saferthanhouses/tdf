@@ -21,6 +21,8 @@ my-monorepo/
 ├── package.json             # Root workspace definitions
 └── .gitignore               # Root git exclusions (.env, postgres_data)
 
+## Secrets
+what do we use for env variables?
 
 ## Tasks
 

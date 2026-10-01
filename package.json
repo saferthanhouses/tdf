@@ -1,0 +1,15 @@
+{
+  "name": "tdf-mono",
+  "private": true,
+  "workspaces": [
+	  "apps/*",
+	  "packages/*
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saferthanhouses/tdf.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
