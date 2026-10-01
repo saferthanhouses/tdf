@@ -1,7 +1,10 @@
 {
-  "name": "tdf-app",
+  "name": "barnbooks-api",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+	  "dev": "tsx watch index.ts"
+  },
   "dependencies": {
     "@tdf-mono/db-client": "*"
   }

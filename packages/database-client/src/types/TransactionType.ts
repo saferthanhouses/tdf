@@ -1,0 +1,51 @@
+
+export interface TransactionType {
+	Feed
+	Purchasedlivestock/chicks
+	Processing
+	Veterinary/medicine
+	Bedding
+	Seed/plants
+	Packaging
+	Otherdirectproduction
+	Marketfees
+	Merchant/cardprocessingfees
+	Delivery/freight
+	Advertising
+	Website/e-commerce
+	Labels/printedmaterial
+	Fuel
+	Repairs&maintenance
+	Smalltools
+	Utilities
+	Insurance
+	Professionalfees
+	Property-relatedfarmexpenses
+	Generalfarmsupplies
+	Labor/payroll
+	Vehicle
+	Equipmentpurchase
+	Buildings
+	Permanentfencing
+	Watersystems
+	Landimprovement
+	Orchard/perennialestablishment
+	Vehiclepurchase
+	Othercapitalasset
+	Farmproductsales
+	Livestocksales
+	Preparedfoodsales
+	Breedingstocksales
+	Agrotourismincome
+	Banktransfer
+	Ownerfunds
+	Loanactivity
+	Taxpayment
+	LGDSupplies
+	TransportationCosts-Tolls
+	TransportationCosts-Fuel
+	CommercialKitchenRent
+	Ingredients
+}
+
+

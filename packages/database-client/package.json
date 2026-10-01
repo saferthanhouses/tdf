@@ -6,5 +6,12 @@
   "publishConfig": {
     "main": "dist/index.js",
     "types": "dist/index.d.ts"
+  },
+  "dependencies": {
+    "kysely": "^0.29.6",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1"
   }
 }
