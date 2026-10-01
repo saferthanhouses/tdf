@@ -1,0 +1,58 @@
+# ================= 
+# Operating System & Environment
+# ================= 
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.*.local
+
+# ================= 
+# Editors & IDEs
+# ================= 
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ================= 
+# Dependencies (Recursive / Global)
+# ================= 
+# Matches node_modules at any depth in the monorepo
+**/node_modules/
+**/jspm_packages/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Ruby / Bundler
+.bundle/
+
+# ================= 
+# Build Outputs & Caches (Recursive)
+# ================= 
+# General outputs
+**/dist/
+**/build/
+**/out/
+**/.cache/
+**/tmp/
+
+# JavaScript/TypeScript frameworks & tools
+**/.next/
+**/.nuxt/
+**/.vuepress/dist/
+**/.docusaurus/
+**/*.tsbuildinfo
+**/.parcel-cache/
+
+# Package manager specific caches / locks
+**/.pnpm-debug.log*
+**/npm-debug.log*
+**/yarn-error.log*
+**/.yarn/cache/
+**/.yarn/unplugged/
+**/.pnp.*
