@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container cols">
     <div>
-      <p class="name">{site.name}</p>
+      <a class="logo" href="/"><span class="visually-hidden">{site.name}</span></a>
       <p>{site.location}</p>
       {site.certifications.map((c) => <p class="cert">{c}</p>)}
     </div>
@@ -36,10 +36,15 @@ const year = new Date().getFullYear();
     gap: var(--space-4);
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
-  .name {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    color: var(--color-text);
+  /* Logo is used as a mask so the ink follows the theme's text color */
+  .logo {
+    display: block;
+    width: 180px;
+    aspect-ratio: 480 / 438;
+    margin-bottom: var(--space-3);
+    background: var(--color-text);
+    -webkit-mask: url("/images/logo-full.png") center / contain no-repeat;
+    mask: url("/images/logo-full.png") center / contain no-repeat;
   }
   .cert {
     display: inline-block;

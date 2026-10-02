@@ -7,7 +7,10 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
 
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href="/">{site.name}</a>
+    <a class="brand" href="/">
+      <span class="logo" aria-hidden="true"></span>
+      {site.name}
+    </a>
 
     <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
       <span class="visually-hidden">Menu</span>
@@ -59,11 +62,23 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
     gap: var(--space-3);
   }
   .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     font-family: var(--font-display);
     font-size: var(--text-lg);
     font-weight: 700;
     color: var(--color-text);
     text-decoration: none;
+  }
+  /* Logo is used as a mask so the ink follows the theme's text color */
+  .logo {
+    width: 44px;
+    height: 48px;
+    flex-shrink: 0;
+    background: currentColor;
+    -webkit-mask: url("/images/logo-mark.png") center / contain no-repeat;
+    mask: url("/images/logo-mark.png") center / contain no-repeat;
   }
   nav ul {
     list-style: none;
