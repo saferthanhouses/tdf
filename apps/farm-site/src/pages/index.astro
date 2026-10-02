@@ -1,0 +1,98 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProductCard from "@/components/ProductCard.astro";
+import MarketSchedule from "@/components/MarketSchedule.astro";
+import { getCollection } from "astro:content";
+import { site } from "@/site.config";
+
+const featured = (await getCollection("products", (p) => p.data.featured))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const pillars = [
+  {
+    title: "Raised on pasture",
+    text: "Sheep, pigs, chickens and ducks move across fresh ground through the season on our hillside in the Catskills.",
+  },
+  {
+    title: "Animal Welfare Approved",
+    text: "Independently audited to one of the most rigorous animal welfare standards in the country.",
+  },
+  {
+    title: "Cooked in our kitchen",
+    text: "We turn our own birds and bones into pot pies, broth, rillette and hand pies — real food, ready to heat.",
+  },
+];
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="container"><div class="hero-inner">
+      <p class="eyebrow">{site.location}</p>
+      <h1>{site.tagline}</h1>
+      <p class="lede">{site.description}</p>
+      <div class="actions">
+        <a class="btn" href="/markets">Find us at market</a>
+        <a class="btn btn--ghost" href="/products">See what we grow</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section">
+    <div class="container grid pillars">
+      {
+        pillars.map((p) => (
+          <div>
+            <h2 class="pillar-title">{p.title}</h2>
+            <p>{p.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="head-row">
+        <h2>From the farm kitchen</h2>
+        <a href="/products">All products →</a>
+      </div>
+      <div class="grid">
+        {featured.map((p) => <ProductCard product={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="head-row">
+        <h2>Where to find us</h2>
+        <a href="/markets">Market details →</a>
+      </div>
+      <MarketSchedule compact />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: var(--space-6);
+    background:
+      radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--color-highlight) 30%, transparent), transparent 45%),
+      linear-gradient(180deg, var(--color-surface-alt), var(--color-bg));
+    /* Swap in a photo: background: linear-gradient(rgb(0 0 0 / .35), rgb(0 0 0 / .35)), url(/images/hero.jpg) center/cover; */
+  }
+  .hero-inner { max-width: 820px; }
+  .hero h1 { font-size: var(--text-hero); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-4); }
+  .pillar-title { font-size: var(--text-lg); color: var(--color-primary); }
+  .head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-4);
+  }
+  .head-row h2 { margin: 0; }
+</style>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "afm",
+    "name": "Astoria Farmers Market",
+    "location": "31st Avenue Open Streets, Astoria, Queens",
+    "days": [0],
+    "hours": "12pm– 5pm",
+    "season": "May-November",
+    "note": "Every 2nd & 4th Sunday", 
+	"startMonth": 5,
+    "endMonth": 11
+  },
+  {
+    "id": "riseboro",
+    "name": "Bushwick Farmers Market",
+    "location": "Maria Hernandez Park, Brooklyn",
+    "days": [6],
+    "hours": "8am – 3pm",
+    "season": "May – November",
+    "startMonth": 5,
+    "endMonth": 11
+  },
+  {
+    "id": "farm-pickup",
+    "name": "Farm pickup",
+    "location": "Bloomville, NY — by appointment",
+    "days": [],
+    "hours": "By appointment",
+    "season": "Year-round",
+    "note": "Email to arrange a pickup time."
+  }
+]

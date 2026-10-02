@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const products = await getCollection("products");
+  return products.map((product) => ({ params: { id: product.id }, props: { product } }));
+}
+
+const { product } = Astro.props;
+const { Content } = await render(product);
+const { name, summary, price, seasonal, image, category, available } = product.data;
+---
+
+<BaseLayout title={name} description={summary}>
+  <section class="section">
+    <div class="container layout">
+      <div class="media">
+        {image ? <img src={image} alt={name} /> : <span class="placeholder">{category}</span>}
+      </div>
+      <div>
+        <p class="eyebrow"><a href="/products">Products</a> / {category}</p>
+        <h1>{name}</h1>
+        <p class="lede">{summary}</p>
+        <dl class="facts">
+          {price && (<><dt>Price</dt><dd>{price}</dd></>)}
+          {seasonal && (<><dt>Season</dt><dd>{seasonal}</dd></>)}
+          <dt>Availability</dt>
+          <dd>{available ? "Available at market" : "Sold out for now"}</dd>
+        </dl>
+        <div class="prose">
+          <Content />
+        </div>
+        <a class="btn" href="/markets">Find it at market</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .layout {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 860px) {
+    .layout { grid-template-columns: 1fr 1.1fr; align-items: start; }
+  }
+  .media {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-surface-alt), var(--color-border));
+  }
+  .media img { width: 100%; height: 100%; object-fit: cover; }
+  .placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-text-muted);
+  }
+  .eyebrow a { color: inherit; }
+  .facts {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--space-1) var(--space-4);
+    margin: 0 0 var(--space-4);
+  }
+  dt { font-weight: 600; }
+  dd { margin: 0; color: var(--color-text-muted); }
+</style>

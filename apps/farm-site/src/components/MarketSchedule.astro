@@ -1,0 +1,115 @@
+---
+// Renders the market list at build time, then a tiny client script
+// highlights the next upcoming market day. A good template for adding
+// more interactivity without a framework.
+import { getCollection } from "astro:content";
+
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+const markets = await getCollection("markets");
+const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const fmtDays = (days: number[]) =>
+  days.length ? days.map((d) => dayNames[d]).join(" & ") : "By appointment";
+
+// Data the client script needs (serialized into a data attribute).
+const schedule = markets.map((m) => ({
+  id: m.id,
+  name: m.data.name,
+  days: m.data.days,
+  startMonth: m.data.startMonth,
+  endMonth: m.data.endMonth,
+}));
+---
+
+<div class="markets" data-schedule={JSON.stringify(schedule)}>
+  <p class="next" hidden></p>
+  <ul class:list={["list", { compact }]}>
+    {
+      markets.map((m) => (
+        <li class="market" data-id={m.id}>
+          <h3>{m.data.url ? <a href={m.data.url}>{m.data.name}</a> : m.data.name}</h3>
+          <p class="when">
+            <strong>{fmtDays(m.data.days)}</strong> · {m.data.hours}
+          </p>
+          <p class="where">{m.data.location}</p>
+          {!compact && <p class="season">{m.data.season}</p>}
+          {!compact && m.data.note && <p class="note">{m.data.note}</p>}
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  type Entry = { id: string; name: string; days: number[]; startMonth?: number; endMonth?: number };
+
+  function inSeason(e: Entry, month: number) {
+    if (!e.startMonth || !e.endMonth) return true;
+    return e.startMonth <= e.endMonth
+      ? month >= e.startMonth && month <= e.endMonth
+      : month >= e.startMonth || month <= e.endMonth; // wraps over new year
+  }
+
+  document.querySelectorAll<HTMLElement>(".markets").forEach((root) => {
+    const schedule: Entry[] = JSON.parse(root.dataset.schedule ?? "[]");
+    const today = new Date();
+    let best: { entry: Entry; date: Date } | null = null;
+
+    for (let offset = 0; offset < 14 && !best; offset++) {
+      const d = new Date(today);
+      d.setDate(today.getDate() + offset);
+      const hit = schedule.find((e) => e.days.includes(d.getDay()) && inSeason(e, d.getMonth() + 1));
+      if (hit) best = { entry: hit, date: d };
+    }
+    if (!best) return;
+
+    const label =
+      best.date.toDateString() === today.toDateString()
+        ? "today"
+        : best.date.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
+
+    const next = root.querySelector<HTMLElement>(".next");
+    if (next) {
+      next.textContent = `Next market: ${best.entry.name} — ${label}`;
+      next.hidden = false;
+    }
+    root.querySelector(`[data-id="${best.entry.id}"]`)?.classList.add("is-next");
+  });
+</script>
+
+<style>
+  .next {
+    display: inline-block;
+    background: var(--color-highlight);
+    color: #2b1a0e;
+    font-weight: 600;
+    padding: var(--space-2) var(--space-3);
+    border-radius: 999px;
+    margin-bottom: var(--space-4);
+  }
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  }
+  .market {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-4);
+    box-shadow: var(--shadow);
+  }
+  .market.is-next {
+    border-color: var(--color-highlight);
+    outline: 2px solid var(--color-highlight);
+  }
+  .market h3 { margin-bottom: var(--space-2); }
+  .market p { margin-bottom: var(--space-1); }
+  .where, .season, .note { color: var(--color-text-muted); font-size: var(--text-sm); }
+</style>

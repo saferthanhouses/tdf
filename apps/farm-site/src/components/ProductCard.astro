@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  product: CollectionEntry<"products">;
+}
+const { product } = Astro.props;
+const { name, summary, price, seasonal, image, category, available } = product.data;
+---
+
+<article class="card">
+  <a href={`/products/${product.id}`} class="media" aria-hidden="true" tabindex="-1">
+    {image ? <img src={image} alt="" loading="lazy" /> : <span class="placeholder">{category}</span>}
+  </a>
+  <div class="body">
+    <p class="cat">{category}{!available && " · Sold out"}</p>
+    <h3><a href={`/products/${product.id}`}>{name}</a></h3>
+    <p>{summary}</p>
+    <p class="meta">
+      {price && <span>{price}</span>}
+      {seasonal && <span>{seasonal}</span>}
+    </p>
+  </div>
+</article>
+
+<style>
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+  }
+  .media {
+    aspect-ratio: 4 / 3;
+    display: block;
+    background: linear-gradient(135deg, var(--color-surface-alt), var(--color-border));
+  }
+  .media img { width: 100%; height: 100%; object-fit: cover; }
+  .placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    font-family: var(--font-display);
+    color: var(--color-text-muted);
+  }
+  .body { padding: var(--space-4); }
+  .cat {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+  }
+  h3 a { color: var(--color-text); text-decoration: none; }
+  h3 a:hover { color: var(--color-primary); }
+  .meta {
+    display: flex;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+</style>

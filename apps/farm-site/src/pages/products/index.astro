@@ -1,0 +1,36 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import ProductCard from "@/components/ProductCard.astro";
+import { getCollection } from "astro:content";
+
+const products = (await getCollection("products")).sort(
+  (a, b) => a.data.order - b.data.order || a.data.name.localeCompare(b.data.name),
+);
+const categories = ["Meat", "Eggs", "Farm Kitchen", "Fruit"] as const;
+---
+
+<PageLayout
+  title="Products"
+  eyebrow="What we grow & make"
+  lede="Everything here is raised on our farm. Availability changes with the season — check the market table or email us."
+>
+  {
+    categories.map((cat) => {
+      const items = products.filter((p) => p.data.category === cat);
+      return (
+        items.length > 0 && (
+          <section class="cat">
+            <h2>{cat}</h2>
+            <div class="grid">
+              {items.map((p) => <ProductCard product={p} />)}
+            </div>
+          </section>
+        )
+      );
+    })
+  }
+</PageLayout>
+
+<style>
+  .cat + .cat { margin-top: var(--space-6); }
+</style>

@@ -1,0 +1,28 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { site } from "@/site.config";
+---
+
+<PageLayout
+  title="Contact"
+  eyebrow="Say hello"
+  lede="Questions about cuts, bulk orders, farm pickup or wholesale? We'd love to hear from you."
+>
+  <div class="prose">
+    <p>
+      Email: <a href={`mailto:${site.email}`}>{site.email}</a>
+    </p>
+    {site.instagram && (
+      <p>
+        Instagram: <a href={site.instagram}>{site.instagram.replace(/^https?:\/\//, "")}</a>
+      </p>
+    )}
+    <p>{site.location}</p>
+    <!--
+      Want a form? Easiest options for a static site:
+      - Netlify Forms: add `data-netlify="true"` to a <form> (when hosted on Netlify)
+      - Formspree / Basin: point the form's action at their endpoint
+      - Later: an Astro server endpoint (src/pages/api/contact.ts) once you add an adapter
+    -->
+  </div>
+</PageLayout>

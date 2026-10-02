@@ -1,0 +1,116 @@
+---
+import { site, nav } from "@/site.config";
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (href: string) => path === href || path.startsWith(href + "/");
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="/">{site.name}</a>
+
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="visually-hidden">Menu</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <nav id="site-nav" aria-label="Main">
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Plain client JS: Astro bundles and ships only this small script.
+  const btn = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const nav = document.getElementById("site-nav");
+  btn?.addEventListener("click", () => {
+    const open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!open));
+    nav?.classList.toggle("open", !open);
+  });
+</script>
+
+<style>
+  .site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+    gap: var(--space-3);
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-4);
+  }
+  nav a {
+    font-family: var(--font-display);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 400;
+    padding-block: var(--space-2);
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover,
+  nav a[aria-current="page"] {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-highlight);
+  }
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    color: var(--color-text);
+    padding: var(--space-2);
+    cursor: pointer;
+  }
+
+  @media (max-width: 720px) {
+    .menu-toggle { display: block; }
+    nav {
+      display: none;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+    }
+    nav.open { display: block; }
+    nav ul {
+      flex-direction: column;
+      gap: 0;
+      padding: var(--space-2) var(--space-3) var(--space-3);
+    }
+    nav a { display: block; padding-block: var(--space-3); }
+  }
+</style>

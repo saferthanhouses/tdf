@@ -1,0 +1,53 @@
+---
+import { site, nav } from "@/site.config";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container cols">
+    <div>
+      <p class="name">{site.name}</p>
+      <p>{site.location}</p>
+      {site.certifications.map((c) => <p class="cert">{c}</p>)}
+    </div>
+    <nav aria-label="Footer">
+      <ul>
+        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+    <div>
+      <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      {site.instagram && <p><a href={site.instagram}>Instagram</a></p>}
+    </div>
+  </div>
+  <div class="container legal">© {year} {site.name}</div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-5) var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+  .cols {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--color-text);
+  }
+  .cert {
+    display: inline-block;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.15em 0.8em;
+  }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin-bottom: var(--space-1); }
+  .legal { margin-top: var(--space-4); }
+</style>

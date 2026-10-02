@@ -1,0 +1,32 @@
+---
+// Wrapper for simple content pages (Markdown pages, contact, etc.)
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+  lede?: string;
+}
+
+const { title, description, eyebrow, lede } = Astro.props;
+---
+
+<BaseLayout title={title} description={description ?? lede}>
+  <section class="section">
+    <div class="container">
+      <header class="page-head">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        <h1>{title}</h1>
+        {lede && <p class="lede">{lede}</p>}
+      </header>
+      <slot />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head {
+    margin-bottom: var(--space-5);
+  }
+</style>

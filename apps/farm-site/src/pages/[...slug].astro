@@ -1,0 +1,25 @@
+---
+// Renders every Markdown file in src/content/pages/ at /<filename>.
+// e.g. src/content/pages/about.md -> /about
+import { getCollection, render } from "astro:content";
+import PageLayout from "@/layouts/PageLayout.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<PageLayout
+  title={page.data.title}
+  eyebrow={page.data.eyebrow}
+  lede={page.data.lede}
+  description={page.data.description}
+>
+  <div class="prose">
+    <Content />
+  </div>
+</PageLayout>
