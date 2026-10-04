@@ -7,5 +7,8 @@ export default defineConfig({
   site: "https://example.com",
   // Static output by default. When you need server routes (order forms, etc.),
   // add an adapter: `npx astro add netlify` (or cloudflare / vercel / node).
-  output: "static",
+	output: "static",
+	server: {
+		allowedHosts: ['manly-fructose-cultivate.ngrok-free.dev']
+	}
 });

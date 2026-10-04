@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProductCard from "@/components/ProductCard.astro";
 import MarketSchedule from "@/components/MarketSchedule.astro";
+import HeroCarousel from "@/components/HeroCarousel.astro";
 import { getCollection } from "astro:content";
 import { site } from "@/site.config";
 
@@ -26,29 +27,17 @@ const pillars = [
 ---
 
 <BaseLayout>
-  <section class="hero">
-    <img
-      class="hero-photo"
-      src="/images/hero-1200.jpg"
-      srcset="/images/hero-800.jpg 800w, /images/hero-1200.jpg 1200w, /images/hero-2000.jpg 2000w"
-      sizes="100vw"
-      width="2000"
-      height="1500"
-      alt="Sunset clouds over the farm's green hillside pasture and red barn with silo"
-      fetchpriority="high"
-    />
-    <div class="container">
-      <div class="hero-inner">
-        <p class="eyebrow">{site.location}</p>
-        <h1>{site.tagline}</h1>
-        <p class="lede">{site.description}</p>
-        <div class="actions">
-          <a class="btn" href="/markets">Find us at market</a>
-          <a class="btn btn--ghost" href="/products">See what we grow</a>
-        </div>
+  <HeroCarousel>
+    <div class="hero-inner">
+      <p class="eyebrow">{site.location}</p>
+      <h1>{site.tagline}</h1>
+      <p class="lede">{site.description}</p>
+      <div class="actions">
+        <a class="btn" href="/markets">Find us at market</a>
+        <a class="btn btn--ghost" href="/products">See what we grow</a>
       </div>
     </div>
-  </section>
+  </HeroCarousel>
 
   <section class="section">
     <div class="container grid pillars">
@@ -87,25 +76,12 @@ const pillars = [
 </BaseLayout>
 
 <style>
-  .hero {
-    padding-bottom: var(--space-6);
-    background:
-      radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--color-highlight) 30%, transparent), transparent 45%),
-      linear-gradient(180deg, var(--color-surface-alt), var(--color-bg));
-    /* Swap in a photo: background: linear-gradient(rgb(0 0 0 / .35), rgb(0 0 0 / .35)), url(/images/hero.jpg) center/cover; */
-  }
-  .hero-photo {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    object-position: center 60%;
-    margin-bottom: var(--space-5);
-  }
-  @media (max-width: 720px) {
-    .hero-photo { aspect-ratio: 4 / 3; margin-bottom: var(--space-4); }
-  }
-  .hero-inner { max-width: 820px; }
-  .hero h1 { font-size: var(--text-hero); font-weight: 700; }
+  /* Hero text sits on a dark photo overlay in both themes */
+  .hero-inner { max-width: 820px; text-shadow: 0 1px 12px rgb(0 0 0 / 0.35); }
+  .hero-inner h1 { font-size: var(--text-hero); font-weight: 700; }
+  .hero-inner .eyebrow { color: #e6b450; }
+  .hero-inner .lede { color: rgb(251 243 230 / 0.9); }
+  .hero-inner .btn--ghost { color: #fbf3e6; border-color: #fbf3e6; text-shadow: none; }
   .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-4); }
   .pillar-title { font-size: var(--text-lg); color: var(--color-primary); }
   .head-row {

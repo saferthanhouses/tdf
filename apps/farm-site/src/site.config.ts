@@ -1,10 +1,11 @@
 // One place for farm-wide details. Change these and the whole site updates.
 export const site = {
-  name: "Thistledown Farm", // TODO: real farm name
+  name: "Thistledown Farm", 
   tagline: "Pasture-raised meat, eggs & seasonal farm-cooked foods from the Catskills",
   description:
     "A diversified, family farm in Bloomville, NY raising sheep, pigs, chickens and ducks on pasture — and cooking them into pot pies, broth and more.",
-  location: "Bloomville, Delaware County, NY",
+  location: "Delaware County, NY",
+	address: "624 Brownell Road, Bloomville, NY 13739",
   email: "hello@thisledownfarm.org", 
   instagram: "https://instagram.com/thistledownfarm_ny", // e.g. "https://instagram.com/yourfarm"
   certifications: [],

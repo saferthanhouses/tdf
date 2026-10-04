@@ -1,0 +1,205 @@
+---
+/*
+  Full-window photo carousel for the landing page.
+  Every image in src/assets/hero/ becomes a slide, sorted by filename —
+  prefix files with 01-, 02-… to set the order. Alt text comes from the
+  filename: "02-hens-in-the-orchard.jpg" → "Hens in the orchard".
+  Astro resizes and compresses each photo at build time.
+*/
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+const files = import.meta.glob<ImageMetadata>("/src/assets/hero/*.{jpg,jpeg,png,webp,avif}", {
+  eager: true,
+  import: "default",
+});
+
+const altFromPath = (path: string) => {
+  const words = path
+    .split("/")
+    .pop()!
+    .replace(/\.[^.]+$/, "")
+    .replace(/^\d+[-_ ]*/, "")
+    .replace(/[-_]+/g, " ")
+    .trim();
+  return words.charAt(0).toUpperCase() + words.slice(1);
+};
+
+const slides = Object.keys(files)
+  .sort()
+  .map((path) => ({ src: files[path], alt: altFromPath(path) }));
+---
+
+<section class="hero" aria-roledescription="carousel" aria-label="Photos from the farm">
+  <div class="slides">
+    {
+      slides.map((slide, i) => (
+        <div class:list={["slide", { "is-active": i === 0 }]} aria-hidden={i === 0 ? undefined : "true"}>
+          <Image
+            src={slide.src}
+            alt={slide.alt}
+            widths={[800, 1400, 2000, 2800]}
+            sizes="100vw"
+            loading={i === 0 ? "eager" : "lazy"}
+            fetchpriority={i === 0 ? "high" : undefined}
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="overlay">
+    <div class="container">
+      <slot />
+    </div>
+  </div>
+
+  {
+    slides.length > 1 && (
+      <div class="controls">
+        <button class="arrow" data-dir="-1" aria-label="Previous photo">‹</button>
+        <div class="dots">
+          {slides.map((_, i) => (
+            <button
+              class="dot"
+              data-index={i}
+              aria-label={`Show photo ${i + 1} of ${slides.length}`}
+              aria-current={i === 0 ? "true" : undefined}
+            />
+          ))}
+        </div>
+        <button class="arrow" data-dir="1" aria-label="Next photo">›</button>
+      </div>
+    )
+  }
+</section>
+
+<script>
+  const INTERVAL = 6000;
+
+  document.querySelectorAll<HTMLElement>(".hero").forEach((hero) => {
+    const slides = [...hero.querySelectorAll<HTMLElement>(".slide")];
+    const dots = [...hero.querySelectorAll<HTMLButtonElement>(".dot")];
+    if (slides.length < 2) return;
+
+    let current = 0;
+    let timer: number | undefined;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const show = (index: number) => {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        s.classList.toggle("is-active", i === current);
+        i === current ? s.removeAttribute("aria-hidden") : s.setAttribute("aria-hidden", "true");
+        // Start loading the next photo before it's needed
+        if (i === (current + 1) % slides.length) s.querySelector("img")?.setAttribute("loading", "eager");
+      });
+      dots.forEach((d, i) => (i === current ? d.setAttribute("aria-current", "true") : d.removeAttribute("aria-current")));
+    };
+
+    const stop = () => window.clearInterval(timer);
+    const start = () => {
+      stop();
+      if (!reduceMotion) timer = window.setInterval(() => show(current + 1), INTERVAL);
+    };
+
+    hero.querySelectorAll<HTMLButtonElement>(".arrow").forEach((b) =>
+      b.addEventListener("click", () => {
+        show(current + Number(b.dataset.dir));
+        start();
+      })
+    );
+    dots.forEach((d) =>
+      d.addEventListener("click", () => {
+        show(Number(d.dataset.index));
+        start();
+      })
+    );
+
+    // Pause while someone is reading or using the controls, or the tab is hidden
+    hero.addEventListener("mouseenter", stop);
+    hero.addEventListener("mouseleave", start);
+    hero.addEventListener("focusin", stop);
+    hero.addEventListener("focusout", start);
+    document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+
+    start();
+  });
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    /* Fill the window below the sticky header */
+    height: calc(100svh - var(--header-height));
+    min-height: 480px;
+    overflow: hidden;
+    background: #1c1510;
+    color: #fbf3e6;
+  }
+
+  .slides,
+  .slide {
+    position: absolute;
+    inset: 0;
+  }
+  .slide {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .slide.is-active { opacity: 1; }
+  .slide :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Dark gradient behind the text so it stays readable on any photo */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: calc(var(--space-6) + var(--space-4));
+    background:
+      linear-gradient(to top, rgb(28 21 16 / 0.85) 0%, rgb(28 21 16 / 0.55) 35%, rgb(28 21 16 / 0) 70%),
+      linear-gradient(to right, rgb(28 21 16 / 0.45), rgb(28 21 16 / 0) 60%);
+  }
+
+  .controls {
+    position: absolute;
+    left: 50%;
+    bottom: var(--space-4);
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .dots { display: flex; gap: var(--space-2); }
+  .dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1.5px solid #fbf3e6;
+    background: transparent;
+    cursor: pointer;
+  }
+  .dot[aria-current="true"] { background: #fbf3e6; }
+  .arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 0;
+    background: rgb(28 21 16 / 0.45);
+    color: #fbf3e6;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .arrow:hover { background: rgb(28 21 16 / 0.7); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide { transition: none; }
+  }
+</style>
