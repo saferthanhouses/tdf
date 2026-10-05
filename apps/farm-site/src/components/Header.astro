@@ -7,9 +7,9 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
 
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href="/" data-header-brand>
+    <a class="brand" href="/" aria-label={site.name}>
+      <span class="turkey" aria-hidden="true"></span>
       <span class="logo" aria-hidden="true"></span>
-      {site.name}
     </a>
 
     <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
@@ -54,6 +54,25 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
     top: 0;
     z-index: 10;
   }
+  /* Landing page on desktop: hidden over the hero, then faded and slid in with the scroll
+     (--header-reveal runs 0 → 1, set by HeroCarousel) */
+  :global(.header-autohide) .site-header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    opacity: var(--header-reveal, 0);
+    transform: translateY(calc((1 - var(--header-reveal, 0)) * -100%));
+    pointer-events: none;
+  }
+  :global(.header-autohide.header-revealed) .site-header { pointer-events: auto; }
+  :global(.header-autohide) .site-header:focus-within {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(.header-autohide) .site-header { transform: none; }
+  }
   .bar {
     display: flex;
     align-items: center;
@@ -61,28 +80,30 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
     min-height: var(--header-height);
     gap: var(--space-3);
   }
-  /* Sized in em so HeroBrand can scale an identical copy up and down */
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 0.4em;
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    font-weight: 700;
+    gap: 10px;
     color: var(--color-text);
-    text-decoration: none;
   }
-  /* Logo is used as a mask so the ink follows the theme's text color */
+  /* Turkey drawing + TDF wordmark, used as masks so the ink follows the theme's text color */
+  .turkey,
   .logo {
-    width: 2.2em;
-    height: 2.4em;
-    flex-shrink: 0;
     background: currentColor;
-    -webkit-mask: url("/images/logo-mark.png") center / contain no-repeat;
-    mask: url("/images/logo-mark.png") center / contain no-repeat;
+    -webkit-mask: var(--mark) center / contain no-repeat;
+    mask: var(--mark) center / contain no-repeat;
   }
-  /* On the landing page HeroBrand flies in to take this spot */
-  :global(.brand-docking) .brand { opacity: var(--brand-dock, 0); }
+  .turkey {
+    --mark: url("/images/logo-turkey.png");
+    height: 44px;
+    aspect-ratio: 153 / 128;
+  }
+  .logo {
+    --mark: url("/images/logo-tdf.png");
+    height: 32px;
+    aspect-ratio: 178 / 96;
+  }
+  .brand:hover { color: var(--color-primary); }
   nav ul {
     list-style: none;
     margin: 0;

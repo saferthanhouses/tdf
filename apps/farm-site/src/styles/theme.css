@@ -44,6 +44,8 @@
 
   /* Type */
   --font-display: "Mono45 Headline", ui-monospace, "SF Mono", Menlo, monospace;
+  /* Hero farm name. "europa" is the Adobe Fonts family name; until it's loaded, a similar geometric sans is used */
+  --font-brand: "europa", "Avenir Next", "Futura", "Century Gothic", system-ui, sans-serif;
   --font-body: "Source Sans 3", system-ui, -apple-system, sans-serif;
   --text-sm: 0.9rem;
   --text-base: 1.0625rem;

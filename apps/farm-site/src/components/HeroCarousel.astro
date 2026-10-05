@@ -74,6 +74,41 @@ const slides = Object.keys(files)
   }
 </section>
 
+<!--
+  Desktop: hide the header while the top of the hero is on screen. From halfway
+  down the hero it fades in and slides down, tied to the scroll position.
+  Inline so the class is set before first paint.
+-->
+<script is:inline>
+  (() => {
+    const START = 0.5; // start revealing halfway through the hero…
+    const RANGE = 0.4; // …and finish after another 40% of its height
+    const root = document.documentElement;
+    const hero = document.currentScript.previousElementSibling;
+    const desktop = window.matchMedia("(min-width: 721px)");
+
+    const update = () => {
+      const h = hero.offsetHeight;
+      const p = Math.min(Math.max((window.scrollY - h * START) / (h * RANGE), 0), 1);
+      root.style.setProperty("--header-reveal", String(p));
+      root.classList.toggle("header-revealed", p > 0);
+    };
+    const sync = () => {
+      root.classList.toggle("header-autohide", desktop.matches);
+      update();
+    };
+
+    let frame = 0;
+    window.addEventListener("scroll", () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(update);
+    }, { passive: true });
+    window.addEventListener("resize", update);
+    desktop.addEventListener("change", sync);
+    sync();
+  })();
+</script>
+
 <script>
   const INTERVAL = 6000;
 
@@ -136,6 +171,8 @@ const slides = Object.keys(files)
     background: #1c1510;
     color: #fbf3e6;
   }
+  /* With the header hidden, the hero fills the whole window */
+  :global(.header-autohide) .hero { height: 100svh; }
 
   .slides,
   .slide {
