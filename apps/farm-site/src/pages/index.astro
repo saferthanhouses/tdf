@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProductCard from "@/components/ProductCard.astro";
 import MarketSchedule from "@/components/MarketSchedule.astro";
 import HeroCarousel from "@/components/HeroCarousel.astro";
+import HeroBrand from "@/components/HeroBrand.astro";
 import { getCollection } from "astro:content";
 import { site } from "@/site.config";
 
@@ -29,6 +30,7 @@ const pillars = [
 <BaseLayout>
   <HeroCarousel>
     <div class="hero-inner">
+      <HeroBrand />
       <p class="eyebrow">{site.location}</p>
       <h1>{site.tagline}</h1>
       <p class="lede">{site.description}</p>
@@ -79,6 +81,11 @@ const pillars = [
   /* Hero text sits on a dark photo overlay in both themes */
   .hero-inner { max-width: 820px; text-shadow: 0 1px 12px rgb(0 0 0 / 0.35); }
   .hero-inner h1 { font-size: var(--text-hero); font-weight: 700; }
+  /* On desktop the farm name above is the headline, so the rest steps down */
+  @media (min-width: 721px) {
+    .hero-inner h1 { font-size: clamp(1.75rem, 2.6vw, 2.25rem); font-weight: 400; }
+    .hero-inner .lede { font-size: var(--text-base); }
+  }
   .hero-inner .eyebrow { color: #e6b450; }
   .hero-inner .lede { color: rgb(251 243 230 / 0.9); }
   .hero-inner .btn--ghost { color: #fbf3e6; border-color: #fbf3e6; text-shadow: none; }

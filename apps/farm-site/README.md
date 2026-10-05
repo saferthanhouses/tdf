@@ -40,8 +40,6 @@ Requires Node 22+.
 
 For a page that needs custom layout, create `src/pages/whatever.astro` instead.
 
-### Add a product
-
 Copy any file in `src/content/products/`, rename it (the filename becomes the URL, e.g. `/products/lamb-shanks`), and edit the frontmatter. Fields are validated by `src/content.config.ts` — a typo in `category` fails the build with a clear message. Set `featured: true` to show it on the homepage (first three by `order`).
 
 ## Adding interactivity

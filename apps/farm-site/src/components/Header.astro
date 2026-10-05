@@ -7,7 +7,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
 
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href="/">
+    <a class="brand" href="/" data-header-brand>
       <span class="logo" aria-hidden="true"></span>
       {site.name}
     </a>
@@ -61,10 +61,11 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
     min-height: var(--header-height);
     gap: var(--space-3);
   }
+  /* Sized in em so HeroBrand can scale an identical copy up and down */
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 0.4em;
     font-family: var(--font-display);
     font-size: var(--text-lg);
     font-weight: 700;
@@ -73,13 +74,15 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
   }
   /* Logo is used as a mask so the ink follows the theme's text color */
   .logo {
-    width: 44px;
-    height: 48px;
+    width: 2.2em;
+    height: 2.4em;
     flex-shrink: 0;
     background: currentColor;
     -webkit-mask: url("/images/logo-mark.png") center / contain no-repeat;
     mask: url("/images/logo-mark.png") center / contain no-repeat;
   }
+  /* On the landing page HeroBrand flies in to take this spot */
+  :global(.brand-docking) .brand { opacity: var(--brand-dock, 0); }
   nav ul {
     list-style: none;
     margin: 0;
