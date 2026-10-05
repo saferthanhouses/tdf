@@ -12,6 +12,10 @@
     "pg": "^8.23.1"
   },
   "devDependencies": {
-    "@types/pg": "^8.23.1"
+    "@types/pg": "^8.23.1",
+    "kysely-ctl": "^0.21.0"
+  },
+  "scripts": {
+    "db:migrate": "kysely migrate latest"
   }
 }
