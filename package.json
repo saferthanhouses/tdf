@@ -10,11 +10,18 @@
     "url": "git+https://github.com/saferthanhouses/tdf.git"
   },
   "scripts": {
-	  "dev": "tsx watch index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:migrate": "dotenvx run -f .env.dev -- npm run migrate -w @tdf-mono/db-client",
+    "db:migration:create": "dotenvx run -f .env.dev -- npm run create:migration -w @tdf-mono/db-client" 
   },
   "devDependencies": {
+    "dotenv-cli": "^11.0.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^2.33.0",
+    "zod": "^4.6.5"
   }
 }

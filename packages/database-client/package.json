@@ -9,13 +9,15 @@
   },
   "dependencies": {
     "kysely": "^0.29.6",
-    "pg": "^8.23.1"
+    "pg": "^8.23.1",
+	"@tdf-mono/env": "*"
   },
   "devDependencies": {
     "@types/pg": "^8.23.1",
     "kysely-ctl": "^0.21.0"
   },
   "scripts": {
-    "db:migrate": "kysely migrate latest"
+    "migrate": "kysely migrate latest",
+    "create:migration": "kysely migrate:make"
   }
 }

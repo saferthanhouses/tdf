@@ -2,12 +2,9 @@ import type { Kysely } from 'kysely'
 
 // `any` is required here since migrations should be frozen in time. alternatively, keep a "snapshot" db interface.
 export async function up(db: Kysely<any>): Promise<void> {
-	await db.schema
-       .createTable('account')
-	   .addColumn('id', 'serial', col => col.primaryKey())
-	   .addColumn('name', 'varchar(255)', col => col.notNull())
-	.addColumn('bank', 'varchar(255)')
-	.execute()
+	// up migration code goes here...
+	// note: up migrations are mandatory. you must implement this function.
+	// For more info, see: https://kysely.dev/docs/migrations
 }
 
 // `any` is required here since migrations should be frozen in time. alternatively, keep a "snapshot" db interface.
