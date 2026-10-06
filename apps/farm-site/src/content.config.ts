@@ -39,6 +39,8 @@ const markets = defineCollection({
     location: z.string(),
     // 0 = Sunday … 6 = Saturday
     days: z.array(z.number().int().min(0).max(6)),
+    // Optional: only these weeks of the month, e.g. [2, 4] for "2nd & 4th Sunday"
+    weeks: z.array(z.number().int().min(1).max(5)).optional(),
     hours: z.string(),
     season: z.string(), // human-readable, e.g. "Year-round" or "May – November"
     // Optional month range (1–12) used by the "next market" widget

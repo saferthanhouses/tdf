@@ -1,0 +1,74 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import ProductCard from "@/components/ProductCard.astro";
+import MarketSchedule from "@/components/MarketSchedule.astro";
+import { getCollection } from "astro:content";
+import photo from "@/assets/hero/03-colorful-eggs.jpeg";
+
+const featured = (await getCollection("products", (p) => p.data.featured))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+---
+
+<PageLayout
+  title="Our Food"
+  eyebrow=Real Food Raised Right"
+  lede="because we feel good about eating it and it tastes phenomenal."
+  image={photo}
+  imageAlt="A carton of brown, cream and blue-green eggs from our hens"
+>
+  <div class="prose">
+    <p>
+      We raise Katahdin/Dorper hair sheep, pigs, ranger broilers, Pekin ducks and laying hens on pasture at 1,500 feet
+      in Delaware County, New York. Livestock guardian dogs keep watch over the flock, and an 11-acre hay field carries
+      the animals through winter. About 130 blueberry bushes and a young orchard round out the season.
+    </p>
+
+    <h2>How we farm</h2>
+    <ul>
+      <li>
+        <strong>Rotational grazing.</strong> Animals move to fresh paddocks behind portable netting, which keeps them
+        healthy and builds the soil.
+      </li>
+      <li>
+        <strong>Nothing wasted.</strong> Bones become broth, and our own birds go into the pot pies, quiche and rillette
+        we make in a commercial kitchen.
+      </li>
+      <li>
+        <strong>Close to home.</strong> We sell what we raise directly — at New York City farmers markets and from the
+        farm — so you always know who grew your food.
+      </li>
+    </ul>
+  </div>
+
+  <section class="block">
+    <div class="head-row">
+      <h2>From the farm kitchen</h2>
+      <a href="/products">All products →</a>
+    </div>
+    <div class="grid">
+      {featured.map((p) => <ProductCard product={p} />)}
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="head-row">
+      <h2>Where to buy</h2>
+      <a href="/markets">Market details →</a>
+    </div>
+    <MarketSchedule compact />
+  </section>
+</PageLayout>
+
+<style>
+  .block { margin-top: var(--space-6); }
+  .head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-4);
+  }
+  .head-row h2 { margin: 0; }
+</style>

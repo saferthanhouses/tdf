@@ -1,18 +1,28 @@
 ---
 // Wrapper for simple content pages (Markdown pages, contact, etc.)
 import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 interface Props {
   title: string;
   description?: string;
   eyebrow?: string;
   lede?: string;
+  /** Optional full-width photo above the page heading */
+  image?: ImageMetadata;
+  imageAlt?: string;
 }
 
-const { title, description, eyebrow, lede } = Astro.props;
+const { title, description, eyebrow, lede, image, imageAlt = "" } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description ?? lede}>
+  {
+    image && (
+      <Image class="banner" src={image} alt={imageAlt} widths={[800, 1400, 2000]} sizes="100vw" loading="eager" />
+    )
+  }
   <section class="section">
     <div class="container">
       <header class="page-head">
@@ -28,5 +38,10 @@ const { title, description, eyebrow, lede } = Astro.props;
 <style>
   .page-head {
     margin-bottom: var(--space-5);
+  }
+  .banner {
+    width: 100%;
+    height: clamp(220px, 42vh, 460px);
+    object-fit: cover;
   }
 </style>

@@ -48,11 +48,17 @@ const slides = Object.keys(files)
     }
   </div>
 
-  <div class="overlay">
-    <div class="container">
-      <slot />
-    </div>
-  </div>
+  {
+    Astro.slots.has("default") && (
+      <div class="overlay">
+        <div class="container">
+          <slot />
+        </div>
+      </div>
+    )
+  }
+  <!-- Light shade at the bottom so the photo controls stay visible -->
+  <div class="shade" aria-hidden="true"></div>
 
   {
     slides.length > 1 && (
@@ -75,37 +81,22 @@ const slides = Object.keys(files)
 </section>
 
 <!--
-  Desktop: hide the header while the top of the hero is on screen. From halfway
-  down the hero it fades in and slides down, tied to the scroll position.
-  Inline so the class is set before first paint.
+  The header sits transparent over the hero, then switches to its solid version
+  once the visitor has scrolled partway down. Inline so the class is set before first paint.
 -->
 <script is:inline>
   (() => {
-    const START = 0.5; // start revealing halfway through the hero…
-    const RANGE = 0.4; // …and finish after another 40% of its height
+    const SWITCH_AT = 0.5; // fraction of the hero's height scrolled before the header turns solid
     const root = document.documentElement;
     const hero = document.currentScript.previousElementSibling;
-    const desktop = window.matchMedia("(min-width: 721px)");
+    root.classList.add("header-overlay");
 
     const update = () => {
-      const h = hero.offsetHeight;
-      const p = Math.min(Math.max((window.scrollY - h * START) / (h * RANGE), 0), 1);
-      root.style.setProperty("--header-reveal", String(p));
-      root.classList.toggle("header-revealed", p > 0);
+      root.classList.toggle("header-solid", window.scrollY > hero.offsetHeight * SWITCH_AT);
     };
-    const sync = () => {
-      root.classList.toggle("header-autohide", desktop.matches);
-      update();
-    };
-
-    let frame = 0;
-    window.addEventListener("scroll", () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(update);
-    }, { passive: true });
+    window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
-    desktop.addEventListener("change", sync);
-    sync();
+    update();
   })();
 </script>
 
@@ -151,9 +142,8 @@ const slides = Object.keys(files)
       })
     );
 
-    // Pause while someone is reading or using the controls, or the tab is hidden
-    hero.addEventListener("mouseenter", stop);
-    hero.addEventListener("mouseleave", start);
+    // Pause while someone is using the controls with the keyboard, or the tab is hidden.
+    // (No pause on hover: the hero fills the window, so the pointer is almost always over it.)
     hero.addEventListener("focusin", stop);
     hero.addEventListener("focusout", start);
     document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
@@ -171,8 +161,8 @@ const slides = Object.keys(files)
     background: #1c1510;
     color: #fbf3e6;
   }
-  /* With the header hidden, the hero fills the whole window */
-  :global(.header-autohide) .hero { height: 100svh; }
+  /* With the header floating over it, the hero fills the whole window */
+  :global(.header-overlay) .hero { height: 100svh; }
 
   .slides,
   .slide {
@@ -191,6 +181,13 @@ const slides = Object.keys(files)
   }
 
   /* Dark gradient behind the text so it stays readable on any photo */
+  .shade {
+    position: absolute;
+    inset: auto 0 0;
+    height: 25%;
+    background: linear-gradient(to top, rgb(28 21 16 / 0.4), rgb(28 21 16 / 0));
+    pointer-events: none;
+  }
   .overlay {
     position: absolute;
     inset: 0;

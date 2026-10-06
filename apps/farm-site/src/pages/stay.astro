@@ -1,0 +1,30 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import InterestCTA from "@/components/InterestCTA.astro";
+import photo from "@/assets/hero/05-farm-on-hill.jpeg";
+---
+
+<PageLayout
+  title="Stay"
+  eyebrow="Coming soon"
+  lede="Farm stays on a working farm in the western Catskills."
+  image={photo}
+  imageAlt="Green pasture rolling down to the farm buildings and silo, with wooded hills behind"
+>
+  <div class="prose">
+	  <p>We believe that sitting by a warm fire, under a starry sk and eating food farm-raised food is a balm for the soul and a cure for the ills of modern living. We want to share that with you.    
+    </p>
+
+  </div>
+  <div class="cta">
+    <InterestCTA
+      title="Interested in staying?"
+      text="Let us know and we'll be in touch when stays open, along with anything you'd want from a farm stay."
+      subject="Stay — keep me posted"
+    />
+  </div>
+</PageLayout>
+
+<style>
+  .cta { margin-top: var(--space-5); }
+</style>

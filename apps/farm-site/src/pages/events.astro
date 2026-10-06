@@ -1,0 +1,56 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import InterestCTA from "@/components/InterestCTA.astro";
+import photo from "@/assets/hero/02-boy-with-chickens.jpeg";
+---
+
+<PageLayout
+  title="Gather"
+  eyebrow="Coming soon"
+  lede="Learning, cooking and celebrating together on the farm."
+  image={photo}
+  imageAlt="A young child walking across the pasture toward the chickens and their coops"
+>
+  <div class="prose">
+    <p>
+      We want Thistledown to be somewhere people come to, not just somewhere food leaves from. Most of us are a long way
+      from where our food is raised — we'd like to close that gap a little, one afternoon at a time.
+    </p>
+    <p>
+      Nothing is booked yet. These are the kinds of things we're planning, and we'd love your help deciding where to
+      start.
+    </p>
+
+    <h2>What we're planning</h2>
+    <ul>
+      <li>
+        <strong>Hands-on farm days.</strong> Move the flock to fresh grass, collect eggs and see how rotational grazing
+        works up close.
+      </li>
+      <li>
+        <strong>Kitchen workshops.</strong> The skills behind our farm kitchen: rich bone broth, a proper pie crust,
+        preserving the harvest.
+      </li>
+      <li>
+        <strong>Seasonal farm dinners.</strong> Long-table meals on the farm, cooked from what's in the fields and
+        pastures that week.
+      </li>
+      <li>
+        <strong>Visits for groups.</strong> Time on the farm for families, schools and community groups who want to see
+        where food comes from.
+      </li>
+    </ul>
+  </div>
+
+  <div class="cta">
+    <InterestCTA
+      title="Help us shape it"
+      text="Tell us what you'd like to learn or take part in, and we'll let you know when the first dates are set."
+      subject="Gather — keep me posted"
+    />
+  </div>
+</PageLayout>
+
+<style>
+  .cta { margin-top: var(--space-5); }
+</style>

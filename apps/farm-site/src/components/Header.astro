@@ -2,14 +2,26 @@
 import { site, nav } from "@/site.config";
 
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-const isActive = (href: string) => path === href || path.startsWith(href + "/");
+const isActive = (item: (typeof nav)[number]) =>
+  [item.href, ...(item.match ?? [])].some((href) => path === href || path.startsWith(href + "/"));
+
+// Two lines for the large brand: everything before the last word, then the last word
+const split = site.name.lastIndexOf(" ");
+const nameLines = split > 0 ? [site.name.slice(0, split), site.name.slice(split + 1)] : [site.name];
 ---
 
 <header class="site-header">
   <div class="container bar">
     <a class="brand" href="/" aria-label={site.name}>
-      <span class="turkey" aria-hidden="true"></span>
-      <span class="logo" aria-hidden="true"></span>
+      <!-- Large logo + name: only shown while the header sits over the landing-page hero -->
+      <span class="brand-full" aria-hidden="true">
+        <span class="mark"></span>
+        <span class="name">{nameLines.map((line) => <span>{line}</span>)}</span>
+      </span>
+      <span class="brand-compact" aria-hidden="true">
+        <span class="turkey"></span>
+        <span class="logo"></span>
+      </span>
     </a>
 
     <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
@@ -24,7 +36,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
         {
           nav.map((item) => (
             <li>
-              <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+              <a href={item.href} aria-current={isActive(item) ? "page" : undefined}>
                 {item.label}
               </a>
             </li>
@@ -54,25 +66,6 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
     top: 0;
     z-index: 10;
   }
-  /* Landing page on desktop: hidden over the hero, then faded and slid in with the scroll
-     (--header-reveal runs 0 → 1, set by HeroCarousel) */
-  :global(.header-autohide) .site-header {
-    position: fixed;
-    left: 0;
-    right: 0;
-    opacity: var(--header-reveal, 0);
-    transform: translateY(calc((1 - var(--header-reveal, 0)) * -100%));
-    pointer-events: none;
-  }
-  :global(.header-autohide.header-revealed) .site-header { pointer-events: auto; }
-  :global(.header-autohide) .site-header:focus-within {
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    :global(.header-autohide) .site-header { transform: none; }
-  }
   .bar {
     display: flex;
     align-items: center;
@@ -80,30 +73,58 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
     min-height: var(--header-height);
     gap: var(--space-3);
   }
+
+  /* Both brand versions share one grid cell so they can cross-fade */
   .brand {
+    display: grid;
+    align-items: center;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .brand-full,
+  .brand-compact {
+    grid-area: 1 / 1;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    color: var(--color-text);
+    transition: opacity 0.4s ease, visibility 0.4s;
   }
-  /* Turkey drawing + TDF wordmark, used as masks so the ink follows the theme's text color */
+  .brand-full { opacity: 0; visibility: hidden; gap: 0.3em; }
+  .brand-compact { gap: 10px; }
+
+  /* Logos are used as masks so the ink follows the current text color */
+  .mark,
   .turkey,
   .logo {
+    flex-shrink: 0;
     background: currentColor;
-    -webkit-mask: var(--mark) center / contain no-repeat;
-    mask: var(--mark) center / contain no-repeat;
+    -webkit-mask: var(--src) center / contain no-repeat;
+    mask: var(--src) center / contain no-repeat;
+  }
+  .mark {
+    --src: url("/images/logo-mark.png");
+    height: 2em; /* spans both lines of the name */
+    aspect-ratio: 175 / 192;
   }
   .turkey {
-    --mark: url("/images/logo-turkey.png");
+    --src: url("/images/logo-turkey.png");
     height: 44px;
     aspect-ratio: 153 / 128;
   }
   .logo {
-    --mark: url("/images/logo-tdf.png");
+    --src: url("/images/logo-tdf.png");
     height: 32px;
     aspect-ratio: 178 / 96;
   }
+  .name {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
   .brand:hover { color: var(--color-primary); }
+
   nav ul {
     list-style: none;
     margin: 0;
@@ -133,12 +154,73 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
     cursor: pointer;
   }
 
+  /*
+    Landing page: the header starts transparent over the hero photo, showing the large
+    logo + name in cream. HeroCarousel adds .header-solid once the visitor scrolls down,
+    which brings back the solid bar and the turkey + TDF logo. An open mobile menu
+    always gets the solid bar so its links stay readable.
+  */
+  :global(.header-overlay) .site-header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    border-bottom-color: transparent;
+    /* no-repeat: otherwise the gradient tiles into the transparent border as a dark line */
+    background: linear-gradient(to bottom, rgb(28 21 16 / 0.6), rgb(28 21 16 / 0)) border-box no-repeat;
+    transition: border-color 0.4s ease;
+  }
+  /* Solid background fades in on top of the gradient */
+  :global(.header-overlay) .site-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--color-surface);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  :global(.header-overlay) .bar {
+    min-height: calc(var(--header-height) * 1.75);
+    transition: min-height 0.4s ease;
+  }
+  :global(.header-overlay:not(.header-solid)) .site-header:not(:has(nav.open)) {
+    --overlay-text: #fbf3e6;
+    text-shadow: 0 1px 10px rgb(0 0 0 / 0.35);
+  }
+  :global(.header-overlay:not(.header-solid)) .site-header:not(:has(nav.open)) :is(.brand, nav a, .menu-toggle) {
+    color: var(--overlay-text);
+  }
+  :global(.header-overlay:not(.header-solid)) .site-header:not(:has(nav.open)) nav a:hover,
+  :global(.header-overlay:not(.header-solid)) .site-header:not(:has(nav.open)) nav a[aria-current="page"] {
+    border-bottom-color: var(--overlay-text);
+  }
+  :global(.header-overlay:not(.header-solid)) .site-header:not(:has(nav.open)) .brand-full {
+    opacity: 1;
+    visibility: visible;
+  }
+  :global(.header-overlay:not(.header-solid)) .site-header:not(:has(nav.open)) .brand-compact {
+    opacity: 0;
+  }
+  :global(.header-overlay.header-solid) .site-header,
+  :global(.header-overlay) .site-header:has(nav.open) {
+    border-bottom-color: var(--color-border);
+  }
+  :global(.header-overlay.header-solid) .site-header::before,
+  :global(.header-overlay) .site-header:has(nav.open)::before {
+    opacity: 1;
+  }
+  :global(.header-overlay.header-solid) .bar,
+  :global(.header-overlay) .site-header:has(nav.open) .bar {
+    min-height: var(--header-height);
+  }
+  .brand-full { font-size: 1.75rem; }
+
   @media (max-width: 720px) {
     .menu-toggle { display: block; }
     nav {
       display: none;
       position: absolute;
-      top: var(--header-height);
+      top: 100%;
       left: 0;
       right: 0;
       background: var(--color-surface);
@@ -151,5 +233,15 @@ const isActive = (href: string) => path === href || path.startsWith(href + "/");
       padding: var(--space-2) var(--space-3) var(--space-3);
     }
     nav a { display: block; padding-block: var(--space-3); }
+    .brand-full { font-size: 1.25rem; }
+    :global(.header-overlay) .bar { min-height: calc(var(--header-height) * 1.4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-header,
+    .site-header::before,
+    .bar,
+    .brand-full,
+    .brand-compact { transition: none !important; }
   }
 </style>

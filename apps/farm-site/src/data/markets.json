@@ -4,6 +4,7 @@
     "name": "Astoria Farmers Market",
     "location": "31st Avenue Open Streets, Astoria, Queens",
     "days": [0],
+    "weeks": [2, 4],
     "hours": "12pm– 5pm",
     "season": "May-November",
     "note": "Every 2nd & 4th Sunday", 

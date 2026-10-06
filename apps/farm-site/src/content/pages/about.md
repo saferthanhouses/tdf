@@ -1,21 +1,27 @@
 ---
-title: Our Farm
+title: About
 eyebrow: Bloomville, NY
-lede: A small, diversified farm at 1,500 feet in the western Catskills.
+lede: A small, diversified family farm at 1,500 feet in the western Catskills.
 ---
 
-<!-- TODO: replace with your story. Any Markdown works: headings, lists, images, links. -->
+<!-- TODO: add your own story here — who you are, how you came to the farm, and why it matters to you. -->
 
-We raise Katahdin/Dorper hair sheep, pigs, ranger broilers, Pekin ducks and laying hens on pasture in Delaware County, New York. Livestock guardian dogs keep watch over the flock, and an 11-acre hay field carries the animals through winter.
+Thistledown Farm sits on a hillside in Delaware County, New York. We raise sheep, pigs, chickens and ducks on pasture, grow blueberries and a young orchard, and cook what we raise in our own commercial kitchen.
 
-## How we farm
+The farm has always been about good food raised well. Now we want it to be about people, too: a place to learn, to share a meal and to stay a while. That's why the farm comes in three parts.
 
-- **Rotational grazing.** Animals move to fresh paddocks behind portable netting, which keeps them healthy and builds the soil.
-- **Animal Welfare Approved.** Our animals are raised to an independently audited, high-welfare standard.
-- **Nothing wasted.** Bones become broth, and our own birds go into the pot pies, quiche and rillette we make in a commercial kitchen.
+## Farm
 
-## Fruit
+The heart of everything. Pasture-raised meat and eggs, fruit in season, and pot pies, broth, quiche and rillette from our kitchen — sold at New York City farmers markets and from the farm. [See what we grow →](/farm)
 
-About 130 blueberry bushes and a young orchard round out the season.
+## Gather
 
-> Add a photo by dropping it into `public/images/` and writing `![Sheep on pasture](/images/sheep.jpg)`.
+Coming soon. Hands-on farm days, kitchen workshops, seasonal dinners and visits for groups, so more people can see where their food comes from. [What we're planning →](/gather)
+
+## Stay
+
+Coming soon. Farm stays for anyone who wants to slow down and spend a few days on a working farm in the Catskills. [About the stays →](/stay)
+
+## Get in touch
+
+Questions, orders or ideas for what we should do next — we'd love to hear from you. [Contact us →](/contact)

@@ -1,8 +1,14 @@
 ---
-// Renders the market list at build time, then a tiny client script
-// highlights the next upcoming market day. A good template for adding
-// more interactivity without a framework.
+// Renders the market list at build time, then a tiny client script works out
+// each market's next date (it depends on today, so it can't be done at build time):
+// it highlights the soonest one, and adds a "Next: <date> · Pre-order" strip to
+// every market that's still in season.
 import { getCollection } from "astro:content";
+import { site } from "@/site.config";
+
+// Where the "Pre-order" buttons go. Leave empty to open an email to the farm
+// instead, with the market and date already in the subject line.
+const PREORDER_URL = "";
 
 interface Props {
   compact?: boolean;
@@ -19,24 +25,63 @@ const schedule = markets.map((m) => ({
   id: m.id,
   name: m.data.name,
   days: m.data.days,
+  weeks: m.data.weeks,
   startMonth: m.data.startMonth,
   endMonth: m.data.endMonth,
 }));
 ---
 
-<div class="markets" data-schedule={JSON.stringify(schedule)}>
-  <p class="next" hidden></p>
+<div
+  class="markets"
+  data-schedule={JSON.stringify(schedule)}
+  data-preorder-url={PREORDER_URL}
+  data-email={site.email}
+>
+  <div class="next" hidden>
+    <p class="next-label">
+      <span class="next-kicker">Next market</span>
+      <span class="next-text"></span>
+    </p>
+    <a class="btn next-cta" href={PREORDER_URL || `mailto:${site.email}`}>Pre-order now →</a>
+  </div>
   <ul class:list={["list", { compact }]}>
     {
       markets.map((m) => (
-        <li class="market" data-id={m.id}>
-          <h3>{m.data.url ? <a href={m.data.url}>{m.data.name}</a> : m.data.name}</h3>
+        <li class:list={["market", { linked: m.data.url || compact }]} id={m.id} data-id={m.id}>
+          {/* The whole card is clickable: the market's own site if we have it, otherwise its entry on /markets */}
+          <h3>
+            {m.data.url || compact ? (
+              <a class="card-link" href={m.data.url ?? `/markets#${m.id}`}>
+                {m.data.name}
+              </a>
+            ) : (
+              m.data.name
+            )}
+          </h3>
           <p class="when">
-            <strong>{fmtDays(m.data.days)}</strong> · {m.data.hours}
+            {fmtDays(m.data.days) === m.data.hours ? (
+              <strong>{m.data.hours}</strong>
+            ) : (
+              <>
+                <strong>{fmtDays(m.data.days)}</strong> · {m.data.hours}
+              </>
+            )}
           </p>
           <p class="where">{m.data.location}</p>
           {!compact && <p class="season">{m.data.season}</p>}
           {!compact && m.data.note && <p class="note">{m.data.note}</p>}
+          {
+            m.data.days.length > 0 && (
+              <div class="market-next" hidden>
+                <p class="market-next-date">
+                  <span class="market-next-label">Next</span> <span class="market-next-text" />
+                </p>
+                <a class="btn market-cta" href={PREORDER_URL || `mailto:${site.email}`}>
+                  Pre-order →
+                </a>
+              </div>
+            )
+          }
         </li>
       ))
     }
@@ -44,7 +89,14 @@ const schedule = markets.map((m) => ({
 </div>
 
 <script>
-  type Entry = { id: string; name: string; days: number[]; startMonth?: number; endMonth?: number };
+  type Entry = {
+    id: string;
+    name: string;
+    days: number[];
+    weeks?: number[];
+    startMonth?: number;
+    endMonth?: number;
+  };
 
   function inSeason(e: Entry, month: number) {
     if (!e.startMonth || !e.endMonth) return true;
@@ -53,27 +105,55 @@ const schedule = markets.map((m) => ({
       : month >= e.startMonth || month <= e.endMonth; // wraps over new year
   }
 
+  // The market's next date within the coming five weeks, or null if it's out of season by then
+  function nextDate(e: Entry, from: Date) {
+    for (let offset = 0; offset < 35; offset++) {
+      const d = new Date(from);
+      d.setDate(from.getDate() + offset);
+      const week = Math.ceil(d.getDate() / 7); // 1st, 2nd… weekday of the month
+      if (e.days.includes(d.getDay()) && (!e.weeks || e.weeks.includes(week)) && inSeason(e, d.getMonth() + 1)) {
+        return d;
+      }
+    }
+    return null;
+  }
+
   document.querySelectorAll<HTMLElement>(".markets").forEach((root) => {
     const schedule: Entry[] = JSON.parse(root.dataset.schedule ?? "[]");
     const today = new Date();
-    let best: { entry: Entry; date: Date } | null = null;
-
-    for (let offset = 0; offset < 14 && !best; offset++) {
-      const d = new Date(today);
-      d.setDate(today.getDate() + offset);
-      const hit = schedule.find((e) => e.days.includes(d.getDay()) && inSeason(e, d.getMonth() + 1));
-      if (hit) best = { entry: hit, date: d };
-    }
-    if (!best) return;
-
-    const label =
-      best.date.toDateString() === today.toDateString()
+    const label = (d: Date) =>
+      d.toDateString() === today.toDateString()
         ? "today"
-        : best.date.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
+        : d.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
 
+    const preorder = (cta: HTMLAnchorElement | null, e: Entry, d: Date) => {
+      if (!cta || root.dataset.preorderUrl) return;
+      const subject = `Pre-order for ${e.name} (${label(d)})`;
+      cta.href = `mailto:${root.dataset.email}?subject=${encodeURIComponent(subject)}`;
+    };
+
+    const upcoming = schedule
+      .map((entry) => ({ entry, date: nextDate(entry, today) }))
+      .filter((u): u is { entry: Entry; date: Date } => u.date !== null);
+
+    // Each in-season market gets its own date + pre-order strip
+    for (const { entry, date } of upcoming) {
+      const strip = root.querySelector<HTMLElement>(`[data-id="${entry.id}"] .market-next`);
+      if (!strip) continue;
+      const text = strip.querySelector(".market-next-text");
+      if (text) text.textContent = label(date);
+      preorder(strip.querySelector<HTMLAnchorElement>(".market-cta"), entry, date);
+      strip.hidden = false;
+    }
+
+    // The soonest one is highlighted, with its own chip above the list
+    const best = upcoming.sort((a, b) => a.date.getTime() - b.date.getTime())[0];
+    if (!best) return;
     const next = root.querySelector<HTMLElement>(".next");
     if (next) {
-      next.textContent = `Next market: ${best.entry.name} — ${label}`;
+      const text = next.querySelector(".next-text");
+      if (text) text.textContent = `${best.entry.name} — ${label(best.date)}`;
+      preorder(next.querySelector<HTMLAnchorElement>(".next-cta"), best.entry, best.date);
       next.hidden = false;
     }
     root.querySelector(`[data-id="${best.entry.id}"]`)?.classList.add("is-next");
@@ -81,15 +161,25 @@ const schedule = markets.map((m) => ({
 </script>
 
 <style>
-  .next {
-    display: inline-block;
+  .next:not([hidden]) {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
     background: var(--color-highlight);
     color: #2b1a0e;
-    font-weight: 600;
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
     border-radius: 999px;
     margin-bottom: var(--space-4);
   }
+  .next-label { margin: 0; font-weight: 600; }
+  .next-kicker {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: var(--space-1);
+  }
+  .next-cta { white-space: nowrap; }
   .list {
     list-style: none;
     margin: 0;
@@ -99,16 +189,55 @@ const schedule = markets.map((m) => ({
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   }
   .market {
+    --card-pad: var(--space-4);
+    display: flex;
+    flex-direction: column;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    padding: var(--space-4);
+    padding: var(--card-pad);
     box-shadow: var(--shadow);
   }
+  /* Clickable cards: the heading link stretches over the whole card */
+  .market.linked {
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .market.linked:hover { transform: translateY(-3px); }
+  .card-link { color: inherit; text-decoration: none; }
+  .card-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+  .market.linked:hover .card-link { color: var(--color-primary); }
+  .card-link:focus-visible { outline: none; }
+  .market.linked:has(.card-link:focus-visible) { outline: 3px solid var(--color-primary); outline-offset: 2px; }
   .market.is-next {
     border-color: var(--color-highlight);
     outline: 2px solid var(--color-highlight);
   }
+  /* Next date + pre-order strip along the bottom of in-season market cards */
+  .market-next:not([hidden]) {
+    position: relative;
+    z-index: 1; /* above the card's stretched link so the button gets the click */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-3);
+    margin: auto calc(-1 * var(--card-pad)) calc(-1 * var(--card-pad));
+    padding: var(--space-3) var(--card-pad);
+    border-radius: 0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px);
+    background: color-mix(in srgb, var(--color-highlight) 30%, var(--color-surface));
+  }
+  .market .market-next-date { margin: 0; font-weight: 600; }
+  .market-next-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: var(--space-1);
+    color: var(--color-accent);
+  }
+  .market-cta { padding: 0.5em 1.1em; white-space: nowrap; }
+  /* Space between the card details and the strip */
+  .market:has(> .market-next:not([hidden])) > p:last-of-type { margin-bottom: var(--space-4); }
   .market h3 { margin-bottom: var(--space-2); }
   .market p { margin-bottom: var(--space-1); }
   .where, .season, .note { color: var(--color-text-muted); font-size: var(--text-sm); }

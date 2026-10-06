@@ -1,0 +1,85 @@
+---
+// The three parts of the business — Farm, Gather, Stay — as linked photo cards.
+// Copy lives in src/site.config.ts (pillars); photos are picked here.
+import { Image } from "astro:assets";
+import { pillars } from "@/site.config";
+import food from "@/assets/hero/03-colorful-eggs.jpeg";
+import events from "@/assets/hero/02-boy-with-chickens.jpeg";
+import stay from "@/assets/hero/05-farm-on-hill.jpeg";
+
+const photos = { food, events, stay };
+---
+
+<div class="pillars">
+  {
+    pillars.map((p) => (
+      <a class="pillar" href={p.href}>
+        <Image class="photo" src={photos[p.key]} alt="" widths={[400, 800]} sizes="(max-width: 720px) 100vw, 360px" />
+        <div class="body">
+          <p class="kicker">
+            {p.kicker}
+            {p.status === "soon" && <span class="badge">Coming soon</span>}
+          </p>
+          <h3>{p.label}</h3>
+          <p class="summary">{p.summary}</p>
+          <span class="more">{p.cta} →</span>
+        </div>
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .pillars {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  }
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    color: var(--color-text);
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease;
+  }
+  .pillar:hover { color: var(--color-text); transform: translateY(-2px); }
+  .photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: var(--space-4);
+  }
+  .kicker {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+  }
+  .badge {
+    padding: 0.1em 0.7em;
+    border-radius: 999px;
+    background: var(--color-highlight);
+    color: #2b1a0e;
+    letter-spacing: 0.05em;
+  }
+  h3 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
+  .summary { color: var(--color-text-muted); flex: 1; }
+  .more { color: var(--color-primary); font-weight: 600; }
+  .pillar:hover .more { color: var(--color-accent); }
+</style>
