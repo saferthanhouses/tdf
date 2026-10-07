@@ -19,7 +19,7 @@ export const pillars = [
     label: "Our Food",
     href: "/food",
     status: "now",
-    kicker: "Eat what you raise",
+    kicker: "A Market Farm",
     summary:
       "Pasture-raised lamb, pork, chicken, duck and eggs, plus pot pies, broth and quiche from our farm kitchen. Find us at markets in Queens and Brooklyn, or pick up at the farm.",
     cta: "Real food raised ruggedly",
@@ -29,7 +29,7 @@ export const pillars = [
     label: "Events",
     href: "/events",
     status: "soon",
-    kicker: "Learn & celebrate",
+    kicker: "A Place To Gather",
     summary:
       "Workshops, farm dinners and hands-on days that bring people onto the land to see how food is raised, cooked and shared.",
     cta: "What we're planning",
@@ -39,7 +39,7 @@ export const pillars = [
     label: "Stay",
     href: "/stay",
     status: "soon",
-    kicker: "Farm stays",
+    kicker: "A Place To Relax",
     summary:
       "A place to slow down on a working farm in the western Catskills — open hillsides, the rhythm of the animals, and food from the farm.",
     cta: "About the stays",

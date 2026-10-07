@@ -22,13 +22,30 @@ const featured = (await getCollection("products", (p) => p.data.featured))
         <p class="eyebrow">{site.location}</p>
         <h1>{site.tagline}</h1>
         <p class="lede">
-		Situated on patch of rugged hillside in the Catskills mountains, we are a small family farm with a simple mission: raise the food that we love, in the place that we love and share it with the people we love. </p>
-		<p>We are market farm - we raise and cook food to sell at markets in New York City. We are a community farm - we run events to give back to our local community. We are a place to </p>
-        <div class="actions">
-			<a class="btn" href="/food">Food From The Farm</a>
-			<a class="btn btn--ghost" href="#updates">Hear about Events & Farm Stays</a>
-        </div>
-      </header>
+          Situated on a patch of rugged hillside in the Catskill Mountains, we are a small family farm with a simple
+          mission: raise the food that we love, in the place that we love, and share it with the people we love.
+        </p>
+
+        <ul class="mission">
+          <li>
+            <strong>We Feed People</strong>
+			<span>We are a market farm. We raise, grow and cook food to sell at markets in New York City.</span>
+          </li>
+          <li>
+			  <strong>We </strong>
+            <span>We run events to give back to our local community.</span>
+          </li>
+          <li>
+			  <strong>We welcom </strong>
+            <span>Somewhere to slow down and reconnect with the land.</span>
+          </li>
+        </ul>
+
+	  </header>
+
+	  <div class="container">
+		  <p>Insert full width line abstract line drawing of hills here</p>
+	  </div>
       <PillarCards />
     </div>
   </section>
@@ -67,6 +84,36 @@ const featured = (await getCollection("products", (p) => p.data.featured))
   }
   .head-row h2 { margin: 0; }
 
+  /* Mission statements: a bold lead-in followed by the explanation on the same line */
+  .mission {
+    list-style: none;
+    margin: var(--space-4) 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .mission li {
+	  position: relative;
+    padding-left: 1.4em;
+    font-size: var(--text-lg);
+  }
+  .mission li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 2px;
+    background: var(--dot);
+  }
+  .mission strong {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-right: 0.35em;
+  }
+  .mission span { color: var(--color-text-muted); font-size: var(--text-base); }
   /* "Where to find us": a big full-width barn-red section with gold rules top and bottom */
   .market-band {
     position: relative;

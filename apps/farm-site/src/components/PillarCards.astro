@@ -14,7 +14,6 @@ const photos = { food, events, stay };
   {
     pillars.map((p) => (
       <a class="pillar" href={p.href}>
-        <Image class="photo" src={photos[p.key]} alt="" widths={[400, 800]} sizes="(max-width: 720px) 100vw, 360px" />
         <div class="body">
           <p class="kicker">
             {p.kicker}
@@ -22,8 +21,9 @@ const photos = { food, events, stay };
           </p>
           <h3>{p.label}</h3>
           <p class="summary">{p.summary}</p>
-          <span class="more">{p.cta} →</span>
-        </div>
+		</div>
+
+        <Image class="photo" src={photos[p.key]} alt="" widths={[400, 800]} sizes="(max-width: 720px) 100vw, 360px" />
       </a>
     ))
   }
@@ -36,18 +36,19 @@ const photos = { food, events, stay };
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   }
   .pillar {
+	border: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
     overflow: hidden;
     color: var(--color-text);
     text-decoration: none;
-    box-shadow: var(--shadow);
     transition: transform 0.15s ease;
   }
-  .pillar:hover { color: var(--color-text); transform: translateY(-2px); }
+
+  .pillar:hover {
+	  transform: translateY(2px);
+  }
+
   .photo {
     width: 100%;
     aspect-ratio: 4 / 3;
