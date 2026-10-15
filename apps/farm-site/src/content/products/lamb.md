@@ -4,6 +4,7 @@ category: Meat
 summary: "Katahdin/Dorper hair sheep, grass-finished on our Catskills pasture."
 order: 10
 featured: false
+showcase: true
 seasonal: Late summer – winter
 ---
 

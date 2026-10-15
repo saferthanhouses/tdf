@@ -1,13 +1,17 @@
-mport { Kysely, PostgresDialect } from 'kysely'
-import { Pool } from 'pg'
-import { Database } from './types
+import { Kysely, PostgresDialect } from 'kysely'
+import pg from 'pg'
+import { env } from './env'
+import type { Database } from './types'
 
 export * from './types'
 
-const pool = new Pool({
-	...env.pg
+// Return DATE columns as 'YYYY-MM-DD' strings instead of local-midnight JS Dates.
+pg.types.setTypeParser(pg.types.builtins.DATE, (value: string) => value)
+
+const pool = new pg.Pool({
+	...env.pg,
 })
 
 export const db = new Kysely<Database>({
-	dialect: new PostgresDialect({ pool })
+	dialect: new PostgresDialect({ pool }),
 })

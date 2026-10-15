@@ -1,0 +1,155 @@
+---
+/*
+  A carousel of square product photos for the home page. Visitors move through it
+  with the arrow buttons, or by swiping / scrolling sideways.
+  Choose what appears by setting `showcase: true` in a product's Markdown file
+  (src/content/products/); they're shown in the products' `order`.
+  Products without an `image` use a generated placeholder from
+  public/images/products/placeholders/<product-id>.jpg until a photo is added,
+  or a plain coloured tile with their name if there's no placeholder either.
+*/
+import { getCollection } from "astro:content";
+import { existsSync } from "node:fs";
+
+const placeholder = (id: string) => {
+  const path = `/images/products/placeholders/${id}.jpg`;
+  return existsSync(`public${path}`) ? path : undefined;
+};
+
+const items = (await getCollection("products", (p) => p.data.showcase)).sort(
+  (a, b) => a.data.order - b.data.order || a.data.name.localeCompare(b.data.name),
+);
+---
+
+{
+  items.length > 0 && (
+    <div class="showcase" aria-roledescription="carousel" aria-label="Products from the farm">
+      <button class="arrow prev" aria-label="Previous products" hidden>‹</button>
+      <ul class="track">
+        {items.map((p, i) => (
+          <li>
+            <a
+              class="tile"
+              href={`/products/${p.id}`}
+              style={`--tile-bg: var(${["--color-primary", "--color-accent", "--color-feature"][i % 3]})`}
+            >
+              {p.data.image || placeholder(p.id) ? (
+                <img src={p.data.image ?? placeholder(p.id)} alt={p.data.name} loading="lazy" width="600" height="600" />
+              ) : (
+                <span class="placeholder">{p.data.name}</span>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <button class="arrow next" aria-label="More products" hidden>›</button>
+    </div>
+  )
+}
+
+<script>
+  document.querySelectorAll<HTMLElement>(".showcase").forEach((root) => {
+    const track = root.querySelector<HTMLElement>(".track")!;
+    const prev = root.querySelector<HTMLButtonElement>(".prev")!;
+    const next = root.querySelector<HTMLButtonElement>(".next")!;
+
+    // Show each arrow only when there's somewhere to go in that direction
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      prev.hidden = track.scrollLeft <= 1;
+      next.hidden = track.scrollLeft >= max - 1;
+    };
+
+    // Move by most of a screenful, so the last visible card stays in view for context
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const page = (dir: number) =>
+      track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: reduceMotion ? "auto" : "smooth" });
+    prev.addEventListener("click", () => page(-1));
+    next.addEventListener("click", () => page(1));
+
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+</script>
+
+<style>
+  /* Spans the full page width; the first card lines up with the page content */
+  .showcase {
+    --tile: clamp(120px, 14vw, 180px);
+    --gap: var(--space-3);
+    --edge: max(var(--space-3), calc((100% - var(--max-width)) / 2 + var(--space-3)));
+    position: relative;
+    margin-block: var(--space-4);
+  }
+  .track {
+    display: flex;
+    gap: var(--gap);
+    margin: 0;
+    padding: var(--space-2) var(--edge); /* room for the hover zoom; inset to match the page content */
+    scroll-padding-inline: var(--edge);
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .track li { scroll-snap-align: start; flex-shrink: 0; }
+  .tile {
+    display: block;
+    width: var(--tile);
+    aspect-ratio: 1;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--tile-bg);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+  .tile:hover,
+  .tile:focus-visible {
+    transform: scale(1.04);
+  }
+  .tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: var(--space-3);
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    line-height: 1.15;
+    color: #fbf3e6;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 1.6rem;
+    line-height: 1;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+  .arrow:hover { color: var(--color-primary); }
+  .arrow[hidden] { display: none; }
+  .prev { left: var(--space-3); }
+  .next { right: var(--space-3); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track { scroll-behavior: auto; }
+    .tile { transition: none; }
+  }
+</style>

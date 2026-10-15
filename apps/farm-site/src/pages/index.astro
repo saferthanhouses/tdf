@@ -4,6 +4,7 @@ import ProductCard from "@/components/ProductCard.astro";
 import MarketSchedule from "@/components/MarketSchedule.astro";
 import HeroCarousel from "@/components/HeroCarousel.astro";
 import PillarCards from "@/components/PillarCards.astro";
+import ProductShowcase from "@/components/ProductShowcase.astro";
 import InterestCTA from "@/components/InterestCTA.astro";
 import { getCollection } from "astro:content";
 import { site } from "@/site.config";
@@ -22,18 +23,23 @@ const featured = (await getCollection("products", (p) => p.data.featured))
         <p class="eyebrow">{site.location}</p>
         <h1>{site.tagline}</h1>
         <p class="lede">
-		Situated on patch of rugged hillside in the Catskills mountains, we are a small family farm with a simple mission: raise the food that we love, in the place that we love and share it with the people we love. </p>
-		<p>We are market farm - we raise and cook food to sell at markets in New York City. We are a community farm - we run events to give back to our local community. We are a place to </p>
-        <div class="actions">
-			<a class="btn" href="/food">Food From The Farm</a>
-			<a class="btn btn--ghost" href="#updates">Hear about Events & Farm Stays</a>
-        </div>
+          Situated on a patch of rugged hillside in the Catskill Mountains, we are a small family farm with a simple
+          mission: raise the food that we love, in the place that we love, and share it with the people we love.
+		</p>
+		<br/>
+		<p class="lede">We raise sheep and pigs, chickens and ducks on our 100 acre patch of Catskills hillside, and grow selected varieties of fruit in our silvopasture orchards and berry patch and we focus on whole-animal and seasonal cooking with the food we make in our farm kitchen.</p> 
+        <br/>
+		<p class="lede">This year, we're opening up the farm with a set of unique farm-stay experiences, events and workshops to spread our love of the farm and the hillside to the wider community.</p>
       </header>
-      <PillarCards />
     </div>
-  </section>
+
+	<div class="container">
+		<h2>Our Products</h2>
+	</div>
+    <ProductShowcase />
+
   <section class="market-band">
-    <div class="container">
+	  <div class="container">
       <div class="head-row">
         <h2>Where to find us</h2>
         <a href="/markets">Market details →</a>
@@ -42,6 +48,12 @@ const featured = (await getCollection("products", (p) => p.data.featured))
     </div>
   </section>
 
+
+    <div class="container">
+      <p>Insert full width line abstract line drawing of hills here</p>
+      <PillarCards />
+    </div>
+  </section>
   <section class="section" id="updates">
     <div class="container">
       <InterestCTA
@@ -67,6 +79,35 @@ const featured = (await getCollection("products", (p) => p.data.featured))
   }
   .head-row h2 { margin: 0; }
 
+  /* Mission statements: a bold lead-in followed by the explanation on the same line */
+  .about-the-farm {
+    margin: var(--space-4) 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .mission li {
+	  position: relative;
+    padding-left: 1.4em;
+    font-size: var(--text-lg);
+  }
+  .mission li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 2px;
+    background: var(--dot);
+  }
+  .mission strong {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-right: 0.35em;
+  }
+  .mission span { color: var(--color-text-muted); font-size: var(--text-base); }
   /* "Where to find us": a big full-width barn-red section with gold rules top and bottom */
   .market-band {
     position: relative;
@@ -95,7 +136,6 @@ const featured = (await getCollection("products", (p) => p.data.featured))
   .market-band h2 {
     color: var(--color-feature-text);
     font-size: clamp(2rem, 3.6vw, 3rem);
-    font-weight: 700;
   }
   .market-band .head-row a { color: #f3cd7a; font-weight: 600; font-size: var(--text-lg); }
   .market-band .head-row a:hover { color: var(--color-feature-text); }

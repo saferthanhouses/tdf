@@ -4,6 +4,7 @@ category: Meat
 summary: "Ranger broilers moved daily to fresh grass."
 order: 12
 featured: false
+showcase: true
 seasonal: June – October
 ---
 

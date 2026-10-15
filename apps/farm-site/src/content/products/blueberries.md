@@ -4,6 +4,7 @@ category: Fruit
 summary: "Hand-picked from our 130-bush patch."
 order: 30
 featured: false
+showcase: true
 seasonal: July – August
 ---
 

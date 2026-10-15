@@ -1,8 +1,6 @@
-import dotenv from "dotenv";
 import { z } from "zod";
 
-// Load .env into process.env (does not override vars already set, e.g. in prod)
-//dotenv.config();
+// Env vars are injected by `dotenvx run` (see root package.json scripts).
 
 const EnvSchema = z
   .object({

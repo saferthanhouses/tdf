@@ -4,6 +4,7 @@ category: Meat
 summary: "Pigs raised outdoors with room to root and roam."
 order: 11
 featured: false
+showcase: true
 
 ---
 

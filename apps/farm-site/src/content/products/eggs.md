@@ -4,6 +4,8 @@ category: Eggs
 summary: "From hens on pasture, with deep orange yolks."
 order: 20
 featured: false
+showcase: true
+image: "/images/products/eggs.jpg"
 
 ---
 

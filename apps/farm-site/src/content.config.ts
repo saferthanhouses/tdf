@@ -26,6 +26,7 @@ const products = defineCollection({
     seasonal: z.string().optional(), // e.g. "July – August"
     image: z.string().optional(), // path under /public, e.g. "/images/pot-pie.jpg"
     featured: z.boolean().default(false),
+    showcase: z.boolean().default(false), // true = include in the rotating photo strip on the home page
     order: z.number().default(100), // lower sorts first
     available: z.boolean().default(true),
   }),
