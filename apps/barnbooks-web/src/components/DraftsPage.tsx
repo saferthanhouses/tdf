@@ -1,17 +1,29 @@
-import { useCallback, useEffect, useState } from 'react'
-import { api, type Transaction, type TransactionEdit } from '../api'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { api, type Transaction, type TransactionEdit, type Vendor } from '../api'
 import { LookupSelect, useLookups } from '../lookups'
 import { formatMoney, localToday } from '../format'
 import { ImportPanel } from './ImportPanel'
 import { CommitInput } from './CommitInput'
+import { VendorCombobox } from './VendorCombobox'
+import { VendorRuleDialog, type VendorRuleRequest } from './VendorRuleDialog'
 
 const isComplete = (t: Transaction) => t.transaction_type_id !== null && t.management_category_id !== null
+
+interface Message {
+	kind: 'info' | 'error'
+	text: string
+	undo?: () => void
+}
 
 export function DraftsPage() {
 	const { lookups, reload: reloadLookups } = useLookups()
 	const [drafts, setDrafts] = useState<Transaction[] | null>(null)
 	const [selected, setSelected] = useState<Set<number>>(new Set())
-	const [message, setMessage] = useState<{ kind: 'info' | 'error'; text: string } | null>(null)
+	const [message, setMessage] = useState<Message | null>(null)
+	// Index of the last checkbox clicked, for shift-click range selection.
+	const lastClicked = useRef<number | null>(null)
+	const [vendorRule, setVendorRule] = useState<VendorRuleRequest | null>(null)
+	const [tabAccountId, setTabAccountId] = useState<number | null>(null)
 
 	const load = useCallback(async () => {
 		try {
@@ -47,12 +59,61 @@ export function DraftsPage() {
 			}
 		})
 
-	const remove = (id: number) =>
-		run(async () => {
-			await api.deleteTransaction(id)
-			setDrafts(ds => ds?.filter(d => d.id !== id) ?? null)
-			setSelected(s => new Set([...s].filter(x => x !== id)))
+	// Default to the first account that has drafts.
+	const accountId =
+		tabAccountId ?? lookups.accounts.find(a => drafts?.some(d => d.account_id === a.id))?.id ?? lookups.accounts[0]?.id ?? null
+	const account = lookups.accounts.find(a => a.id === accountId)
+	const visible = drafts?.filter(d => d.account_id === accountId) ?? []
+
+	const switchAccount = (id: number) => {
+		setTabAccountId(id)
+		setSelected(new Set())
+		lastClicked.current = null
+	}
+
+	const toggle = (index: number, shiftKey: boolean) => {
+		const id = visible[index]!.id
+		const select = !selected.has(id)
+		const anchor = shiftKey && lastClicked.current !== null && lastClicked.current < visible.length ? lastClicked.current : index
+		const [from, to] = [Math.min(anchor, index), Math.max(anchor, index)]
+		setSelected(s => {
+			const next = new Set(s)
+			for (const d of visible.slice(from, to + 1)) {
+				if (select) next.add(d.id)
+				else next.delete(d.id)
+			}
+			return next
 		})
+		lastClicked.current = index
+	}
+
+	const remove = async (ids: number[]) => {
+		if (!drafts || !ids.length) return
+		// Manual drafts have no bank row to dismiss against, so they are deleted outright.
+		const manual = drafts.filter(d => ids.includes(d.id) && d.dedupe_hash === null).length
+		if (manual && !window.confirm(`${manual} manually entered draft(s) will be permanently deleted. Continue?`)) return
+		try {
+			const { dismissed, deleted } = await api.deleteTransactions(ids)
+			const removed = new Set([...dismissed, ...deleted])
+			setDrafts(ds => ds?.filter(d => !removed.has(d.id)) ?? null)
+			setSelected(s => new Set([...s].filter(x => !removed.has(x))))
+			lastClicked.current = null
+			setMessage({
+				kind: 'info',
+				text: `Deleted ${removed.size} draft(s).`,
+				undo: dismissed.length
+					? () =>
+							run(async () => {
+								const { restored } = await api.restoreTransactions(dismissed)
+								await load()
+								return `Restored ${restored} draft(s).`
+							})
+					: undefined,
+			})
+		} catch (e) {
+			setMessage({ kind: 'error', text: (e as Error).message })
+		}
+	}
 
 	const post = (ids: number[]) =>
 		run(async () => {
@@ -65,65 +126,51 @@ export function DraftsPage() {
 				: `Posted ${result.posted} transaction(s) to the ledger.`
 		})
 
-	const makeVendorRule = (t: Transaction) =>
-		run(async () => {
-			const pattern = window.prompt(
-				'Text to match in the bank description (case-insensitive). Future imports containing it get this row’s type, category and enterprise.',
-				t.raw_description ?? '',
-			)
-			if (!pattern?.trim()) return
-			const name = window.prompt('Vendor name', pattern.trim())
-			if (!name?.trim()) return
-			const vendor = (await api.createLookup('vendors', {
-				name: name.trim(),
-				match_pattern: pattern.trim(),
-				default_transaction_type_id: t.transaction_type_id,
-				default_management_category_id: t.management_category_id,
-				default_enterprise_id: t.enterprise_id,
-			})) as { id: number }
-			await api.updateTransaction(t.id, { vendor_id: vendor.id })
-			const { matched } = await api.rematchDrafts()
-			await Promise.all([reloadLookups(), load()])
-			return `Created vendor “${name.trim()}” and matched ${matched} other draft(s).`
-		})
+	const onVendorSaved = async (vendor: Vendor) => {
+		setVendorRule(null)
+		const { matched } = await api.rematchDrafts()
+		await Promise.all([reloadLookups(), load()])
+		setMessage({ kind: 'info', text: `Saved vendor “${vendor.name}” and matched ${matched} other draft(s).` })
+	}
 
 	const addManual = () =>
 		run(async () => {
-			const cash = lookups.accounts.find(a => a.import_format === null) ?? lookups.accounts[0]
-			if (!cash) return 'Add an account first'
+			if (!account) return 'Add an account first'
 			await api.createTransaction({
 				date: localToday(),
-				account_id: cash.id,
+				account_id: account.id,
 				amount: '0',
 				description: '',
 			})
 			await load()
-			return `Added a draft to ${cash.name} — set its amount and categories below.`
+			return `Added a draft to ${account.name} — set its amount and categories below.`
 		})
 
 	if (!drafts) return <p className="muted">Loading drafts…</p>
 
-	const completeIds = drafts.filter(isComplete).map(d => d.id)
-	const allSelected = drafts.length > 0 && selected.size === drafts.length
+	const completeIds = visible.filter(isComplete).map(d => d.id)
+	const allSelected = visible.length > 0 && selected.size === visible.length
 
 	return (
 		<section>
 			<ImportPanel
-				onImported={async text => {
+				onImported={async (text, importedAccountId) => {
 					await load()
+					switchAccount(importedAccountId)
 					setMessage({ kind: 'info', text })
 				}}
 				onError={text => setMessage({ kind: 'error', text })}
 			/>
 
 			<div className="toolbar">
-				<h2>
-					Drafts <span className="muted">({drafts.length})</span>
-				</h2>
+				<h2>Drafts</h2>
 				<div className="spacer" />
 				<button onClick={addManual}>Add transaction</button>
 				<button onClick={() => run(async () => `Matched ${(await api.rematchDrafts()).matched} draft(s) to vendors.`).then(load)}>
 					Re-apply vendor rules
+				</button>
+				<button className="danger" disabled={!selected.size} onClick={() => remove([...selected])}>
+					Delete selected ({selected.size})
 				</button>
 				<button disabled={!selected.size} onClick={() => post([...selected])}>
 					Post selected ({selected.size})
@@ -133,12 +180,41 @@ export function DraftsPage() {
 				</button>
 			</div>
 
-			{message && <p className={message.kind === 'error' ? 'error' : 'notice'}>{message.text}</p>}
+			{message && (
+				<p className={message.kind === 'error' ? 'error' : 'notice'}>
+					{message.text}
+					{message.undo && (
+						<button className="link" onClick={message.undo}>
+							Undo
+						</button>
+					)}
+				</p>
+			)}
 
-			{drafts.length === 0 ? (
-				<p className="muted">No drafts. Import a bank CSV above to get started.</p>
+			<div className="account-tabs" role="tablist" aria-label="Account">
+				{lookups.accounts.map(a => {
+					const count = drafts.filter(d => d.account_id === a.id).length
+					return (
+						<button
+							key={a.id}
+							role="tab"
+							aria-selected={a.id === accountId}
+							className={a.id === accountId ? 'account-tab active' : 'account-tab'}
+							onClick={() => switchAccount(a.id)}
+						>
+							{a.name} <span className="count">{count}</span>
+						</button>
+					)
+				})}
+			</div>
+
+			{visible.length === 0 ? (
+				<p className="muted account-empty">
+					No drafts in {account?.name ?? 'this account'}.{' '}
+					{account?.import_format ? 'Import a bank CSV above to get started.' : 'Use “Add transaction” to enter one.'}
+				</p>
 			) : (
-				<div className="table-wrap">
+				<div className="table-wrap account-panel">
 					<table>
 						<thead>
 							<tr>
@@ -147,11 +223,10 @@ export function DraftsPage() {
 										type="checkbox"
 										aria-label="Select all"
 										checked={allSelected}
-										onChange={() => setSelected(allSelected ? new Set() : new Set(drafts.map(d => d.id)))}
+										onChange={() => setSelected(allSelected ? new Set() : new Set(visible.map(d => d.id)))}
 									/>
 								</th>
 								<th>Date</th>
-								<th>Account</th>
 								<th>Bank description</th>
 								<th>Vendor</th>
 								<th>Type</th>
@@ -163,28 +238,24 @@ export function DraftsPage() {
 							</tr>
 						</thead>
 						<tbody>
-							{drafts.map(t => (
+							{visible.map((t, index) => (
 								<DraftRow
 									key={t.id}
 									t={t}
 									selected={selected.has(t.id)}
-									onToggle={() =>
-										setSelected(s => {
-											const next = new Set(s)
-											if (next.has(t.id)) next.delete(t.id)
-											else next.add(t.id)
-											return next
-										})
-									}
+									onToggle={shiftKey => toggle(index, shiftKey)}
 									onChange={edit => update(t.id, edit)}
-									onDelete={() => remove(t.id)}
-									onMakeRule={() => makeVendorRule(t)}
+									onPost={() => post([t.id])}
+									onDelete={() => remove([t.id])}
+									onCreateVendor={name => setVendorRule({ transaction: t, name })}
 								/>
 							))}
 						</tbody>
 					</table>
 				</div>
 			)}
+
+			<VendorRuleDialog request={vendorRule} onClose={() => setVendorRule(null)} onSaved={onVendorSaved} />
 		</section>
 	)
 }
@@ -194,24 +265,32 @@ function DraftRow({
 	selected,
 	onToggle,
 	onChange,
+	onPost,
 	onDelete,
-	onMakeRule,
+	onCreateVendor,
 }: {
 	t: Transaction
 	selected: boolean
-	onToggle: () => void
+	onToggle: (shiftKey: boolean) => void
 	onChange: (edit: TransactionEdit) => void
+	onPost: () => void
 	onDelete: () => void
-	onMakeRule: () => void
+	onCreateVendor: (name: string) => void
 }) {
 	const { lookups } = useLookups()
-	// Imported rows keep their bank date/amount/account; manual rows are fully editable.
+	// Imported rows keep their bank date and amount; manual rows can edit them.
 	const manual = t.raw_description === null
 
 	return (
 		<tr className={isComplete(t) ? undefined : 'incomplete'}>
 			<td>
-				<input type="checkbox" aria-label="Select" checked={selected} onChange={onToggle} />
+				<input
+					type="checkbox"
+					aria-label="Select (shift-click to select a range)"
+					checked={selected}
+					readOnly
+					onClick={e => onToggle(e.shiftKey)}
+				/>
 			</td>
 			<td>
 				{manual ? (
@@ -220,16 +299,25 @@ function DraftRow({
 					t.date
 				)}
 			</td>
-			<td>
-				{manual ? (
-					<LookupSelect label="Account" items={lookups.accounts} value={t.account_id} onChange={id => id && onChange({ account_id: id })} />
-				) : (
-					lookups.accounts.find(a => a.id === t.account_id)?.name
-				)}
-			</td>
 			<td className="raw">{t.raw_description ?? <span className="muted">manual</span>}</td>
 			<td>
-				<LookupSelect label="Vendor" items={lookups.vendors} value={t.vendor_id} onChange={id => onChange({ vendor_id: id })} />
+				<VendorCombobox
+					vendors={lookups.vendors}
+					value={t.vendor_id}
+					bankDescription={t.raw_description}
+					onCreate={onCreateVendor}
+					onSelect={vendor =>
+						// Picking a vendor fills any empty category fields from its defaults.
+						onChange({
+							vendor_id: vendor?.id ?? null,
+							...(vendor && {
+								transaction_type_id: t.transaction_type_id ?? vendor.default_transaction_type_id,
+								management_category_id: t.management_category_id ?? vendor.default_management_category_id,
+								enterprise_id: t.enterprise_id ?? vendor.default_enterprise_id,
+							}),
+						})
+					}
+				/>
 			</td>
 			<td>
 				<LookupSelect
@@ -264,13 +352,17 @@ function DraftRow({
 				<CommitInput value={t.description} placeholder="Notes" onCommit={description => onChange({ description })} />
 			</td>
 			<td className="row-actions">
-				{!manual && (
-					<button className="link" title="Create a vendor rule from this row" onClick={onMakeRule}>
-						+ rule
-					</button>
-				)}
-				<button className="link danger" title="Delete draft" onClick={onDelete}>
-					Delete
+				<button
+					className="icon-button post"
+					aria-label="Post to ledger"
+					title={isComplete(t) ? 'Post to ledger' : 'Set a type and management category to post'}
+					disabled={!isComplete(t)}
+					onClick={onPost}
+				>
+					<CheckIcon />
+				</button>
+				<button className="icon-button delete" aria-label="Delete draft" title="Delete draft" onClick={onDelete}>
+					<CrossIcon />
 				</button>
 			</td>
 		</tr>
@@ -291,3 +383,15 @@ function AmountInput({ value, onCommit }: { value: string; onCommit: (value: str
 		/>
 	)
 }
+
+const CheckIcon = () => (
+	<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+		<path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+	</svg>
+)
+
+const CrossIcon = () => (
+	<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+		<path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+	</svg>
+)

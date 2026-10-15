@@ -67,7 +67,10 @@ export const api = {
 	},
 	createTransaction: (body: TransactionEdit) => request<Transaction>('POST', '/transactions', body),
 	updateTransaction: (id: number, body: TransactionEdit) => request<Transaction>('PATCH', `/transactions/${id}`, body),
-	deleteTransaction: (id: number) => request<void>('DELETE', `/transactions/${id}`),
+	// Imported drafts come back in `dismissed` (restorable); manual drafts come back in `deleted`.
+	deleteTransactions: (ids: number[]) =>
+		request<{ dismissed: number[]; deleted: number[] }>('POST', '/transactions/delete', { ids }),
+	restoreTransactions: (ids: number[]) => request<{ restored: number }>('POST', '/transactions/restore', { ids }),
 	postTransactions: (ids: number[]) =>
 		request<{ posted: number; incomplete: number[] }>('POST', '/transactions/post', { ids }),
 	unpostTransaction: (id: number) => request<Transaction>('POST', `/transactions/${id}/unpost`),

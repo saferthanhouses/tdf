@@ -2,7 +2,13 @@ import { useState } from 'react'
 import { api, ApiError } from '../api'
 import { useLookups } from '../lookups'
 
-export function ImportPanel({ onImported, onError }: { onImported: (message: string) => void; onError: (message: string) => void }) {
+export function ImportPanel({
+	onImported,
+	onError,
+}: {
+	onImported: (message: string, accountId: number) => void
+	onError: (message: string) => void
+}) {
 	const { lookups } = useLookups()
 	const importable = lookups.accounts.filter(a => a.import_format !== null)
 	const [accountId, setAccountId] = useState<number | null>(importable[0]?.id ?? null)
@@ -20,6 +26,7 @@ export function ImportPanel({ onImported, onError }: { onImported: (message: str
 			onImported(
 				`Imported ${result.imported} new draft(s) from ${file.name}` +
 					(result.duplicates ? `; skipped ${result.duplicates} already imported.` : '.'),
+				accountId,
 			)
 		} catch (e) {
 			const rows = e instanceof ApiError ? (e.details?.rowErrors ?? []) : []

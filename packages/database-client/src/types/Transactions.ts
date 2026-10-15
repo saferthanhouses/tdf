@@ -8,7 +8,7 @@ export type ManagementCategoryGroup =
 	| 'income'
 	| 'non_operating'
 
-export type TransactionStatus = 'draft' | 'posted'
+export type TransactionStatus = 'draft' | 'posted' | 'dismissed'
 
 // Lookup tables are editable from the UI, so values live in the database rather than in TS unions.
 export interface TransactionTypeTable {
