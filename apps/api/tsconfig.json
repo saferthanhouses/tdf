@@ -1,14 +1,8 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "esModuleInterop": true,
-    "strict": true,
-    "outDir": "./dist"
+    "noEmit": true,
+    "types": ["node"]
   },
-  "include": ["index.ts"],
-  "references": [
-    { "path": "../../packages/db-client" }
-  ]
+  "include": ["index.ts", "src/**/*.ts"]
 }
