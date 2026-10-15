@@ -10,7 +10,7 @@
   "dependencies": {
     "kysely": "^0.29.6",
     "pg": "^8.23.1",
-	"@tdf-mono/env": "*"
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@types/pg": "^8.23.1",
