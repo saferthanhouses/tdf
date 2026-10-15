@@ -1,5 +1,9 @@
 BARNBOOKS farm accounting
 
-Import capital one and dnbd csvs
-Allow corrections of the da
+
+TODO:
+- Add draft transactions to transaction ledger, sorting based on date and checking for duplication
+- Import Square transactions
+
+
 

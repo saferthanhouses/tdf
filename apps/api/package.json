@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-	  "dev": "tsx watch index.ts"
+    "dev": "tsx watch index.ts",
+    "start": "tsx index.ts",
+    "test": "tsx --test 'src/**/*.test.ts'",
+    "typecheck": "tsc -p ."
   },
   "dependencies": {
-    "@tdf-mono/db-client": "*"
+    "@hono/node-server": "^2.1.5",
+    "@tdf-mono/db-client": "*",
+    "csv-parse": "^7.0.3",
+    "hono": "^4.13.13",
+    "kysely": "^0.29.6",
+    "zod": "^4.6.5"
   }
 }
