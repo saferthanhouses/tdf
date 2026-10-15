@@ -64,7 +64,9 @@ const managementCategories = [
     "Transportation Costs - Tolls",
     "Transportation Costs - Fuel",
     "Commercial Kitchen Rent",
-    "Ingredients"
+	"Ingredients",
+	"Market Sales",
+	"Farmgate Sales"
 ]
 
 const enterprises = [
