@@ -4,6 +4,7 @@ category: Farm Kitchen
 summary: "Our pasture-raised chicken, vegetables and a flaky all-butter crust. Bake from frozen."
 order: 1
 featured: true
+showcase: true
 
 ---
 

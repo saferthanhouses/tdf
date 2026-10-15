@@ -4,6 +4,7 @@ category: Meat
 summary: "Whole ducks and cuts with a rich layer of fat for roasting."
 order: 13
 featured: false
+showcase: true
 
 ---
 

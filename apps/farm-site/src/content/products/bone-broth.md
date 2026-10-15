@@ -4,6 +4,7 @@ category: Farm Kitchen
 summary: "Slow-simmered from our own pasture-raised bones. Rich, gelatinous, deeply savory."
 order: 3
 featured: true
+showcase: true
 
 ---
 

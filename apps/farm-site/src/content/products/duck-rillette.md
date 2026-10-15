@@ -4,6 +4,7 @@ category: Farm Kitchen
 summary: "Pekin duck slow-cooked in its own fat and spread on good bread."
 order: 4
 featured: false
+showcase: false
 
 ---
 
