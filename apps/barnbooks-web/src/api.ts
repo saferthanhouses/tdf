@@ -54,7 +54,10 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
 	})
 	if (res.status === 204) return undefined as T
 	const data = await res.json().catch(() => ({}))
-	if (!res.ok) throw new ApiError(data.error ?? `Request failed (${res.status})`, data)
+	if (!res.ok) {
+		const reason = data.issues?.[0]?.message
+		throw new ApiError(`${data.error ?? `Request failed (${res.status})`}${reason ? `: ${reason}` : ''}`, data)
+	}
 	return data as T
 }
 

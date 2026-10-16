@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { api, type Transaction, type Vendor } from '../api'
 import { LookupSelect, useLookups } from '../lookups'
+import { MatchPatternsField } from './MatchPatterns'
 
 export interface VendorRuleRequest {
 	transaction: Transaction
@@ -21,7 +22,7 @@ export function VendorRuleDialog({
 	const { lookups } = useLookups()
 	const ref = useRef<HTMLDialogElement>(null)
 	const [name, setName] = useState('')
-	const [pattern, setPattern] = useState('')
+	const [patterns, setPatterns] = useState<string[]>([])
 	const [typeId, setTypeId] = useState<number | null>(null)
 	const [categoryId, setCategoryId] = useState<number | null>(null)
 	const [enterpriseId, setEnterpriseId] = useState<number | null>(null)
@@ -34,7 +35,7 @@ export function VendorRuleDialog({
 		if (request) {
 			const t = request.transaction
 			setName(request.name)
-			setPattern(t.raw_description ?? request.name)
+			setPatterns([t.raw_description ?? request.name])
 			setTypeId(t.transaction_type_id)
 			setCategoryId(t.management_category_id)
 			setEnterpriseId(t.enterprise_id)
@@ -51,7 +52,7 @@ export function VendorRuleDialog({
 		try {
 			const vendor = (await api.createLookup('vendors', {
 				name: name.trim(),
-				match_pattern: pattern.trim(),
+				match_patterns: patterns,
 				default_transaction_type_id: typeId,
 				default_management_category_id: categoryId,
 				default_enterprise_id: enterpriseId,
@@ -71,7 +72,8 @@ export function VendorRuleDialog({
 	}
 
 	const bank = request?.transaction.raw_description
-	const patternMatchesBank = !bank || bank.toLowerCase().includes(pattern.trim().toLowerCase())
+	const filled = patterns.map(p => p.trim().toLowerCase()).filter(Boolean)
+	const patternMatchesBank = !bank || filled.some(p => bank.toLowerCase().includes(p))
 
 	return (
 		<dialog ref={ref} className="vendor-dialog" onClose={onClose}>
@@ -94,15 +96,15 @@ export function VendorRuleDialog({
 					<input value={name} onChange={e => setName(e.target.value)} required autoFocus />
 				</label>
 
-				<label>
-					Text to match
-					<input value={pattern} onChange={e => setPattern(e.target.value)} required />
+				<div className="field">
+					<span className="field-label">Text to match</span>
+					<MatchPatternsField value={patterns} onChange={setPatterns} />
 					<span className="field-hint">
-						Drafts whose bank description contains this text (ignoring case) get this vendor. Trim it to the part
-						that identifies the vendor, e.g. drop store numbers and towns.
+						Drafts whose bank description contains any of these (ignoring case) get this vendor. Trim them to the
+						part that identifies the vendor, e.g. drop store numbers and towns, and add each spelling your banks use.
 					</span>
-					{!patternMatchesBank && <span className="field-warning">This doesn’t match this row’s bank description.</span>}
-				</label>
+					{!patternMatchesBank && <span className="field-warning">None of these match this row’s bank description.</span>}
+				</div>
 
 				<fieldset>
 					<legend>Defaults for matched drafts</legend>
@@ -132,7 +134,7 @@ export function VendorRuleDialog({
 					<button type="button" onClick={() => ref.current?.close()}>
 						Cancel
 					</button>
-					<button type="submit" className="primary" disabled={saving || !name.trim() || !pattern.trim()}>
+					<button type="submit" className="primary" disabled={saving || !name.trim() || !filled.length}>
 						{saving ? 'Saving…' : 'Save vendor'}
 					</button>
 				</div>

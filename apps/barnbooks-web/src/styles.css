@@ -496,3 +496,77 @@ td select {
 	border: 1px solid var(--border);
 	border-radius: 0 8px 8px 8px;
 }
+
+.vendor-dialog .field {
+	display: grid;
+	gap: 4px;
+}
+
+.field-label {
+	font-weight: 600;
+}
+
+.pattern-field {
+	display: grid;
+	gap: 6px;
+	justify-items: start;
+}
+
+.pattern-field-row {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	width: 100%;
+}
+
+.pattern-field-row input {
+	flex: 1;
+}
+
+.pattern-field-row .icon-button:disabled {
+	visibility: hidden;
+}
+
+.pattern-chips {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px;
+	min-width: 220px;
+}
+
+.pattern-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 2px 4px 2px 8px;
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	background: var(--bg);
+	font-family: ui-monospace, monospace;
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+.pattern-chip button {
+	border: none;
+	background: none;
+	padding: 0 4px;
+	color: var(--muted);
+	line-height: 1;
+}
+
+.pattern-chip button:not(:disabled):hover {
+	color: var(--danger);
+}
+
+.pattern-chip button:disabled {
+	opacity: 0.3;
+}
+
+.lookup-list td input.pattern-chip-input {
+	width: 80px;
+	min-width: 0;
+	padding: 2px 6px;
+	font-size: 12px;
+}
