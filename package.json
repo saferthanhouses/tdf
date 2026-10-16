@@ -14,6 +14,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:migrate": "dotenvx run -f .env.dev -- npm run migrate -w @tdf-mono/db-client",
     "db:migration:create": "dotenvx run -f .env.dev -- npm run create:migration -w @tdf-mono/db-client",
+    "db:seed:vendors": "dotenvx run -f .env.dev -- npm run seed:vendors -w @tdf-mono/db-client --",
+    "db:seed:transactions": "dotenvx run -f .env.dev -- npm run seed:transactions -w @tdf-mono/db-client --",
     "barnbooks:api": "dotenvx run -f .env.dev -- npm run dev -w barnbooks-api",
     "barnbooks:web": "npm run dev -w barnbooks-web"
   },

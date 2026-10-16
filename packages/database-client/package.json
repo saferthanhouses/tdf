@@ -8,6 +8,7 @@
     "types": "dist/index.d.ts"
   },
   "dependencies": {
+    "csv-parse": "^7.0.3",
     "kysely": "^0.29.6",
     "pg": "^8.23.1",
     "zod": "^4.6.5"
@@ -18,6 +19,9 @@
   },
   "scripts": {
     "migrate": "kysely migrate latest",
-    "create:migration": "kysely migrate:make"
+    "create:migration": "kysely migrate:make",
+    "seed:vendors": "tsx seed/seedVendors.ts",
+    "test": "tsx --test 'seed/**/*.test.ts'",
+    "seed:transactions": "tsx seed/seedTransactions.ts"
   }
 }
