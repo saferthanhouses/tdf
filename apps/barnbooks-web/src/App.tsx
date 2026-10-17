@@ -23,7 +23,7 @@ export function App() {
 				</nav>
 			</header>
 			<main>
-				<LookupsProvider>
+				<LookupsProvider refreshKey={tab}>
 					{tab === 'drafts' && <DraftsPage />}
 					{tab === 'ledger' && <LedgerPage />}
 					{tab === 'categories' && <CategoriesPage />}

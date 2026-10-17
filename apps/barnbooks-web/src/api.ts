@@ -54,7 +54,10 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
 	})
 	if (res.status === 204) return undefined as T
 	const data = await res.json().catch(() => ({}))
-	if (!res.ok) throw new ApiError(data.error ?? `Request failed (${res.status})`, data)
+	if (!res.ok) {
+		const reason = data.issues?.[0]?.message
+		throw new ApiError(`${data.error ?? `Request failed (${res.status})`}${reason ? `: ${reason}` : ''}`, data)
+	}
 	return data as T
 }
 
@@ -67,7 +70,10 @@ export const api = {
 	},
 	createTransaction: (body: TransactionEdit) => request<Transaction>('POST', '/transactions', body),
 	updateTransaction: (id: number, body: TransactionEdit) => request<Transaction>('PATCH', `/transactions/${id}`, body),
-	deleteTransaction: (id: number) => request<void>('DELETE', `/transactions/${id}`),
+	// Imported drafts come back in `dismissed` (restorable); manual drafts come back in `deleted`.
+	deleteTransactions: (ids: number[]) =>
+		request<{ dismissed: number[]; deleted: number[] }>('POST', '/transactions/delete', { ids }),
+	restoreTransactions: (ids: number[]) => request<{ restored: number }>('POST', '/transactions/restore', { ids }),
 	postTransactions: (ids: number[]) =>
 		request<{ posted: number; incomplete: number[] }>('POST', '/transactions/post', { ids }),
 	unpostTransaction: (id: number) => request<Transaction>('POST', `/transactions/${id}/unpost`),

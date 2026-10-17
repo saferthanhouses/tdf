@@ -9,7 +9,9 @@ interface LookupsContextValue {
 
 const LookupsContext = createContext<LookupsContextValue | null>(null)
 
-export function LookupsProvider({ children }: { children: ReactNode }) {
+// Vendors and categories can change outside this page (another window, a seed script), so the lists are
+// refetched whenever `refreshKey` changes (e.g. switching tabs) and when the window regains focus.
+export function LookupsProvider({ children, refreshKey }: { children: ReactNode; refreshKey?: unknown }) {
 	const [lookups, setLookups] = useState<Lookups | null>(null)
 	const [error, setError] = useState<string | null>(null)
 
@@ -24,6 +26,18 @@ export function LookupsProvider({ children }: { children: ReactNode }) {
 
 	useEffect(() => {
 		void reload()
+	}, [reload, refreshKey])
+
+	useEffect(() => {
+		const refresh = () => {
+			if (document.visibilityState === 'visible') void reload()
+		}
+		window.addEventListener('focus', refresh)
+		document.addEventListener('visibilitychange', refresh)
+		return () => {
+			window.removeEventListener('focus', refresh)
+			document.removeEventListener('visibilitychange', refresh)
+		}
 	}, [reload])
 
 	const value = useMemo(() => {
@@ -33,8 +47,8 @@ export function LookupsProvider({ children }: { children: ReactNode }) {
 		return { lookups, reload, nameOf }
 	}, [lookups, reload])
 
-	if (error) return <p className="error">Could not load categories: {error}</p>
-	if (!value) return <p className="muted">Loading…</p>
+	// A failed background refresh keeps showing the lists already loaded.
+	if (!value) return error ? <p className="error">Could not load categories: {error}</p> : <p className="muted">Loading…</p>
 	return <LookupsContext.Provider value={value}>{children}</LookupsContext.Provider>
 }
 

@@ -57,14 +57,43 @@ export const transactions = new Hono()
 		return c.json(row)
 	})
 
-	.delete('/:id', async c => {
-		const result = await db
-			.deleteFrom('transaction')
-			.where('id', '=', id.parse(c.req.param('id')))
-			.where('status', '=', 'draft')
-			.executeTakeFirst()
-		if (!result.numDeletedRows) throw new HTTPException(404, { message: 'Draft not found' })
-		return c.body(null, 204)
+	// Remove drafts. Imported drafts are dismissed rather than deleted so their dedupe_hash
+	// keeps re-imports of overlapping CSVs from bringing them back. Manual drafts are deleted.
+	.post('/delete', async c => {
+		const { ids } = z.object({ ids: z.array(id).min(1) }).parse(await c.req.json())
+		return c.json(
+			await db.transaction().execute(async trx => {
+				const dismissed = await trx
+					.updateTable('transaction')
+					.set({ status: 'dismissed' })
+					.where('id', 'in', ids)
+					.where('status', '=', 'draft')
+					.where('dedupe_hash', 'is not', null)
+					.returning('id')
+					.execute()
+				const deleted = await trx
+					.deleteFrom('transaction')
+					.where('id', 'in', ids)
+					.where('status', '=', 'draft')
+					.where('dedupe_hash', 'is', null)
+					.returning('id')
+					.execute()
+				return { dismissed: dismissed.map(r => r.id), deleted: deleted.map(r => r.id) }
+			}),
+		)
+	})
+
+	// Undo a dismissal, putting the rows back in drafts.
+	.post('/restore', async c => {
+		const { ids } = z.object({ ids: z.array(id).min(1) }).parse(await c.req.json())
+		const restored = await db
+			.updateTable('transaction')
+			.set({ status: 'draft' })
+			.where('id', 'in', ids)
+			.where('status', '=', 'dismissed')
+			.returning('id')
+			.execute()
+		return c.json({ restored: restored.length })
 	})
 
 	// Move drafts into the ledger. Drafts missing a type or category are left as drafts and reported back.

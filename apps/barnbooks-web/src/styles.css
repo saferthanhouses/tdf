@@ -107,6 +107,16 @@ button.link.danger {
 	color: var(--danger);
 }
 
+button.danger:not(.link):not(:disabled) {
+	border-color: var(--danger);
+	color: var(--danger);
+}
+
+.notice button.link {
+	margin-left: 8px;
+	font-weight: 600;
+}
+
 .tab {
 	border: none;
 	background: none;
@@ -244,6 +254,57 @@ tr.archived input {
 	text-align: right;
 }
 
+.icon-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	margin-left: 6px;
+	border: 1.5px solid currentColor;
+	border-radius: 7px;
+	background: var(--surface);
+	box-shadow:
+		0 1px 2px rgb(0 0 0 / 0.2),
+		0 2px 6px rgb(0 0 0 / 0.12);
+	transition:
+		box-shadow 120ms ease,
+		background-color 120ms ease,
+		transform 120ms ease;
+}
+
+.icon-button.post {
+	color: var(--in);
+}
+
+.icon-button.delete {
+	color: var(--danger);
+}
+
+.icon-button:not(:disabled):hover {
+	background: color-mix(in srgb, currentColor 12%, var(--surface));
+	box-shadow:
+		0 2px 4px rgb(0 0 0 / 0.22),
+		0 4px 10px rgb(0 0 0 / 0.14);
+}
+
+.icon-button:not(:disabled):active {
+	transform: translateY(1px);
+	box-shadow: 0 1px 1px rgb(0 0 0 / 0.2);
+}
+
+.icon-button:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.icon-button.post:disabled {
+	color: var(--muted);
+	opacity: 0.35;
+	box-shadow: none;
+}
+
 .categories {
 	display: grid;
 	gap: 24px;
@@ -276,4 +337,236 @@ tr.archived input {
 
 td select {
 	max-width: 220px;
+}
+
+.combobox input {
+	width: 200px;
+}
+
+.combobox-list {
+	position: fixed;
+	z-index: 10;
+	margin: 0;
+	padding: 4px 0;
+	list-style: none;
+	max-width: min(480px, calc(100vw - 32px));
+	max-height: 320px;
+	overflow-y: auto;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	box-shadow: 0 6px 20px rgb(0 0 0 / 0.18);
+}
+
+.combobox-option {
+	padding: 6px 10px;
+	cursor: pointer;
+	white-space: normal;
+}
+
+.combobox-option.active {
+	background: var(--notice-bg);
+}
+
+.combobox-option.bank {
+	font-family: ui-monospace, monospace;
+	font-size: 12px;
+	border-bottom: 1px solid var(--border);
+}
+
+.combobox-option.create {
+	color: var(--accent);
+	font-weight: 600;
+}
+
+.combobox-hint {
+	display: block;
+	font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+	font-size: 11px;
+	font-weight: 400;
+	color: var(--muted);
+}
+
+.vendor-dialog {
+	width: min(560px, calc(100vw - 32px));
+	padding: 20px 24px;
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	background: var(--surface);
+	color: var(--text);
+}
+
+.vendor-dialog::backdrop {
+	background: rgb(0 0 0 / 0.4);
+}
+
+.vendor-dialog form {
+	display: grid;
+	gap: 14px;
+}
+
+.vendor-dialog label {
+	display: grid;
+	gap: 4px;
+	font-weight: 600;
+}
+
+.vendor-dialog label input,
+.vendor-dialog label select {
+	font-weight: 400;
+	width: 100%;
+}
+
+.vendor-dialog fieldset {
+	display: grid;
+	gap: 10px;
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	padding: 10px 12px;
+}
+
+.vendor-dialog code {
+	font-size: 12px;
+	word-break: break-word;
+}
+
+.field-hint,
+.field-warning {
+	font-weight: 400;
+	font-size: 12px;
+	color: var(--muted);
+}
+
+.field-warning {
+	color: var(--danger);
+}
+
+.dialog-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
+.account-tabs {
+	display: flex;
+	gap: 2px;
+	flex-wrap: wrap;
+}
+
+.account-tab {
+	border-radius: 8px 8px 0 0;
+	border-bottom: none;
+	padding: 8px 14px;
+	background: transparent;
+	border-color: transparent;
+	color: var(--muted);
+}
+
+.account-tab.active {
+	background: var(--surface);
+	border-color: var(--border);
+	color: var(--text);
+	font-weight: 600;
+	position: relative;
+	/* Overlap the panel border so the active tab joins the table below. */
+	margin-bottom: -1px;
+	z-index: 1;
+}
+
+.account-tab .count {
+	display: inline-block;
+	min-width: 20px;
+	margin-left: 4px;
+	padding: 0 6px;
+	border-radius: 10px;
+	background: var(--bg);
+	font-size: 12px;
+	font-weight: 400;
+	color: var(--muted);
+}
+
+.account-panel {
+	border-top-left-radius: 0;
+}
+
+.account-empty {
+	padding: 16px;
+	margin: 0;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 0 8px 8px 8px;
+}
+
+.vendor-dialog .field {
+	display: grid;
+	gap: 4px;
+}
+
+.field-label {
+	font-weight: 600;
+}
+
+.pattern-field {
+	display: grid;
+	gap: 6px;
+	justify-items: start;
+}
+
+.pattern-field-row {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	width: 100%;
+}
+
+.pattern-field-row input {
+	flex: 1;
+}
+
+.pattern-field-row .icon-button:disabled {
+	visibility: hidden;
+}
+
+.pattern-chips {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px;
+	min-width: 220px;
+}
+
+.pattern-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 2px 4px 2px 8px;
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	background: var(--bg);
+	font-family: ui-monospace, monospace;
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+.pattern-chip button {
+	border: none;
+	background: none;
+	padding: 0 4px;
+	color: var(--muted);
+	line-height: 1;
+}
+
+.pattern-chip button:not(:disabled):hover {
+	color: var(--danger);
+}
+
+.pattern-chip button:disabled {
+	opacity: 0.3;
+}
+
+.lookup-list td input.pattern-chip-input {
+	width: 80px;
+	min-width: 0;
+	padding: 2px 6px;
+	font-size: 12px;
 }

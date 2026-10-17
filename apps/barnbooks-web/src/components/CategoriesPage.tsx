@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { api, groupLabels, type LookupKind, type ManagementCategoryGroup, type Vendor } from '../api'
 import { LookupSelect, useLookups } from '../lookups'
 import { CommitInput } from './CommitInput'
+import { MatchPatternChips } from './MatchPatterns'
 
 const groups = Object.keys(groupLabels) as ManagementCategoryGroup[]
 
@@ -131,14 +132,14 @@ function VendorList({ vendors, save }: { vendors: Vendor[]; save: (action: () =>
 		<div className="lookup-list vendors">
 			<h2>Vendors</h2>
 			<p className="muted">
-				When a bank description contains the match text, the vendor and its defaults are applied to the draft. The longest
-				match wins.
+				When a bank description contains any of a vendor’s match texts, that vendor and its defaults are applied to the
+				draft. Add one per spelling your banks use. If several match, the longest wins.
 			</p>
 			<table>
 				<thead>
 					<tr>
 						<th>Name</th>
-						<th>Match text</th>
+						<th>Match text (any of)</th>
 						<th>Default type</th>
 						<th>Default category</th>
 						<th>Default enterprise</th>
@@ -152,7 +153,7 @@ function VendorList({ vendors, save }: { vendors: Vendor[]; save: (action: () =>
 								<CommitInput value={v.name} parse={x => x.trim() || null} onCommit={x => update(v.id, { name: x })} />
 							</td>
 							<td>
-								<CommitInput value={v.match_pattern} parse={x => x.trim() || null} onCommit={x => update(v.id, { match_pattern: x })} />
+								<MatchPatternChips value={v.match_patterns} onChange={ps => update(v.id, { match_patterns: ps })} />
 							</td>
 							<td>
 								<LookupSelect
@@ -196,7 +197,7 @@ function VendorList({ vendors, save }: { vendors: Vendor[]; save: (action: () =>
 				onSubmit={e => {
 					e.preventDefault()
 					void save(async () => {
-						await api.createLookup('vendors', { name: name.trim(), match_pattern: (pattern || name).trim() })
+						await api.createLookup('vendors', { name: name.trim(), match_patterns: [(pattern || name).trim()] })
 						setName('')
 						setPattern('')
 					})

@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { api, type Transaction } from '../api'
 import { useLookups } from '../lookups'
-import { formatMoney, localToday } from '../format'
-
-const currentMonth = () => localToday().slice(0, 7)
+import { formatMoney } from '../format'
 
 function monthRange(month: string) {
 	const [y, m] = month.split('-').map(Number) as [number, number]
@@ -13,7 +11,8 @@ function monthRange(month: string) {
 
 export function LedgerPage() {
 	const { nameOf } = useLookups()
-	const [month, setMonth] = useState(currentMonth)
+	// All time by default: posting a backlog of older drafts shouldn't land outside the visible month.
+	const [month, setMonth] = useState('')
 	const [rows, setRows] = useState<Transaction[] | null>(null)
 	const [error, setError] = useState<string | null>(null)
 
@@ -28,6 +27,19 @@ export function LedgerPage() {
 
 	useEffect(() => {
 		void load()
+	}, [load])
+
+	// Pick up transactions posted from another window when this one regains focus.
+	useEffect(() => {
+		const refresh = () => {
+			if (document.visibilityState === 'visible') void load()
+		}
+		window.addEventListener('focus', refresh)
+		document.addEventListener('visibilitychange', refresh)
+		return () => {
+			window.removeEventListener('focus', refresh)
+			document.removeEventListener('visibilitychange', refresh)
+		}
 	}, [load])
 
 	const unpost = async (id: number) => {
@@ -57,7 +69,7 @@ export function LedgerPage() {
 			{!rows ? (
 				<p className="muted">Loading…</p>
 			) : rows.length === 0 ? (
-				<p className="muted">No posted transactions{month ? ' this month' : ''}.</p>
+				<p className="muted">No posted transactions{month ? ' in this month' : ''}.</p>
 			) : (
 				<div className="table-wrap">
 					<table>

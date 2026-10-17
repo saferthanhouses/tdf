@@ -8,7 +8,7 @@ export type ManagementCategoryGroup =
 	| 'income'
 	| 'non_operating'
 
-export type TransactionStatus = 'draft' | 'posted'
+export type TransactionStatus = 'draft' | 'posted' | 'dismissed'
 
 // Lookup tables are editable from the UI, so values live in the database rather than in TS unions.
 export interface TransactionTypeTable {
@@ -33,7 +33,8 @@ export interface EnterpriseTable {
 export interface VendorTable {
 	id: Generated<number>
 	name: string
-	match_pattern: string
+	// Case-insensitive substrings matched against the bank description; the longest match across all vendors wins.
+	match_patterns: string[]
 	default_transaction_type_id: number | null
 	default_management_category_id: number | null
 	default_enterprise_id: number | null

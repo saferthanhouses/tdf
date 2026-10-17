@@ -57,3 +57,7 @@ venv/
 **/.yarn/cache/
 **/.yarn/unplugged/
 **/.pnp.*
+
+# Barnbooks seed data exported from Google Sheets (real names and amounts)
+packages/database-client/seed/*.csv
+packages/database-client/seed/tr

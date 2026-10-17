@@ -12,7 +12,11 @@ const simpleLookup = z.object({ name, archived: z.boolean().optional() })
 const managementCategory = z.object({ name, group: z.enum(groups), archived: z.boolean().optional() })
 const vendor = z.object({
 	name,
-	match_pattern: name,
+	// Trimmed, blank entries dropped, duplicates (ignoring case) removed.
+	match_patterns: z
+		.array(z.string().trim().max(255))
+		.transform(ps => ps.filter((p, i) => p && ps.findIndex(q => q.toLowerCase() === p.toLowerCase()) === i))
+		.pipe(z.array(z.string()).min(1, 'Add at least one text to match')),
 	default_transaction_type_id: optionalId,
 	default_management_category_id: optionalId,
 	default_enterprise_id: optionalId,

@@ -46,6 +46,7 @@ const managementCategoriesByGroup: Record<string, string[]> = {
 		'Property-related farm expenses',
 		'General farm supplies',
 		'Labor / payroll',
+		'Labor',
 		'Vehicle',
 		'LGD Supplies',
 		'Loan activity',
@@ -87,6 +88,8 @@ const enterprises = [
 	'Farm-wide',
 	'Farmers Markets',
 	'Guardian Dogs',
+	'Sheep',
+	'Meat Birds',
 ]
 
 const accounts = [
