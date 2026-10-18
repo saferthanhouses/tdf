@@ -1,0 +1,9 @@
+# Public edge. Private apps are not listed here: they are served only over Tailscale.
+{
+	email {$ACME_EMAIL}
+}
+
+{$FARM_SITE_DOMAIN} {
+	encode zstd gzip
+	reverse_proxy farm-site:80
+}
