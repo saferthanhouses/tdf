@@ -50,7 +50,7 @@ run_case() { # name expected-exit expected-ping-suffix expected-text
 	local name=$1 want_exit=$2 want_ping=$3 want_text=$4 out code
 	: >"$TMP/pings"
 	set +e
-	out=$(PG_OPS_ENV=$TMP/env NOW=$NOW PGBACKREST=$TMP/pgbackrest PSQL=$TMP/psql CURL=$TMP/curl "$CHECK" 2>&1)
+	out=$(PLATFORM_ENV=$TMP/env DB_EXEC='' NOW=$NOW PGBACKREST=$TMP/pgbackrest PSQL=$TMP/psql CURL=$TMP/curl "$CHECK" 2>&1)
 	code=$?
 	set -e
 	local ping
@@ -104,7 +104,7 @@ info 0 ok "$(backup full F 80)" "$(backup diff D 30)"
 healthy_archiver
 : >"$TMP/pings"
 set +e
-PG_OPS_ENV=$TMP/env NOW=$NOW PGBACKREST=$TMP/pgbackrest PSQL=$TMP/psql CURL=$TMP/curl "$CHECK" >/dev/null 2>&1
+PLATFORM_ENV=$TMP/env DB_EXEC='' NOW=$NOW PGBACKREST=$TMP/pgbackrest PSQL=$TMP/psql CURL=$TMP/curl "$CHECK" >/dev/null 2>&1
 code=$?
 set -e
 if [[ $code == 1 && ! -s $TMP/pings ]]; then printf '  ok    %s\n' "no HC_BACKUP_URL: still exits 1, no ping"

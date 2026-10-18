@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Checks that prod backups are recent and WAL archiving is working, then pings Healthchecks.io.
-# Runs hourly from cron on the prod Droplet (see provision.sh). Exits non-zero when unhealthy.
+# Checks that backups are recent and WAL archiving is working, then pings Healthchecks.io.
+# Runs hourly from cron on the platform Droplet (see infra/platform/provision.sh), using pgbackrest and
+# psql inside the db container. Exits non-zero when unhealthy.
 #
 # Fails when:
 #   - pgbackrest reports a stanza problem (missing stanza, no valid backups, ...)
@@ -13,17 +14,17 @@
 # running at all (cron broken, Droplet down) also alerts.
 set -euo pipefail
 
-ENV_FILE=${PG_OPS_ENV:-/etc/pg-ops.env}
-# shellcheck source=pg-ops.env.example
+ENV_FILE=${PLATFORM_ENV:-/opt/platform/.env}
+# shellcheck source=../platform/platform.env.example
 [[ -r $ENV_FILE ]] && source "$ENV_FILE"
 
 MAX_BACKUP_AGE_HOURS=${MAX_BACKUP_AGE_HOURS:-26}
 MAX_FULL_AGE_HOURS=${MAX_FULL_AGE_HOURS:-192}
 STANZA=${STANZA:-main}
 NOW=${NOW:-$(date +%s)}
-# Overridable for tests. Empty arrays are expanded as ${a[@]+"${a[@]}"} so this also runs on bash 3.2.
-as_postgres=()
-[[ $EUID -eq 0 ]] && as_postgres=(sudo -u postgres)
+# Overridable for tests (DB_EXEC= runs the commands directly). Empty arrays are expanded as
+# ${a[@]+"${a[@]}"} so this also runs on bash 3.2.
+read -r -a as_postgres <<<"${DB_EXEC-platform-compose exec -T -u postgres db}"
 PGBACKREST=${PGBACKREST:-pgbackrest}
 PSQL=${PSQL:-psql}
 CURL=${CURL:-curl}
