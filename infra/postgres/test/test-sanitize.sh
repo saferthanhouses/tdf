@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Runs sanitize.sql against a throwaway copy of the local dev database and checks the result.
+# Runs sanitize/barnbooks.sql against a throwaway copy of the local dev database and checks the result.
 #   infra/postgres/test/test-sanitize.sh [container] [source-db]
 # Needs the dev Postgres container from infra/compose.yaml. The source database is only read.
 set -euo pipefail
@@ -8,7 +8,7 @@ CONTAINER=${1:-postgres_db}
 SOURCE_DB=${2:-mydatabase}
 PGUSER_IN_CONTAINER=$(docker exec "$CONTAINER" printenv POSTGRES_USER)
 TEST_DB=sanitize_test_$$
-SANITIZE=${SANITIZE_SQL:-$(cd "$(dirname "$0")/.." && pwd)/sanitize.sql}
+SANITIZE=${SANITIZE_SQL:-$(cd "$(dirname "$0")/.." && pwd)/sanitize/barnbooks.sql}
 TMP=$(mktemp -d)
 
 psql_c() { docker exec -i "$CONTAINER" psql -U "$PGUSER_IN_CONTAINER" -v ON_ERROR_STOP=1 -qAt "$@"; }

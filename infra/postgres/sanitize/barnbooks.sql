@@ -1,5 +1,5 @@
--- Scrubs personal data from a restored copy of the barnbooks database.
---   psql -v ON_ERROR_STOP=1 -d barnbooks -f sanitize.sql
+-- Scrubs personal data from a restored copy of the barnbooks database (run by restore-test.sh).
+--   psql -v ON_ERROR_STOP=1 -d barnbooks -f sanitize/barnbooks.sql
 --
 -- Kept: dates, amounts, accounts' banks, categories, enterprises, transaction types and how
 -- transactions link to vendors, so test data stays realistic.
@@ -27,15 +27,18 @@ DECLARE
 	];
 	unreviewed text;
 BEGIN
-	SELECT string_agg(table_name || '.' || column_name, ', ' ORDER BY table_name, column_name)
+	-- Base tables only: views (such as pg_stat_statements) hold no data of their own.
+	SELECT string_agg(c.table_name || '.' || c.column_name, ', ' ORDER BY c.table_name, c.column_name)
 	INTO unreviewed
-	FROM information_schema.columns
-	WHERE table_schema NOT IN ('pg_catalog', 'information_schema')
-		AND data_type IN ('text', 'character varying', 'character', 'json', 'jsonb', 'ARRAY', 'bytea')
-		AND table_name || '.' || column_name <> ALL (reviewed);
+	FROM information_schema.columns c
+	JOIN information_schema.tables t USING (table_schema, table_name)
+	WHERE t.table_type = 'BASE TABLE'
+		AND c.table_schema NOT IN ('pg_catalog', 'information_schema')
+		AND c.data_type IN ('text', 'character varying', 'character', 'json', 'jsonb', 'ARRAY', 'bytea')
+		AND c.table_name || '.' || c.column_name <> ALL (reviewed);
 	IF unreviewed IS NOT NULL THEN
-		RAISE EXCEPTION 'sanitize.sql has not reviewed these columns: %', unreviewed
-			USING HINT = 'Add each to sanitize.sql: scrub it, or list it as safe.';
+		RAISE EXCEPTION 'sanitize/barnbooks.sql has not reviewed these columns: %', unreviewed
+			USING HINT = 'Add each to sanitize/barnbooks.sql: scrub it, or list it as safe.';
 	END IF;
 END $$;
 
