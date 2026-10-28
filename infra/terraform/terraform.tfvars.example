@@ -1,0 +1,31 @@
+# Copy to terraform.tfvars (gitignored) and fill in. Secrets can also come from TF_VAR_* env vars.
+# Also export: TF_VAR_state_passphrase, DIGITALOCEAN_TOKEN, SPACES_ACCESS_KEY_ID,
+# SPACES_SECRET_ACCESS_KEY, GITHUB_TOKEN (see providers.tf).
+
+droplet_region = "nyc3"
+backup_region  = "sfo3"
+droplet_size   = "s-2vcpu-4gb"
+volume_size_gb = 20
+
+# One of these:
+ssh_public_key = "ssh-ed25519 AAAA... you@laptop"
+# ssh_key_fingerprint = "aa:bb:..."   # a key already on your DigitalOcean account
+
+# SSH from your IP while setting up; set to [] once Tailscale SSH works.
+admin_cidrs = ["203.0.113.7/32"]
+
+admin_user       = "joe"
+alert_email      = "you@example.com"
+farm_site_domain = "example.com"
+acme_email       = "you@example.com"
+app_databases    = ["barnbooks"]
+
+# Created by hand in the DO control panel: custom scopes droplet:create, droplet:read, droplet:delete
+# (plus tag:create, ssh_key:read if your account requires them).
+restore_test_do_token = "dop_v1_..."
+
+# Optional until set up (see infra/platform/README.md):
+# ts_authkey_host = "tskey-auth-..."
+# ts_authkey_apps = { barnbooks = "tskey-auth-..." }
+# hc_backup_url   = "https://hc-ping.com/..."
+# hc_restore_url  = "https://hc-ping.com/..."
