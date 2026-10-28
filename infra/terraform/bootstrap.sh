@@ -44,8 +44,11 @@ echo "==> copying platform.env, deploy key and provision.sh to $target"
 staging=$(ssh "${ssh_opts[@]}" "$target" 'mktemp -d')
 scp -q "${ssh_opts[@]}" "$ENV_FILE" "$DEPLOY_KEY" "$DEPLOY_KEY.pub" "$PROVISION" "$target:$staging/"
 
-# Install with tight permissions, then run provision.sh (re-runnable).
-ssh -t "${ssh_opts[@]}" "$target" "$sudo bash -euo pipefail -c '
+# Install with tight permissions, then run provision.sh (re-runnable). Strict mode is set inside the
+# command rather than as bash flags: over SSH, bash reads /etc/bash.bashrc first, and Ubuntu's fails
+# under -u ("PS1: unbound variable").
+ssh -t "${ssh_opts[@]}" "$target" "$sudo bash -c '
+	set -euo pipefail
 	install -d -m 700 /opt/platform /root/.ssh
 	install -m 600 $staging/platform.env /opt/platform/.env
 	install -m 600 $staging/deploy_key /root/.ssh/platform_deploy
