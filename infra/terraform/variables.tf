@@ -74,8 +74,23 @@ variable "admin_cidrs" {
 }
 
 variable "alert_email" {
-  description = "Where DigitalOcean Monitoring sends disk, CPU and memory alerts."
+  description = "Email for Droplet disk/CPU/memory alerts. Must be a verified DigitalOcean user: your login email or an accepted team member (a team contact email isn't enough). Empty: no email alerts."
   type        = string
+  default     = ""
+  validation {
+    condition     = var.alert_email == "" || (can(regex("^[^@ ]+@[^@ ]+\\.[^@ ]+$", var.alert_email)) && !can(regex("@example\\.(com|org|net)$", var.alert_email)))
+    error_message = "alert_email must be empty or a real, DigitalOcean-verified address."
+  }
+}
+
+variable "alert_slack" {
+  description = "Slack incoming webhook for Droplet alerts, e.g. { channel = \"#alerts\", url = \"https://hooks.slack.com/services/...\" }. Null: no Slack alerts."
+  type = object({
+    channel = string
+    url     = string
+  })
+  default   = null
+  sensitive = true
 }
 
 # --- Platform ---------------------------------------------------------------------------------

@@ -41,6 +41,7 @@ variables {
   ts_authkey_host       = ""
   ts_authkey_apps       = {}
   hc_backup_url         = ""
+  alert_slack           = null
   state_passphrase      = "test-passphrase-0123456789"
   alert_email           = "ops@tdf.test"
   admin_user            = "joe"
@@ -130,6 +131,43 @@ run "defaults" {
   assert {
     condition     = github_actions_variable.restore_test["DO_REGION"].value == var.backup_region
     error_message = "The restore test should run in the backup region."
+  }
+}
+
+run "alerts_to_email" {
+  command = plan
+  assert {
+    condition = length(digitalocean_monitor_alert.platform) == 3 && alltrue([
+      for a in digitalocean_monitor_alert.platform :
+      length(a.alerts[0].email) == 1 && a.alerts[0].email[0] == "ops@tdf.test" && length(a.alerts[0].slack) == 0
+    ])
+    error_message = "With alert_email set, disk/CPU/memory alerts go to that address only."
+  }
+}
+
+run "no_alert_destination" {
+  command = plan
+  variables {
+    alert_email = ""
+  }
+  assert {
+    condition     = length(digitalocean_monitor_alert.platform) == 0
+    error_message = "With no email or Slack, no alert policies should be created."
+  }
+}
+
+run "alerts_to_slack_only" {
+  command = plan
+  variables {
+    alert_email = ""
+    alert_slack = { channel = "#alerts", url = "https://hooks.slack.com/services/T000/B000/XXXX" }
+  }
+  assert {
+    condition = length(digitalocean_monitor_alert.platform) == 3 && alltrue([
+      for a in digitalocean_monitor_alert.platform :
+      length(a.alerts[0].email) == 0 && length(a.alerts[0].slack) == 1 && a.alerts[0].slack[0].channel == "#alerts"
+    ])
+    error_message = "With only Slack set, alerts go to Slack and not email."
   }
 }
 
