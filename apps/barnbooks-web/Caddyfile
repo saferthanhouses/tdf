@@ -1,0 +1,12 @@
+# Serves the built barnbooks web app and proxies the API. Private: reached only through Tailscale.
+:80 {
+	encode zstd gzip
+	handle /api/* {
+		reverse_proxy {$API_UPSTREAM:barnbooks-api:3001}
+	}
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}

@@ -1,0 +1,107 @@
+# Weekly restore test of the platform Postgres backups.
+# Creates a short-lived Droplet that restores the latest backup from Spaces, sanitizes every database,
+# uploads the dumps and powers off; this job then always destroys it. See infra/postgres/restore-test.sh.
+#
+# Secrets: DO_TOKEN (Droplet create/delete), SPACES_RO_KEY / SPACES_RO_SECRET (read-only, backup
+# bucket), PGBACKREST_CIPHER_PASS, DUMPS_KEY / DUMPS_SECRET (dumps bucket only), HC_RESTORE_URL.
+# Variables: SPACES_ENDPOINT, SPACES_BUCKET, SPACES_REPO_PATH, DUMPS_ENDPOINT_URL, DUMPS_BUCKET,
+# DO_REGION, DO_SSH_KEY_FINGERPRINT (any key on your account; stops DO emailing a root password),
+# NO_PII_DATABASES.
+name: Restore test
+
+on:
+  schedule:
+    - cron: "0 6 * * 0" # Sundays, after the 02:00 full backup
+  workflow_dispatch:
+    inputs:
+      target_time:
+        description: 'Optional point-in-time target, e.g. "2026-10-15 12:00:00+00"'
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: restore-test
+  cancel-in-progress: false
+
+jobs:
+  restore-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      DROPLET_NAME: restore-test-${{ github.run_id }}
+      DROPLET_TAG: restore-test
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_TOKEN }}
+
+      - name: Build user-data
+        env:
+          SPACES_ENDPOINT: ${{ vars.SPACES_ENDPOINT }}
+          SPACES_BUCKET: ${{ vars.SPACES_BUCKET }}
+          SPACES_REPO_PATH: ${{ vars.SPACES_REPO_PATH }}
+          SPACES_KEY: ${{ secrets.SPACES_RO_KEY }}
+          SPACES_SECRET: ${{ secrets.SPACES_RO_SECRET }}
+          PGBACKREST_CIPHER_PASS: ${{ secrets.PGBACKREST_CIPHER_PASS }}
+          DUMPS_ENDPOINT_URL: ${{ vars.DUMPS_ENDPOINT_URL }}
+          DUMPS_BUCKET: ${{ vars.DUMPS_BUCKET }}
+          DUMPS_KEY: ${{ secrets.DUMPS_KEY }}
+          DUMPS_SECRET: ${{ secrets.DUMPS_SECRET }}
+          NO_PII_DATABASES: ${{ vars.NO_PII_DATABASES }}
+          HC_RESTORE_URL: ${{ secrets.HC_RESTORE_URL }}
+          TARGET_TIME: ${{ inputs.target_time }}
+          RUN_TAG: ${{ github.run_id }}
+        run: |
+          umask 077
+          infra/postgres/restore-test-user-data.sh > "$RUNNER_TEMP/user-data.yaml"
+
+      - name: Create Droplet
+        id: droplet
+        env:
+          REGION: ${{ vars.DO_REGION || 'nyc3' }}
+          SSH_KEY: ${{ vars.DO_SSH_KEY_FINGERPRINT }}
+        run: |
+          id=$(doctl compute droplet create "$DROPLET_NAME" \
+            --image ubuntu-24-04-x64 --size s-1vcpu-2gb --region "$REGION" \
+            --tag-name "$DROPLET_TAG" ${SSH_KEY:+--ssh-keys "$SSH_KEY"} \
+            --user-data-file "$RUNNER_TEMP/user-data.yaml" \
+            --wait --format ID --no-header)
+          rm -f "$RUNNER_TEMP/user-data.yaml"
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          echo "Created Droplet $id"
+
+      - name: Wait for the restore test to finish (Droplet powers off)
+        env:
+          ID: ${{ steps.droplet.outputs.id }}
+        run: |
+          for _ in $(seq 1 120); do
+            status=$(doctl compute droplet get "$ID" --format Status --no-header)
+            [ "$status" = off ] && { echo "Droplet powered off"; exit 0; }
+            sleep 30
+          done
+          echo "::error::restore test did not finish within 60 minutes"
+          exit 1
+
+      - name: Check result
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.DUMPS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DUMPS_SECRET }}
+          AWS_DEFAULT_REGION: us-east-1
+          ENDPOINT: ${{ vars.DUMPS_ENDPOINT_URL }}
+          BUCKET: ${{ vars.DUMPS_BUCKET }}
+        run: |
+          # restore-test.sh writes _SUCCESS last, under restore-test/<date>-<run id>/
+          if aws s3 ls --endpoint-url "$ENDPOINT" --recursive "s3://$BUCKET/restore-test/" | grep -q -- "-${{ github.run_id }}/_SUCCESS$"; then
+            echo "Restore test passed"
+          else
+            echo "::error::restore test failed: no _SUCCESS marker (see the Healthchecks.io log for details)"
+            exit 1
+          fi
+
+      - name: Destroy Droplet
+        if: always()
+        run: doctl compute droplet delete --tag-name "$DROPLET_TAG" --force || true

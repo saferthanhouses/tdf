@@ -1,0 +1,148 @@
+# The platform Droplet: one Postgres for every app, the apps, a public Caddy edge, and Tailscale for
+# private apps. Run through the platform-compose wrapper (installed by provision.sh), which points at
+# this file and /opt/platform/.env.
+#
+# Networks:
+#   backend   - Postgres and the services that talk to it. Postgres publishes no ports.
+#   public    - the edge Caddy and public sites. Only Caddy publishes ports (80/443).
+#   barnbooks - the barnbooks web app, its API, and its Tailscale sidecar. Nothing published.
+name: platform
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: 10m
+    max-file: "3"
+
+services:
+  db:
+    build: ../postgres
+    image: platform/postgres:18
+    restart: unless-stopped
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_SUPERUSER_PASSWORD:?set in the platform env file}
+    volumes:
+      - ${PGDATA_DIR:-/mnt/pgdata}:/var/lib/postgresql
+      - ../postgres/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ../postgres/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+      - ${STATE_DIR:-/opt/platform/state}/postgres:/etc/postgresql/local:ro
+      - ${STATE_DIR:-/opt/platform/state}/pgbackrest:/etc/pgbackrest:ro
+      - pgbackrest-spool:/var/spool/pgbackrest
+    shm_size: 1g
+    mem_limit: ${DB_MEM_LIMIT:-1g}
+    networks: [backend]
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    logging: *logging
+
+  # --- barnbooks (private) --------------------------------------------------------------------
+  barnbooks-api:
+    build:
+      context: ../..
+      dockerfile: apps/api/Dockerfile
+    image: platform/barnbooks-api
+    restart: unless-stopped
+    environment: &barnbooks-db
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: barnbooks
+      DB_USER: barnbooks_app
+      DB_PASSWORD: ${BARNBOOKS_APP_PASSWORD:?set in the platform env file}
+      DB_SSLMODE: disable
+      PORT: "3001"
+    depends_on:
+      db: { condition: service_healthy }
+    mem_limit: 512m
+    networks: [backend, barnbooks]
+    logging: *logging
+
+  # Runs migrations as the owner role: docker compose run --rm barnbooks-migrate (deploy.sh does this).
+  barnbooks-migrate:
+    image: platform/barnbooks-api
+    profiles: [tools]
+    command: ["npm", "run", "migrate", "-w", "@tdf-mono/db-client"]
+    environment:
+      <<: *barnbooks-db
+      DB_USER: barnbooks_owner
+      DB_PASSWORD: ${BARNBOOKS_OWNER_PASSWORD:?set in the platform env file}
+    depends_on:
+      db: { condition: service_healthy }
+    networks: [backend]
+    logging: *logging
+
+  barnbooks-web:
+    build:
+      context: ../..
+      dockerfile: apps/barnbooks-web/Dockerfile
+    image: platform/barnbooks-web
+    restart: unless-stopped
+    depends_on: [barnbooks-api]
+    mem_limit: 128m
+    networks: [barnbooks]
+    logging: *logging
+
+  # Serves https://barnbooks.<tailnet>.ts.net to devices on your tailnet only.
+  ts-barnbooks:
+    image: tailscale/tailscale:stable
+    profiles: [tailscale]
+    restart: unless-stopped
+    hostname: barnbooks
+    environment:
+      TS_AUTHKEY: ${TS_AUTHKEY_BARNBOOKS:-}
+      TS_STATE_DIR: /var/lib/tailscale
+      TS_SERVE_CONFIG: /config/serve.json
+      TS_USERSPACE: "true"
+    volumes:
+      - ts-barnbooks-state:/var/lib/tailscale
+      - ./tailscale/barnbooks.json:/config/serve.json:ro
+    depends_on: [barnbooks-web]
+    mem_limit: 128m
+    networks: [barnbooks]
+    logging: *logging
+
+  # --- public sites ---------------------------------------------------------------------------
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      FARM_SITE_DOMAIN: ${FARM_SITE_DOMAIN:?set in the platform env file}
+      ACME_EMAIL: ${ACME_EMAIL:?set in the platform env file (Let's Encrypt expiry notices)}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on: [farm-site]
+    mem_limit: 128m
+    networks: [public]
+    logging: *logging
+
+  farm-site:
+    build: ../../apps/farm-site
+    image: platform/farm-site
+    restart: unless-stopped
+    mem_limit: 64m
+    networks: [public]
+    logging: *logging
+
+networks:
+  backend:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24   # pg_hba.conf allows this range
+  public: {}
+  barnbooks: {}
+
+volumes:
+  pgdata: {}   # used when PGDATA_DIR=pgdata (local tests); production binds the Block Volume
+  pgbackrest-spool: {}
+  caddy-data: {}
+  caddy-config: {}
+  ts-barnbooks-state: {}
