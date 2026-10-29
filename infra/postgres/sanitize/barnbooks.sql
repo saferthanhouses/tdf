@@ -72,7 +72,10 @@ UPDATE account SET name = regexp_replace(name, '[0-9]+', '#' || id, 'g') WHERE n
 -- 5. Query statistics can hold text from before the scrub.
 DO $$
 BEGIN
-	IF EXISTS (SELECT 1 FROM pg_extension WHERE extname = 'pg_stat_statements') THEN
+	-- Only when the library is loaded: otherwise there are no statistics, and calling the function errors
+	-- (e.g. a dev server restored from production has the extension but doesn't preload it).
+	IF EXISTS (SELECT 1 FROM pg_extension WHERE extname = 'pg_stat_statements')
+		AND current_setting('shared_preload_libraries') ~ '\mpg_stat_statements\M' THEN
 		PERFORM pg_stat_statements_reset();
 	END IF;
 END $$;

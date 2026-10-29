@@ -49,7 +49,10 @@ echo "Running sanitize.sql"
 psql_c -d "$TEST_DB" <"$SANITIZE" >/dev/null
 
 docker exec "$CONTAINER" pg_dump -U "$PGUSER_IN_CONTAINER" --data-only "$TEST_DB" >"$TMP/dump.sql"
-leaked=$(grep -F -x -v -e '' "$TMP/secrets" | while IFS= read -r secret; do
+# Values already in the sanitizer's own placeholder format aren't secrets: the source may itself be a sanitized
+# copy (e.g. restored with npm run db:restore-from-prod), and sanitizing again reproduces them.
+placeholder='^(Vendor [0-9]+|V[0-9]{6}P[0-9]{2}|(CARD PURCHASE V[0-9]{6}P01|BANK TRANSACTION) #[0-9]+|Note #[0-9]+|import-[0-9]+\.csv)$'
+leaked=$(grep -F -x -v -e '' "$TMP/secrets" | grep -E -v "$placeholder" | while IFS= read -r secret; do
 	grep -qiF -- "$secret" "$TMP/kept" && continue
 	grep -qF -- "$secret" "$TMP/dump.sql" && printf '%s\n' "$secret"
 done || true)
