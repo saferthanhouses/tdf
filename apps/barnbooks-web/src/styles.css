@@ -570,3 +570,92 @@ td select {
 	padding: 2px 6px;
 	font-size: 12px;
 }
+
+/* --- P&L ------------------------------------------------------------------------------------- */
+.segmented {
+	display: inline-flex;
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.segmented button {
+	border: none;
+	border-radius: 0;
+	background: var(--surface);
+	color: var(--muted);
+}
+
+.segmented button + button {
+	border-left: 1px solid var(--border);
+}
+
+.segmented button.active {
+	background: var(--accent);
+	color: var(--accent-text);
+}
+
+.pnl-table td:first-child,
+.pnl-table th:first-child {
+	position: sticky;
+	left: 0;
+	background: var(--surface);
+	text-align: left;
+	min-width: 220px;
+	z-index: 1;
+}
+
+.pnl-table td,
+.pnl-table th {
+	border-bottom-color: transparent;
+}
+
+.pnl-section th {
+	padding-top: 14px;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--muted);
+	border-bottom: 1px solid var(--border) !important;
+}
+
+.pnl-total td {
+	font-weight: 600;
+	border-top: 1px solid var(--border);
+}
+
+.pnl-result td {
+	font-weight: 600;
+	background: var(--notice-bg);
+}
+
+.pnl-result.pnl-strong td {
+	font-size: 15px;
+	border-top: 2px solid var(--text);
+}
+
+.pnl-percent td {
+	color: var(--muted);
+	font-style: italic;
+}
+
+.pnl-row-total {
+	border-left: 1px solid var(--border);
+	font-weight: 600;
+}
+
+.pnl-spacer td {
+	height: 12px;
+	padding: 0;
+}
+
+.pnl-note {
+	margin-top: 10px;
+	max-width: 900px;
+	font-size: 12px;
+}
+
+/* The sticky label column needs the row's own background, or highlighted rows lose it there. */
+.pnl-result td:first-child {
+	background: var(--notice-bg);
+}

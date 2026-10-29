@@ -7,7 +7,7 @@ Software for Thistledown Farm, kept in one repository: the public farm website, 
 | Path | What it is | Tech | Audience |
 |---|---|---|---|
 | [`apps/farm-site`](apps/farm-site/README.md) | The farm's public website | Astro (static) | Public |
-| `apps/barnbooks-web` | barnbooks UI: import bank CSVs, categorise and post transactions, ledger | React 19, Vite | Private (Tailscale) |
+| `apps/barnbooks-web` | barnbooks UI: import bank CSVs, categorise and post transactions, ledger, profit & loss (monthly or yearly) | React 19, Vite | Private (Tailscale) |
 | `apps/api` | barnbooks API (`barnbooks-api`) | Hono on Node, Kysely, zod | Private |
 | `packages/database-client` | `@tdf-mono/db-client`: database types, client, migrations, seed scripts | Kysely, node-postgres, kysely-ctl | Shared |
 | [`barnbooks`](barnbooks/README.md) | The original Google Sheets version of barnbooks (Apps Script), being replaced by the app above | TypeScript for Apps Script | Legacy |
