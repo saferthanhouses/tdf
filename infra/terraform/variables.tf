@@ -153,7 +153,7 @@ variable "repo_branch" {
 }
 
 variable "restore_test_do_token" {
-  description = "DigitalOcean token for the restore-test workflow, scoped to creating and deleting Droplets (create it by hand; there is no API for tokens)."
+  description = "DigitalOcean token for the restore-test workflow, created by hand (there is no API for tokens) with custom scopes droplet:create, droplet:read, droplet:delete, ssh_key:read, tag:create and tag:read."
   type        = string
   sensitive   = true
 }
