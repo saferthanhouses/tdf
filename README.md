@@ -82,6 +82,7 @@ npm run dev -w farm-site         # public site on http://localhost:4321
 | `npm run db:migrate` | Apply migrations to the database in `.env.dev` |
 | `npm run db:migration:create -- <name>` | Create a new migration in `packages/database-client/migrations` |
 | `npm run db:seed:vendors` / `db:seed:transactions [-- <file>]` | Import the Google Sheet exports, CSV or tab-separated with a header row (add `--dry-run` to preview). Ledger rows already imported from a bank CSV are skipped. |
+| `npm run db:restore-from-prod [-- --run <run> --db <db>]` | Replace the dev database with the latest sanitized production dump (backs up dev first) |
 | `npm run barnbooks:api` | Start the API with `.env.dev`, restarting on changes |
 | `npm run barnbooks:web` | Start the UI dev server |
 
@@ -107,7 +108,7 @@ Workspace scripts run with `-w`, e.g. `npm test -w barnbooks-api`, `npm run type
 | **Infrastructure** | OpenTofu reads API tokens from environment variables (`DIGITALOCEAN_TOKEN`, `GITHUB_TOKEN`, Spaces keys) and settings from `infra/terraform/terraform.tfvars` (gitignored). Its state holds every generated secret and is **encrypted** with `TF_VAR_state_passphrase`, which lives in the password manager. |
 | **CI** | GitHub Actions secrets and variables for the restore-test workflow, set by OpenTofu rather than by hand. |
 
-**Never commit:** `.env*` files (except `*.example`), `terraform.tfvars`, `*.tfstate`, `infra/terraform/out/`, or the seed CSV/TSV files in `packages/database-client/seed/`. These are all gitignored. Stage files by name rather than with `git add .`, so a stray file can't slip in.
+**Never commit:** `.env*` files (except `*.example`), `terraform.tfvars`, `*.tfstate`, `infra/terraform/out/`, the seed CSV/TSV files in `packages/database-client/seed/`, or `*.dump` files. These are all gitignored. Stage files by name rather than with `git add .`, so a stray file can't slip in.
 
 ## Database
 
@@ -120,7 +121,7 @@ Workspace scripts run with `-w`, e.g. `npm test -w barnbooks-api`, `npm run type
   1. `npm run db:migration:create -- <name>`, then write `up` and `down` in the new file.
   2. Update the types in `packages/database-client/src/types/`.
   3. If the migration adds a text column, add it to `infra/postgres/sanitize/<app>.sql`. The restore test fails until you do.
-- **Realistic data:** the weekly restore test uploads a **sanitized** `pg_dump` of each database to the dumps bucket, with personal data replaced and amounts kept. Restore one into your local database to work with real-shaped data.
+- **Realistic data:** the weekly restore test uploads a **sanitized** `pg_dump` of each database to the dumps bucket, with personal data replaced and amounts kept. `npm run db:restore-from-prod` replaces your dev database with the latest one. It backs up the current dev data to `~/.cache/tdf/dev-db-backups/` first, and needs `SPACES_ACCESS_KEY_ID`/`SPACES_SECRET_ACCESS_KEY` exported. For fresher data, run the restore test first (GitHub → Actions → Restore test → Run workflow).
 
 ## Deployment
 
@@ -143,7 +144,7 @@ npm test -w @tdf-mono/db-client               # Google Sheet import parsing
 npm run typecheck -w barnbooks-api && npm run typecheck -w barnbooks-web
 ```
 
-Infrastructure tests (sanitizing, backup checks, a full local run of the production stack, OpenTofu) are listed under [Tests in infra/platform/README.md](infra/platform/README.md#tests).
+Infrastructure tests (sanitizing, backup checks, restoring dev from production, a full local run of the production stack, OpenTofu) are listed under [Tests in infra/platform/README.md](infra/platform/README.md#tests).
 
 ## Contributing
 

@@ -61,4 +61,6 @@ venv/
 # Barnbooks seed data exported from Google Sheets (real names and amounts)
 packages/database-client/seed/*.csv
 packages/database-client/seed/*.tsv
+# Database dumps (production data, even when sanitized)
+*.dump
 packages/database-client/seed/tr

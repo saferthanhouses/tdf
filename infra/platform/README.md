@@ -169,7 +169,7 @@ Every Sunday at 06:00 UTC (or on demand from the Actions tab), the workflow crea
 
 The workflow then destroys the Droplet whatever happened. A failed run alerts through Healthchecks and fails the workflow.
 
-The dumps are what developers should use instead of production data.
+The dumps are what developers should use instead of production data. `npm run db:restore-from-prod` loads the latest one into your dev database (see the root README).
 
 ## Personal data
 
@@ -182,6 +182,7 @@ It refuses to run if any text, JSON or array column in a table isn't on its revi
 ```sh
 infra/platform/test/e2e.sh                     # the whole stack locally, with an S3 gateway standing in for Spaces
 infra/postgres/test/test-sanitize.sh           # sanitize/barnbooks.sql on a throwaway copy of the dev database
+infra/postgres/test/test-restore-dev-db.sh     # restore-dev-db.sh against throwaway Postgres 16/18 and an S3 stand-in
 infra/postgres/test/test-backup-freshness.sh   # freshness check against stand-in commands
 shellcheck -x infra/postgres/*.sh infra/postgres/test/*.sh infra/platform/*.sh infra/platform/test/*.sh infra/terraform/*.sh
 cd infra/terraform && tofu fmt -check -recursive && tofu validate && tofu test   # mocked providers; creates nothing
