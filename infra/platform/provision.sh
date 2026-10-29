@@ -78,15 +78,20 @@ if [[ ! -f /etc/apt/sources.list.d/docker.list ]]; then
 		>/etc/apt/sources.list.d/docker.list
 	apt-get update -q
 fi
-apt-get install -y -q docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-cat >/etc/docker/daemon.json <<'EOF'
-{
+# --no-upgrade: on a re-run, don't upgrade Docker here (that restarts every container); unattended
+# upgrades or a planned maintenance window handle that.
+apt-get install -y -q --no-upgrade docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+daemon_json='{
   "log-driver": "json-file",
   "log-opts": { "max-size": "10m", "max-file": "3" }
-}
-EOF
-systemctl enable docker
-systemctl restart docker
+}'
+systemctl enable --now docker
+# Restarting the daemon restarts every container, so only do it when its config changes.
+if ! cmp -s <(printf '%s\n' "$daemon_json") /etc/docker/daemon.json; then
+	printf '%s\n' "$daemon_json" >/etc/docker/daemon.json
+	echo "Docker daemon config changed: restarting Docker (all containers restart)"
+	systemctl restart docker
+fi
 usermod -aG docker "$ADMIN_USER"
 
 # ---------------------------------------------------------------------------------------------
