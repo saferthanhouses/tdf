@@ -9,6 +9,7 @@ const groups = ['direct_production', 'selling', 'overhead', 'capital', 'income',
 const optionalId = id.nullable().optional()
 
 const simpleLookup = z.object({ name, archived: z.boolean().optional() })
+const transactionType = simpleLookup.extend({ pnl_role: z.enum(['operating', 'capex', 'other']).optional() })
 const managementCategory = z.object({ name, group: z.enum(groups), archived: z.boolean().optional() })
 const vendor = z.object({
 	name,
@@ -40,11 +41,11 @@ export const lookups = new Hono()
 
 	// Lookup lists are archived rather than deleted so posted transactions keep their labels.
 	.post('/transaction-types', async c => {
-		const body = simpleLookup.parse(await c.req.json())
+		const body = transactionType.parse(await c.req.json())
 		return c.json(await db.insertInto('transaction_type').values(body).returningAll().executeTakeFirstOrThrow(), 201)
 	})
 	.patch('/transaction-types/:id', async c => {
-		const body = simpleLookup.partial().parse(await c.req.json())
+		const body = transactionType.partial().parse(await c.req.json())
 		const row = await db
 			.updateTable('transaction_type')
 			.set(body)
