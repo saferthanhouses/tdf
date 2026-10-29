@@ -73,7 +73,7 @@ npm run barnbooks:web            # UI on http://localhost:5180 (proxies /api to 
 npm run dev -w farm-site         # public site on http://localhost:4321
 ```
 
-**Real data:** `npm run db:seed:vendors` and `npm run db:seed:transactions` import the Google Sheet exports. Their CSVs hold real names, so they're gitignored and not in the repo; ask for them, or use a sanitized dump from production (see [Database](#database)).
+**Real data:** `npm run db:seed:vendors` and `npm run db:seed:transactions` import the Google Sheet exports. Pass another ledger file to import it too, e.g. `npm run db:seed:transactions -- seed/2025_transactions.tsv`. These files hold real names, so they're gitignored and not in the repo; ask for them, or use a sanitized dump from production (see [Database](#database)).
 
 ## Root scripts
 
@@ -81,7 +81,7 @@ npm run dev -w farm-site         # public site on http://localhost:4321
 |---|---|
 | `npm run db:migrate` | Apply migrations to the database in `.env.dev` |
 | `npm run db:migration:create -- <name>` | Create a new migration in `packages/database-client/migrations` |
-| `npm run db:seed:vendors` / `db:seed:transactions` | Import the Google Sheet exports (add `-- --dry-run` to preview) |
+| `npm run db:seed:vendors` / `db:seed:transactions [-- <file>]` | Import the Google Sheet exports, CSV or tab-separated with a header row (add `--dry-run` to preview). Ledger rows already imported from a bank CSV are skipped. |
 | `npm run barnbooks:api` | Start the API with `.env.dev`, restarting on changes |
 | `npm run barnbooks:web` | Start the UI dev server |
 
@@ -107,7 +107,7 @@ Workspace scripts run with `-w`, e.g. `npm test -w barnbooks-api`, `npm run type
 | **Infrastructure** | OpenTofu reads API tokens from environment variables (`DIGITALOCEAN_TOKEN`, `GITHUB_TOKEN`, Spaces keys) and settings from `infra/terraform/terraform.tfvars` (gitignored). Its state holds every generated secret and is **encrypted** with `TF_VAR_state_passphrase`, which lives in the password manager. |
 | **CI** | GitHub Actions secrets and variables for the restore-test workflow, set by OpenTofu rather than by hand. |
 
-**Never commit:** `.env*` files (except `*.example`), `terraform.tfvars`, `*.tfstate`, `infra/terraform/out/`, or the seed CSVs in `packages/database-client/seed/`. These are all gitignored. Stage files by name rather than with `git add .`, so a stray file can't slip in.
+**Never commit:** `.env*` files (except `*.example`), `terraform.tfvars`, `*.tfstate`, `infra/terraform/out/`, or the seed CSV/TSV files in `packages/database-client/seed/`. These are all gitignored. Stage files by name rather than with `git add .`, so a stray file can't slip in.
 
 ## Database
 
