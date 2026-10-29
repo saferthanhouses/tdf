@@ -659,3 +659,52 @@ td select {
 .pnl-result td:first-child {
 	background: var(--notice-bg);
 }
+
+/* --- Ledger filters and sortable headers ------------------------------------------------------ */
+.filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 10px;
+}
+
+.filters input[type='search'] {
+	min-width: 220px;
+}
+
+.filters select.active,
+.filters input[type='search']:not(:placeholder-shown) {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 1px var(--accent);
+}
+
+.ledger-table th button.sort {
+	border: none;
+	background: none;
+	padding: 0;
+	font: inherit;
+	font-weight: 600;
+	color: inherit;
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	cursor: pointer;
+}
+
+.ledger-table th.num button.sort {
+	flex-direction: row-reverse;
+}
+
+.ledger-table th button.sort.active {
+	color: var(--text);
+}
+
+.sort-arrow {
+	font-size: 10px;
+	opacity: 0.4;
+}
+
+.ledger-table th button.sort.active .sort-arrow {
+	opacity: 1;
+}
