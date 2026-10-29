@@ -29,7 +29,7 @@ One DigitalOcean Droplet runs every monorepo app in Docker Compose, with one Pos
 
 | Path | What it is |
 |---|---|
-| `infra/platform/compose.yaml` | The stack. Run it through `platform-compose` (installed by provision.sh), which adds `/opt/platform/.env` |
+| `infra/platform/compose.yaml` | The stack. Run it through `sudo platform-compose` (installed by provision.sh), which adds `/opt/platform/.env`. It needs `sudo` because that file is root-only. |
 | `infra/platform/Caddyfile` | Public sites |
 | `infra/platform/tailscale/*.json` | Tailscale serve config, one per private app |
 | `infra/terraform/` | OpenTofu: DigitalOcean resources, GitHub settings, generated `.env`; `bootstrap.sh` |
@@ -54,7 +54,8 @@ The DigitalOcean resources, the GitHub settings the restore test needs, and `/op
 | API token with custom scopes `droplet:create`, `droplet:read`, `droplet:delete` | DO → API | `restore_test_do_token` in `terraform.tfvars` |
 | Fine-grained token on this repo: Administration, Secrets, Variables (write) | GitHub → Settings → Developer settings | `GITHUB_TOKEN` env var |
 | State passphrase | your password manager | `TF_VAR_state_passphrase` env var |
-| Tailscale auth keys: one for the host, one per private app; enable HTTPS certificates in the tailnet DNS settings | Tailscale admin | `ts_authkey_host`, `ts_authkey_apps` (optional; or run `tailscale up --ssh` later) |
+| Tailscale auth key for the host (not ephemeral) | Tailscale admin → Settings → Keys | `ts_authkey_host` (optional: or run `sudo tailscale up --ssh --hostname platform` on the Droplet later) |
+| Tailscale auth key per **private app** (not ephemeral), and **MagicDNS + HTTPS Certificates** enabled in the tailnet's DNS settings | Tailscale admin | `ts_authkey_apps = { barnbooks = "tskey-auth-…" }`, **required**: an app's sidecar can't use a login link (see the gotchas) |
 | Healthchecks.io: "platform backups" (period 1h, grace 2h) and "restore test" (period 1 week, grace 1 day) | healthchecks.io | `hc_backup_url`, `hc_restore_url` (optional) |
 
 **Create everything**
@@ -82,11 +83,12 @@ The volume and the backup bucket refuse to be destroyed by OpenTofu.
 2. `./bootstrap.sh` copies `out/platform.env` and the deploy key to the Droplet over SSH, then runs `provision.sh` as root. Secrets never go in `user_data`, which anything on the Droplet can read.
 3. Check `ssh <admin_user>@<droplet_ip>` works: provision.sh disables root login.
 4. Deploy: `ssh <admin_user>@<droplet_ip> sudo /opt/platform/repo/infra/platform/deploy.sh`.
-5. Once Tailscale SSH works, set `admin_cidrs = []` and `tofu apply` to close port 22.
+5. In the Tailscale admin console, **disable key expiry** on the `platform` machine and each app's machine (e.g. `barnbooks`). Otherwise they need logging in again after about six months.
+6. Once `ssh <admin_user>@platform.<your-tailnet>.ts.net` works, set `admin_cidrs = []` and `tofu apply` to close port 22. From then on, reach the Droplet over Tailscale, including for `./bootstrap.sh --admin platform.<your-tailnet>.ts.net`.
 
-barnbooks is then at `https://barnbooks.<your-tailnet>.ts.net` on your devices, and farm-site at `farm_site_domain`.
+barnbooks is then at `https://barnbooks.<your-tailnet>.ts.net` on your devices, and farm-site at `farm_site_domain`. The first request to a private app can take 10–20 seconds while its certificate is issued.
 
-**Changing settings later:** edit `terraform.tfvars`, `tofu apply`, then `./bootstrap.sh --admin` to copy the new `.env` and re-run provision.sh.
+**Changing settings later:** edit `terraform.tfvars`, `tofu apply`, then `./bootstrap.sh --admin <host>` to copy the new `.env` and re-run provision.sh. Running containers keep their old settings until recreated: run `sudo platform-compose up -d` on the Droplet, which recreates only the services whose settings changed.
 
 **Keep safe:**
 - the state passphrase, and a backup of `terraform.tfstate`: it holds every generated secret, encrypted;
@@ -119,6 +121,9 @@ Problems hit on the first real apply, and their fixes. The variable checks catch
   - `GITHUB_TOKEN` must be exported in the same shell.
   - With no `GITHUB_TOKEN`, the provider falls back to the `gh` CLI's token, so `unset GH_TOKEN` if that one is stale.
   - The token needs Administration, Secrets and Variables (read and write) on this repository.
+- **A private app's Tailscale sidecar restarts every minute** (logs: `tailscale up failed: context deadline exceeded`, and a new "To authenticate, visit" link each time). Without `TS_AUTHKEY_<APP>`, the container's login times out after 60 seconds, so a login link is always stale by the time you open it. Set the key in `ts_authkey_apps`, then `tofu apply`, `./bootstrap.sh --admin <host>`, and `sudo platform-compose up -d ts-<app>`. Remove the stale offline machine in the admin console first, or the new one is named `<app>-1`. `deploy.sh` warns about this.
+- **`https://<app>.<tailnet>.ts.net` times out**, the logs show `could not connect to local backend server at 127.0.0.1:443`, and `tailscale serve status` says "No serve config". The tailnet has no HTTPS certificates, so the sidecar can't apply its serve config. Enable them (admin console → DNS → HTTPS Certificates), then `sudo platform-compose restart ts-<app>`. Inside the container, the Tailscale CLI is `tailscale --socket=/tmp/tailscaled.sock …`.
+- **`stat /opt/platform/.env: permission denied`.** Run `platform-compose` with `sudo`.
 - **`terraform.tfvars` holds tokens.** Keep it private: `chmod 600 infra/terraform/terraform.tfvars`.
 
 ## Deploying changes
@@ -144,10 +149,10 @@ Merge to `main`, then on the Droplet run `sudo /opt/platform/repo/infra/platform
 Restoring the platform Droplet in place:
 
 ```sh
-platform-compose stop
-platform-compose run --rm --no-deps -u postgres db pgbackrest --stanza=main --delta restore
+sudo platform-compose stop
+sudo platform-compose run --rm --no-deps -u postgres db pgbackrest --stanza=main --delta restore
 #   point in time: add  --type=time --target="2026-10-15 12:00:00+00" --target-action=promote
-platform-compose up -d
+sudo platform-compose up -d
 ```
 
 Moving to a new Droplet works the same way after `provision.sh` on the new host.
