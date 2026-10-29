@@ -30,8 +30,10 @@ app_databases    = ["barnbooks"]
 # alert_email = "you@your-domain"
 # alert_slack = { channel = "#alerts", url = "https://hooks.slack.com/services/..." }
 
-# Created by hand in the DO control panel: custom scopes droplet:create, droplet:read, droplet:delete
-# (plus tag:create, ssh_key:read if your account requires them).
+# Created by hand in the DO control panel (API > Generate New Token > Custom scopes), with all of:
+#   droplet:create, droplet:read, droplet:delete  - create, watch and destroy the test Droplet
+#   ssh_key:read                                  - attach your SSH key (DO_SSH_KEY_FINGERPRINT)
+#   tag:create, tag:read                          - tag it restore-test, which the cleanup step deletes by
 restore_test_do_token = "dop_v1_..."
 
 # Optional until set up (see infra/platform/README.md):

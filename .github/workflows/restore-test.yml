@@ -2,7 +2,7 @@
 # Creates a short-lived Droplet that restores the latest backup from Spaces, sanitizes every database,
 # uploads the dumps and powers off; this job then always destroys it. See infra/postgres/restore-test.sh.
 #
-# Secrets: DO_TOKEN (Droplet create/delete), SPACES_RO_KEY / SPACES_RO_SECRET (read-only, backup
+# Secrets: DO_TOKEN (custom scopes droplet:create/read/delete, ssh_key:read, tag:create/read), SPACES_RO_KEY / SPACES_RO_SECRET (read-only, backup
 # bucket), PGBACKREST_CIPHER_PASS, DUMPS_KEY / DUMPS_SECRET (dumps bucket only), HC_RESTORE_URL.
 # Variables: SPACES_ENDPOINT, SPACES_BUCKET, SPACES_REPO_PATH, DUMPS_ENDPOINT_URL, DUMPS_BUCKET,
 # DO_REGION, DO_SSH_KEY_FINGERPRINT (any key on your account; stops DO emailing a root password),

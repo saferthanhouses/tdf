@@ -51,7 +51,7 @@ The DigitalOcean resources, the GitHub settings the restore test needs, and `/op
 |---|---|---|
 | API token, full access | DO → API | `DIGITALOCEAN_TOKEN` env var |
 | Spaces key with full access | DO → Spaces Keys | `SPACES_ACCESS_KEY_ID` / `SPACES_SECRET_ACCESS_KEY` env vars (creates the buckets) |
-| API token with custom scopes `droplet:create`, `droplet:read`, `droplet:delete` | DO → API | `restore_test_do_token` in `terraform.tfvars` |
+| API token with custom scopes `droplet:create`, `droplet:read`, `droplet:delete`, `ssh_key:read`, `tag:create`, `tag:read` (all six) | DO → API | `restore_test_do_token` in `terraform.tfvars` |
 | Fine-grained token on this repo: Administration, Secrets, Variables (write) | GitHub → Settings → Developer settings | `GITHUB_TOKEN` env var |
 | State passphrase | your password manager | `TF_VAR_state_passphrase` env var |
 | Tailscale auth key for the host (not ephemeral) | Tailscale admin → Settings → Keys | `ts_authkey_host` (optional: or run `sudo tailscale up --ssh --hostname platform` on the Droplet later) |
@@ -121,6 +121,7 @@ Problems hit on the first real apply, and their fixes. The variable checks catch
   - `GITHUB_TOKEN` must be exported in the same shell.
   - With no `GITHUB_TOKEN`, the provider falls back to the `gh` CLI's token, so `unset GH_TOKEN` if that one is stale.
   - The token needs Administration, Secrets and Variables (read and write) on this repository.
+- **Restore test fails at "Create Droplet" with `You are missing the required permissions …`.** The restore-test token needs all of `droplet:create`, `droplet:read`, `droplet:delete`, `ssh_key:read`, `tag:create`, `tag:read`. Create a new token with them, set `restore_test_do_token`, and `tofu apply` (this only updates the `DO_TOKEN` Actions secret). Then re-run the workflow.
 - **A private app's Tailscale sidecar restarts every minute** (logs: `tailscale up failed: context deadline exceeded`, and a new "To authenticate, visit" link each time). Without `TS_AUTHKEY_<APP>`, the container's login times out after 60 seconds, so a login link is always stale by the time you open it. Set the key in `ts_authkey_apps`, then `tofu apply`, `./bootstrap.sh --admin <host>`, and `sudo platform-compose up -d ts-<app>`. Remove the stale offline machine in the admin console first, or the new one is named `<app>-1`. `deploy.sh` warns about this.
 - **`https://<app>.<tailnet>.ts.net` times out**, the logs show `could not connect to local backend server at 127.0.0.1:443`, and `tailscale serve status` says "No serve config". The tailnet has no HTTPS certificates, so the sidecar can't apply its serve config. Enable them (admin console → DNS → HTTPS Certificates), then `sudo platform-compose restart ts-<app>`. Inside the container, the Tailscale CLI is `tailscale --socket=/tmp/tailscaled.sock …`.
 - **`stat /opt/platform/.env: permission denied`.** Run `platform-compose` with `sudo`.
