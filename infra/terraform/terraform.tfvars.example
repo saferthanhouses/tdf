@@ -1,24 +1,34 @@
-# Copy to terraform.tfvars (gitignored) and fill in. Secrets can also come from TF_VAR_* env vars.
+# Copy to terraform.tfvars (gitignored) and fill in. The placeholders below are rejected on purpose
+# by the variable checks, so a forgotten one fails before anything is created.
 # Also export: TF_VAR_state_passphrase, DIGITALOCEAN_TOKEN, SPACES_ACCESS_KEY_ID,
 # SPACES_SECRET_ACCESS_KEY, GITHUB_TOKEN (see providers.tf).
 
-droplet_region = "nyc3"
+# Check the region has capacity for your account first:
+#   doctl compute size list -o json | jq -r '.[] | select(.available and (.regions|index("tor1"))) | .slug'
+droplet_region = "tor1"
 backup_region  = "sfo3"
 droplet_size   = "s-2vcpu-4gb"
 volume_size_gb = 20
 
-# One of these:
-ssh_public_key = "ssh-ed25519 AAAA... you@laptop"
-# ssh_key_fingerprint = "aa:bb:..."   # a key already on your DigitalOcean account
+# One of these. The key is the whole line printed by: cat ~/.ssh/id_ed25519.pub
+ssh_public_key = "ssh-ed25519 PASTE-YOUR-PUBLIC-KEY-LINE"
+# If the key is already on your DigitalOcean account (doctl compute ssh-key list), use its
+# fingerprint instead, without the MD5: prefix (ssh-keygen -l -E md5 -f ~/.ssh/id_ed25519.pub):
+# ssh_key_fingerprint = "aa:bb:..."
 
-# SSH from your IP while setting up; set to [] once Tailscale SSH works.
+# SSH from your IP while setting up (curl -4 ifconfig.me); set to [] once Tailscale SSH works.
 admin_cidrs = ["203.0.113.7/32"]
 
-admin_user       = "joe"
-alert_email      = "you@example.com"
+admin_user       = "joe" # a Linux username: lowercase, no spaces
 farm_site_domain = "example.com"
 acme_email       = "you@example.com"
 app_databases    = ["barnbooks"]
+
+# Droplet alerts (disk, CPU, memory). Optional; set either or both.
+# The email must be a verified DigitalOcean user (your login, or an accepted team member);
+# a team contact email isn't enough.
+# alert_email = "you@your-domain"
+# alert_slack = { channel = "#alerts", url = "https://hooks.slack.com/services/..." }
 
 # Created by hand in the DO control panel: custom scopes droplet:create, droplet:read, droplet:delete
 # (plus tag:create, ssh_key:read if your account requires them).

@@ -30,14 +30,25 @@ mock_provider "local" {}
 mock_provider "random" {}
 mock_provider "tls" {}
 
+# Every input the assertions depend on is set here: tofu test also loads terraform.tfvars, and a real
+# one (your IP in admin_cidrs, your regions) must not change what these runs check.
 variables {
+  droplet_region        = "tor1"
+  backup_region         = "sfo3"
+  admin_cidrs           = []
+  ssh_key_fingerprint   = ""
+  app_databases         = ["barnbooks"]
+  ts_authkey_host       = ""
+  ts_authkey_apps       = {}
+  hc_backup_url         = ""
+  alert_slack           = null
   state_passphrase      = "test-passphrase-0123456789"
-  alert_email           = "ops@example.com"
+  alert_email           = "ops@tdf.test"
   admin_user            = "joe"
-  farm_site_domain      = "farm.example.com"
-  acme_email            = "ops@example.com"
+  farm_site_domain      = "farm.tdf.test"
+  acme_email            = "ops@tdf.test"
   restore_test_do_token = "dop_v1_test"
-  ssh_public_key        = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAItest test"
+  ssh_public_key        = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILkh3CjaEl3OonjQ2BshzrIZYYAVt+wFxlphldw1r1/7 test@tdf.test"
   hc_restore_url        = "https://hc-ping.com/test"
   no_pii_databases      = ["scratch"]
 }
@@ -123,15 +134,52 @@ run "defaults" {
   }
 }
 
+run "alerts_to_email" {
+  command = plan
+  assert {
+    condition = length(digitalocean_monitor_alert.platform) == 3 && alltrue([
+      for a in digitalocean_monitor_alert.platform :
+      length(a.alerts[0].email) == 1 && a.alerts[0].email[0] == "ops@tdf.test" && length(a.alerts[0].slack) == 0
+    ])
+    error_message = "With alert_email set, disk/CPU/memory alerts go to that address only."
+  }
+}
+
+run "no_alert_destination" {
+  command = plan
+  variables {
+    alert_email = ""
+  }
+  assert {
+    condition     = length(digitalocean_monitor_alert.platform) == 0
+    error_message = "With no email or Slack, no alert policies should be created."
+  }
+}
+
+run "alerts_to_slack_only" {
+  command = plan
+  variables {
+    alert_email = ""
+    alert_slack = { channel = "#alerts", url = "https://hooks.slack.com/services/T000/B000/XXXX" }
+  }
+  assert {
+    condition = length(digitalocean_monitor_alert.platform) == 3 && alltrue([
+      for a in digitalocean_monitor_alert.platform :
+      length(a.alerts[0].email) == 0 && length(a.alerts[0].slack) == 1 && a.alerts[0].slack[0].channel == "#alerts"
+    ])
+    error_message = "With only Slack set, alerts go to Slack and not email."
+  }
+}
+
 run "ssh_from_admin_cidrs" {
   command = plan
   variables {
-    admin_cidrs = ["198.51.100.7/32"]
+    admin_cidrs = ["100.100.100.7/32"]
   }
   assert {
     condition = anytrue([
       for r in digitalocean_firewall.platform.inbound_rule :
-      r.port_range == "22" && toset(r.source_addresses) == toset(["198.51.100.7/32"])
+      r.port_range == "22" && toset(r.source_addresses) == toset(["100.100.100.7/32"])
     ])
     error_message = "SSH must be open to admin_cidrs only."
   }
@@ -162,7 +210,41 @@ run "passwords_per_app" {
 run "same_region_rejected" {
   command = plan
   variables {
-    backup_region = "nyc3"
+    backup_region = "tor1"
   }
   expect_failures = [digitalocean_spaces_bucket.backups]
 }
+
+# Mistakes from the first real run, now caught before anything reaches DigitalOcean.
+run "rejects_admin_user_with_space" {
+  command = plan
+  variables {
+    admin_user = "joe oliver"
+  }
+  expect_failures = [var.admin_user]
+}
+
+run "rejects_placeholder_admin_cidr" {
+  command = plan
+  variables {
+    admin_cidrs = ["203.0.113.7/32"]
+  }
+  expect_failures = [var.admin_cidrs]
+}
+
+run "rejects_mangled_ssh_key" {
+  command = plan
+  variables {
+    ssh_public_key = "sh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGJ5dXQgdGhpcyBpcyBub3QgYSByZWFsIGtleQ joe@laptop"
+  }
+  expect_failures = [var.ssh_public_key]
+}
+
+run "rejects_example_domain" {
+  command = plan
+  variables {
+    farm_site_domain = "example.com"
+  }
+  expect_failures = [var.farm_site_domain]
+}
+

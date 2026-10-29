@@ -10,9 +10,9 @@ variable "state_passphrase" {
 
 # --- Regions and sizes ------------------------------------------------------------------------
 variable "droplet_region" {
-  description = "Region for the platform Droplet, its volume and VPC."
+  description = "Region for the platform Droplet, its volume and VPC. Check it has capacity first (see README: First-run gotchas)."
   type        = string
-  default     = "nyc3"
+  default     = "tor1"
 }
 
 variable "backup_region" {
@@ -39,9 +39,13 @@ variable "vpc_ip_range" {
 
 # --- Access -----------------------------------------------------------------------------------
 variable "ssh_public_key" {
-  description = "Public key to register for root/admin SSH (contents, e.g. 'ssh-ed25519 AAAA...'). Leave empty to use ssh_key_fingerprint."
+  description = "Public key to register for root/admin SSH: the whole line of e.g. ~/.ssh/id_ed25519.pub. Leave empty to use ssh_key_fingerprint."
   type        = string
   default     = ""
+  validation {
+    condition     = var.ssh_public_key == "" || can(regex("^(ssh-ed25519|ssh-rsa|ecdsa-sha2-nistp(256|384|521)) [A-Za-z0-9+/]{40,}={0,3}( .*)?$", trimspace(var.ssh_public_key)))
+    error_message = "ssh_public_key isn't a valid public key. Paste the whole line from: cat ~/.ssh/id_ed25519.pub"
+  }
 }
 
 variable "ssh_key_fingerprint" {
@@ -51,20 +55,52 @@ variable "ssh_key_fingerprint" {
 }
 
 variable "admin_cidrs" {
-  description = "Addresses allowed to SSH (port 22), e.g. [\"203.0.113.7/32\"]. Empty closes SSH; use Tailscale SSH instead."
+  description = "Addresses allowed to SSH (port 22), e.g. your IP as [\"<ip>/32\"] (find it with: curl -4 ifconfig.me). Empty closes SSH; use Tailscale SSH instead."
   type        = list(string)
   default     = []
+  validation {
+    condition     = alltrue([for c in var.admin_cidrs : can(cidrhost(c, 0))])
+    error_message = "Each admin_cidrs entry must be a CIDR: your IP plus /32, e.g. [\"<your-ip>/32\"]."
+  }
+  validation {
+    # 192.0.2.0/24, 198.51.100.0/24 and 203.0.113.0/24 are reserved for documentation, so they're never
+    # anyone's real address: an entry in them is a placeholder left in terraform.tfvars.
+    condition = alltrue([
+      for c in var.admin_cidrs : !can(cidrhost(c, 0)) ||
+      !contains(["192.0.2.0", "198.51.100.0", "203.0.113.0"], cidrhost("${split("/", c)[0]}/24", 0))
+    ])
+    error_message = "admin_cidrs still has a documentation placeholder. Use your real IP: curl -4 ifconfig.me"
+  }
 }
 
 variable "alert_email" {
-  description = "Where DigitalOcean Monitoring sends disk, CPU and memory alerts."
+  description = "Email for Droplet disk/CPU/memory alerts. Must be a verified DigitalOcean user: your login email or an accepted team member (a team contact email isn't enough). Empty: no email alerts."
   type        = string
+  default     = ""
+  validation {
+    condition     = var.alert_email == "" || (can(regex("^[^@ ]+@[^@ ]+\\.[^@ ]+$", var.alert_email)) && !can(regex("@example\\.(com|org|net)$", var.alert_email)))
+    error_message = "alert_email must be empty or a real, DigitalOcean-verified address."
+  }
+}
+
+variable "alert_slack" {
+  description = "Slack incoming webhook for Droplet alerts, e.g. { channel = \"#alerts\", url = \"https://hooks.slack.com/services/...\" }. Null: no Slack alerts."
+  type = object({
+    channel = string
+    url     = string
+  })
+  default   = null
+  sensitive = true
 }
 
 # --- Platform ---------------------------------------------------------------------------------
 variable "admin_user" {
   description = "Admin user created by provision.sh (root SSH login is disabled)."
   type        = string
+  validation {
+    condition     = can(regex("^[a-z_][a-z0-9_-]{0,31}$", var.admin_user))
+    error_message = "admin_user must be a Linux username: lowercase letters, digits, - or _, no spaces (e.g. \"joe\")."
+  }
 }
 
 variable "app_databases" {
@@ -79,11 +115,19 @@ variable "app_databases" {
 
 variable "farm_site_domain" {
   type = string
+  validation {
+    condition     = can(regex("^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$", var.farm_site_domain)) && !can(regex("(^|\\.)example\\.(com|org|net)$", var.farm_site_domain))
+    error_message = "farm_site_domain must be your real domain (lowercase), not the example placeholder."
+  }
 }
 
 variable "acme_email" {
   description = "Let's Encrypt account email (certificate expiry notices)."
   type        = string
+  validation {
+    condition     = can(regex("^[^@ ]+@[^@ ]+\\.[^@ ]+$", var.acme_email)) && !can(regex("@example\\.(com|org|net)$", var.acme_email))
+    error_message = "acme_email must be a real address you read, not the example placeholder."
+  }
 }
 
 variable "db_mem_limit" {

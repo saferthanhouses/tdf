@@ -70,7 +70,7 @@ tofu apply
 ```
 
 This creates:
-- **DigitalOcean:** the VPC, the Droplet (no `user_data`), the unformatted Block Volume, the Cloud Firewall, the backup bucket (another region, versioned) and the dumps bucket (expiring), three Spaces keys scoped to one bucket each, and email alerts for disk, CPU and memory.
+- **DigitalOcean:** the VPC, the Droplet (no `user_data`), the unformatted Block Volume, the Cloud Firewall, the backup bucket (another region, versioned) and the dumps bucket (expiring), three Spaces keys scoped to one bucket each, and disk/CPU/memory alerts (to `alert_email` and/or `alert_slack`, if set).
 - **GitHub:** the read-only deploy key, and the restore-test workflow's secrets and variables.
 - **Locally:** `out/platform.env` and `out/deploy_key`.
 
@@ -91,6 +91,35 @@ barnbooks is then at `https://barnbooks.<your-tailnet>.ts.net` on your devices, 
 **Keep safe:**
 - the state passphrase, and a backup of `terraform.tfstate`: it holds every generated secret, encrypted;
 - `PGBACKREST_CIPHER_PASS`, which is in the state and in `out/platform.env`. Store a copy in your password manager too: without it the backups can't be decrypted.
+
+### First-run gotchas
+
+Problems hit on the first real apply, and their fixes. The variable checks catch some of them before anything is created.
+
+- **Region has no capacity** (`Size is not available in this region`). New accounts often can't create Droplets in New York. List what a region currently offers your account:
+  ```sh
+  doctl compute size list -o json | jq -r '.[] | select(.available and (.regions|index("tor1"))) | .slug'
+  ```
+  An empty result means none.
+- **Moving regions after a failed first apply:**
+  - **"Can not delete default VPCs".** The first VPC created in a region becomes that region's default and can't be deleted. Rename it, stop managing it, and pick a new range:
+    ```sh
+    doctl vpcs update <id> --name <region>-default
+    tofu state rm digitalocean_vpc.platform
+    ```
+    Then set a different `vpc_ip_range`.
+  - **The volume's `prevent_destroy` blocks the move.** If it has never held data, comment out `prevent_destroy` on `digitalocean_volume.pgdata`, apply, then `git checkout droplet.tf`.
+- **`email is not verified`.** Alert emails must belong to a verified DigitalOcean user: your login email, or a team member who has accepted an invitation. A team contact email isn't enough. Use `alert_slack` instead, or leave both empty for now.
+- **SSH times out.** `admin_cidrs` must contain your current IP (`curl -4 ifconfig.me`). Home IPs change, so update it and re-apply when SSH stops working.
+- **"Failed to request input from user for variable var.state_passphrase".** Every `tofu` command reads the encrypted state, including `tofu state rm`. Export the passphrase in that terminal:
+  ```sh
+  read -rs TF_VAR_state_passphrase && export TF_VAR_state_passphrase
+  ```
+- **GitHub `401 Bad credentials` or `403 Resource not accessible`.**
+  - `GITHUB_TOKEN` must be exported in the same shell.
+  - With no `GITHUB_TOKEN`, the provider falls back to the `gh` CLI's token, so `unset GH_TOKEN` if that one is stale.
+  - The token needs Administration, Secrets and Variables (read and write) on this repository.
+- **`terraform.tfvars` holds tokens.** Keep it private: `chmod 600 infra/terraform/terraform.tfvars`.
 
 ## Deploying changes
 
