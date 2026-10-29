@@ -18,14 +18,19 @@ export function App() {
 		setTabState(t)
 		window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${t}`)
 	}
-	// Follow hash edits too (typing #pnl, or pasting a link while the app is open).
+	// Follow the URL when it changes underneath us: hash edits (typing #pnl), and Back/Forward. Back from a
+	// P&L link to the ledger changes the query string too, which browsers report as popstate, not hashchange.
 	useEffect(() => {
-		const onHash = () => {
+		const onUrl = () => {
 			const t = window.location.hash.slice(1)
 			if (t in tabs) setTabState(t as Tab)
 		}
-		window.addEventListener('hashchange', onHash)
-		return () => window.removeEventListener('hashchange', onHash)
+		window.addEventListener('hashchange', onUrl)
+		window.addEventListener('popstate', onUrl)
+		return () => {
+			window.removeEventListener('hashchange', onUrl)
+			window.removeEventListener('popstate', onUrl)
+		}
 	}, [])
 
 	return (

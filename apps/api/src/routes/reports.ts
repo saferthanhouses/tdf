@@ -30,6 +30,7 @@ export const reports = new Hono().get('/pnl', async c => {
 		.select([
 			periodExpr.as('period'),
 			'tt.pnl_role as role',
+			'tt.id as typeId',
 			'tt.name as typeName',
 			'mc.id as categoryId',
 			'mc.name as categoryName',
@@ -37,12 +38,13 @@ export const reports = new Hono().get('/pnl', async c => {
 			sql<string>`sum(t.amount)`.as('amount'),
 		])
 		.where('t.status', '=', 'posted')
-		.groupBy(['period', 'tt.pnl_role', 'tt.name', 'mc.id', 'mc.name', 'mc.group'])
+		.groupBy(['period', 'tt.pnl_role', 'tt.id', 'tt.name', 'mc.id', 'mc.name', 'mc.group'])
 	if (year !== null) query = query.where('t.date', '>=', `${year}-01-01`).where('t.date', '<=', `${year}-12-31`)
 
 	const aggregates: PnlAggregate[] = (await query.execute()).map(r => ({
 		period: r.period,
 		role: r.role,
+		typeId: r.typeId,
 		typeName: r.typeName,
 		categoryId: r.categoryId,
 		categoryName: r.categoryName,

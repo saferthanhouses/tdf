@@ -13,6 +13,7 @@ export type PnlPeriod = 'month' | 'year'
 export interface PnlAggregate {
 	period: string // 'YYYY-MM' or 'YYYY'
 	role: PnlRole
+	typeId: number
 	typeName: string
 	categoryId: number | null
 	categoryName: string | null
@@ -20,10 +21,18 @@ export interface PnlAggregate {
 	cents: number
 }
 
+// What a line's numbers are made of, so the ledger can show exactly those transactions.
+export interface PnlLink {
+	role: PnlRole
+	categoryId?: number | null // operating and capex lines
+	typeId?: number // other cash movement lines
+}
+
 export interface PnlLine {
 	label: string
 	values: number[] // cents, one per column
 	total: number
+	link?: PnlLink
 }
 
 export interface PnlPercentLine {
@@ -79,6 +88,9 @@ function sectionFor(group: ManagementCategoryGroup | null): SectionKey {
 	}
 }
 
+// These totals are exactly one role's transactions, so they can link to the ledger too.
+const withTotalLink = (section: PnlSection, role: PnlRole): PnlSection => ({ ...section, total: { ...section.total, link: { role } } })
+
 const sumLine = (label: string, lines: PnlLine[], width: number): PnlLine => {
 	const values = Array.from({ length: width }, (_, i) => lines.reduce((s, l) => s + (l.values[i] ?? 0), 0))
 	return { label, values, total: values.reduce((a, b) => a + b, 0) }
@@ -98,10 +110,10 @@ export function buildPnl(
 
 	// Lines keyed by section and category (operating, capex) or by type name (other).
 	const lines = new Map<string, { order: number; line: PnlLine }>()
-	const add = (key: string, label: string, order: number, columnIndex: number, cents: number) => {
+	const add = (key: string, label: string, order: number, link: PnlLink, columnIndex: number, cents: number) => {
 		let entry = lines.get(key)
 		if (!entry) {
-			entry = { order, line: { label, values: Array(width).fill(0), total: 0 } }
+			entry = { order, line: { label, values: Array(width).fill(0), total: 0, link } }
 			lines.set(key, entry)
 		}
 		entry.line.values[columnIndex]! += cents
@@ -113,9 +125,9 @@ export function buildPnl(
 		if (i === undefined || a.cents === 0) continue
 		const category = a.categoryName ?? 'Uncategorised'
 		const order = a.categoryId ?? Number.MAX_SAFE_INTEGER
-		if (a.role === 'operating') add(`${sectionFor(a.group)}|${category}`, category, order, i, a.cents)
-		else if (a.role === 'capex') add(`capex|${category}`, category, order, i, a.cents)
-		else add(`other|${a.typeName}`, a.typeName, 0, i, a.cents)
+		if (a.role === 'operating') add(`${sectionFor(a.group)}|${category}`, category, order, { role: 'operating', categoryId: a.categoryId }, i, a.cents)
+		else if (a.role === 'capex') add(`capex|${category}`, category, order, { role: 'capex', categoryId: a.categoryId }, i, a.cents)
+		else add(`other|${a.typeName}`, a.typeName, 0, { role: 'other', typeId: a.typeId }, i, a.cents)
 	}
 
 	const section = (prefix: string, title: string, totalLabel: string): PnlSection => {
@@ -145,7 +157,7 @@ export function buildPnl(
 		overhead,
 		operatingProfit,
 		profitMarginPct: percent('Profit margin %', operatingProfit, revenue.total),
-		capex: section('capex', 'Capital expenditure', 'Total capital expenditure'),
-		otherCashMovements: section('other', 'Other cash movements (not in profit)', 'Net other cash movements'),
+		capex: withTotalLink(section('capex', 'Capital expenditure', 'Total capital expenditure'), 'capex'),
+		otherCashMovements: withTotalLink(section('other', 'Other cash movements (not in profit)', 'Net other cash movements'), 'other'),
 	}
 }

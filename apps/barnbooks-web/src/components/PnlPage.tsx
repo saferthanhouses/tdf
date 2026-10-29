@@ -1,6 +1,32 @@
 import { useEffect, useState } from 'react'
 import { api, type PnlLine, type PnlPercentLine, type PnlPeriod, type PnlReport, type PnlSection } from '../api'
 import { formatMoney } from '../format'
+import { defaultSort, emptyFilters, writeLedgerParams, type LedgerFilters } from '../ledgerView'
+
+// Ledger URL showing exactly the transactions behind one P&L number: same role and category (or type), same
+// period. The Total column is the year (monthly view) or all time (yearly view).
+type HrefFor = (line: PnlLine, column: number | 'total') => string | undefined
+function makeHrefFor(report: PnlReport): HrefFor {
+	return (line, column) => {
+		if (!line.link) return undefined
+		const period = column === 'total' ? (report.period === 'month' ? String(report.year) : '') : report.columns[column]!.key
+		const filters: LedgerFilters = {
+			...emptyFilters,
+			role: line.link.role,
+			category: line.link.categoryId === undefined ? null : (line.link.categoryId ?? 'none'),
+			type: line.link.typeId ?? null,
+		}
+		return `${window.location.pathname}${writeLedgerParams(filters, defaultSort, period)}#ledger`
+	}
+}
+
+// Switch to the ledger in place (Back returns here); modified clicks open a new tab as usual.
+function openInLedger(e: React.MouseEvent<HTMLAnchorElement>) {
+	if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+	e.preventDefault()
+	window.history.pushState(null, '', e.currentTarget.getAttribute('href'))
+	window.dispatchEvent(new HashChangeEvent('hashchange'))
+}
 
 const money = (cents: number) => (cents === 0 ? <span className="muted">–</span> : formatMoney(cents / 100))
 const pct = (v: number | null) => (v === null ? <span className="muted">–</span> : `${v.toFixed(1)}%`)
@@ -28,6 +54,7 @@ export function PnlPage() {
 	}, [period, year])
 
 	const width = report ? report.columns.length + 2 : 1
+	const hrefFor = report ? makeHrefFor(report) : () => undefined
 
 	return (
 		<section className="pnl">
@@ -76,19 +103,19 @@ export function PnlPage() {
 							</tr>
 						</thead>
 						<tbody>
-							<Section section={report.revenue} width={width} />
-							<Section section={report.directCosts} width={width} />
+							<Section hrefFor={hrefFor} section={report.revenue} width={width} />
+							<Section hrefFor={hrefFor} section={report.directCosts} width={width} />
 							<Line line={report.grossMargin} kind="result" />
 							<PercentLine line={report.grossMarginPct} />
 							<Spacer width={width} />
-							<Section section={report.sellingCosts} width={width} />
-							<Section section={report.overhead} width={width} />
+							<Section hrefFor={hrefFor} section={report.sellingCosts} width={width} />
+							<Section hrefFor={hrefFor} section={report.overhead} width={width} />
 							<Line line={report.operatingProfit} kind="result strong" />
 							<PercentLine line={report.profitMarginPct} />
 							<Spacer width={width} />
-							<Section section={report.capex} width={width} />
+							<Section hrefFor={hrefFor} section={report.capex} width={width} />
 							<Spacer width={width} />
-							<Section section={report.otherCashMovements} width={width} />
+							<Section hrefFor={hrefFor} section={report.otherCashMovements} width={width} />
 						</tbody>
 					</table>
 				</div>
@@ -102,7 +129,7 @@ export function PnlPage() {
 	)
 }
 
-function Section({ section, width }: { section: PnlSection; width: number }) {
+function Section({ section, width, hrefFor }: { section: PnlSection; width: number; hrefFor: HrefFor }) {
 	return (
 		<>
 			<tr className="pnl-section">
@@ -115,23 +142,33 @@ function Section({ section, width }: { section: PnlSection; width: number }) {
 					</td>
 				</tr>
 			) : (
-				section.lines.map(line => <Line key={line.label} line={line} />)
+				section.lines.map(line => <Line key={line.label} line={line} hrefFor={hrefFor} />)
 			)}
-			<Line line={section.total} kind="total" />
+			<Line line={section.total} kind="total" hrefFor={hrefFor} />
 		</>
 	)
 }
 
-function Line({ line, kind }: { line: PnlLine; kind?: string }) {
+function Line({ line, kind, hrefFor }: { line: PnlLine; kind?: string; hrefFor?: HrefFor }) {
+	const cell = (cents: number, column: number | 'total') => {
+		const href = cents !== 0 ? hrefFor?.(line, column) : undefined
+		return href ? (
+			<a className="pnl-link" href={href} onClick={openInLedger} title={`Show these transactions in the ledger`}>
+				{money(cents)}
+			</a>
+		) : (
+			money(cents)
+		)
+	}
 	return (
 		<tr className={kind ? `pnl-${kind.split(' ').join(' pnl-')}` : undefined}>
 			<td>{line.label}</td>
 			{line.values.map((v, i) => (
 				<td key={i} className={`num${v < 0 ? ' out' : ''}`}>
-					{money(v)}
+					{cell(v, i)}
 				</td>
 			))}
-			<td className={`num pnl-row-total${line.total < 0 ? ' out' : ''}`}>{money(line.total)}</td>
+			<td className={`num pnl-row-total${line.total < 0 ? ' out' : ''}`}>{cell(line.total, 'total')}</td>
 		</tr>
 	)
 }

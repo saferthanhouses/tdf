@@ -1,6 +1,6 @@
 // Filtering and sorting for the ledger table. Pure functions over posted transactions; names come from the
 // lookups (nameOf), so sorting by account/type/category/enterprise follows what the table shows.
-import type { Transaction } from './api'
+import type { PnlRole, Transaction } from './api'
 
 export type SortKey = 'date' | 'account' | 'vendor' | 'type' | 'category' | 'enterprise' | 'amount' | 'notes'
 export type SortDir = 'asc' | 'desc'
@@ -16,10 +16,14 @@ export interface LedgerFilters {
 	type: IdFilter
 	category: IdFilter
 	enterprise: IdFilter
+	// How the transaction's type counts in the P&L. Set when arriving from a P&L number, so the ledger's net
+	// matches it (a category's P&L line only counts its revenue/expense-type transactions).
+	role: PnlRole | null
 	vendor: string
 }
 
-export const emptyFilters: LedgerFilters = { account: null, type: null, category: null, enterprise: null, vendor: '' }
+export const emptyFilters: LedgerFilters = { account: null, type: null, category: null, enterprise: null, role: null, vendor: '' }
+export const PNL_ROLES: PnlRole[] = ['operating', 'capex', 'other']
 export const defaultSort: LedgerSort = { key: 'date', dir: 'desc' }
 
 type NameList = 'accounts' | 'vendors' | 'transactionTypes' | 'managementCategories' | 'enterprises'
@@ -30,10 +34,17 @@ export const vendorLabel = (t: Transaction, nameOf: NameOf) => nameOf('vendors',
 const matchesId = (filter: IdFilter, value: number | null) =>
 	filter === null || (filter === 'none' ? value === null : value === filter)
 
-export function filterLedger(rows: Transaction[], f: LedgerFilters, nameOf: NameOf): Transaction[] {
+// roleOf maps a transaction type id to its P&L role (from the lookups).
+export function filterLedger(
+	rows: Transaction[],
+	f: LedgerFilters,
+	nameOf: NameOf,
+	roleOf: (typeId: number | null) => PnlRole | undefined = () => undefined,
+): Transaction[] {
 	const text = f.vendor.trim().toLowerCase()
 	return rows.filter(
 		t =>
+			(f.role === null || roleOf(t.transaction_type_id) === f.role) &&
 			matchesId(f.account, t.account_id) &&
 			matchesId(f.type, t.transaction_type_id) &&
 			matchesId(f.category, t.management_category_id) &&
@@ -80,7 +91,7 @@ export function sortLedger(rows: Transaction[], sort: LedgerSort, nameOf: NameOf
 }
 
 // Filters and sort round-trip through the page URL, so a reload or bookmark keeps the view.
-const ID_PARAMS: [keyof Omit<LedgerFilters, 'vendor'>, string][] = [
+const ID_PARAMS: [Exclude<keyof LedgerFilters, 'vendor' | 'role'>, string][] = [
 	['account', 'account'],
 	['type', 'type'],
 	['category', 'category'],
@@ -88,21 +99,38 @@ const ID_PARAMS: [keyof Omit<LedgerFilters, 'vendor'>, string][] = [
 ]
 const SORT_KEYS: SortKey[] = ['date', 'account', 'vendor', 'type', 'category', 'enterprise', 'amount', 'notes']
 
+// A period is a whole year ('2025'), a month ('2025-06'), or '' for all time.
+export const isPeriod = (v: string) => /^\d{4}(-(0[1-9]|1[0-2]))?$/.test(v)
+
+export function periodRange(period: string): { from?: string; to?: string } {
+	if (!isPeriod(period)) return {}
+	if (period.length === 4) return { from: `${period}-01-01`, to: `${period}-12-31` }
+	const [y, m] = period.split('-').map(Number) as [number, number]
+	const last = new Date(Date.UTC(y, m, 0)).getUTCDate()
+	return { from: `${period}-01`, to: `${period}-${String(last).padStart(2, '0')}` }
+}
+
 export function readLedgerParams(search: string) {
 	const p = new URLSearchParams(search)
 	const id = (v: string | null): IdFilter => (v === 'none' ? 'none' : v && /^\d+$/.test(v) ? Number(v) : null)
-	const filters: LedgerFilters = { ...emptyFilters, vendor: p.get('vendor') ?? '' }
+	const role = p.get('role') as PnlRole | null
+	const filters: LedgerFilters = {
+		...emptyFilters,
+		vendor: p.get('vendor') ?? '',
+		role: role && PNL_ROLES.includes(role) ? role : null,
+	}
 	for (const [key, param] of ID_PARAMS) filters[key] = id(p.get(param))
 	const key = p.get('sort') as SortKey | null
 	const sort: LedgerSort = key && SORT_KEYS.includes(key) ? { key, dir: p.get('dir') === 'asc' ? 'asc' : 'desc' } : defaultSort
-	const month = /^\d{4}-\d{2}$/.test(p.get('month') ?? '') ? p.get('month')! : ''
-	return { filters, sort, month }
+	const period = isPeriod(p.get('period') ?? '') ? p.get('period')! : ''
+	return { filters, sort, period }
 }
 
-export function writeLedgerParams(filters: LedgerFilters, sort: LedgerSort, month: string): string {
+export function writeLedgerParams(filters: LedgerFilters, sort: LedgerSort, period: string): string {
 	const p = new URLSearchParams()
-	if (month) p.set('month', month)
+	if (period) p.set('period', period)
 	for (const [key, param] of ID_PARAMS) if (filters[key] !== null) p.set(param, String(filters[key]))
+	if (filters.role) p.set('role', filters.role)
 	if (filters.vendor.trim()) p.set('vendor', filters.vendor)
 	if (sort.key !== defaultSort.key || sort.dir !== defaultSort.dir) {
 		p.set('sort', sort.key)
