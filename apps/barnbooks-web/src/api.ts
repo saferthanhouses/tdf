@@ -67,6 +67,8 @@ export interface PnlLine {
 	label: string
 	values: number[]
 	total: number
+	// The transactions behind the line, for opening them in the ledger.
+	link?: { role: PnlRole; categoryId?: number | null; typeId?: number }
 }
 export interface PnlPercentLine {
 	label: string

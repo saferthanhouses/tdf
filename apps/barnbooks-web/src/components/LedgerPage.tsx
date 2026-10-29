@@ -5,6 +5,7 @@ import { formatMoney } from '../format'
 import {
 	emptyFilters,
 	filterLedger,
+	periodRange,
 	readLedgerParams,
 	sortLedger,
 	vendorLabel,
@@ -14,12 +15,6 @@ import {
 	type LedgerSort,
 	type SortKey,
 } from '../ledgerView'
-
-function monthRange(month: string) {
-	const [y, m] = month.split('-').map(Number) as [number, number]
-	const last = new Date(Date.UTC(y, m, 0)).getUTCDate()
-	return { from: `${month}-01`, to: `${month}-${String(last).padStart(2, '0')}` }
-}
 
 const COLUMNS: { key: SortKey; label: string; num?: boolean }[] = [
 	{ key: 'date', label: 'Date' },
@@ -35,8 +30,8 @@ const COLUMNS: { key: SortKey; label: string; num?: boolean }[] = [
 export function LedgerPage() {
 	const { lookups, nameOf } = useLookups()
 	const initial = useMemo(() => readLedgerParams(window.location.search), [])
-	// All time by default: posting a backlog of older drafts shouldn't land outside the visible month.
-	const [month, setMonth] = useState(initial.month)
+	// '' (all time, the default), a month 'YYYY-MM', or a whole year 'YYYY' (from a P&L link).
+	const [period, setPeriod] = useState(initial.period)
 	const [filters, setFilters] = useState<LedgerFilters>(initial.filters)
 	const [sort, setSort] = useState<LedgerSort>(initial.sort)
 	const [rows, setRows] = useState<Transaction[] | null>(null)
@@ -44,12 +39,12 @@ export function LedgerPage() {
 
 	const load = useCallback(async () => {
 		try {
-			setRows(await api.transactions('posted', month ? monthRange(month) : {}))
+			setRows(await api.transactions('posted', periodRange(period)))
 			setError(null)
 		} catch (e) {
 			setError((e as Error).message)
 		}
-	}, [month])
+	}, [period])
 
 	useEffect(() => {
 		void load()
@@ -71,13 +66,16 @@ export function LedgerPage() {
 	// Keep the view in the URL so a reload or bookmark restores it; clear it when leaving the tab.
 	useEffect(() => {
 		const { pathname, hash } = window.location
-		window.history.replaceState(null, '', pathname + writeLedgerParams(filters, sort, month) + hash)
-	}, [filters, sort, month])
+		window.history.replaceState(null, '', pathname + writeLedgerParams(filters, sort, period) + hash)
+	}, [filters, sort, period])
 	useEffect(() => () => window.history.replaceState(null, '', window.location.pathname + window.location.hash), [])
 
 	const shown = useMemo(
-		() => (rows ? sortLedger(filterLedger(rows, filters, nameOf), sort, nameOf) : []),
-		[rows, filters, sort, nameOf],
+		() => {
+			const roleOf = (typeId: number | null) => lookups.transactionTypes.find(t => t.id === typeId)?.pnl_role
+			return rows ? sortLedger(filterLedger(rows, filters, nameOf, roleOf), sort, nameOf) : []
+		},
+		[rows, filters, sort, nameOf, lookups],
 	)
 
 	const unpost = async (id: number) => {
@@ -100,10 +98,15 @@ export function LedgerPage() {
 			<div className="toolbar">
 				<h2>Ledger</h2>
 				<div className="spacer" />
+				{period.length === 4 && (
+					<button className="chip" title="Showing the whole year; click to show all time" onClick={() => setPeriod('')}>
+						Year {period} <span aria-hidden="true">×</span>
+					</button>
+				)}
 				<label>
-					Month <input type="month" value={month} onChange={e => setMonth(e.target.value)} />
+					Month <input type="month" value={period.length === 7 ? period : ''} onChange={e => setPeriod(e.target.value)} />
 				</label>
-				<button onClick={() => setMonth('')} disabled={!month}>
+				<button onClick={() => setPeriod('')} disabled={!period}>
 					All time
 				</button>
 			</div>
@@ -134,6 +137,17 @@ export function LedgerPage() {
 					value={filters.enterprise}
 					onChange={v => setFilter('enterprise', v)}
 				/>
+				<select
+					aria-label="P&L role"
+					className={filters.role ? 'active' : undefined}
+					value={filters.role ?? ''}
+					onChange={e => setFilter('role', (e.target.value || null) as LedgerFilters['role'])}
+				>
+					<option value="">Any P&amp;L role</option>
+					<option value="operating">P&amp;L revenue / expense</option>
+					<option value="capex">P&amp;L capital expenditure</option>
+					<option value="other">Other cash movements</option>
+				</select>
 				{filtering && (
 					<button className="link" onClick={() => setFilters(emptyFilters)}>
 						Clear filters
@@ -145,7 +159,7 @@ export function LedgerPage() {
 			{!rows ? (
 				<p className="muted">Loading…</p>
 			) : rows.length === 0 ? (
-				<p className="muted">No posted transactions{month ? ' in this month' : ''}.</p>
+				<p className="muted">No posted transactions{period ? ' in this period' : ''}.</p>
 			) : (
 				<div className="table-wrap">
 					<table className="ledger-table">
