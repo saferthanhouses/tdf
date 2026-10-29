@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { LookupsProvider } from './lookups'
 import { DraftsPage } from './components/DraftsPage'
 import { LedgerPage } from './components/LedgerPage'
@@ -9,7 +9,24 @@ const tabs = { drafts: 'Drafts', ledger: 'Ledger', pnl: 'P&L', categories: 'Cate
 type Tab = keyof typeof tabs
 
 export function App() {
-	const [tab, setTab] = useState<Tab>('drafts')
+	// The tab lives in the URL hash (#ledger) so a reload stays on it.
+	const [tab, setTabState] = useState<Tab>(() => {
+		const fromHash = window.location.hash.slice(1)
+		return fromHash in tabs ? (fromHash as Tab) : 'drafts'
+	})
+	const setTab = (t: Tab) => {
+		setTabState(t)
+		window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${t}`)
+	}
+	// Follow hash edits too (typing #pnl, or pasting a link while the app is open).
+	useEffect(() => {
+		const onHash = () => {
+			const t = window.location.hash.slice(1)
+			if (t in tabs) setTabState(t as Tab)
+		}
+		window.addEventListener('hashchange', onHash)
+		return () => window.removeEventListener('hashchange', onHash)
+	}, [])
 
 	return (
 		<>
