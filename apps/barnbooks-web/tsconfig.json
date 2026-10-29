@@ -8,5 +8,7 @@
     "jsx": "react-jsx",
     "types": []
   },
-  "include": ["src"]
+  "include": ["src"],
+  // Tests run under Node via tsx (npm test), not in the browser build.
+  "exclude": ["src/**/*.test.ts"]
 }
