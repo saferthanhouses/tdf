@@ -2,9 +2,11 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { buildPnl, pnlColumns, type PnlAggregate } from './pnl.js'
 
+const TYPE_IDS: Record<string, number> = { Expense: 1, Income: 2, 'Asset Purchase': 3, 'Owner Contribution': 5, 'Loan Principal': 8 }
 const agg = (period: string, role: PnlAggregate['role'], typeName: string, category: [number, string, PnlAggregate['group']] | null, cents: number): PnlAggregate => ({
 	period,
 	role,
+	typeId: TYPE_IDS[typeName]!,
 	typeName,
 	categoryId: category?.[0] ?? null,
 	categoryName: category?.[1] ?? null,
@@ -95,3 +97,14 @@ test('periods outside the columns and zero amounts are ignored', () => {
 	assert.equal(report.overhead.lines.find(l => l.label === 'Fuel')!.total, -21941)
 	assert.ok(report.directCosts.total.values.every((v, i) => i === 5 || i === 6 || v === 0))
 })
+
+test('lines link to exactly the transactions they sum', () => {
+	assert.deepEqual(report.directCosts.lines[0]!.link, { role: 'operating', categoryId: 1 })
+	assert.deepEqual(report.capex.lines[1]!.link, { role: 'capex', categoryId: 36 })
+	assert.deepEqual(report.otherCashMovements.lines[0]!.link, { role: 'other', typeId: 8 })
+	assert.deepEqual(report.capex.total.link, { role: 'capex' })
+	assert.deepEqual(report.otherCashMovements.total.link, { role: 'other' })
+	assert.equal(report.revenue.total.link, undefined, 'section totals mixing groups have no single filter')
+	assert.equal(report.grossMargin.link, undefined)
+})
+
