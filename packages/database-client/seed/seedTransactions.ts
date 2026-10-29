@@ -1,8 +1,12 @@
-// Imports the old Google Sheet's Transaction Ledger (exported as CSV).
+// Imports the old Google Sheet's Transaction Ledger (exported as CSV or tab-separated, with a header row;
+// columns are found by name, so their order doesn't matter).
 //
-//   npm run db:seed:transactions                       # from the repo root, uses seed/transactions.csv
-//   npm run db:seed:transactions -- --dry-run          # print the plan without writing
-//   npm run db:seed:transactions -- path/to/file.csv
+//   npm run db:seed:transactions                                    # from the repo root, uses seed/transactions.csv
+//   npm run db:seed:transactions -- --dry-run                       # print the plan without writing
+//   npm run db:seed:transactions -- seed/2025_transactions.tsv
+//
+// A ledger row that matches a transaction already imported from a bank CSV (same account, date and amount)
+// is skipped, so the same purchase isn't recorded twice. --include-bank-overlaps imports them anyway.
 //
 // Rows with a type and management category are imported as posted (they come from the ledger); rows missing
 // either become drafts. Vendors are matched by name, then by match pattern; unknown names become new vendors.
@@ -19,6 +23,9 @@ const ACCOUNT_ALIASES: Record<string, string> = {
 	'': 'Capital One - 9171', // August rows were entered without an account
 	'capital one': 'Capital One - 9171',
 }
+const CATEGORY_ALIASES: Record<string, string> = {
+	genera: 'General farm supplies', // truncated in the 2025 sheet
+}
 const ENTERPRISE_ALIASES: Record<string, string> = {
 	layers: 'Eggs',
 	'prepared / value add': 'Prepared / Value-added',
@@ -27,6 +34,7 @@ const ENTERPRISE_ALIASES: Record<string, string> = {
 
 const args = process.argv.slice(2)
 const dryRun = args.includes('--dry-run')
+const includeBankOverlaps = args.includes('--include-bank-overlaps')
 const file = resolve(args.find(a => !a.startsWith('--')) ?? 'seed/transactions.csv')
 
 const lower = (s: string) => s.toLowerCase()
@@ -93,7 +101,7 @@ async function main() {
 		const amount = Number(r.amount)
 		if (!r.amount || Number.isNaN(amount)) problems.push(`  line ${r.line}: invalid amount "${r.amount}"`)
 		const transaction_type_id = lookup('transaction type', types, r.type, r.line)
-		const management_category_id = lookup('management category', categories, r.category, r.line)
+		const management_category_id = lookup('management category', categories, CATEGORY_ALIASES[lower(r.category)] ?? r.category, r.line)
 		const vendor = resolveVendor(r.vendor)
 
 		// Identical rows are legitimate (two equal purchases on one day), so the occurrence count is part of the hash.
@@ -121,7 +129,12 @@ async function main() {
 	})
 
 	if (problems.length) {
-		console.error(`Not imported. Fix these in the sheet or add the names in the app:\n${problems.join('\n')}`)
+		// Transaction types in the account column almost always mean the two headers are swapped.
+		const typeNames = new Set(types.map(t => lower(t.name)))
+		const swapped = rows.filter(r => typeNames.has(lower(r.account))).length > rows.length / 2
+		if (swapped) problems.unshift('  The Account column holds transaction types: are the Account and Transaction Type headers swapped?')
+		console.error(`Not imported. Fix these in the sheet or add the names in the app:\n${problems.slice(0, 40).join('\n')}` +
+			(problems.length > 40 ? `\n  ... and ${problems.length - 40} more` : ''))
 		process.exitCode = 1
 		return
 	}
@@ -135,13 +148,48 @@ async function main() {
 				.execute()
 		).map(r => r.dedupe_hash),
 	)
-	const toInsert = planned.filter(p => !existingHashes.has(p.values.dedupe_hash))
+	const notYetImported = planned.filter(p => !existingHashes.has(p.values.dedupe_hash))
+
+	// Transactions already imported from bank CSVs, counted per account/date/amount so that two identical
+	// purchases on one day are only skipped if the bank import also has two.
+	const overlapKey = (accountId: number, date: string, amount: string) => `${accountId}|${date}|${Number(amount).toFixed(2)}`
+	const bankCounts = new Map<string, number>()
+	if (notYetImported.length) {
+		const dates = notYetImported.map(p => p.values.date).sort()
+		const bankRows = await db
+			.selectFrom('transaction')
+			.select(['account_id', 'date', 'amount'])
+			.where('import_batch_id', 'is not', null)
+			.where('date', '>=', dates[0]!)
+			.where('date', '<=', dates[dates.length - 1]!)
+			.execute()
+		for (const b of bankRows) {
+			const key = overlapKey(b.account_id, b.date, b.amount)
+			bankCounts.set(key, (bankCounts.get(key) ?? 0) + 1)
+		}
+	}
+	const overlaps: typeof planned = []
+	const toInsert = notYetImported.filter(p => {
+		const key = overlapKey(p.values.account_id, p.values.date, p.values.amount)
+		const n = bankCounts.get(key) ?? 0
+		if (n === 0 || includeBankOverlaps) return true
+		bankCounts.set(key, n - 1)
+		overlaps.push(p)
+		return false
+	})
 	const vendorsToCreate = [...new Set(toInsert.flatMap(p => (p.vendor.newVendor ? [p.vendor.newVendor] : [])))]
 	const count = <T,>(list: T[], f: (x: T) => boolean) => list.filter(f).length
 
 	console.log(`${rows.length} rows in ${file}`)
 	console.log(`  ${count(rows, r => r.repaired)} rows had values split on commas and were rejoined`)
-	console.log(`  ${existingHashes.size} already imported, ${toInsert.length} to import:`)
+	console.log(`  ${existingHashes.size} already imported by this script`)
+	if (overlaps.length) {
+		console.log(`  ${overlaps.length} skipped: already imported from a bank CSV (same account, date and amount; --include-bank-overlaps to import anyway)`)
+		const accountName = (id: number) => accounts.find(a => a.id === id)?.name ?? id
+		for (const p of overlaps.slice(0, 10)) console.log(`    line ${p.line}: ${p.values.date} ${accountName(p.values.account_id)} ${p.values.amount}`)
+		if (overlaps.length > 10) console.log(`    ... and ${overlaps.length - 10} more`)
+	}
+	console.log(`  ${toInsert.length} to import:`)
 	for (const a of accounts) {
 		const n = count(toInsert, p => p.values.account_id === a.id)
 		if (n) console.log(`    ${a.name}: ${n}`)
