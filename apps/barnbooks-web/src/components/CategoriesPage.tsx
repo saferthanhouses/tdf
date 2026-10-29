@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { api, groupLabels, type LookupKind, type ManagementCategoryGroup, type Vendor } from '../api'
+import { api, groupLabels, type LookupKind, type ManagementCategoryGroup, type PnlRole, type Vendor } from '../api'
 import { LookupSelect, useLookups } from '../lookups'
 import { CommitInput } from './CommitInput'
 import { MatchPatternChips } from './MatchPatterns'
@@ -28,7 +28,7 @@ export function CategoriesPage() {
 				reference the entry, not its name.
 			</p>
 
-			<LookupList title="Transaction types" kind="transaction-types" items={lookups.transactionTypes} save={save} />
+			<LookupList title="Transaction types" kind="transaction-types" items={lookups.transactionTypes} save={save} withRole />
 
 			<LookupList
 				title="Management categories"
@@ -51,19 +51,26 @@ function LookupList({
 	items,
 	save,
 	withGroup = false,
+	withRole = false,
 }: {
 	title: string
 	kind: LookupKind
-	items: { id: number; name: string; archived: boolean; group?: ManagementCategoryGroup }[]
+	items: { id: number; name: string; archived: boolean; group?: ManagementCategoryGroup; pnl_role?: PnlRole }[]
 	save: (action: () => Promise<unknown>) => Promise<void>
 	withGroup?: boolean
+	withRole?: boolean
 }) {
 	const [name, setName] = useState('')
 	const [group, setGroup] = useState<ManagementCategoryGroup>('direct_production')
+	const [role, setRole] = useState<PnlRole>('other')
 
 	const add = () =>
 		save(async () => {
-			await api.createLookup(kind, withGroup ? { name: name.trim(), group } : { name: name.trim() })
+			await api.createLookup(kind, {
+				name: name.trim(),
+				...(withGroup && { group }),
+				...(withRole && { pnl_role: role }),
+			})
 			setName('')
 		})
 
@@ -84,6 +91,11 @@ function LookupList({
 									<GroupSelect value={item.group!} onChange={g => save(() => api.updateLookup(kind, item.id, { group: g }))} />
 								</td>
 							)}
+							{withRole && (
+								<td>
+									<RoleSelect value={item.pnl_role!} onChange={r => save(() => api.updateLookup(kind, item.id, { pnl_role: r }))} />
+								</td>
+							)}
 							<td className="row-actions">
 								<button className="link" onClick={() => save(() => api.updateLookup(kind, item.id, { archived: !item.archived }))}>
 									{item.archived ? 'Restore' : 'Archive'}
@@ -102,6 +114,7 @@ function LookupList({
 			>
 				<input value={name} onChange={e => setName(e.target.value)} placeholder={`New ${title.toLowerCase().replace(/s$/, '')}`} />
 				{withGroup && <GroupSelect value={group} onChange={setGroup} />}
+				{withRole && <RoleSelect value={role} onChange={setRole} />}
 				<button type="submit" disabled={!name.trim()}>
 					Add
 				</button>
@@ -210,5 +223,23 @@ function VendorList({ vendors, save }: { vendors: Vendor[]; save: (action: () =>
 				</button>
 			</form>
 		</div>
+	)
+}
+
+const roleLabels: Record<PnlRole, string> = {
+	operating: 'P&L: revenue / expense',
+	capex: 'P&L: capital expenditure',
+	other: 'Not in P&L (other cash movement)',
+}
+
+function RoleSelect({ value, onChange }: { value: PnlRole; onChange: (r: PnlRole) => void }) {
+	return (
+		<select aria-label="How this type counts in the P&L" value={value} onChange={e => onChange(e.target.value as PnlRole)}>
+			{(Object.keys(roleLabels) as PnlRole[]).map(r => (
+				<option key={r} value={r}>
+					{roleLabels[r]}
+				</option>
+			))}
+		</select>
 	)
 }

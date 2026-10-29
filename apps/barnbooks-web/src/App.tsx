@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { LookupsProvider } from './lookups'
 import { DraftsPage } from './components/DraftsPage'
 import { LedgerPage } from './components/LedgerPage'
+import { PnlPage } from './components/PnlPage'
 import { CategoriesPage } from './components/CategoriesPage'
 
-const tabs = { drafts: 'Drafts', ledger: 'Ledger', categories: 'Categories & vendors' } as const
+const tabs = { drafts: 'Drafts', ledger: 'Ledger', pnl: 'P&L', categories: 'Categories & vendors' } as const
 type Tab = keyof typeof tabs
 
 export function App() {
@@ -26,6 +27,7 @@ export function App() {
 				<LookupsProvider refreshKey={tab}>
 					{tab === 'drafts' && <DraftsPage />}
 					{tab === 'ledger' && <LedgerPage />}
+					{tab === 'pnl' && <PnlPage />}
 					{tab === 'categories' && <CategoriesPage />}
 				</LookupsProvider>
 			</main>

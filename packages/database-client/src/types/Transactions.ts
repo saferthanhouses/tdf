@@ -10,11 +10,16 @@ export type ManagementCategoryGroup =
 
 export type TransactionStatus = 'draft' | 'posted' | 'dismissed'
 
+// How a transaction type counts in the P&L: operating (by category section), capex (its own row), or other
+// (excluded from profit, listed as other cash movements).
+export type PnlRole = 'operating' | 'capex' | 'other'
+
 // Lookup tables are editable from the UI, so values live in the database rather than in TS unions.
 export interface TransactionTypeTable {
 	id: Generated<number>
 	name: string
 	archived: Generated<boolean>
+	pnl_role: Generated<PnlRole>
 }
 
 export interface ManagementCategoryTable {

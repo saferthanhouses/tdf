@@ -3,6 +3,7 @@ import type {
 	Enterprise,
 	ManagementCategory,
 	ManagementCategoryGroup,
+	PnlRole,
 	Transaction as DbTransaction,
 	TransactionStatus,
 	TransactionType,
@@ -12,7 +13,7 @@ import type {
 // JSON turns Dates into strings.
 type Wire<T> = { [K in keyof T]: T[K] extends Date ? string : T[K] extends Date | null ? string | null : T[K] }
 
-export type { Account, Enterprise, ManagementCategory, ManagementCategoryGroup, TransactionStatus, TransactionType, Vendor }
+export type { Account, Enterprise, ManagementCategory, ManagementCategoryGroup, PnlRole, TransactionStatus, TransactionType, Vendor }
 export type Transaction = Wire<DbTransaction>
 
 export interface Lookups {
@@ -61,8 +62,45 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
 	return data as T
 }
 
+// GET /api/reports/pnl (see apps/api/src/reports/pnl.ts). Amounts are in cents; money out is negative.
+export interface PnlLine {
+	label: string
+	values: number[]
+	total: number
+}
+export interface PnlPercentLine {
+	label: string
+	values: (number | null)[]
+	total: number | null
+}
+export interface PnlSection {
+	title: string
+	lines: PnlLine[]
+	total: PnlLine
+}
+export type PnlPeriod = 'month' | 'year'
+export interface PnlReport {
+	period: PnlPeriod
+	year: number | null
+	availableYears: number[]
+	columns: { key: string; label: string }[]
+	revenue: PnlSection
+	directCosts: PnlSection
+	grossMargin: PnlLine
+	grossMarginPct: PnlPercentLine
+	sellingCosts: PnlSection
+	overhead: PnlSection
+	operatingProfit: PnlLine
+	profitMarginPct: PnlPercentLine
+	capex: PnlSection
+	otherCashMovements: PnlSection
+}
+
 export const api = {
 	lookups: () => request<Lookups>('GET', '/lookups'),
+
+	pnl: (period: PnlPeriod, year?: number) =>
+		request<PnlReport>('GET', `/reports/pnl?${new URLSearchParams({ period, ...(year ? { year: String(year) } : {}) })}`),
 
 	transactions: (status: TransactionStatus, params: { from?: string; to?: string } = {}) => {
 		const qs = new URLSearchParams({ status, ...params })
