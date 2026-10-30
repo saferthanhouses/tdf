@@ -3,6 +3,8 @@ import type {
 	EnterpriseTable,
 	ImportBatchTable,
 	ManagementCategoryTable,
+	PnlLayoutTable,
+	PnlRowTable,
 	SquareCategoryTable,
 	TransactionTable,
 	TransactionTypeTable,
@@ -27,6 +29,8 @@ export interface Database {
 	vendor: VendorTable
 	import_batch: ImportBatchTable
 	square_category: SquareCategoryTable
+	pnl_layout: PnlLayoutTable
+	pnl_row: PnlRowTable
 	transaction: TransactionTable
 }
 
@@ -37,6 +41,8 @@ export type Enterprise = Selectable<EnterpriseTable>
 export type Vendor = Selectable<VendorTable>
 export type NewVendor = Insertable<VendorTable>
 export type VendorUpdate = Updateable<VendorTable>
+export type PnlLayout = Selectable<PnlLayoutTable>
+export type PnlRow = Selectable<PnlRowTable>
 export type SquareCategory = Selectable<SquareCategoryTable>
 export type Transaction = Selectable<TransactionTable>
 export type NewTransaction = Insertable<TransactionTable>

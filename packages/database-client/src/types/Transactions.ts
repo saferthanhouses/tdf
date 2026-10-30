@@ -10,16 +10,11 @@ export type ManagementCategoryGroup =
 
 export type TransactionStatus = 'draft' | 'posted' | 'dismissed'
 
-// How a transaction type counts in the P&L: operating (by category section), capex (its own row), or other
-// (excluded from profit, listed as other cash movements).
-export type PnlRole = 'operating' | 'capex' | 'other'
-
 // Lookup tables are editable from the UI, so values live in the database rather than in TS unions.
 export interface TransactionTypeTable {
 	id: Generated<number>
 	name: string
 	archived: Generated<boolean>
-	pnl_role: Generated<PnlRole>
 }
 
 export interface ManagementCategoryTable {
@@ -82,4 +77,36 @@ export interface TransactionTable {
 	dedupe_hash: string | null
 	created_at: ColumnType<Date, Date | string | undefined, never>
 	posted_at: ColumnType<Date | null, Date | string | null | undefined, Date | string | null>
+}
+
+// P&L layouts: saved report definitions (see migrations/1793500000000_pnl_layouts.ts).
+export type PnlRowKind = 'heading' | 'lines' | 'total' | 'percent' | 'spacer'
+export type PnlSplit = 'none' | 'category' | 'enterprise' | 'type'
+
+export interface PnlLayoutTable {
+	id: Generated<number>
+	name: string
+	position: Generated<number>
+}
+
+export interface PnlRowTable {
+	id: Generated<number>
+	layout_id: number
+	position: number
+	kind: PnlRowKind
+	label: Generated<string>
+	// lines: posted transactions matching every non-empty list
+	type_ids: Generated<number[]>
+	category_ids: Generated<number[]>
+	category_groups: ColumnType<ManagementCategoryGroup[], ManagementCategoryGroup[] | undefined, ManagementCategoryGroup[]>
+	enterprise_ids: Generated<number[]>
+	account_ids: Generated<number[]>
+	split_by: Generated<PnlSplit>
+	total_label: string | null
+	// total: sum of these rows
+	sum_row_ids: Generated<number[]>
+	emphasis: Generated<boolean>
+	// percent: numerator as a percentage of denominator
+	numerator_row_id: number | null
+	denominator_row_id: number | null
 }
