@@ -114,6 +114,11 @@ export function PnlPage() {
 						))}
 					</select>
 				)}
+				{report && (
+					<a className="button-link" href={`?layout=${report.layout.id}#pnl-layouts`}>
+						Edit layout
+					</a>
+				)}
 				<div className="spacer" />
 				<div className="segmented" role="group" aria-label="Columns">
 					{COLUMN_OPTIONS.map(o => (
@@ -189,7 +194,7 @@ export function PnlPage() {
 			)}
 			<p className="muted pnl-note">
 				Posted transactions only. Each line is the transactions matching the layout’s criteria (types, categories,
-				enterprises, accounts); click a number to see them in the ledger.
+				enterprises, accounts), set under Reports → P&amp;L layouts; click a number to see them in the ledger.
 			</p>
 		</section>
 	)
