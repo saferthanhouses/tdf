@@ -22,7 +22,7 @@ DECLARE
 		'account.name', 'import_batch.filename', 'transaction.description', 'transaction.raw_description',
 		'transaction.dedupe_hash', 'vendor.name', 'vendor.match_patterns',
 		-- safe: fixed reference data or bookkeeping
-		'account.bank', 'account.import_format', 'enterprise.name', 'management_category.name',
+		'account.bank', 'account.import_format', 'enterprise.name', 'management_category.name', 'square_category.name',
 		'transaction_type.name', 'kysely_migration.name', 'kysely_migration.timestamp', 'kysely_migration_lock.id'
 	];
 	unreviewed text;

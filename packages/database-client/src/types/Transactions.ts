@@ -50,6 +50,18 @@ export interface ImportBatchTable {
 	account_id: number
 	filename: string | null
 	imported_at: ColumnType<Date, Date | string | undefined, never>
+	// The date range a Square summary import covers ('YYYY-MM-DD'); null for bank imports.
+	period_from: string | null
+	period_to: string | null
+}
+
+// A Square item category and where its sales go. Created on first import; mapped on the Categories page.
+export interface SquareCategoryTable {
+	id: Generated<number>
+	name: string
+	management_category_id: number | null
+	enterprise_id: number | null
+	archived: Generated<boolean>
 }
 
 export interface TransactionTable {

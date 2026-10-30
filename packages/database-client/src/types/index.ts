@@ -3,6 +3,7 @@ import type {
 	EnterpriseTable,
 	ImportBatchTable,
 	ManagementCategoryTable,
+	SquareCategoryTable,
 	TransactionTable,
 	TransactionTypeTable,
 	VendorTable,
@@ -25,6 +26,7 @@ export interface Database {
 	enterprise: EnterpriseTable
 	vendor: VendorTable
 	import_batch: ImportBatchTable
+	square_category: SquareCategoryTable
 	transaction: TransactionTable
 }
 
@@ -35,6 +37,7 @@ export type Enterprise = Selectable<EnterpriseTable>
 export type Vendor = Selectable<VendorTable>
 export type NewVendor = Insertable<VendorTable>
 export type VendorUpdate = Updateable<VendorTable>
+export type SquareCategory = Selectable<SquareCategoryTable>
 export type Transaction = Selectable<TransactionTable>
 export type NewTransaction = Insertable<TransactionTable>
 export type TransactionUpdate = Updateable<TransactionTable>
