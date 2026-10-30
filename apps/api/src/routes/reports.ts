@@ -3,8 +3,8 @@ import { HTTPException } from 'hono/http-exception'
 import { sql } from 'kysely'
 import { z } from 'zod'
 import { db } from '@tdf-mono/db-client'
-import { buildPnl, pnlColumns, type PnlAggregate } from '../reports/pnl.js'
-import { layoutRows, listLayouts, pnlNames } from '../reports/layouts.js'
+import { buildPnl, pnlColumns } from '../reports/pnl.js'
+import { layoutRows, listLayouts, loadAggregates, pnlNames } from '../reports/layouts.js'
 
 const pnlQuery = z.object({
 	layout: z.coerce.number().int().positive().optional(),
@@ -54,33 +54,7 @@ export const reports = new Hono().get('/pnl', async c => {
 		else if (period) [from, to] = [`${period}-01`, lastDay(period)]
 	}
 
-	let query = db
-		.selectFrom('transaction as t')
-		.leftJoin('management_category as mc', 'mc.id', 't.management_category_id')
-		.select([
-			sql<string>`to_char(t.date, 'YYYY-MM')`.as('month'),
-			't.transaction_type_id as typeId',
-			't.management_category_id as categoryId',
-			'mc.group as group',
-			't.enterprise_id as enterpriseId',
-			't.account_id as accountId',
-			sql<string>`sum(t.amount)`.as('amount'),
-		])
-		.where('t.status', '=', 'posted')
-		.groupBy(['month', 't.transaction_type_id', 't.management_category_id', 'mc.group', 't.enterprise_id', 't.account_id'])
-	if (from) query = query.where('t.date', '>=', from)
-	if (to) query = query.where('t.date', '<=', to)
-
-	const [rows, names, results] = await Promise.all([layoutRows({ layoutId: layout.id }), pnlNames(), query.execute()])
-	const aggregates: PnlAggregate[] = results.map(r => ({
-		month: r.month,
-		typeId: r.typeId,
-		categoryId: r.categoryId,
-		group: r.group,
-		enterpriseId: r.enterpriseId,
-		accountId: r.accountId,
-		cents: Math.round(Number(r.amount) * 100),
-	}))
+	const [rows, names, aggregates] = await Promise.all([layoutRows({ layoutId: layout.id }), pnlNames(), loadAggregates(from, to)])
 
 	const columns = pnlColumns(q.columns, { year, years, aggregates, names })
 	return c.json({

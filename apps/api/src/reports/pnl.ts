@@ -25,6 +25,7 @@ export interface PnlFacts {
 export interface PnlAggregate extends PnlFacts {
 	month: string // 'YYYY-MM'
 	cents: number
+	count?: number // transactions summed (for layout coverage)
 }
 
 export interface PnlLayoutRow {
@@ -125,9 +126,37 @@ const sum = (values: number[]) => values.reduce((a, b) => a + b, 0)
 const percentOf = (part: number, whole: number) => (whole > 0 ? Math.round((part / whole) * 10000) / 100 : null)
 
 export function buildPnl(rows: PnlLayoutRow[], aggregates: PnlAggregate[], opts: { columnsBy: PnlColumnsBy; columns: PnlColumn[]; names: PnlNames }): PnlRenderedRow[] {
+	return evaluatePnl(rows, aggregates, opts).rendered
+}
+
+// Each layout row's total over all columns (for the layout editor's preview).
+export function rowTotals(rows: PnlLayoutRow[], aggregates: PnlAggregate[], names: PnlNames): Map<number, number | null> {
+	const columns = [{ key: 'all', label: 'All' }]
+	const { results, percents } = evaluatePnl(rows, aggregates.map(a => ({ ...a, month: 'all' })), { columnsBy: 'month', columns, names })
+	return new Map(rows.map(r => [r.id, results.get(r.id)?.total ?? percents.get(r.id) ?? null]))
+}
+
+// How well a layout's lines cover the transactions: those in no lines row, and those in more than one.
+export function layoutCoverage(rows: PnlLayoutRow[], aggregates: PnlAggregate[]) {
+	const lines = rows.filter(r => r.kind === 'lines')
+	const unmatched = { count: 0, cents: 0 }
+	const overlapping = { count: 0, cents: 0 }
+	for (const a of aggregates) {
+		const matches = lines.filter(r => matchesRow(r, a)).length
+		const bucket = matches === 0 ? unmatched : matches > 1 ? overlapping : null
+		if (bucket) {
+			bucket.count += a.count ?? 1
+			bucket.cents += a.cents
+		}
+	}
+	return { unmatched, overlapping }
+}
+
+function evaluatePnl(rows: PnlLayoutRow[], aggregates: PnlAggregate[], opts: { columnsBy: PnlColumnsBy; columns: PnlColumn[]; names: PnlNames }) {
 	const width = opts.columns.length
 	const column = new Map(opts.columns.map((c, i) => [c.key, i]))
 	const results = new Map<number, { values: number[]; total: number }>()
+	const percents = new Map<number, number | null>()
 	const out: PnlRenderedRow[] = []
 
 	for (const row of rows) {
@@ -179,6 +208,7 @@ export function buildPnl(rows: PnlLayoutRow[], aggregates: PnlAggregate[], opts:
 			case 'percent': {
 				const num = results.get(row.numeratorRowId ?? -1)
 				const den = results.get(row.denominatorRowId ?? -1)
+				percents.set(row.id, num && den ? percentOf(num.total, den.total) : null)
 				out.push({
 					kind: 'percent',
 					label: row.label,
@@ -189,5 +219,5 @@ export function buildPnl(rows: PnlLayoutRow[], aggregates: PnlAggregate[], opts:
 			}
 		}
 	}
-	return out
+	return { rendered: out, results, percents }
 }

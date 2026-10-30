@@ -3,17 +3,24 @@ import { LookupsProvider } from './lookups'
 import { DraftsPage } from './components/DraftsPage'
 import { LedgerPage } from './components/LedgerPage'
 import { PnlPage } from './components/PnlPage'
+import { PnlLayoutsPage } from './components/PnlLayoutsPage'
 import { CategoriesPage } from './components/CategoriesPage'
 import { NavMenu } from './components/NavMenu'
 
 // Page ids are also the URL hash (#ledger), so bookmarks and links between pages keep working.
-const pages = { drafts: 'Drafts', ledger: 'Ledger', pnl: 'Profit & loss', categories: 'Categories & vendors' } as const
+const pages = {
+	drafts: 'Drafts',
+	ledger: 'Ledger',
+	pnl: 'Profit & loss',
+	'pnl-layouts': 'P&L layouts',
+	categories: 'Categories & vendors',
+} as const
 type Page = keyof typeof pages
 
 type NavEntry = { menu: string; pages: Page[] } | { page: Page }
 const nav: NavEntry[] = [
 	{ menu: 'Transactions', pages: ['drafts', 'ledger'] },
-	{ menu: 'Reports', pages: ['pnl'] },
+	{ menu: 'Reports', pages: ['pnl', 'pnl-layouts'] },
 	{ page: 'categories' },
 ]
 
@@ -89,6 +96,7 @@ export function App() {
 					{page === 'drafts' && <DraftsPage />}
 					{page === 'ledger' && <LedgerPage />}
 					{page === 'pnl' && <PnlPage />}
+					{page === 'pnl-layouts' && <PnlLayoutsPage />}
 					{page === 'categories' && <CategoriesPage />}
 				</LookupsProvider>
 			</main>

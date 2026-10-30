@@ -103,13 +103,46 @@ export interface PnlReport {
 	columns: { key: string; label: string }[]
 	rows: PnlRenderedRow[]
 }
-// GET /api/pnl-layouts
+// GET /api/pnl-layouts (see apps/api/src/routes/pnlLayouts.ts)
+export type PnlRowKind = 'heading' | 'lines' | 'total' | 'percent' | 'spacer'
 export interface PnlLayoutRow {
 	id: number
-	kind: 'heading' | 'lines' | 'total' | 'percent' | 'spacer'
+	kind: PnlRowKind
 	label: string
+	typeIds: number[]
+	categoryIds: number[]
+	categoryGroups: ManagementCategoryGroup[]
+	enterpriseIds: number[]
+	accountIds: number[]
 	splitBy: PnlSplit
 	totalLabel: string | null
+	sumRowIds: number[]
+	emphasis: boolean
+	numeratorRowId: number | null
+	denominatorRowId: number | null
+}
+// A row as the layout editor sends it: `key` is the saved row's id, or any unique text for a new row, and
+// totals/percents refer to rows by key.
+export interface PnlRowInput {
+	key: string
+	kind: PnlRowKind
+	label: string
+	typeIds: number[]
+	categoryIds: number[]
+	categoryGroups: ManagementCategoryGroup[]
+	enterpriseIds: number[]
+	accountIds: number[]
+	splitBy: PnlSplit
+	totalLabel: string | null
+	sumRowKeys: string[]
+	emphasis: boolean
+	numeratorKey: string | null
+	denominatorKey: string | null
+}
+export interface PnlLayoutPreview {
+	totals: Record<string, number | null> // cents, or percent for percent rows
+	coverage: { unmatched: { count: number; cents: number }; overlapping: { count: number; cents: number } }
+	availableYears: number[]
 }
 export interface PnlLayout {
 	id: number
@@ -128,6 +161,11 @@ export const api = {
 		return request<PnlReport>('GET', `/reports/pnl?${qs}`)
 	},
 	pnlLayouts: () => request<PnlLayout[]>('GET', '/pnl-layouts'),
+	createPnlLayout: (body: { name: string; copyFrom?: number }) => request<{ id: number; name: string }>('POST', '/pnl-layouts', body),
+	renamePnlLayout: (id: number, name: string) => request<{ id: number; name: string }>('PATCH', `/pnl-layouts/${id}`, { name }),
+	deletePnlLayout: (id: number) => request<void>('DELETE', `/pnl-layouts/${id}`),
+	savePnlLayoutRows: (id: number, rows: PnlRowInput[]) => request<{ rows: PnlLayoutRow[] }>('PUT', `/pnl-layouts/${id}/rows`, { rows }),
+	previewPnlLayout: (rows: PnlRowInput[], year: number | null) => request<PnlLayoutPreview>('POST', '/pnl-layouts/preview', { rows, year }),
 
 	transactions: (status: TransactionStatus, params: { from?: string; to?: string; pnlRow?: number; split?: string } = {}) => {
 		const qs = new URLSearchParams({ status })

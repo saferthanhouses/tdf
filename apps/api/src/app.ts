@@ -17,7 +17,8 @@ export const app = new Hono()
 	.route('/pnl-layouts', pnlLayouts)
 
 app.onError((err, c: Context) => {
-	if (err instanceof HTTPException) return err.getResponse()
+	// JSON like the other errors, so the web client can show the message.
+	if (err instanceof HTTPException) return c.json({ error: err.message }, err.status)
 	if (err instanceof z.ZodError) return c.json({ error: 'Invalid request', issues: err.issues }, 400)
 	if (err instanceof ImportError) return c.json({ error: err.message, rowErrors: err.rowErrors }, 400)
 	// Postgres error codes: https://www.postgresql.org/docs/current/errcodes-appendix.html
