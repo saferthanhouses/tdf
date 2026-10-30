@@ -1,7 +1,7 @@
 // Loading P&L layouts and the names their lines are labelled with.
 import { sql } from 'kysely'
 import { db, type ManagementCategoryGroup } from '@tdf-mono/db-client'
-import type { PnlLayoutRow, PnlNames } from './pnl.js'
+import type { PnlAggregate, PnlLayoutRow, PnlNames } from './pnl.js'
 
 export const listLayouts = () => db.selectFrom('pnl_layout').select(['id', 'name']).orderBy('position').orderBy('id').execute()
 
@@ -53,4 +53,35 @@ export async function pnlNames(): Promise<PnlNames> {
 	])
 	const map = (rows: { id: number; name: string }[]) => new Map(rows.map(r => [r.id, r.name]))
 	return { types: map(types), categories: map(categories), enterprises: map(enterprises) }
+}
+
+// Posted transactions summed per month and everything layout criteria can match on, between two dates.
+export async function loadAggregates(from?: string, to?: string): Promise<PnlAggregate[]> {
+	let query = db
+		.selectFrom('transaction as t')
+		.leftJoin('management_category as mc', 'mc.id', 't.management_category_id')
+		.select([
+			sql<string>`to_char(t.date, 'YYYY-MM')`.as('month'),
+			't.transaction_type_id as typeId',
+			't.management_category_id as categoryId',
+			'mc.group as group',
+			't.enterprise_id as enterpriseId',
+			't.account_id as accountId',
+			sql<string>`sum(t.amount)`.as('amount'),
+			sql<number>`count(*)::int`.as('count'),
+		])
+		.where('t.status', '=', 'posted')
+		.groupBy(['month', 't.transaction_type_id', 't.management_category_id', 'mc.group', 't.enterprise_id', 't.account_id'])
+	if (from) query = query.where('t.date', '>=', from)
+	if (to) query = query.where('t.date', '<=', to)
+	return (await query.execute()).map(r => ({
+		month: r.month,
+		typeId: r.typeId,
+		categoryId: r.categoryId,
+		group: r.group,
+		enterpriseId: r.enterpriseId,
+		accountId: r.accountId,
+		cents: Math.round(Number(r.amount) * 100),
+		count: r.count,
+	}))
 }
