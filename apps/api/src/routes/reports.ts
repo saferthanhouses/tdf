@@ -1,16 +1,34 @@
 import { Hono } from 'hono'
+import { HTTPException } from 'hono/http-exception'
 import { sql } from 'kysely'
 import { z } from 'zod'
 import { db } from '@tdf-mono/db-client'
 import { buildPnl, pnlColumns, type PnlAggregate } from '../reports/pnl.js'
+import { layoutRows, listLayouts, pnlNames } from '../reports/layouts.js'
 
 const pnlQuery = z.object({
-	period: z.enum(['month', 'year']).default('month'),
+	layout: z.coerce.number().int().positive().optional(),
+	columns: z.enum(['month', 'year', 'enterprise', 'category']).default('month'),
+	// Monthly columns: which year.
 	year: z.coerce.number().int().min(2000).max(2100).optional(),
+	// Enterprise or category columns: a year ('2026'), a month ('2026-05') or all time ('').
+	period: z
+		.string()
+		.regex(/^(\d{4}(-(0[1-9]|1[0-2]))?)?$/)
+		.optional(),
 })
+
+const lastDay = (month: string) => {
+	const [y, m] = month.split('-').map(Number) as [number, number]
+	return `${month}-${String(new Date(Date.UTC(y, m, 0)).getUTCDate()).padStart(2, '0')}`
+}
 
 export const reports = new Hono().get('/pnl', async c => {
 	const q = pnlQuery.parse(c.req.query())
+
+	const layouts = await listLayouts()
+	const layout = q.layout ? layouts.find(l => l.id === q.layout) : layouts[0]
+	if (!layout) throw new HTTPException(404, { message: 'P&L layout not found' })
 
 	const years = (
 		await db
@@ -20,38 +38,59 @@ export const reports = new Hono().get('/pnl', async c => {
 			.distinct()
 			.execute()
 	).map(r => r.year)
-	const year = q.period === 'month' ? (q.year ?? Math.max(...years, new Date().getFullYear())) : null
+	const latest = Math.max(...years, new Date().getFullYear())
 
-	const periodExpr = q.period === 'month' ? sql<string>`to_char(t.date, 'YYYY-MM')` : sql<string>`to_char(t.date, 'YYYY')`
+	// The date range the report covers.
+	let year: number | null = null
+	let period: string | null = null
+	let from: string | undefined
+	let to: string | undefined
+	if (q.columns === 'month') {
+		year = q.year ?? latest
+		;[from, to] = [`${year}-01-01`, `${year}-12-31`]
+	} else if (q.columns !== 'year') {
+		period = q.period ?? String(latest)
+		if (period.length === 4) [from, to] = [`${period}-01-01`, `${period}-12-31`]
+		else if (period) [from, to] = [`${period}-01`, lastDay(period)]
+	}
+
 	let query = db
 		.selectFrom('transaction as t')
-		.innerJoin('transaction_type as tt', 'tt.id', 't.transaction_type_id')
 		.leftJoin('management_category as mc', 'mc.id', 't.management_category_id')
 		.select([
-			periodExpr.as('period'),
-			'tt.pnl_role as role',
-			'tt.id as typeId',
-			'tt.name as typeName',
-			'mc.id as categoryId',
-			'mc.name as categoryName',
+			sql<string>`to_char(t.date, 'YYYY-MM')`.as('month'),
+			't.transaction_type_id as typeId',
+			't.management_category_id as categoryId',
 			'mc.group as group',
+			't.enterprise_id as enterpriseId',
+			't.account_id as accountId',
 			sql<string>`sum(t.amount)`.as('amount'),
 		])
 		.where('t.status', '=', 'posted')
-		.groupBy(['period', 'tt.pnl_role', 'tt.id', 'tt.name', 'mc.id', 'mc.name', 'mc.group'])
-	if (year !== null) query = query.where('t.date', '>=', `${year}-01-01`).where('t.date', '<=', `${year}-12-31`)
+		.groupBy(['month', 't.transaction_type_id', 't.management_category_id', 'mc.group', 't.enterprise_id', 't.account_id'])
+	if (from) query = query.where('t.date', '>=', from)
+	if (to) query = query.where('t.date', '<=', to)
 
-	const aggregates: PnlAggregate[] = (await query.execute()).map(r => ({
-		period: r.period,
-		role: r.role,
+	const [rows, names, results] = await Promise.all([layoutRows({ layoutId: layout.id }), pnlNames(), query.execute()])
+	const aggregates: PnlAggregate[] = results.map(r => ({
+		month: r.month,
 		typeId: r.typeId,
-		typeName: r.typeName,
 		categoryId: r.categoryId,
-		categoryName: r.categoryName,
 		group: r.group,
+		enterpriseId: r.enterpriseId,
+		accountId: r.accountId,
 		cents: Math.round(Number(r.amount) * 100),
 	}))
 
-	const report = buildPnl(aggregates, { period: q.period, year, columns: pnlColumns(q.period, year, years) })
-	return c.json({ ...report, availableYears: years.sort((a, b) => b - a) })
+	const columns = pnlColumns(q.columns, { year, years, aggregates, names })
+	return c.json({
+		layout,
+		layouts,
+		columnsBy: q.columns,
+		year,
+		period,
+		availableYears: years.sort((a, b) => b - a),
+		columns,
+		rows: buildPnl(rows, aggregates, { columnsBy: q.columns, columns, names }),
+	})
 })

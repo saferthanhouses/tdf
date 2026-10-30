@@ -23,6 +23,8 @@ DECLARE
 		'transaction.dedupe_hash', 'vendor.name', 'vendor.match_patterns',
 		-- safe: fixed reference data or bookkeeping
 		'account.bank', 'account.import_format', 'enterprise.name', 'management_category.name', 'square_category.name',
+		'pnl_layout.name', 'pnl_row.label', 'pnl_row.total_label', 'pnl_row.category_groups', 'pnl_row.type_ids',
+		'pnl_row.category_ids', 'pnl_row.enterprise_ids', 'pnl_row.account_ids', 'pnl_row.sum_row_ids',
 		'transaction_type.name', 'kysely_migration.name', 'kysely_migration.timestamp', 'kysely_migration_lock.id'
 	];
 	unreviewed text;

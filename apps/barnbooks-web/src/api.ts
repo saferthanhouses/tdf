@@ -3,7 +3,7 @@ import type {
 	Enterprise,
 	ManagementCategory,
 	ManagementCategoryGroup,
-	PnlRole,
+	PnlSplit,
 	SquareCategory,
 	Transaction as DbTransaction,
 	TransactionStatus,
@@ -14,7 +14,7 @@ import type {
 // JSON turns Dates into strings.
 type Wire<T> = { [K in keyof T]: T[K] extends Date ? string : T[K] extends Date | null ? string | null : T[K] }
 
-export type { Account, Enterprise, ManagementCategory, ManagementCategoryGroup, PnlRole, SquareCategory, TransactionStatus, TransactionType, Vendor }
+export type { Account, Enterprise, ManagementCategory, ManagementCategoryGroup, PnlSplit, SquareCategory, TransactionStatus, TransactionType, Vendor }
 export type Transaction = Wire<DbTransaction>
 
 export interface Lookups {
@@ -81,49 +81,57 @@ export interface SquareImport {
 }
 
 // GET /api/reports/pnl (see apps/api/src/reports/pnl.ts). Amounts are in cents; money out is negative.
-export interface PnlLine {
-	label: string
-	values: number[]
-	total: number
-	// The transactions behind the line, for opening them in the ledger.
-	link?: { role: PnlRole; categoryId?: number | null; typeId?: number }
+export type PnlColumnsBy = 'month' | 'year' | 'enterprise' | 'category'
+// The transactions behind a number: a layout row, and one of its split values ('none' = no value).
+export interface PnlLink {
+	row: number
+	split?: string
 }
-export interface PnlPercentLine {
-	label: string
-	values: (number | null)[]
-	total: number | null
-}
-export interface PnlSection {
-	title: string
-	lines: PnlLine[]
-	total: PnlLine
-}
-export type PnlPeriod = 'month' | 'year'
+export type PnlRenderedRow =
+	| { kind: 'section' | 'heading'; label: string }
+	| { kind: 'spacer' }
+	| { kind: 'empty' }
+	| { kind: 'line' | 'subtotal' | 'total'; label: string; values: number[]; total: number; link?: PnlLink; emphasis?: boolean }
+	| { kind: 'percent'; label: string; values: (number | null)[]; total: number | null }
 export interface PnlReport {
-	period: PnlPeriod
-	year: number | null
+	layout: { id: number; name: string }
+	layouts: { id: number; name: string }[]
+	columnsBy: PnlColumnsBy
+	year: number | null // monthly columns
+	period: string | null // enterprise/category columns: 'YYYY', 'YYYY-MM' or '' (all time)
 	availableYears: number[]
 	columns: { key: string; label: string }[]
-	revenue: PnlSection
-	directCosts: PnlSection
-	grossMargin: PnlLine
-	grossMarginPct: PnlPercentLine
-	sellingCosts: PnlSection
-	overhead: PnlSection
-	operatingProfit: PnlLine
-	profitMarginPct: PnlPercentLine
-	capex: PnlSection
-	otherCashMovements: PnlSection
+	rows: PnlRenderedRow[]
+}
+// GET /api/pnl-layouts
+export interface PnlLayoutRow {
+	id: number
+	kind: 'heading' | 'lines' | 'total' | 'percent' | 'spacer'
+	label: string
+	splitBy: PnlSplit
+	totalLabel: string | null
+}
+export interface PnlLayout {
+	id: number
+	name: string
+	rows: PnlLayoutRow[]
 }
 
 export const api = {
 	lookups: () => request<Lookups>('GET', '/lookups'),
 
-	pnl: (period: PnlPeriod, year?: number) =>
-		request<PnlReport>('GET', `/reports/pnl?${new URLSearchParams({ period, ...(year ? { year: String(year) } : {}) })}`),
+	pnl: (params: { layout?: number; columns: PnlColumnsBy; year?: number; period?: string }) => {
+		const qs = new URLSearchParams({ columns: params.columns })
+		if (params.layout) qs.set('layout', String(params.layout))
+		if (params.year) qs.set('year', String(params.year))
+		if (params.period !== undefined) qs.set('period', params.period)
+		return request<PnlReport>('GET', `/reports/pnl?${qs}`)
+	},
+	pnlLayouts: () => request<PnlLayout[]>('GET', '/pnl-layouts'),
 
-	transactions: (status: TransactionStatus, params: { from?: string; to?: string } = {}) => {
-		const qs = new URLSearchParams({ status, ...params })
+	transactions: (status: TransactionStatus, params: { from?: string; to?: string; pnlRow?: number; split?: string } = {}) => {
+		const qs = new URLSearchParams({ status })
+		for (const [k, v] of Object.entries(params)) if (v !== undefined) qs.set(k, String(v))
 		return request<Transaction[]>('GET', `/transactions?${qs}`)
 	},
 	createTransaction: (body: TransactionEdit) => request<Transaction>('POST', '/transactions', body),

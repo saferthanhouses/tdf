@@ -5,6 +5,7 @@ import { lookups } from './routes/lookups.js'
 import { transactions } from './routes/transactions.js'
 import { imports } from './routes/imports.js'
 import { reports } from './routes/reports.js'
+import { pnlLayouts } from './routes/pnlLayouts.js'
 import { ImportError } from './import/importCsv.js'
 
 export const app = new Hono()
@@ -13,6 +14,7 @@ export const app = new Hono()
 	.route('/transactions', transactions)
 	.route('/imports', imports)
 	.route('/reports', reports)
+	.route('/pnl-layouts', pnlLayouts)
 
 app.onError((err, c: Context) => {
 	if (err instanceof HTTPException) return err.getResponse()

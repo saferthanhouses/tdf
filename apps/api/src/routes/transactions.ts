@@ -4,6 +4,8 @@ import { sql } from 'kysely'
 import { z } from 'zod'
 import { db } from '@tdf-mono/db-client'
 import { makeClassifier } from '../import/importCsv.js'
+import { matchesRow, splitValue } from '../reports/pnl.js'
+import { layoutRows } from '../reports/layouts.js'
 
 const id = z.coerce.number().int().positive()
 const optionalId = id.nullable().optional()
@@ -14,6 +16,9 @@ const listQuery = z.object({
 	from: isoDate.optional(),
 	to: isoDate.optional(),
 	accountId: id.optional(),
+	// Only the transactions behind one P&L line: a layout row, and optionally one of its split values.
+	pnlRow: id.optional(),
+	split: z.string().regex(/^(none|\d+)$/).optional(),
 })
 
 const transactionFields = z.object({
@@ -36,7 +41,25 @@ export const transactions = new Hono()
 		if (q.accountId) query = query.where('account_id', '=', q.accountId)
 		// Drafts are worked through in date order; the ledger shows newest first.
 		const direction = q.status === 'draft' ? 'asc' : 'desc'
-		return c.json(await query.orderBy('date', direction).orderBy('id', direction).execute())
+		const rows = await query.orderBy('date', direction).orderBy('id', direction).execute()
+		if (!q.pnlRow) return c.json(rows)
+
+		// Same matching as the P&L report (reports/pnl.ts), so the ledger's net equals the number clicked.
+		const [row] = await layoutRows({ rowId: q.pnlRow })
+		if (!row || row.kind !== 'lines') throw new HTTPException(404, { message: 'P&L line not found' })
+		const groups = new Map((await db.selectFrom('management_category').select(['id', 'group']).execute()).map(m => [m.id, m.group]))
+		return c.json(
+			rows.filter(t => {
+				const facts = {
+					typeId: t.transaction_type_id,
+					categoryId: t.management_category_id,
+					group: t.management_category_id === null ? null : (groups.get(t.management_category_id) ?? null),
+					enterpriseId: t.enterprise_id,
+					accountId: t.account_id,
+				}
+				return matchesRow(row, facts) && (q.split === undefined || splitValue(row.splitBy, facts) === q.split)
+			}),
+		)
 	})
 
 	// Manually entered transactions (e.g. cash) start as drafts like imported ones.

@@ -1,6 +1,6 @@
 // Filtering and sorting for the ledger table. Pure functions over posted transactions; names come from the
 // lookups (nameOf), so sorting by account/type/category/enterprise follows what the table shows.
-import type { PnlRole, Transaction } from './api'
+import type { Transaction } from './api'
 
 export type SortKey = 'date' | 'account' | 'vendor' | 'type' | 'category' | 'enterprise' | 'amount' | 'notes'
 export type SortDir = 'asc' | 'desc'
@@ -16,14 +16,14 @@ export interface LedgerFilters {
 	type: IdFilter
 	category: IdFilter
 	enterprise: IdFilter
-	// How the transaction's type counts in the P&L. Set when arriving from a P&L number, so the ledger's net
-	// matches it (a category's P&L line only counts its revenue/expense-type transactions).
-	role: PnlRole | null
+	// Only the transactions behind one P&L line (a layout row and optionally one of its split values). Set when
+	// arriving from a P&L number, so the ledger's net matches it; the server applies it (layout criteria).
+	pnlRow: number | null
+	pnlSplit: string | null
 	vendor: string
 }
 
-export const emptyFilters: LedgerFilters = { account: null, type: null, category: null, enterprise: null, role: null, vendor: '' }
-export const PNL_ROLES: PnlRole[] = ['operating', 'capex', 'other']
+export const emptyFilters: LedgerFilters = { account: null, type: null, category: null, enterprise: null, pnlRow: null, pnlSplit: null, vendor: '' }
 export const defaultSort: LedgerSort = { key: 'date', dir: 'desc' }
 
 type NameList = 'accounts' | 'vendors' | 'transactionTypes' | 'managementCategories' | 'enterprises'
@@ -34,17 +34,11 @@ export const vendorLabel = (t: Transaction, nameOf: NameOf) => nameOf('vendors',
 const matchesId = (filter: IdFilter, value: number | null) =>
 	filter === null || (filter === 'none' ? value === null : value === filter)
 
-// roleOf maps a transaction type id to its P&L role (from the lookups).
-export function filterLedger(
-	rows: Transaction[],
-	f: LedgerFilters,
-	nameOf: NameOf,
-	roleOf: (typeId: number | null) => PnlRole | undefined = () => undefined,
-): Transaction[] {
+// The P&L line filter is applied by the server when loading (see LedgerPage).
+export function filterLedger(rows: Transaction[], f: LedgerFilters, nameOf: NameOf): Transaction[] {
 	const text = f.vendor.trim().toLowerCase()
 	return rows.filter(
 		t =>
-			(f.role === null || roleOf(t.transaction_type_id) === f.role) &&
 			matchesId(f.account, t.account_id) &&
 			matchesId(f.type, t.transaction_type_id) &&
 			matchesId(f.category, t.management_category_id) &&
@@ -91,7 +85,7 @@ export function sortLedger(rows: Transaction[], sort: LedgerSort, nameOf: NameOf
 }
 
 // Filters and sort round-trip through the page URL, so a reload or bookmark keeps the view.
-const ID_PARAMS: [Exclude<keyof LedgerFilters, 'vendor' | 'role'>, string][] = [
+const ID_PARAMS: [Exclude<keyof LedgerFilters, 'vendor' | 'pnlRow' | 'pnlSplit'>, string][] = [
 	['account', 'account'],
 	['type', 'type'],
 	['category', 'category'],
@@ -113,12 +107,14 @@ export function periodRange(period: string): { from?: string; to?: string } {
 export function readLedgerParams(search: string) {
 	const p = new URLSearchParams(search)
 	const id = (v: string | null): IdFilter => (v === 'none' ? 'none' : v && /^\d+$/.test(v) ? Number(v) : null)
-	const role = p.get('role') as PnlRole | null
+	const pnlRow = p.get('pnlRow')
+	const split = p.get('split')
 	const filters: LedgerFilters = {
 		...emptyFilters,
 		vendor: p.get('vendor') ?? '',
-		role: role && PNL_ROLES.includes(role) ? role : null,
+		pnlRow: pnlRow && /^\d+$/.test(pnlRow) ? Number(pnlRow) : null,
 	}
+	filters.pnlSplit = filters.pnlRow !== null && split && /^(none|\d+)$/.test(split) ? split : null
 	for (const [key, param] of ID_PARAMS) filters[key] = id(p.get(param))
 	const key = p.get('sort') as SortKey | null
 	const sort: LedgerSort = key && SORT_KEYS.includes(key) ? { key, dir: p.get('dir') === 'asc' ? 'asc' : 'desc' } : defaultSort
@@ -130,7 +126,8 @@ export function writeLedgerParams(filters: LedgerFilters, sort: LedgerSort, peri
 	const p = new URLSearchParams()
 	if (period) p.set('period', period)
 	for (const [key, param] of ID_PARAMS) if (filters[key] !== null) p.set(param, String(filters[key]))
-	if (filters.role) p.set('role', filters.role)
+	if (filters.pnlRow !== null) p.set('pnlRow', String(filters.pnlRow))
+	if (filters.pnlRow !== null && filters.pnlSplit !== null) p.set('split', filters.pnlSplit)
 	if (filters.vendor.trim()) p.set('vendor', filters.vendor)
 	if (sort.key !== defaultSort.key || sort.dir !== defaultSort.dir) {
 		p.set('sort', sort.key)

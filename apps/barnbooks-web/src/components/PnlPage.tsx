@@ -1,20 +1,57 @@
 import { useEffect, useState } from 'react'
-import { api, type PnlLine, type PnlPercentLine, type PnlPeriod, type PnlReport, type PnlSection } from '../api'
+import { api, type PnlColumnsBy, type PnlLink, type PnlRenderedRow, type PnlReport } from '../api'
 import { formatMoney } from '../format'
-import { defaultSort, emptyFilters, writeLedgerParams, type LedgerFilters } from '../ledgerView'
+import { defaultSort, emptyFilters, isPeriod, writeLedgerParams, type LedgerFilters } from '../ledgerView'
 
-// Ledger URL showing exactly the transactions behind one P&L number: same role and category (or type), same
-// period. The Total column is the year (monthly view) or all time (yearly view).
-type HrefFor = (line: PnlLine, column: number | 'total') => string | undefined
+// What the report shows, kept in the URL so a reload or bookmark keeps it.
+interface PnlView {
+	layout?: number
+	columns: PnlColumnsBy
+	year?: number // monthly columns
+	period?: string // enterprise/category columns: 'YYYY', 'YYYY-MM' or '' (all time)
+}
+const COLUMN_OPTIONS: { value: PnlColumnsBy; label: string }[] = [
+	{ value: 'month', label: 'Monthly' },
+	{ value: 'year', label: 'Yearly' },
+	{ value: 'enterprise', label: 'By enterprise' },
+	{ value: 'category', label: 'By category' },
+]
+
+function readView(search: string): PnlView {
+	const p = new URLSearchParams(search)
+	const num = (v: string | null) => (v && /^\d+$/.test(v) ? Number(v) : undefined)
+	const columns = COLUMN_OPTIONS.find(o => o.value === p.get('columns'))?.value ?? 'month'
+	const period = p.get('period')
+	return { layout: num(p.get('layout')), columns, year: num(p.get('year')), period: period !== null && (period === '' || isPeriod(period)) ? period : undefined }
+}
+
+function writeView(v: PnlView): string {
+	const p = new URLSearchParams()
+	if (v.layout) p.set('layout', String(v.layout))
+	if (v.columns !== 'month') p.set('columns', v.columns)
+	if (v.columns === 'month' && v.year) p.set('year', String(v.year))
+	if ((v.columns === 'enterprise' || v.columns === 'category') && v.period !== undefined) p.set('period', v.period)
+	const s = p.toString()
+	return s ? `?${s}` : ''
+}
+
+// Ledger URL showing exactly the transactions behind one P&L number: the layout row (and split value), the
+// column's period, and for enterprise/category columns that enterprise or category. The Total column is the
+// whole range the report covers.
+type HrefFor = (link: PnlLink | undefined, column: number | 'total') => string | undefined
 function makeHrefFor(report: PnlReport): HrefFor {
-	return (line, column) => {
-		if (!line.link) return undefined
-		const period = column === 'total' ? (report.period === 'month' ? String(report.year) : '') : report.columns[column]!.key
-		const filters: LedgerFilters = {
-			...emptyFilters,
-			role: line.link.role,
-			category: line.link.categoryId === undefined ? null : (line.link.categoryId ?? 'none'),
-			type: line.link.typeId ?? null,
+	return (link, column) => {
+		if (!link) return undefined
+		const filters: LedgerFilters = { ...emptyFilters, pnlRow: link.row, pnlSplit: link.split ?? null }
+		let period: string
+		if (report.columnsBy === 'month') period = column === 'total' ? String(report.year) : report.columns[column]!.key
+		else if (report.columnsBy === 'year') period = column === 'total' ? '' : report.columns[column]!.key
+		else {
+			period = report.period ?? ''
+			if (column !== 'total') {
+				const key = report.columns[column]!.key
+				filters[report.columnsBy] = key === 'none' ? 'none' : Number(key)
+			}
 		}
 		return `${window.location.pathname}${writeLedgerParams(filters, defaultSort, period)}#ledger`
 	}
@@ -32,56 +69,92 @@ const money = (cents: number) => (cents === 0 ? <span className="muted">–</spa
 const pct = (v: number | null) => (v === null ? <span className="muted">–</span> : `${v.toFixed(1)}%`)
 
 export function PnlPage() {
-	const [period, setPeriod] = useState<PnlPeriod>('month')
-	const [year, setYear] = useState<number | undefined>()
+	const [view, setView] = useState<PnlView>(() => readView(window.location.search))
 	const [report, setReport] = useState<PnlReport | null>(null)
 	const [error, setError] = useState<string | null>(null)
+	const update = (change: Partial<PnlView>) => setView(v => ({ ...v, ...change }))
 
 	useEffect(() => {
 		let current = true
 		api
-			.pnl(period, period === 'month' ? year : undefined)
+			.pnl(view)
 			.then(r => {
 				if (!current) return
 				setReport(r)
 				setError(null)
-				if (r.year !== null) setYear(r.year)
 			})
 			.catch(e => current && setError((e as Error).message))
 		return () => {
 			current = false
 		}
-	}, [period, year])
+	}, [view])
+
+	// Keep the view in the URL; clear it when leaving the page.
+	useEffect(() => {
+		const { pathname, hash } = window.location
+		window.history.replaceState(null, '', pathname + writeView(view) + hash)
+	}, [view])
+	useEffect(() => () => window.history.replaceState(null, '', window.location.pathname + window.location.hash), [])
 
 	const width = report ? report.columns.length + 2 : 1
 	const hrefFor = report ? makeHrefFor(report) : () => undefined
+	const years = report?.availableYears ?? []
+	const byList = view.columns === 'enterprise' || view.columns === 'category'
 
 	return (
 		<section className="pnl">
 			<div className="toolbar">
 				<h2>Profit &amp; loss</h2>
+				{report && report.layouts.length > 1 && (
+					<select aria-label="Layout" value={report.layout.id} onChange={e => update({ layout: Number(e.target.value) })}>
+						{report.layouts.map(l => (
+							<option key={l.id} value={l.id}>
+								{l.name}
+							</option>
+						))}
+					</select>
+				)}
 				<div className="spacer" />
-				<div className="segmented" role="group" aria-label="Period">
-					<button className={period === 'month' ? 'active' : undefined} onClick={() => setPeriod('month')}>
-						Monthly
-					</button>
-					<button className={period === 'year' ? 'active' : undefined} onClick={() => setPeriod('year')}>
-						Yearly
-					</button>
+				<div className="segmented" role="group" aria-label="Columns">
+					{COLUMN_OPTIONS.map(o => (
+						<button key={o.value} className={view.columns === o.value ? 'active' : undefined} onClick={() => update({ columns: o.value })}>
+							{o.label}
+						</button>
+					))}
 				</div>
-				{period === 'month' && report && (
+				{view.columns === 'month' && report?.year && (
 					<label>
 						Year{' '}
-						<select value={year ?? ''} onChange={e => setYear(Number(e.target.value))}>
-							{(report.availableYears.includes(year ?? -1) ? report.availableYears : [year!, ...report.availableYears])
-								.filter(Boolean)
-								.map(y => (
+						<select value={report.year} onChange={e => update({ year: Number(e.target.value) })}>
+							{(years.includes(report.year) ? years : [report.year, ...years]).map(y => (
+								<option key={y} value={y}>
+									{y}
+								</option>
+							))}
+						</select>
+					</label>
+				)}
+				{byList && report && (
+					<>
+						<label>
+							Period{' '}
+							<select
+								value={report.period !== null && report.period.length === 7 ? 'month' : (report.period ?? '')}
+								onChange={e => update({ period: e.target.value === 'month' ? `${years[0] ?? new Date().getFullYear()}-01` : e.target.value })}
+							>
+								<option value="">All time</option>
+								{years.map(y => (
 									<option key={y} value={y}>
 										{y}
 									</option>
 								))}
-						</select>
-					</label>
+								<option value="month">A month…</option>
+							</select>
+						</label>
+						{report.period?.length === 7 && (
+							<input type="month" aria-label="Month" value={report.period} onChange={e => e.target.value && update({ period: e.target.value })} />
+						)}
+					</>
 				)}
 			</div>
 
@@ -103,92 +176,83 @@ export function PnlPage() {
 							</tr>
 						</thead>
 						<tbody>
-							<Section hrefFor={hrefFor} section={report.revenue} width={width} />
-							<Section hrefFor={hrefFor} section={report.directCosts} width={width} />
-							<Line line={report.grossMargin} kind="result" />
-							<PercentLine line={report.grossMarginPct} />
-							<Spacer width={width} />
-							<Section hrefFor={hrefFor} section={report.sellingCosts} width={width} />
-							<Section hrefFor={hrefFor} section={report.overhead} width={width} />
-							<Line line={report.operatingProfit} kind="result strong" />
-							<PercentLine line={report.profitMarginPct} />
-							<Spacer width={width} />
-							<Section hrefFor={hrefFor} section={report.capex} width={width} />
-							<Spacer width={width} />
-							<Section hrefFor={hrefFor} section={report.otherCashMovements} width={width} />
+							{report.columns.length === 0 && byList ? (
+								<tr>
+									<td className="muted">No posted transactions in this period.</td>
+								</tr>
+							) : (
+								report.rows.map((row, i) => <Row key={i} row={row} width={width} hrefFor={hrefFor} />)
+							)}
 						</tbody>
 					</table>
 				</div>
 			)}
 			<p className="muted pnl-note">
-				Posted transactions only. Revenue and expenses come from transaction types counted as “revenue / expense”,
-				placed by their category’s group; capital expenditure from types counted as “capital expenditure”. Both are
-				set on the Categories &amp; vendors tab.
+				Posted transactions only. Each line is the transactions matching the layout’s criteria (types, categories,
+				enterprises, accounts); click a number to see them in the ledger.
 			</p>
 		</section>
 	)
 }
 
-function Section({ section, width, hrefFor }: { section: PnlSection; width: number; hrefFor: HrefFor }) {
-	return (
-		<>
-			<tr className="pnl-section">
-				<th colSpan={width}>{section.title}</th>
-			</tr>
-			{section.lines.length === 0 ? (
+function Row({ row, width, hrefFor }: { row: PnlRenderedRow; width: number; hrefFor: HrefFor }) {
+	switch (row.kind) {
+		case 'section':
+		case 'heading':
+			return (
+				<tr className="pnl-section">
+					<th colSpan={width}>{row.label}</th>
+				</tr>
+			)
+		case 'spacer':
+			return (
+				<tr className="pnl-spacer">
+					<td colSpan={width} />
+				</tr>
+			)
+		case 'empty':
+			return (
 				<tr>
 					<td className="muted" colSpan={width}>
 						None
 					</td>
 				</tr>
-			) : (
-				section.lines.map(line => <Line key={line.label} line={line} hrefFor={hrefFor} />)
-			)}
-			<Line line={section.total} kind="total" hrefFor={hrefFor} />
-		</>
-	)
-}
-
-function Line({ line, kind, hrefFor }: { line: PnlLine; kind?: string; hrefFor?: HrefFor }) {
-	const cell = (cents: number, column: number | 'total') => {
-		const href = cents !== 0 ? hrefFor?.(line, column) : undefined
-		return href ? (
-			<a className="pnl-link" href={href} onClick={openInLedger} title={`Show these transactions in the ledger`}>
-				{money(cents)}
-			</a>
-		) : (
-			money(cents)
-		)
+			)
+		case 'percent':
+			return (
+				<tr className="pnl-percent">
+					<td>{row.label}</td>
+					{row.values.map((v, i) => (
+						<td key={i} className="num">
+							{pct(v)}
+						</td>
+					))}
+					<td className="num pnl-row-total">{pct(row.total)}</td>
+				</tr>
+			)
+		default: {
+			const className = row.kind === 'subtotal' ? 'pnl-total' : row.kind === 'total' ? `pnl-result${row.emphasis ? ' pnl-strong' : ''}` : undefined
+			const cell = (cents: number, column: number | 'total') => {
+				const href = cents !== 0 ? hrefFor(row.link, column) : undefined
+				return href ? (
+					<a className="pnl-link" href={href} onClick={openInLedger} title="Show these transactions in the ledger">
+						{money(cents)}
+					</a>
+				) : (
+					money(cents)
+				)
+			}
+			return (
+				<tr className={className}>
+					<td>{row.label}</td>
+					{row.values.map((v, i) => (
+						<td key={i} className={`num${v < 0 ? ' out' : ''}`}>
+							{cell(v, i)}
+						</td>
+					))}
+					<td className={`num pnl-row-total${row.total < 0 ? ' out' : ''}`}>{cell(row.total, 'total')}</td>
+				</tr>
+			)
+		}
 	}
-	return (
-		<tr className={kind ? `pnl-${kind.split(' ').join(' pnl-')}` : undefined}>
-			<td>{line.label}</td>
-			{line.values.map((v, i) => (
-				<td key={i} className={`num${v < 0 ? ' out' : ''}`}>
-					{cell(v, i)}
-				</td>
-			))}
-			<td className={`num pnl-row-total${line.total < 0 ? ' out' : ''}`}>{cell(line.total, 'total')}</td>
-		</tr>
-	)
 }
-
-function PercentLine({ line }: { line: PnlPercentLine }) {
-	return (
-		<tr className="pnl-percent">
-			<td>{line.label}</td>
-			{line.values.map((v, i) => (
-				<td key={i} className="num">
-					{pct(v)}
-				</td>
-			))}
-			<td className="num pnl-row-total">{pct(line.total)}</td>
-		</tr>
-	)
-}
-
-const Spacer = ({ width }: { width: number }) => (
-	<tr className="pnl-spacer">
-		<td colSpan={width} />
-	</tr>
-)
