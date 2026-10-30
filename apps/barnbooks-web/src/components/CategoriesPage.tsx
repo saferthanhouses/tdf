@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { api, groupLabels, type LookupKind, type ManagementCategoryGroup, type PnlRole, type Vendor } from '../api'
+import { api, groupLabels, type LookupKind, type ManagementCategoryGroup, type PnlRole, type SquareCategory, type Vendor } from '../api'
 import { LookupSelect, useLookups } from '../lookups'
 import { CommitInput } from './CommitInput'
 import { MatchPatternChips } from './MatchPatterns'
@@ -41,6 +41,8 @@ export function CategoriesPage() {
 			<LookupList title="Enterprises" kind="enterprises" items={lookups.enterprises} save={save} />
 
 			<VendorList vendors={lookups.vendors} save={save} />
+
+			<SquareCategoryList categories={lookups.squareCategories} save={save} />
 		</section>
 	)
 }
@@ -222,6 +224,65 @@ function VendorList({ vendors, save }: { vendors: Vendor[]; save: (action: () =>
 					Add
 				</button>
 			</form>
+		</div>
+	)
+}
+
+// Square item categories arrive with each Square import; this says where their sales go.
+function SquareCategoryList({ categories, save }: { categories: SquareCategory[]; save: (action: () => Promise<unknown>) => Promise<void> }) {
+	const { lookups } = useLookups()
+	const update = (id: number, body: Record<string, unknown>) => save(() => api.updateLookup('square-categories', id, body))
+	return (
+		<div className="lookup-list square-categories">
+			<h2>Square categories</h2>
+			<p className="muted">
+				Square sales are imported per Square item category. Choose the management category and enterprise each one’s
+				sales count under; Square drafts not yet posted are updated too. New categories appear here after an import.
+			</p>
+			{categories.length === 0 ? (
+				<p className="muted">None yet — import Square sales on the Drafts page.</p>
+			) : (
+				<table>
+					<thead>
+						<tr>
+							<th>Square category</th>
+							<th>Management category</th>
+							<th>Enterprise</th>
+							<th />
+						</tr>
+					</thead>
+					<tbody>
+						{categories.map(c => (
+							<tr key={c.id} className={c.archived ? 'archived' : undefined}>
+								<td>{c.name}</td>
+								<td>
+									<LookupSelect
+										label={`Management category for ${c.name}`}
+										grouped
+										items={lookups.managementCategories}
+										value={c.management_category_id}
+										invalid={c.management_category_id === null}
+										onChange={id => update(c.id, { management_category_id: id })}
+									/>
+								</td>
+								<td>
+									<LookupSelect
+										label={`Enterprise for ${c.name}`}
+										items={lookups.enterprises}
+										value={c.enterprise_id}
+										onChange={id => update(c.id, { enterprise_id: id })}
+									/>
+								</td>
+								<td className="row-actions">
+									<button className="link" onClick={() => update(c.id, { archived: !c.archived })}>
+										{c.archived ? 'Restore' : 'Archive'}
+									</button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			)}
 		</div>
 	)
 }

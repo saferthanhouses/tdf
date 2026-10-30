@@ -4,6 +4,7 @@ import type {
 	ManagementCategory,
 	ManagementCategoryGroup,
 	PnlRole,
+	SquareCategory,
 	Transaction as DbTransaction,
 	TransactionStatus,
 	TransactionType,
@@ -13,7 +14,7 @@ import type {
 // JSON turns Dates into strings.
 type Wire<T> = { [K in keyof T]: T[K] extends Date ? string : T[K] extends Date | null ? string | null : T[K] }
 
-export type { Account, Enterprise, ManagementCategory, ManagementCategoryGroup, PnlRole, TransactionStatus, TransactionType, Vendor }
+export type { Account, Enterprise, ManagementCategory, ManagementCategoryGroup, PnlRole, SquareCategory, TransactionStatus, TransactionType, Vendor }
 export type Transaction = Wire<DbTransaction>
 
 export interface Lookups {
@@ -22,6 +23,7 @@ export interface Lookups {
 	managementCategories: ManagementCategory[]
 	enterprises: Enterprise[]
 	vendors: Vendor[]
+	squareCategories: SquareCategory[]
 }
 
 export type TransactionEdit = Partial<
@@ -60,6 +62,22 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
 		throw new ApiError(`${data.error ?? `Request failed (${res.status})`}${reason ? `: ${reason}` : ''}`, data)
 	}
 	return data as T
+}
+
+// POST /api/imports/square (see apps/api/src/import/importSquare.ts). Amounts in cents.
+export interface SquareImport {
+	from: string
+	to: string
+	accountId: number
+	categories: { name: string; netCents: number; managementCategoryId: number | null; enterpriseId: number | null; isNew: boolean }[]
+	summary: { grossCents: number; netCents: number; taxCents: number; cardCents: number; cashCents: number; feesCents: number; netTotalCents: number } | null
+	warnings: string[]
+	// Set when this range overlaps an earlier Square import; importing is refused.
+	overlap: string | null
+	payouts: { id: number; date: string; accountId: number; description: string; cents: number; likely: boolean }[]
+	expectedPayoutCents: number | null
+	imported: number
+	batchId: number | null
 }
 
 // GET /api/reports/pnl (see apps/api/src/reports/pnl.ts). Amounts are in cents; money out is negative.
@@ -122,13 +140,17 @@ export const api = {
 	importCsv: (body: { accountId: number; filename: string; csv: string }) =>
 		request<{ batchId: number | null; imported: number; duplicates: number }>('POST', '/imports', body),
 
+	importSquare: (body: { files: { filename: string; csv: string }[]; from?: string; to?: string; preview: boolean }) =>
+		request<SquareImport>('POST', '/imports/square', body),
+	retypeSquarePayouts: (ids: number[]) => request<{ retyped: number }>('POST', '/imports/square/retype-payouts', { ids }),
+
 	createLookup: (kind: LookupKind, body: Record<string, unknown>) => request<unknown>('POST', `/${kind}`, body),
 	updateLookup: (kind: LookupKind, id: number, body: Record<string, unknown>) =>
 		request<unknown>('PATCH', `/${kind}/${id}`, body),
 	deleteVendor: (id: number) => request<void>('DELETE', `/vendors/${id}`),
 }
 
-export type LookupKind = 'transaction-types' | 'management-categories' | 'enterprises' | 'vendors'
+export type LookupKind = 'transaction-types' | 'management-categories' | 'enterprises' | 'vendors' | 'square-categories'
 
 export const groupLabels: Record<ManagementCategoryGroup, string> = {
 	income: 'Income',
