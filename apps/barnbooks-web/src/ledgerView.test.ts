@@ -74,24 +74,18 @@ test('vendor sort uses the vendor name, or the bank text when there is no vendor
 
 test('filters and sort round-trip through the URL; defaults leave it clean', () => {
 	assert.equal(writeLedgerParams(emptyFilters, { key: 'date', dir: 'desc' }, ''), '')
-	const url = writeLedgerParams({ ...emptyFilters, account: 2, enterprise: 'none', role: 'capex', vendor: 'lutz' }, { key: 'amount', dir: 'asc' }, '2026-06')
+	const url = writeLedgerParams({ ...emptyFilters, account: 2, enterprise: 'none', pnlRow: 7, pnlSplit: 'none', vendor: 'lutz' }, { key: 'amount', dir: 'asc' }, '2026-06')
 	const back = readLedgerParams(url)
-	assert.deepEqual(back.filters, { ...emptyFilters, account: 2, enterprise: 'none', role: 'capex', vendor: 'lutz' })
+	assert.deepEqual(back.filters, { ...emptyFilters, account: 2, enterprise: 'none', pnlRow: 7, pnlSplit: 'none', vendor: 'lutz' })
 	assert.deepEqual(back.sort, { key: 'amount', dir: 'asc' })
 	assert.equal(back.period, '2026-06')
 	assert.equal(readLedgerParams('?period=2025').period, '2025')
 	assert.equal(readLedgerParams('?period=2025-13').period, '')
-	assert.equal(readLedgerParams('?role=bogus').filters.role, null)
+	assert.equal(readLedgerParams('?pnlRow=x&split=3').filters.pnlRow, null)
+	assert.equal(readLedgerParams('?split=3').filters.pnlSplit, null, 'a split needs its row')
+	assert.equal(readLedgerParams('?pnlRow=4&split=drop').filters.pnlSplit, null)
 	assert.deepEqual(readLedgerParams('?sort=bogus&account=abc&period=June').sort, { key: 'date', dir: 'desc' })
 	assert.equal(readLedgerParams('?account=abc').filters.account, null)
-})
-
-test('the P&L role filter uses each type\'s role', () => {
-	const roleOf = (typeId: number | null) => (typeId === 2 ? 'operating' : typeId === 3 ? 'capex' : typeId === 1 ? 'operating' : undefined)
-	const withCapex = [...rows, tx({ transaction_type_id: 3, management_category_id: 5, amount: '-5000.00' })]
-	assert.equal(filterLedger(withCapex, { ...emptyFilters, category: 5 }, nameOf, roleOf).length, 3)
-	assert.deepEqual(filterLedger(withCapex, { ...emptyFilters, category: 5, role: 'operating' }, nameOf, roleOf).map(t => t.amount), ['-45.10', '-9.99'])
-	assert.deepEqual(filterLedger(withCapex, { ...emptyFilters, role: 'capex' }, nameOf, roleOf).map(t => t.amount), ['-5000.00'])
 })
 
 test('periods: a whole year, a month (including February), or all time', () => {

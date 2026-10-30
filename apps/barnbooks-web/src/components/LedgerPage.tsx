@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { api, groupLabels, type ManagementCategoryGroup, type Transaction } from '../api'
+import { api, groupLabels, type ManagementCategoryGroup, type PnlLayout, type Transaction } from '../api'
 import { useLookups } from '../lookups'
 import { formatMoney } from '../format'
 import {
@@ -37,14 +37,36 @@ export function LedgerPage() {
 	const [rows, setRows] = useState<Transaction[] | null>(null)
 	const [error, setError] = useState<string | null>(null)
 
+	const { pnlRow, pnlSplit } = filters
 	const load = useCallback(async () => {
 		try {
-			setRows(await api.transactions('posted', periodRange(period)))
+			setRows(
+				await api.transactions('posted', {
+					...periodRange(period),
+					...(pnlRow !== null && { pnlRow, ...(pnlSplit !== null && { split: pnlSplit }) }),
+				}),
+			)
 			setError(null)
 		} catch (e) {
 			setError((e as Error).message)
 		}
-	}, [period])
+	}, [period, pnlRow, pnlSplit])
+
+	// Names the P&L line the ledger is filtered to.
+	const [layouts, setLayouts] = useState<PnlLayout[] | null>(null)
+	useEffect(() => {
+		if (pnlRow !== null && !layouts) api.pnlLayouts().then(setLayouts, () => setLayouts([]))
+	}, [pnlRow, layouts])
+	const pnlLabel = useMemo(() => {
+		if (pnlRow === null) return null
+		const layout = layouts?.find(l => l.rows.some(r => r.id === pnlRow))
+		const row = layout?.rows.find(r => r.id === pnlRow)
+		if (!layout || !row) return 'P&L line'
+		if (pnlSplit === null || row.splitBy === 'none') return `${layout.name}: ${row.label}`
+		const list = ({ category: 'managementCategories', enterprise: 'enterprises', type: 'transactionTypes' } as const)[row.splitBy]
+		const none = { category: 'Uncategorised', enterprise: 'No enterprise', type: 'No type' }[row.splitBy]
+		return `${layout.name}: ${row.label} › ${pnlSplit === 'none' ? none : nameOf(list, Number(pnlSplit))}`
+	}, [pnlRow, pnlSplit, layouts, nameOf])
 
 	useEffect(() => {
 		void load()
@@ -70,13 +92,7 @@ export function LedgerPage() {
 	}, [filters, sort, period])
 	useEffect(() => () => window.history.replaceState(null, '', window.location.pathname + window.location.hash), [])
 
-	const shown = useMemo(
-		() => {
-			const roleOf = (typeId: number | null) => lookups.transactionTypes.find(t => t.id === typeId)?.pnl_role
-			return rows ? sortLedger(filterLedger(rows, filters, nameOf, roleOf), sort, nameOf) : []
-		},
-		[rows, filters, sort, nameOf, lookups],
-	)
+	const shown = useMemo(() => (rows ? sortLedger(filterLedger(rows, filters, nameOf), sort, nameOf) : []), [rows, filters, sort, nameOf])
 
 	const unpost = async (id: number) => {
 		try {
@@ -137,17 +153,15 @@ export function LedgerPage() {
 					value={filters.enterprise}
 					onChange={v => setFilter('enterprise', v)}
 				/>
-				<select
-					aria-label="P&L role"
-					className={filters.role ? 'active' : undefined}
-					value={filters.role ?? ''}
-					onChange={e => setFilter('role', (e.target.value || null) as LedgerFilters['role'])}
-				>
-					<option value="">Any P&amp;L role</option>
-					<option value="operating">P&amp;L revenue / expense</option>
-					<option value="capex">P&amp;L capital expenditure</option>
-					<option value="other">Other cash movements</option>
-				</select>
+				{pnlLabel && (
+					<button
+						className="chip"
+						title="Showing only the transactions behind this P&L line; click to show all"
+						onClick={() => setFilters(f => ({ ...f, pnlRow: null, pnlSplit: null }))}
+					>
+						{pnlLabel} <span aria-hidden="true">×</span>
+					</button>
+				)}
 				{filtering && (
 					<button className="link" onClick={() => setFilters(emptyFilters)}>
 						Clear filters
