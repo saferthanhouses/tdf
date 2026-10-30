@@ -130,6 +130,78 @@ button.danger:not(.link):not(:disabled) {
 	border-bottom-color: var(--accent);
 }
 
+/* Header menus: Transactions / Reports */
+.app-header nav {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	flex-wrap: wrap;
+}
+
+.nav-menu {
+	position: relative;
+}
+
+.nav-trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.nav-caret {
+	font-size: 14px;
+	line-height: 1;
+	opacity: 0.8;
+	transition: transform 120ms ease;
+}
+
+.nav-trigger[aria-expanded='true'] .nav-caret {
+	transform: rotate(180deg);
+}
+
+.nav-menu-list {
+	position: absolute;
+	top: calc(100% + 6px);
+	left: 0;
+	z-index: 20;
+	min-width: 180px;
+	max-width: calc(100vw - 32px);
+	padding: 4px;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	box-shadow: 0 8px 24px rgb(0 0 0 / 0.18);
+	display: grid;
+}
+
+.nav-menu-list button {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	border: none;
+	border-radius: 6px;
+	background: none;
+	padding: 7px 10px;
+	text-align: left;
+	color: var(--text);
+}
+
+.nav-menu-list button:hover,
+.nav-menu-list button:focus-visible {
+	background: var(--notice-bg);
+	outline: none;
+}
+
+.nav-menu-list button[aria-current='page'] {
+	font-weight: 600;
+}
+
+.nav-check {
+	width: 1em;
+	color: var(--accent);
+}
+
 select,
 input:not([type='checkbox']) {
 	padding: 4px 6px;
