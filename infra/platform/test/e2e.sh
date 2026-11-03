@@ -161,6 +161,12 @@ signup=$(curl -s -X POST "http://127.0.0.1:$FARM_API_PORT/api/subscribe" -H 'acc
 [[ $(jq -r .ok <<<"$signup" 2>/dev/null) == true ]] && pass "signed up through the API" || fail "signup failed: ${signup:0:200}"
 [[ $(psql_super -d farm -c "SELECT email FROM subscriber") == dave.testperson@example.org ]] &&
 	pass "stored as farm_app, email normalized" || fail "signup not stored"
+# Unsubscribing keeps the row (with unsubscribed_at set), so the sanitize check below still sees the email.
+token=$(psql_super -d farm -c "SELECT unsubscribe_token FROM subscriber")
+code=$(curl -s -o /dev/null -w '%{http_code}' -X POST "http://127.0.0.1:$FARM_API_PORT/api/unsubscribe?token=$token" \
+	-d 'List-Unsubscribe=One-Click')
+[[ $code == 200 && $(psql_super -d farm -c "SELECT count(*) FROM subscriber WHERE unsubscribed_at IS NOT NULL") == 1 ]] &&
+	pass "one-click unsubscribe as farm_app" || fail "unsubscribe returned $code"
 
 # A third database with no sanitize script.
 psql_super -c "CREATE DATABASE scratch" && psql_super -d scratch -c "CREATE TABLE t (i int); INSERT INTO t VALUES (1)"
