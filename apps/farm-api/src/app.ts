@@ -26,8 +26,13 @@ export const signup = z.object({
 
 export type Signup = Pick<z.infer<typeof signup>, 'email' | 'source'>
 
+// The subscriber's unsubscribe_token, from the link in our emails.
+const token = z.uuid()
+
 export interface Deps {
 	subscribe: (signup: Signup) => Promise<void>
+	// False if no subscriber has this token.
+	unsubscribe: (token: string) => Promise<boolean>
 	limiter?: RateLimiter
 }
 
@@ -37,10 +42,16 @@ function wantsJson(c: Context) {
 	return (c.req.header('accept') ?? '').includes('application/json')
 }
 
-function respond(c: Context, status: 200 | 400 | 429, message: string) {
+function respond(c: Context, status: 200 | 400 | 404 | 429, message: string, redirectTo?: string) {
 	if (wantsJson(c)) return c.json(status === 200 ? { ok: true, message } : { error: message }, status)
-	if (status === 200) return c.redirect('/subscribed', 303)
+	if (status === 200 && redirectTo) return c.redirect(redirectTo, 303)
 	return c.text(message, status)
+}
+
+async function readBody(c: Context): Promise<Record<string, unknown>> {
+	return (c.req.header('content-type') ?? '').includes('application/json')
+		? await c.req.json().catch(() => ({}))
+		: await c.req.parseBody()
 }
 
 // Caddy appends the client's address to X-Forwarded-For; only Caddy can reach this service, so the
@@ -49,7 +60,7 @@ function clientIp(c: Context) {
 	return c.req.header('x-forwarded-for')?.split(',').pop()?.trim() || 'local'
 }
 
-export function createApp({ subscribe, limiter = new RateLimiter(10, 10 * 60_000) }: Deps) {
+export function createApp({ subscribe, unsubscribe, limiter = new RateLimiter(10, 10 * 60_000) }: Deps) {
 	const app = new Hono().basePath('/api')
 
 	app.get('/health', c => c.json({ ok: true }))
@@ -57,10 +68,7 @@ export function createApp({ subscribe, limiter = new RateLimiter(10, 10 * 60_000
 	app.post('/subscribe', bodyLimit({ maxSize: 4 * 1024 }), async c => {
 		if (!limiter.allow(clientIp(c))) return respond(c, 429, 'Too many signups from here. Please try again later.')
 
-		const body = (c.req.header('content-type') ?? '').includes('application/json')
-			? await c.req.json().catch(() => ({}))
-			: await c.req.parseBody()
-		const parsed = signup.safeParse(body)
+		const parsed = signup.safeParse(await readBody(c))
 		if (!parsed.success) {
 			const message = parsed.error.issues.find(i => i.path[0] === 'email')?.message ?? 'Invalid request'
 			return respond(c, 400, message)
@@ -70,7 +78,24 @@ export function createApp({ subscribe, limiter = new RateLimiter(10, 10 * 60_000
 		// Same answer whether it's new, already subscribed or a bot, so the form can't be used to
 		// find out who is on the list.
 		if (!website) await subscribe({ email, source })
-		return respond(c, 200, "Thanks! You're on the list.")
+		return respond(c, 200, "Thanks! You're on the list.", '/subscribed')
+	})
+
+	// POST only: email scanners open every link in a message, so a GET would unsubscribe people
+	// by accident. Our emails link to the site's /unsubscribe?token=… page, which posts here. The
+	// token can also be in the URL, for mail clients' own unsubscribe button (RFC 8058 one-click:
+	// List-Unsubscribe: <https://…/api/unsubscribe?token=…> with List-Unsubscribe-Post).
+	// Tokens are random UUIDs, so there's nothing to guess and no rate limit.
+	app.post('/unsubscribe', bodyLimit({ maxSize: 4 * 1024 }), async c => {
+		const body = await readBody(c)
+		const parsed = token.safeParse(c.req.query('token') ?? body.token)
+		if (!parsed.success) {
+			return respond(c, 400, "That unsubscribe link isn't complete. Please email us and we'll take you off the list.")
+		}
+		if (!(await unsubscribe(parsed.data))) {
+			return respond(c, 404, "We couldn't find that subscription. Please email us and we'll take you off the list.")
+		}
+		return respond(c, 200, "You're unsubscribed. You won't get any more emails from us.")
 	})
 
 	app.onError((err, c) => {

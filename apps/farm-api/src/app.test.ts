@@ -3,10 +3,18 @@ import assert from 'node:assert/strict'
 import { createApp, type Signup } from './app.js'
 import { RateLimiter } from './rateLimit.js'
 
+const TOKEN = '0b8f2a4e-6c1d-4e2a-9f3b-7d5c1a2e8f90'
+
 function setup(limiter?: RateLimiter) {
 	const saved: Signup[] = []
-	const app = createApp({ subscribe: async s => void saved.push(s), limiter })
-	return { app, saved }
+	const unsubscribed: string[] = []
+	const app = createApp({
+		subscribe: async s => void saved.push(s),
+		// Only TOKEN belongs to a subscriber.
+		unsubscribe: async t => (t === TOKEN ? (unsubscribed.push(t), true) : false),
+		limiter,
+	})
+	return { app, saved, unsubscribed }
 }
 
 const form = (fields: Record<string, string>, headers: Record<string, string> = {}) => ({
@@ -88,4 +96,40 @@ test('the rate limit window resets', () => {
 	assert.equal(limiter.allow('ip'), false)
 	now = 1000
 	assert.equal(limiter.allow('ip'), true)
+})
+
+test('the unsubscribe page posts the token and gets JSON back', async () => {
+	const { app, unsubscribed } = setup()
+	const res = await app.request('/api/unsubscribe', json({ token: TOKEN }))
+	assert.equal(res.status, 200)
+	assert.equal(((await res.json()) as { ok: boolean }).ok, true)
+	assert.deepEqual(unsubscribed, [TOKEN])
+})
+
+test('one-click unsubscribe from a mail client: token in the URL, plain 200', async () => {
+	const { app, unsubscribed } = setup()
+	const res = await app.request(`/api/unsubscribe?token=${TOKEN}`, form({ 'List-Unsubscribe': 'One-Click' }))
+	assert.equal(res.status, 200)
+	assert.deepEqual(unsubscribed, [TOKEN])
+})
+
+test('unsubscribing is POST only, so link scanners can not do it', async () => {
+	const { app, unsubscribed } = setup()
+	const res = await app.request(`/api/unsubscribe?token=${TOKEN}`)
+	assert.equal(res.status, 404)
+	assert.equal(unsubscribed.length, 0)
+})
+
+test('a missing or malformed token is rejected', async () => {
+	const { app } = setup()
+	assert.equal((await app.request('/api/unsubscribe', json({}))).status, 400)
+	assert.equal((await app.request('/api/unsubscribe', json({ token: 'not-a-uuid' }))).status, 400)
+})
+
+test('an unknown token says so', async () => {
+	const { app, unsubscribed } = setup()
+	const res = await app.request('/api/unsubscribe', json({ token: '11111111-2222-4333-8444-555555555555' }))
+	assert.equal(res.status, 404)
+	assert.match(((await res.json()) as { error: string }).error, /couldn't find/)
+	assert.equal(unsubscribed.length, 0)
 })
