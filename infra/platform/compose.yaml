@@ -6,6 +6,7 @@
 #   backend   - Postgres and the services that talk to it. Postgres publishes no ports.
 #   public    - the edge Caddy and public sites. Only Caddy publishes ports (80/443).
 #   barnbooks - the barnbooks web app, its API, and its Tailscale sidecar. Nothing published.
+#   farm-api is on backend and public: Caddy sends <farm site>/api/* to it.
 name: platform
 
 x-logging: &logging
@@ -119,7 +120,7 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy-data:/data
       - caddy-config:/config
-    depends_on: [farm-site]
+    depends_on: [farm-site, farm-api]
     mem_limit: 128m
     networks: [public]
     logging: *logging
@@ -130,6 +131,46 @@ services:
     restart: unless-stopped
     mem_limit: 64m
     networks: [public]
+    logging: *logging
+
+  # Email signups from the farm site. Public through Caddy, so it gets its own database and roles.
+  farm-api:
+    build:
+      context: ../..
+      dockerfile: apps/farm-api/Dockerfile
+    image: platform/farm-api
+    restart: unless-stopped
+    environment: &farm-db
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: farm
+      DB_USER: farm_app
+      DB_PASSWORD: ${FARM_APP_PASSWORD:?set in the platform env file}
+      DB_SSLMODE: disable
+      PORT: "3002"
+    depends_on:
+      db: { condition: service_healthy }
+    mem_limit: 256m
+    networks: [backend, public]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3002/api/health').then(r => process.exit(r.ok ? 0 : 1), () => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    logging: *logging
+
+  # Runs migrations as the owner role: docker compose run --rm farm-migrate (deploy.sh does this).
+  farm-migrate:
+    image: platform/farm-api
+    profiles: [tools]
+    command: ["npm", "run", "migrate", "-w", "farm-api"]
+    environment:
+      <<: *farm-db
+      DB_USER: farm_owner
+      DB_PASSWORD: ${FARM_OWNER_PASSWORD:?set in the platform env file}
+    depends_on:
+      db: { condition: service_healthy }
+    networks: [backend]
     logging: *logging
 
 networks:

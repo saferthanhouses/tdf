@@ -16,6 +16,7 @@ ROOT=$(cd "$(dirname "$0")/../../.." && pwd)
 PROJECT=platform-e2e
 NETWORK=${PROJECT}_backend
 WEB_PORT=${E2E_WEB_PORT:-18081}
+FARM_API_PORT=${E2E_FARM_API_PORT:-18082}
 TMP=$(mktemp -d)
 S3_USER=e2es3admin
 S3_PASS=e2es3password12345
@@ -37,10 +38,13 @@ fail() { printf '  FAIL  %s\n' "$1"; failures=$((failures + 1)); }
 mkdir -p "$TMP/bin" "$TMP/state/postgres" "$TMP/state/pgbackrest" "$TMP/s3-certs"
 cat >"$TMP/.env" <<EOF
 POSTGRES_SUPERUSER_PASSWORD=e2esuperuserpassword
-APP_DATABASES="barnbooks"
+APP_DATABASES="barnbooks farm"
 BARNBOOKS_OWNER_PASSWORD=e2eownerpassword123
 BARNBOOKS_APP_PASSWORD=e2eapppassword12345
 BARNBOOKS_READONLY_PASSWORD=e2ereadonlypassword
+FARM_OWNER_PASSWORD=e2efarmownerpassword
+FARM_APP_PASSWORD=e2efarmapppassword12
+FARM_READONLY_PASSWORD=e2efarmreadonlypassword
 FARM_SITE_DOMAIN=localhost
 ACME_EMAIL=e2e@example.com
 STATE_DIR=$TMP/state
@@ -89,6 +93,8 @@ services:
     networks: [backend]
   barnbooks-web:
     ports: ["127.0.0.1:$WEB_PORT:80"]
+  farm-api:
+    ports: ["127.0.0.1:$FARM_API_PORT:3002"]
 volumes:
   s3-data: {}
 EOF
@@ -116,7 +122,7 @@ psql_super() { platform-compose exec -T -u postgres db psql -v ON_ERROR_STOP=1 -
 
 # --- Stack ------------------------------------------------------------------------------------
 step "Building images"
-platform-compose build -q db barnbooks-api barnbooks-web
+platform-compose build -q db barnbooks-api barnbooks-web farm-api
 
 step "S3 gateway (Spaces stand-in)"
 quiet platform-compose up -d s3
@@ -126,6 +132,7 @@ quiet aws_s3 s3 mb s3://backups && quiet aws_s3 s3 mb s3://dumps && pass "bucket
 step "Postgres, app database, backups"
 quiet platform-compose up -d --wait db && pass "db healthy"
 quiet "$ROOT/infra/platform/create-app-db.sh" barnbooks && pass "create-app-db.sh barnbooks"
+quiet "$ROOT/infra/platform/create-app-db.sh" farm && pass "create-app-db.sh farm"
 quiet pgbackrest stanza-create && quiet pgbackrest check && pass "stanza created; WAL archiving to S3 works"
 quiet pgbackrest --type=full backup && pass "full backup"
 
@@ -145,7 +152,17 @@ curl -sf -X POST "http://127.0.0.1:$WEB_PORT/api/transactions" -H 'content-type:
 	-d "{\"date\":\"2026-10-18\",\"account_id\":$cash_id,\"amount\":-42.5,\"description\":\"Paid Dave Testperson cash\"}" >/dev/null &&
 	pass "wrote a vendor and transaction through the API"
 
-# A second database with no sanitize script.
+step "farm api"
+quiet platform-compose --profile tools run --rm farm-migrate && pass "migrations as farm_owner"
+quiet platform-compose up -d --wait farm-api
+# Personal data that sanitizing must remove.
+signup=$(curl -s -X POST "http://127.0.0.1:$FARM_API_PORT/api/subscribe" -H 'accept: application/json' \
+	-d 'email=Dave.Testperson@example.org&source=/')
+[[ $(jq -r .ok <<<"$signup" 2>/dev/null) == true ]] && pass "signed up through the API" || fail "signup failed: ${signup:0:200}"
+[[ $(psql_super -d farm -c "SELECT email FROM subscriber") == dave.testperson@example.org ]] &&
+	pass "stored as farm_app, email normalized" || fail "signup not stored"
+
+# A third database with no sanitize script.
 psql_super -c "CREATE DATABASE scratch" && psql_super -d scratch -c "CREATE TABLE t (i int); INSERT INTO t VALUES (1)"
 quiet pgbackrest --type=diff backup && quiet pgbackrest check && pass "diff backup; latest WAL archived"
 
@@ -183,7 +200,7 @@ else
 	fail "restore test failed: ${out: -600}"
 fi
 listing=$(aws_s3 s3 ls --recursive s3://dumps/restore-test/ || true)
-for f in barnbooks.dump scratch.dump _SUCCESS; do
+for f in barnbooks.dump farm.dump scratch.dump _SUCCESS; do
 	grep -q -- "-e2e/$f\$" <<<"$listing" && pass "uploaded $f" || fail "missing $f in dumps bucket"
 done
 
@@ -195,6 +212,15 @@ if [[ -n $key ]] && quiet aws_s3 s3 cp "s3://dumps/$key" /work/barnbooks.dump; t
 	grep -q $'\t-42.50\t' <<<"$sql" && pass "amounts kept in the dump" || fail "amount -42.50 missing from the dump"
 else
 	fail "could not download barnbooks.dump"
+fi
+
+key=$(awk '/-e2e\/farm.dump$/ { print $4 }' <<<"$listing")
+if [[ -n $key ]] && quiet aws_s3 s3 cp "s3://dumps/$key" /work/farm.dump; then
+	sql=$(docker run --rm -v "$TMP:/work:ro" platform/postgres:18 pg_restore -f - /work/farm.dump)
+	if grep -qi 'testperson' <<<"$sql"; then fail "sanitized farm dump still contains the subscriber's email"
+	else pass "sanitized farm dump has no subscriber emails"; fi
+else
+	fail "could not download farm.dump"
 fi
 
 echo

@@ -10,6 +10,7 @@ ENV NODE_ENV=production
 COPY package.json package-lock.json ./
 COPY apps/api/package.json apps/api/
 COPY apps/barnbooks-web/package.json apps/barnbooks-web/
+COPY apps/farm-api/package.json apps/farm-api/
 COPY apps/farm-site/package.json apps/farm-site/
 COPY packages/database-client/package.json packages/database-client/
 RUN npm ci --include=dev -w barnbooks-api -w @tdf-mono/db-client --include-workspace-root \

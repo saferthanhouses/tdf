@@ -7,13 +7,13 @@ One DigitalOcean Droplet runs every monorepo app in Docker Compose, with one Pos
                             │ 80/443                                │
 ┌───────────────────────────┼─────── platform Droplet ──────────────┼─────────────────────┐
 │                      ┌────▼────┐                           ┌──────▼───────┐             │
-│                      │  caddy  │ public network            │ ts-barnbooks │ barnbooks   │
-│                      └────┬────┘                           └──────┬───────┘ network     │
-│                      ┌────▼──────┐                         ┌──────▼────────┐            │
-│                      │ farm-site │                         │ barnbooks-web │──/api──┐   │
-│                      └───────────┘                         └───────────────┘        │   │
-│                                                            ┌────────────────┐       │   │
-│   backend network (no published ports)  ┌──────────────────│ barnbooks-api  │◄──────┘   │
+│                      │  caddy  │──/api──┐ public network   │ ts-barnbooks │ barnbooks   │
+│                      └────┬────┘        │                  └──────┬───────┘ network     │
+│                      ┌────▼──────┐ ┌────▼─────┐            ┌──────▼────────┐            │
+│                      │ farm-site │ │ farm-api │            │ barnbooks-web │──/api──┐   │
+│                      └───────────┘ └────┬─────┘            └───────────────┘        │   │
+│                                         │                  ┌────────────────┐       │   │
+│   backend network (no published ports)  ├──────────────────│ barnbooks-api  │◄──────┘   │
 │   ┌───────────────────────┐             │                  └────────────────┘           │
 │   │ db: Postgres 18       │◄────────────┘                                               │
 │   │ + pgBackRest          │ data on a Block Storage Volume (/mnt/pgdata)                │
@@ -175,7 +175,9 @@ The dumps are what developers should use instead of production data. `npm run db
 
 `sanitize/barnbooks.sql` replaces vendor names and match texts, bank descriptions, notes, import filenames and account numbers. It keeps dates, amounts and categories, and vendor matching still works on the result.
 
-It refuses to run if any text, JSON or array column in a table isn't on its reviewed list. So when a migration adds a column, add it there: either scrub it or list it as safe.
+`sanitize/farm.sql` replaces the farm site's subscriber emails with `subscriber-<id>@example.com` and regenerates their unsubscribe tokens. It keeps signup dates and which page each signup came from.
+
+Each refuses to run if any text, JSON or array column in a table isn't on its reviewed list. So when a migration adds a column, add it there: either scrub it or list it as safe.
 
 ## Tests
 
