@@ -2,7 +2,7 @@
 // Email signup for farm updates. Posts to the farm API (apps/farm-api), served at /api on this
 // domain. Works without JavaScript: the browser posts the form and lands on /subscribed. With
 // JavaScript, the script below posts it in place and shows the result here instead.
-// Styled like the market cards, with the form as a gold pill like the "Next market" chip.
+// Styled like the market cards: a plain card with the input and button side by side.
 interface Props {
   eyebrow?: string;
   title?: string;
@@ -27,7 +27,7 @@ const {
     <div class="hp" aria-hidden="true">
       <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
     </div>
-    <div class="pill">
+    <div class="row">
       <label class="visually-hidden" for="signup-email">Email address</label>
       <input
         id="signup-email"
@@ -76,7 +76,7 @@ const {
 </script>
 
 <style>
-  /* Same card as the market cards: surface, hairline border, small radius, soft shadow */
+  /* Same card as the market cards: surface, hairline border, small radius */
   .signup {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
@@ -91,46 +91,36 @@ const {
   .copy h2 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
   .text { margin: 0; color: var(--color-text-muted); max-width: 46ch; }
 
-  /* The form is a gold pill like the "Next market" chip, with the input and button inside */
-  .pill {
+  .row {
     display: flex;
     align-items: stretch;
     gap: var(--space-2);
-    padding: var(--space-2);
-    background: var(--color-highlight);
-    border-radius: 999px;
-    box-shadow: 0 10px 28px rgb(60 20 10 / 0.18);
   }
   input[type="email"] {
     flex: 1;
     min-width: 0;
-    padding: 0.7em 1.2em;
+    padding: 0.6em 0.9em;
     font: inherit;
     color: var(--color-text);
-    background: var(--color-surface);
-    border: 2px solid transparent;
-    border-radius: 999px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
   }
   input[type="email"]::placeholder { color: var(--color-text-muted); }
   input[type="email"]:focus-visible {
-    outline: none;
-    border-color: var(--color-feature);
+    outline: 2px solid var(--color-primary);
+    outline-offset: -1px;
+    border-color: var(--color-primary);
   }
-  /* Barn red, like the pre-order buttons */
   .btn {
     flex: none;
     font-size: var(--text-base);
     white-space: nowrap;
     cursor: pointer;
-    background: var(--color-feature);
-    border-color: var(--color-feature);
-    color: var(--color-feature-text);
   }
-  .btn:hover { background: #6e2318; color: var(--color-feature-text); }
-  .btn:focus-visible { outline: 3px solid var(--color-feature-text); outline-offset: -5px; }
-  .btn:disabled { opacity: 0.7; cursor: progress; transform: none; }
+  .btn:disabled { opacity: 0.7; cursor: progress; }
 
-  .status { min-height: 1.6em; margin: var(--space-2) 0 0 var(--space-4); font-weight: 600; }
+  .status { min-height: 1.6em; margin: var(--space-2) 0 0; font-weight: 600; }
   .status[data-state="ok"] { color: var(--color-primary); }
   .status[data-state="error"] { color: var(--color-accent); }
 
@@ -139,9 +129,8 @@ const {
   @media (max-width: 760px) {
     .signup { grid-template-columns: 1fr; padding: var(--space-4); }
   }
-  /* On phones the pill becomes a rounded panel with the button underneath */
+  /* On phones the button goes under the input */
   @media (max-width: 480px) {
-    .pill { flex-direction: column; align-items: stretch; border-radius: var(--radius-lg); }
-    .status { margin-left: var(--space-2); }
+    .row { flex-direction: column; }
   }
 </style>

@@ -209,28 +209,32 @@ const slides = Object.keys(files)
     gap: var(--space-3);
   }
   .dots { display: flex; gap: var(--space-2); }
+  /* Short bars rather than round dots; the current slide's is solid */
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 22px;
+    height: 3px;
     padding: 0;
-    border-radius: 50%;
-    border: 1.5px solid #fbf3e6;
-    background: transparent;
+    border: 0;
+    background: rgb(251 243 230 / 0.45);
     cursor: pointer;
+    background-clip: content-box;
+    /* Taller hit area than the bar itself */
+    box-sizing: content-box;
+    padding-block: 8px;
   }
-  .dot[aria-current="true"] { background: #fbf3e6; }
+  .dot[aria-current="true"] { background-color: #fbf3e6; }
   .arrow {
     width: 36px;
     height: 36px;
-    border-radius: 50%;
     border: 0;
-    background: rgb(28 21 16 / 0.45);
+    background: transparent;
     color: #fbf3e6;
     font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
+    opacity: 0.75;
   }
-  .arrow:hover { background: rgb(28 21 16 / 0.7); }
+  .arrow:hover { opacity: 1; }
 
   @media (prefers-reduced-motion: reduce) {
     .slide { transition: none; }

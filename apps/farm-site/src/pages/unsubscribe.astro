@@ -78,15 +78,8 @@ import { site } from "@/site.config";
     border-radius: var(--radius);
     box-shadow: var(--shadow);
   }
-  .btn {
-    font-size: var(--text-base);
-    cursor: pointer;
-    background: var(--color-feature);
-    border-color: var(--color-feature);
-    color: var(--color-feature-text);
-  }
-  .btn:hover { background: #6e2318; color: var(--color-feature-text); }
-  .btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+  .btn { font-size: var(--text-base); cursor: pointer; }
+  .btn:disabled { opacity: 0.6; cursor: default; }
   /* .btn sets display, which would otherwise override the hidden attribute */
   .btn[hidden] { display: none; }
   .status { margin: var(--space-3) 0 0; font-weight: 600; }

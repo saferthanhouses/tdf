@@ -42,13 +42,9 @@ const photos = { food, events, stay };
     overflow: hidden;
     color: var(--color-text);
     text-decoration: none;
-    transition: transform 0.15s ease;
 	background: var(--color-surface);
   }
-
-  .pillar:hover {
-	  transform: translateY(2px);
-  }
+  .pillar:hover h3 { color: var(--color-primary); }
 
   .photo {
     width: 100%;
@@ -73,13 +69,9 @@ const photos = { food, events, stay };
     letter-spacing: 0.1em;
     color: var(--color-accent);
   }
-  .badge {
-    padding: 0.1em 0.7em;
-    border-radius: 999px;
-    background: var(--color-highlight);
-    color: #2b1a0e;
-    letter-spacing: 0.05em;
-  }
+  /* "Coming soon": plain text after the kicker, not a tag */
+  .badge { color: var(--color-text-muted); }
+  .badge::before { content: "·"; margin-right: var(--space-2); }
   h3 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
   .summary { color: var(--color-text-muted); flex: 1; }
   .more { color: var(--color-primary); font-weight: 600; }

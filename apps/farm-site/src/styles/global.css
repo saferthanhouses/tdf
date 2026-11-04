@@ -77,22 +77,26 @@ img { max-width: 100%; height: auto; display: block; }
 
 .btn {
   display: inline-block;
-  padding: 0.7em 1.3em;
-  border-radius: 999px;
+  padding: 0.6em 1.2em;
+  border-radius: var(--radius);
   font-family: var(--font-display);
   background: var(--color-primary);
   color: var(--color-primary-contrast);
   text-decoration: none;
   font-weight: 300;
   border: 2px solid var(--color-primary);
-  transition: transform 0.15s ease, background 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
-.btn:hover { color: var(--color-primary-contrast); transform: translateY(-1px); }
+.btn:hover {
+  color: var(--color-primary-contrast);
+  background: color-mix(in srgb, var(--color-primary) 85%, black);
+  border-color: color-mix(in srgb, var(--color-primary) 85%, black);
+}
 .btn--ghost {
   background: transparent;
   color: var(--color-primary);
 }
-.btn--ghost:hover { color: var(--color-primary); }
+.btn--ghost:hover { color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 10%, transparent); }
 
 .grid {
   display: grid;
