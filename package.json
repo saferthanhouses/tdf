@@ -18,7 +18,10 @@
     "db:seed:transactions": "dotenvx run -f .env.dev -- npm run seed:transactions -w @tdf-mono/db-client --",
     "db:restore-from-prod": "infra/postgres/restore-dev-db.sh",
     "barnbooks:api": "dotenvx run -f .env.dev -- npm run dev -w barnbooks-api",
-    "barnbooks:web": "npm run dev -w barnbooks-web"
+    "barnbooks:web": "npm run dev -w barnbooks-web",
+    "farm:site": "npm run dev -w farm-site",
+    "farm:api": "DB_NAME=farm dotenvx run -f .env.dev -- npm run dev -w farm-api",
+    "farm:db:migrate": "DB_NAME=farm dotenvx run -f .env.dev -- npm run migrate -w farm-api"
   },
   "devDependencies": {
     "dotenv-cli": "^11.0.0",

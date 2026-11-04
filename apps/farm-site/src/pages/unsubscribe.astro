@@ -1,0 +1,98 @@
+---
+// Where the unsubscribe link in our emails goes: /unsubscribe?token=<subscriber.unsubscribe_token>.
+// Nothing happens until the button is pressed, because email scanners open every link in a message.
+// The page is static, so the script reads the token from the URL and posts it to the farm API.
+import PageLayout from "@/layouts/PageLayout.astro";
+import { site } from "@/site.config";
+---
+
+<PageLayout
+  title="Unsubscribe"
+  eyebrow="Farm updates"
+  lede="Sorry to see you go. Press the button and we'll stop sending you farm updates."
+>
+  <div class="unsubscribe" data-unsubscribe>
+    <button class="btn" type="button" disabled>Unsubscribe me</button>
+    <p class="status" role="status" aria-live="polite"></p>
+    <noscript>
+      <p class="help">
+        This page needs JavaScript. Email us at <a href={`mailto:${site.email}?subject=Unsubscribe`}>{site.email}</a>
+        and we'll take you off the list.
+      </p>
+    </noscript>
+    <p class="help" hidden>
+      Trouble? Email us at <a href={`mailto:${site.email}?subject=Unsubscribe`}>{site.email}</a> and we'll take you
+      off the list.
+    </p>
+    <p class="again" hidden>Changed your mind? <a href="/#signup">Sign up again</a>.</p>
+  </div>
+</PageLayout>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-unsubscribe]")!;
+  const button = root.querySelector<HTMLButtonElement>("button")!;
+  const status = root.querySelector<HTMLElement>(".status")!;
+  const again = root.querySelector<HTMLElement>(".again")!;
+  const help = root.querySelector<HTMLElement>(".help")!;
+  const token = new URLSearchParams(location.search).get("token");
+
+  function show(message: string, state: "ok" | "error" | "") {
+    status.textContent = message;
+    status.dataset.state = state;
+    help.hidden = state !== "error";
+  }
+
+  if (!token) {
+    button.hidden = true;
+    show("This link is missing part of the address. Please use the link from one of our emails.", "error");
+  } else {
+    button.disabled = false;
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      show("Unsubscribing…", "");
+      try {
+        const res = await fetch("/api/unsubscribe", {
+          method: "POST",
+          body: JSON.stringify({ token }),
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error ?? "Something went wrong. Please try again.");
+        show(data.message ?? "You're unsubscribed.", "ok");
+        button.hidden = true;
+        again.hidden = false;
+      } catch (err) {
+        show(err instanceof Error ? err.message : String(err), "error");
+        button.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .unsubscribe {
+    max-width: var(--prose-width);
+    padding: var(--space-5);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .btn {
+    font-size: var(--text-base);
+    cursor: pointer;
+    background: var(--color-feature);
+    border-color: var(--color-feature);
+    color: var(--color-feature-text);
+  }
+  .btn:hover { background: #6e2318; color: var(--color-feature-text); }
+  .btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+  /* .btn sets display, which would otherwise override the hidden attribute */
+  .btn[hidden] { display: none; }
+  .status { margin: var(--space-3) 0 0; font-weight: 600; }
+  .status:empty { display: none; }
+  .status[data-state="ok"] { margin-top: 0; color: var(--color-primary); font-size: var(--text-lg); }
+  .status[data-state="error"] { color: var(--color-accent); }
+  .btn[hidden] + .status { margin-top: 0; }
+  .help, .again { margin: var(--space-2) 0 0; color: var(--color-text-muted); }
+</style>

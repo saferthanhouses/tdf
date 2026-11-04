@@ -5,5 +5,11 @@
 
 {$FARM_SITE_DOMAIN} {
 	encode zstd gzip
-	reverse_proxy farm-site:80
+	# The site's forms (email signup) post here, on the same domain, so no CORS.
+	handle /api/* {
+		reverse_proxy farm-api:3002
+	}
+	handle {
+		reverse_proxy farm-site:80
+	}
 }

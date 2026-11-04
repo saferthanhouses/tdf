@@ -106,7 +106,7 @@ variable "admin_user" {
 variable "app_databases" {
   description = "One Postgres database (with owner/app/readonly roles) per app."
   type        = list(string)
-  default     = ["barnbooks"]
+  default     = ["barnbooks", "farm"]
   validation {
     condition     = alltrue([for a in var.app_databases : can(regex("^[a-z][a-z0-9_]*$", a))])
     error_message = "App names must be lowercase identifiers."

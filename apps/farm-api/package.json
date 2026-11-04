@@ -1,0 +1,25 @@
+{
+  "name": "farm-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch index.ts",
+    "start": "tsx index.ts",
+    "test": "tsx --test 'src/**/*.test.ts'",
+    "typecheck": "tsc -p .",
+    "migrate": "kysely migrate latest",
+    "create:migration": "kysely migrate:make"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "hono": "^4.13.13",
+    "kysely": "^0.29.6",
+    "pg": "^8.23.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1",
+    "kysely-ctl": "^0.21.0"
+  }
+}

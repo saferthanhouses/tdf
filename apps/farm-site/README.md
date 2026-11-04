@@ -42,6 +42,32 @@ For a page that needs custom layout, create `src/pages/whatever.astro` instead.
 
 Copy any file in `src/content/products/`, rename it (the filename becomes the URL, e.g. `/products/lamb-shanks`), and edit the frontmatter. Fields are validated by `src/content.config.ts` — a typo in `category` fails the build with a clear message. Set `featured: true` to show it on the homepage (first three by `order`).
 
+## Email signups
+
+`src/components/EmailSignup.astro` is the "Get farm updates" form on the homepage; drop it into any page. It posts to `/api/subscribe`, served by `apps/farm-api` (stored in the `farm` Postgres database). In production Caddy routes `/api/*` on the site's domain to it; in dev, Astro proxies `/api` to `localhost:3002`. To run both locally, from the repo root:
+
+```sh
+docker exec postgres_db createdb -U myuser farm   # once: the dev Postgres from infra/compose.yaml
+npm run farm:db:migrate
+npm run farm:api       # http://localhost:3002
+npm run farm:site      # http://localhost:4321
+```
+
+To see who has signed up: `SELECT email, created_at FROM subscriber WHERE unsubscribed_at IS NULL ORDER BY created_at` (on the Droplet, connect as `farm_readonly`).
+
+### Unsubscribing
+
+Every email we send must let people unsubscribe. Use each subscriber's `unsubscribe_token`:
+
+- **In the email body**, link to `https://<farm site>/unsubscribe?token=<unsubscribe_token>`. That page (`src/pages/unsubscribe.astro`) has an "Unsubscribe me" button; nothing happens until it's pressed, because email scanners open every link.
+- **In the email headers**, so Gmail and Apple Mail show their own Unsubscribe button:
+  ```
+  List-Unsubscribe: <https://<farm site>/api/unsubscribe?token=<unsubscribe_token>>
+  List-Unsubscribe-Post: List-Unsubscribe=One-Click
+  ```
+
+Both end up at `POST /api/unsubscribe`, which sets `unsubscribed_at`. The row is kept so we never email them again by mistake; signing up again clears it.
+
 ## Adding interactivity
 
 Three levels, use the lightest that works:

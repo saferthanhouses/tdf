@@ -1,0 +1,147 @@
+---
+// Email signup for farm updates. Posts to the farm API (apps/farm-api), served at /api on this
+// domain. Works without JavaScript: the browser posts the form and lands on /subscribed. With
+// JavaScript, the script below posts it in place and shows the result here instead.
+// Styled like the market cards, with the form as a gold pill like the "Next market" chip.
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  text?: string;
+}
+const {
+  eyebrow = "Farm news",
+  title = "Get farm updates",
+  text = "Where we're selling, what's at the market this week, and news from the farm. Unsubscribe any time.",
+} = Astro.props;
+---
+
+<aside class="signup" id="signup">
+  <div class="copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2>{title}</h2>
+    <p class="text">{text}</p>
+  </div>
+  <form method="post" action="/api/subscribe" data-email-signup>
+    <input type="hidden" name="source" value={Astro.url.pathname} />
+    <!-- Honeypot: hidden from people and screen readers, so only bots fill it in. -->
+    <div class="hp" aria-hidden="true">
+      <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+    </div>
+    <div class="pill">
+      <label class="visually-hidden" for="signup-email">Email address</label>
+      <input
+        id="signup-email"
+        type="email"
+        name="email"
+        required
+        maxlength="254"
+        autocomplete="email"
+        placeholder="Your email address"
+      />
+      <button class="btn" type="submit">Sign me up →</button>
+    </div>
+    <p class="status" role="status" aria-live="polite"></p>
+  </form>
+</aside>
+
+<script>
+  for (const form of document.querySelectorAll<HTMLFormElement>("[data-email-signup]")) {
+    const status = form.querySelector<HTMLElement>(".status")!;
+    const button = form.querySelector<HTMLButtonElement>("button")!;
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      status.textContent = "Signing you up…";
+      status.dataset.state = "";
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>),
+          headers: { Accept: "application/json" },
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error ?? "Something went wrong. Please try again.");
+        form.reset();
+        status.textContent = data.message ?? "Thanks! You're on the list.";
+        status.dataset.state = "ok";
+      } catch (err) {
+        status.textContent = err instanceof Error ? err.message : String(err);
+        status.dataset.state = "error";
+      } finally {
+        button.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Same card as the market cards: surface, hairline border, small radius, soft shadow */
+  .signup {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: var(--space-4) var(--space-5);
+    padding: var(--space-5);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .copy h2 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
+  .text { margin: 0; color: var(--color-text-muted); max-width: 46ch; }
+
+  /* The form is a gold pill like the "Next market" chip, with the input and button inside */
+  .pill {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-2);
+    padding: var(--space-2);
+    background: var(--color-highlight);
+    border-radius: 999px;
+    box-shadow: 0 10px 28px rgb(60 20 10 / 0.18);
+  }
+  input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    padding: 0.7em 1.2em;
+    font: inherit;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 2px solid transparent;
+    border-radius: 999px;
+  }
+  input[type="email"]::placeholder { color: var(--color-text-muted); }
+  input[type="email"]:focus-visible {
+    outline: none;
+    border-color: var(--color-feature);
+  }
+  /* Barn red, like the pre-order buttons */
+  .btn {
+    flex: none;
+    font-size: var(--text-base);
+    white-space: nowrap;
+    cursor: pointer;
+    background: var(--color-feature);
+    border-color: var(--color-feature);
+    color: var(--color-feature-text);
+  }
+  .btn:hover { background: #6e2318; color: var(--color-feature-text); }
+  .btn:focus-visible { outline: 3px solid var(--color-feature-text); outline-offset: -5px; }
+  .btn:disabled { opacity: 0.7; cursor: progress; transform: none; }
+
+  .status { min-height: 1.6em; margin: var(--space-2) 0 0 var(--space-4); font-weight: 600; }
+  .status[data-state="ok"] { color: var(--color-primary); }
+  .status[data-state="error"] { color: var(--color-accent); }
+
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .signup { grid-template-columns: 1fr; padding: var(--space-4); }
+  }
+  /* On phones the pill becomes a rounded panel with the button underneath */
+  @media (max-width: 480px) {
+    .pill { flex-direction: column; align-items: stretch; border-radius: var(--radius-lg); }
+    .status { margin-left: var(--space-2); }
+  }
+</style>

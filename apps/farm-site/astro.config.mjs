@@ -10,5 +10,11 @@ export default defineConfig({
 	output: "static",
 	server: {
 		allowedHosts: ['manly-fructose-cultivate.ngrok-free.dev']
-	}
+	},
+	// In production Caddy sends /api to apps/farm-api; in dev, run it with `npm run farm:api`.
+	vite: {
+		server: {
+			proxy: { "/api": "http://localhost:3002" },
+		},
+	},
 });
