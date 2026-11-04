@@ -116,6 +116,10 @@ services:
     environment:
       FARM_SITE_DOMAIN: ${FARM_SITE_DOMAIN:?set in the platform env file}
       ACME_EMAIL: ${ACME_EMAIL:?set in the platform env file (Let's Encrypt expiry notices)}
+      # The Caddyfile is a single-file bind mount, and git pull replaces the file rather than
+      # editing it, so a running Caddy keeps serving the old one. platform-compose and deploy.sh set
+      # this to the file's hash: a changed Caddyfile changes Caddy's config, so `up -d` recreates it.
+      CADDYFILE_SHA: ${CADDYFILE_SHA:-}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy-data:/data

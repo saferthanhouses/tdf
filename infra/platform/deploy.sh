@@ -75,6 +75,10 @@ log "Tailscale sidecars (private apps)"
 check_tailscale_sidecars
 
 log "Starting services"
+# Recreates Caddy when the Caddyfile changed (see CADDYFILE_SHA in compose.yaml). The platform-compose
+# wrapper sets it too; this covers hosts provisioned before it did.
+CADDYFILE_SHA=$(sha256sum "$HERE/Caddyfile" | cut -d' ' -f1)
+export CADDYFILE_SHA
 platform-compose up -d --remove-orphans --wait
 docker image prune -f >/dev/null
 
