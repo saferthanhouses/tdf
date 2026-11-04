@@ -131,6 +131,8 @@ Problems hit on the first real apply, and their fixes. The variable checks catch
 
 Merge to `main`, then on the Droplet run `sudo /opt/platform/repo/infra/platform/deploy.sh`. It pulls, rebuilds with fresh base images (so Postgres minor releases arrive here), creates any new app databases, runs every `*-migrate` service, and restarts what changed.
 
+Caddy counts as changed when the `Caddyfile` does. It's mounted as a single file, and a `git pull` replaces that file, so a running container would otherwise keep serving the old config. `deploy.sh` and the `platform-compose` wrapper pass the file's hash in as `CADDYFILE_SHA`, which makes `up -d` recreate Caddy. If Caddy ever seems to ignore a Caddyfile change, `sudo platform-compose up -d --force-recreate --no-deps caddy` remounts it.
+
 ## Adding an app
 
 1. A `Dockerfile` for it under `apps/`.

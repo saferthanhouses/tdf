@@ -145,6 +145,8 @@ git -C "$REPO_DIR" config core.sshCommand "$GIT_SSH_COMMAND"
 cat >/usr/local/bin/platform-compose <<EOF
 #!/bin/sh
 # docker compose for the platform stack (installed by infra/platform/provision.sh)
+# Caddy is recreated when the Caddyfile changes (see CADDYFILE_SHA in compose.yaml).
+export CADDYFILE_SHA=\$(sha256sum $REPO_DIR/infra/platform/Caddyfile | cut -d' ' -f1)
 exec docker compose --project-directory $REPO_DIR/infra/platform -f $REPO_DIR/infra/platform/compose.yaml --env-file $ENV_FILE "\$@"
 EOF
 chmod 755 /usr/local/bin/platform-compose
