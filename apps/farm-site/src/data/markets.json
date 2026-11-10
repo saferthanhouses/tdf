@@ -7,9 +7,10 @@
     "weeks": [2, 4],
     "hours": "12pm– 5pm",
     "season": "May-November",
-    "note": "Every 2nd & 4th Sunday", 
+    "note": "Every 2nd & 4th Sunday",
 	"startMonth": 5,
-    "endMonth": 11
+    "endMonth": 11,
+    "lastMarket": "2026-11-08"
   },
   {
     "id": "riseboro",
@@ -19,7 +20,8 @@
     "hours": "8am – 3pm",
     "season": "May – November",
     "startMonth": 5,
-    "endMonth": 11
+    "endMonth": 11,
+    "lastMarket": "2026-11-21"
   },
   {
     "id": "farm-pickup",

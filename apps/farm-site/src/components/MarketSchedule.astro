@@ -2,7 +2,7 @@
 // Renders the market list at build time, then a tiny client script works out
 // each market's next date (it depends on today, so it can't be done at build time):
 // it highlights the soonest one, and adds a "Next: <date> · Pre-order" strip to
-// every market that's still in season.
+// every market that's still in season, or a "Season's over" note to those that aren't.
 import { getCollection } from "astro:content";
 import { site } from "@/site.config";
 
@@ -28,6 +28,7 @@ const schedule = markets.map((m) => ({
   weeks: m.data.weeks,
   startMonth: m.data.startMonth,
   endMonth: m.data.endMonth,
+  lastMarket: m.data.lastMarket,
 }));
 ---
 
@@ -72,14 +73,18 @@ const schedule = markets.map((m) => ({
           {!compact && m.data.note && <p class="note">{m.data.note}</p>}
           {
             m.data.days.length > 0 && (
-              <div class="market-next" hidden>
-                <p class="market-next-date">
-                  <span class="market-next-label">Next</span> <span class="market-next-text" />
-                </p>
-                <a class="btn market-cta" href={PREORDER_URL || `mailto:${site.email}`}>
-                  Pre-order →
-                </a>
-              </div>
+              <>
+                <div class="market-next" hidden>
+                  <p class="market-next-date">
+                    <span class="market-next-label">Next</span> <span class="market-next-text" />
+                  </p>
+                  <a class="btn market-cta" href={PREORDER_URL || `mailto:${site.email}`}>
+                    Pre-order →
+                  </a>
+                </div>
+                <div class="market-closed" hidden />
+
+              </>
             )
           }
         </li>
@@ -96,7 +101,18 @@ const schedule = markets.map((m) => ({
     weeks?: number[];
     startMonth?: number;
     endMonth?: number;
+    lastMarket?: string; // "YYYY-MM-DD"
   };
+
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+    "October", "November", "December"];
+
+  // "2026-11-21" as local midnight (new Date("2026-11-21") would be UTC midnight, the day before in NY)
+  function parseDay(s: string) {
+    const [y, m, d] = s.split("-").map(Number);
+    return new Date(y!, m! - 1, d!);
+  }
+  const sameDay = (a: Date, b: Date) => a.toDateString() === b.toDateString();
 
   function inSeason(e: Entry, month: number) {
     if (!e.startMonth || !e.endMonth) return true;
@@ -105,18 +121,35 @@ const schedule = markets.map((m) => ({
       : month >= e.startMonth || month <= e.endMonth; // wraps over new year
   }
 
+  // After lastMarket, the market is closed until the next time startMonth begins.
+  function closedEarly(e: Entry, d: Date) {
+    if (!e.lastMarket) return false;
+    const last = parseDay(e.lastMarket);
+    if (d < last || sameDay(d, last)) return false;
+    if (!e.startMonth) return true;
+    const reopenYear = last.getFullYear() + (e.startMonth - 1 > last.getMonth() ? 0 : 1);
+    return d < new Date(reopenYear, e.startMonth - 1, 1);
+  }
+
   // The market's next date within the coming five weeks, or null if it's out of season by then
   function nextDate(e: Entry, from: Date) {
     for (let offset = 0; offset < 35; offset++) {
       const d = new Date(from);
       d.setDate(from.getDate() + offset);
       const week = Math.ceil(d.getDate() / 7); // 1st, 2nd… weekday of the month
-      if (e.days.includes(d.getDay()) && (!e.weeks || e.weeks.includes(week)) && inSeason(e, d.getMonth() + 1)) {
+      if (
+        e.days.includes(d.getDay()) &&
+        (!e.weeks || e.weeks.includes(week)) &&
+        inSeason(e, d.getMonth() + 1) &&
+        !closedEarly(e, d)
+      ) {
         return d;
       }
     }
     return null;
   }
+
+  const isLast = (e: Entry, d: Date) => !!e.lastMarket && sameDay(d, parseDay(e.lastMarket));
 
   document.querySelectorAll<HTMLElement>(".markets").forEach((root) => {
     const schedule: Entry[] = JSON.parse(root.dataset.schedule ?? "[]");
@@ -141,9 +174,20 @@ const schedule = markets.map((m) => ({
       const strip = root.querySelector<HTMLElement>(`[data-id="${entry.id}"] .market-next`);
       if (!strip) continue;
       const text = strip.querySelector(".market-next-text");
-      if (text) text.textContent = label(date);
+      if (text) text.textContent = label(date) + (isLast(entry, date) ? " · last of the season" : "");
       preorder(strip.querySelector<HTMLAnchorElement>(".market-cta"), entry, date);
       strip.hidden = false;
+    }
+
+    // Markets with no date coming up say so, rather than looking open
+    for (const entry of schedule) {
+      if (!entry.days.length || upcoming.some((u) => u.entry === entry)) continue;
+      const closed = root.querySelector<HTMLElement>(`[data-id="${entry.id}"] .market-closed`);
+      if (!closed) continue;
+      closed.textContent = entry.startMonth
+        ? `Season's over · back in ${monthNames[entry.startMonth - 1]}`
+        : "Season's over";
+      closed.hidden = false;
     }
 
     // The soonest one is highlighted, with its own chip above the list
@@ -152,7 +196,10 @@ const schedule = markets.map((m) => ({
     const next = root.querySelector<HTMLElement>(".next");
     if (next) {
       const text = next.querySelector(".next-text");
-      if (text) text.textContent = `${best.entry.name} — ${label(best.date)}`;
+      if (text) {
+        text.textContent = `${best.entry.name} — ${label(best.date)}`;
+        if (isLast(best.entry, best.date)) text.textContent += " (last of the season)";
+      }
       preorder(next.querySelector<HTMLAnchorElement>(".next-cta"), best.entry, best.date);
       next.hidden = false;
     }
@@ -237,7 +284,17 @@ const schedule = markets.map((m) => ({
   }
   .market-cta { padding: 0.5em 1.1em; white-space: nowrap; }
   /* Space between the card details and the strip */
-  .market:has(> .market-next:not([hidden])) > p:last-of-type { margin-bottom: var(--space-4); }
+  .market:has(> .market-next:not([hidden]), > .market-closed:not([hidden])) > p:last-of-type {
+    margin-bottom: var(--space-4);
+  }
+  /* "Season's over · back in May": same place as the Next strip, but quiet */
+  .market-closed:not([hidden]) {
+    margin: auto calc(-1 * var(--card-pad)) calc(-1 * var(--card-pad));
+    padding: var(--space-3) var(--card-pad);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
   .market h3 { margin-bottom: var(--space-2); }
   .market p { margin-bottom: var(--space-1); }
   .where, .season, .note { color: var(--color-text-muted); font-size: var(--text-sm); }
