@@ -47,6 +47,9 @@ const markets = defineCollection({
     // Optional month range (1–12) used by the "next market" widget
     startMonth: z.number().int().min(1).max(12).optional(),
     endMonth: z.number().int().min(1).max(12).optional(),
+    // Optional: the last market day of the current season ("2026-11-21"), when it ends before
+    // endMonth does. After it, the market shows as closed until startMonth comes round again.
+    lastMarket: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD").optional(),
     url: z.string().url().optional(),
     note: z.string().optional(),
   }),
