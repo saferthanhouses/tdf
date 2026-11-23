@@ -682,5 +682,353 @@
   "category": "amenity",
   "type": "restaurant",
   "place_rank": 30
+ },
+ "KOL, Marylebone, London, UK": {
+  "found": true,
+  "lat": 51.5147945,
+  "lon": -0.1575328,
+  "display_name": "KOL, 9, Seymour Street, Marylebone, City of Westminster, Greater London, England, W1H 7JW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Aulis, St Anne's Court, Soho, London": {
+  "found": false
+ },
+ "Aulis, Soho, London, UK": {
+  "found": false
+ },
+ "Hoppers, Frith Street, Soho, London": {
+  "found": true,
+  "lat": 51.5135833,
+  "lon": -0.1315974,
+  "display_name": "Hoppers, 49, Frith Street, Soho, City of Westminster, Greater London, England, W1D 4SG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hoppers, London, UK": {
+  "found": true,
+  "lat": 51.5158924,
+  "lon": -0.1508595,
+  "display_name": "Hoppers, 77, Wigmore Street, East Marylebone, Marylebone, City of Westminster, Greater London, England, W1U 1QE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mission Chinese Food, New York": {
+  "found": true,
+  "lat": 40.7152503,
+  "lon": -73.9988502,
+  "display_name": "Mission Chinese Food, 45, Mott Street, Five Points, Manhattan Community Board 3, Manhattan, New York County, New York, 10013, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mission Chinese Food, New York, USA": {
+  "found": true,
+  "lat": 40.7152503,
+  "lon": -73.9988502,
+  "display_name": "Mission Chinese Food, 45, Mott Street, Five Points, Manhattan Community Board 3, Manhattan, New York County, New York, 10013, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Tao Tao Ju, Lisle Street, London": {
+  "found": true,
+  "lat": 51.5115656,
+  "lon": -0.1307458,
+  "display_name": "Tao Tao Ju, 15, Lisle Street, Chinatown, City of Westminster, Greater London, England, WC2H 7BE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Tao Tao Ju, Chinatown, London, UK": {
+  "found": true,
+  "lat": 51.5115656,
+  "lon": -0.1307458,
+  "display_name": "Tao Tao Ju, 15, Lisle Street, Chinatown, City of Westminster, Greater London, England, WC2H 7BE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Lucky & Joy, Lower Clapton Road, London": {
+  "found": true,
+  "lat": 51.5518416,
+  "lon": -0.0523048,
+  "display_name": "Lucky & Joy, 95, Lower Clapton Road, Lower Clapton, Clapton, London Borough of Hackney, Greater London, England, E5 0NP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Lucky & Joy, Clapton, London, UK": {
+  "found": true,
+  "lat": 51.5518416,
+  "lon": -0.0523048,
+  "display_name": "Lucky & Joy, 95, Lower Clapton Road, Lower Clapton, Clapton, London Borough of Hackney, Greater London, England, E5 0NP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "XU, Rupert Street, London": {
+  "found": false
+ },
+ "XU, Soho, London, UK": {
+  "found": false
+ },
+ "Shack-Fuyu, Old Compton Street, London": {
+  "found": false
+ },
+ "Shack-Fuyu, Soho, London, UK": {
+  "found": false
+ },
+ "Sweet Mother's Kitchen, Courtenay Place, Wellington": {
+  "found": true,
+  "lat": -41.2942699,
+  "lon": 174.783237,
+  "display_name": "Sweet Mother's Kitchen, 5, Courtenay Place, Te Aro, Wellington, Wellington City, Wellington, 6141, New Zealand / Aotearoa",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sweet Mother's Kitchen, Wellington, New Zealand": {
+  "found": true,
+  "lat": -41.2942699,
+  "lon": 174.783237,
+  "display_name": "Sweet Mother's Kitchen, 5, Courtenay Place, Te Aro, Wellington, Wellington City, Wellington, 6141, New Zealand / Aotearoa",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chin Chin, Flinders Lane, Melbourne": {
+  "found": false
+ },
+ "Chin Chin, Melbourne, Australia": {
+  "found": true,
+  "lat": -37.8155839,
+  "lon": 144.9703425,
+  "display_name": "Chin Chin, Higson Lane, East End Theatre District, Melbourne, Victoria, 3000, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Magnolia Bakery, Bleecker Street, New York": {
+  "found": true,
+  "lat": 40.7358879,
+  "lon": -74.005,
+  "display_name": "Magnolia Bakery, 401, Bleecker Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "shop",
+  "type": "pastry",
+  "place_rank": 30
+ },
+ "Magnolia Bakery, New York, USA": {
+  "found": true,
+  "lat": 40.7358879,
+  "lon": -74.005,
+  "display_name": "Magnolia Bakery, 401, Bleecker Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "shop",
+  "type": "pastry",
+  "place_rank": 30
+ },
+ "Noma, Refshalevej, Copenhagen": {
+  "found": true,
+  "lat": 55.6901532,
+  "lon": 12.6129322,
+  "display_name": "Noma Projects, Refshalevej, Refshaleøen, Christianshavn, København, Københavns Kommune, Region Hovedstaden, 1432, Danmark",
+  "category": "shop",
+  "type": "deli",
+  "place_rank": 30
+ },
+ "Kadeau, Wildersgade, Copenhagen": {
+  "found": true,
+  "lat": 55.6722547,
+  "lon": 12.5888555,
+  "display_name": "Kadeau København, Wildersgade, Gammelholm, Christianshavn, København, Københavns Kommune, Region Hovedstaden, 1408, Danmark",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kadeau, Copenhagen, Denmark": {
+  "found": true,
+  "lat": 55.6722547,
+  "lon": 12.5888555,
+  "display_name": "Kadeau København, Wildersgade, Gammelholm, Christianshavn, København, Københavns Kommune, Region Hovedstaden, 1408, Danmark",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Tebay Services, M6, Cumbria": {
+  "found": false
+ },
+ "Tebay Services, Tebay, Cumbria, UK": {
+  "found": false
+ },
+ "805 Restaurant, Hendon, London": {
+  "found": false
+ },
+ "805 Restaurant, Hendon, North London, UK": {
+  "found": false
+ },
+ "Enish, Brixton, London": {
+  "found": false
+ },
+ "Enish, Brixton, London, UK": {
+  "found": false
+ },
+ "Chin Chin Labs, Camden, London": {
+  "found": true,
+  "lat": 51.541403,
+  "lon": -0.1463108,
+  "display_name": "Chin Chin Labs, 49–50, Camden Lock Place, Camden Lock Market, Primrose Hill, Chalk Farm, London Borough of Camden, Greater London, England, NW1 8AF, United Kingdom",
+  "category": "shop",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Chin Chin Ice Cream, Camden, London, UK": {
+  "found": false
+ },
+ "E&O, Blenheim Crescent, London": {
+  "found": true,
+  "lat": 51.5158063,
+  "lon": -0.2058098,
+  "display_name": "E&O, 14, Blenheim Crescent, Notting Hill, Royal Borough of Kensington and Chelsea, Greater London, England, W11 1NN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "E&O, Notting Hill, London, UK": {
+  "found": true,
+  "lat": 51.5158063,
+  "lon": -0.2058098,
+  "display_name": "E&O, 14, Blenheim Crescent, Notting Hill, Royal Borough of Kensington and Chelsea, Greater London, England, W11 1NN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "314 West 11th Street, New York": {
+  "found": true,
+  "lat": 40.7356322,
+  "lon": -74.0066761,
+  "display_name": "The Golden Swan, 314, West 11th Street, West Village Houses, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Spotted Pig, West Village, New York City, USA (now closed)": {
+  "found": false
+ },
+ "Casa Linda, Venice, Los Angeles": {
+  "found": false
+ },
+ "Casa Linda, Venice Beach, Los Angeles, USA": {
+  "found": false
+ },
+ "The Waverly Inn, Bank Street, New York": {
+  "found": true,
+  "lat": 40.7369557,
+  "lon": -74.002226,
+  "display_name": "The Waverly Inn, 16, Bank Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Waverly Inn, West Village, New York City, USA": {
+  "found": true,
+  "lat": 40.7369557,
+  "lon": -74.002226,
+  "display_name": "The Waverly Inn, 16, Bank Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Purezza, Parkway, Camden, London": {
+  "found": true,
+  "lat": 51.5380667,
+  "lon": -0.144344,
+  "display_name": "Purezza, 45-47, Parkway, Primrose Hill, Chalk Farm, London Borough of Camden, Greater London, England, NW1 7PN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Purezza, Camden, London, UK": {
+  "found": true,
+  "lat": 51.5380667,
+  "lon": -0.144344,
+  "display_name": "Purezza, 45-47, Parkway, Primrose Hill, Chalk Farm, London Borough of Camden, Greater London, England, NW1 7PN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Namaste Kathmandu, Edinburgh": {
+  "found": true,
+  "lat": 55.9461901,
+  "lon": -3.1912673,
+  "display_name": "Namaste Kathmandu, 17-19, Forrest Road, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH1 2QH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Namaste Kathmandu, Edinburgh, UK": {
+  "found": true,
+  "lat": 55.9461901,
+  "lon": -3.1912673,
+  "display_name": "Namaste Kathmandu, 17-19, Forrest Road, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH1 2QH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Fallow, Haymarket, London": {
+  "found": true,
+  "lat": 51.5094184,
+  "lon": -0.1327361,
+  "display_name": "Fallow, 52, Haymarket, St. James's, Westminster, Covent Garden, City of Westminster, Greater London, England, SW1Y 4RP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Fallow, St James's, London, UK": {
+  "found": true,
+  "lat": 51.5094184,
+  "lon": -0.1327361,
+  "display_name": "Fallow, 52, Haymarket, St. James's, Westminster, Covent Garden, City of Westminster, Greater London, England, SW1Y 4RP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Wolseley, 160 Piccadilly, London": {
+  "found": true,
+  "lat": 51.5073927,
+  "lon": -0.1409072,
+  "display_name": "The Wolseley, 157-160, Piccadilly, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, W1J 9EB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Wolseley, Piccadilly, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5073927,
+  "lon": -0.1409072,
+  "display_name": "The Wolseley, 157-160, Piccadilly, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, W1J 9EB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gloria, 54-56 Great Eastern Street, London": {
+  "found": true,
+  "lat": 51.5250631,
+  "lon": -0.081262,
+  "display_name": "Gloria, 54-56, Great Eastern Street, Shoreditch, London Borough of Hackney, Greater London, England, EC2A 3QR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gloria, Shoreditch, London, UK": {
+  "found": true,
+  "lat": 51.5250631,
+  "lon": -0.081262,
+  "display_name": "Gloria, 54-56, Great Eastern Street, Shoreditch, London Borough of Hackney, Greater London, England, EC2A 3QR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
  }
 }
