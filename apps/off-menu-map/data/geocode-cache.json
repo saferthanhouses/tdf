@@ -1495,5 +1495,140 @@
   "category": "tourism",
   "type": "hotel",
   "place_rank": 30
+ },
+ "Chateau Marmont, Sunset Boulevard, West Hollywood, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.0982497,
+  "lon": -118.3684049,
+  "display_name": "Chateau Marmont, 8221, West Sunset Boulevard, Sunset Strip, Los Angeles, Los Angeles County, California, 90046, United States",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Kebab Kid, New King's Road, London": {
+  "found": true,
+  "lat": 51.4723572,
+  "lon": -0.2028087,
+  "display_name": "Kebab Kid, 90, New King's Road, Hurlingham, Fulham, London Borough of Hammersmith and Fulham, Greater London, England, SW6 4LU, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Kebab Kid, Parsons Green, Fulham, south west London, UK": {
+  "found": false
+ },
+ "River Café, Thames Wharf, Rainville Road, London": {
+  "found": false
+ },
+ "River Café, Hammersmith, London, UK": {
+  "found": true,
+  "lat": 51.4840371,
+  "lon": -0.224212,
+  "display_name": "The River Cafe, Rainville Road, Hammersmith, London Borough of Hammersmith and Fulham, Greater London, England, W6 9EX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Rasa, Stoke Newington Church Street, London": {
+  "found": true,
+  "lat": 51.5620849,
+  "lon": -0.0763728,
+  "display_name": "Rasa, 55, Stoke Newington Church Street, Upper Clapton, West Hackney, London Borough of Hackney, Greater London, England, N16 0AR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Rasa, Stoke Newington, East London, UK": {
+  "found": false
+ },
+ "Craftworks Street Kitchen, Cornwall": {
+  "found": false
+ },
+ "Craftworks, Cornwall, UK": {
+  "found": false
+ },
+ "Extra Fancy, Metropolitan Avenue, Brooklyn": {
+  "found": false
+ },
+ "The River Café, Thames Wharf, Rainville Road, London": {
+  "found": false
+ },
+ "The River Café, Hammersmith, London, UK": {
+  "found": true,
+  "lat": 51.4840371,
+  "lon": -0.224212,
+  "display_name": "The River Cafe, Rainville Road, Hammersmith, London Borough of Hammersmith and Fulham, Greater London, England, W6 9EX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Panzer's, Circus Road, St John's Wood, London": {
+  "found": true,
+  "lat": 51.533457,
+  "lon": -0.1722834,
+  "display_name": "Panzer's Delicatessen, 13-19, Circus Road, St. John's Wood, City of Westminster, Greater London, England, NW8 6NX, United Kingdom",
+  "category": "shop",
+  "type": "supermarket",
+  "place_rank": 30
+ },
+ "Panzer's, St John's Wood, London, UK": {
+  "found": true,
+  "lat": 51.533457,
+  "lon": -0.1722834,
+  "display_name": "Panzer's Delicatessen, 13-19, Circus Road, St. John's Wood, City of Westminster, Greater London, England, NW8 6NX, United Kingdom",
+  "category": "shop",
+  "type": "supermarket",
+  "place_rank": 30
+ },
+ "Mitcham Plaice, Mitcham, London": {
+  "found": false
+ },
+ "Mitcham Plaice, Mitcham, London, UK": {
+  "found": false
+ },
+ "Brasserie Zedel, Sherwood Street, London": {
+  "found": true,
+  "lat": 51.5106309,
+  "lon": -0.1355893,
+  "display_name": "Brasserie Zedel, 20, Sherwood Street, Soho, City of Westminster, Greater London, England, W1F 7ED, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Brasserie Zedel, Sherwood Street, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5105975,
+  "lon": -0.13555,
+  "display_name": "Brasserie Zedel, Sherwood Street, Soho, City of Westminster, Greater London, England, W1D 7HW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Nardulli, The Pavement, Clapham, London": {
+  "found": true,
+  "lat": 51.4630121,
+  "lon": -0.1405586,
+  "display_name": "Nardulli, The Pavement, Clapham, London Borough of Lambeth, Greater London, England, SW4 0JF, United Kingdom",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Nardulli, The Pavement, Clapham Common, London, UK": {
+  "found": false
+ },
+ "Cher Thai, 22 North Street, Clapham, London": {
+  "found": false
+ },
+ "Cher Thai, 22 North Street, Clapham, London, UK": {
+  "found": false
+ },
+ "Iberico World Tapas, High Pavement, Nottingham": {
+  "found": false
+ },
+ "Iberico World Tapas, Nottingham, UK": {
+  "found": false
+ },
+ "Flesh & Buns, Earlham Street, London": {
+  "found": false
  }
 }
