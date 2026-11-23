@@ -265,9 +265,12 @@
     map.addLayer(cluster);
   }
 
-  // A place's colour is the course of its first recommendation.
+  // A place's colour is the course it was picked for: in the open episode if there
+  // is one, otherwise its first recommendation.
   function placeIcon(place, active) {
-    const course = recsById.get(place.recs[0])?.course ?? "extra";
+    const recs = place.recs.map((id) => recsById.get(id));
+    const course =
+      (state.episodeId && recs.find((r) => r.episode === state.episodeId)?.course) ?? recs[0]?.course ?? "extra";
     return L.divIcon({
       className: "",
       html: `<div class="pin${place.approximate ? " approx" : ""}${active ? " is-active" : ""}" style="${courseVar(course)}"></div>`,

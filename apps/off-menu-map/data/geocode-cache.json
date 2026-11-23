@@ -1630,5 +1630,5978 @@
  },
  "Flesh & Buns, Earlham Street, London": {
   "found": false
+ },
+ "Flesh & Buns, Covent Garden, London, UK": {
+  "found": true,
+  "lat": 51.5184412,
+  "lon": -0.1373438,
+  "display_name": "Flesh & Bun, 32, Berners Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1T 3LR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mac Shack, Underbelly, Edinburgh Fringe, Edinburgh, UK": {
+  "found": false
+ },
+ "Mums Great Comfort Food, Forrest Road, Edinburgh": {
+  "found": false
+ },
+ "Mums Great Comfort Food, Forrest Road, Edinburgh, UK": {
+  "found": false
+ },
+ "Ciao Roma, South Bridge, Edinburgh": {
+  "found": true,
+  "lat": 55.9474486,
+  "lon": -3.1859655,
+  "display_name": "Ciao Roma, 64, South Bridge, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH1 1LS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ciao Roma, South Bridge, Edinburgh, UK": {
+  "found": true,
+  "lat": 55.9474486,
+  "lon": -3.1859655,
+  "display_name": "Ciao Roma, 64, South Bridge, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH1 1LS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kuyama, Edinburgh, UK": {
+  "found": false
+ },
+ "Hackney Gelato, London": {
+  "found": false
+ },
+ "Hackney Gelato, Hackney, London, UK": {
+  "found": false
+ },
+ "Le Bab, Kingly Court, London": {
+  "found": true,
+  "lat": 51.5126537,
+  "lon": -0.1389199,
+  "display_name": "Le Bab, Kingly Court, Soho, City of Westminster, Greater London, England, W1B 5PW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Le Bab, Kingly Court, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5126537,
+  "lon": -0.1389199,
+  "display_name": "Le Bab, Kingly Court, Soho, City of Westminster, Greater London, England, W1B 5PW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Southbank Centre Food Market, London": {
+  "found": true,
+  "lat": 51.5054489,
+  "lon": -0.1160819,
+  "display_name": "Southbank Centre Food Market, Southbank Centre Square, South Bank, Waterloo, London Borough of Lambeth, Greater London, England, SE1 8XU, United Kingdom",
+  "category": "amenity",
+  "type": "marketplace",
+  "place_rank": 30
+ },
+ "Shrimpster, Southbank Centre food market, London, UK": {
+  "found": false
+ },
+ "Acropolis Greek restaurant, Walsall": {
+  "found": false
+ },
+ "Acropolis, Near the bus station, Walsall, UK": {
+  "found": false
+ },
+ "Xi'an Famous Foods, Flushing, Queens, New York": {
+  "found": true,
+  "lat": 40.7578902,
+  "lon": -73.8295372,
+  "display_name": "Xi'an Famous Foods, 41-10, Main Street, Flushing Chinatown, Flushing, Queens, Queens County, New York, 11355, United States",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Xi'an Famous Foods, New York City, USA (Brooklyn and Queens branches; started in Flushing, Queens)": {
+  "found": false
+ },
+ "Vinnie's Pizzeria, Bedford Avenue, Brooklyn": {
+  "found": false
+ },
+ "Vinnie's Pizzeria, Williamsburg, Brooklyn, New York, USA": {
+  "found": false
+ },
+ "Golden Lotus Vegan Restaurant, Newtown, Sydney": {
+  "found": true,
+  "lat": -33.8983032,
+  "lon": 151.1781356,
+  "display_name": "Golden Lotus vegan, 341, King Street, Newtown, Inner West, Sydney, New South Wales, 2042, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Golden Lotus, Sydney, Australia": {
+  "found": true,
+  "lat": -33.9683869,
+  "lon": 151.1038588,
+  "display_name": "Golden Lotus, 1, Ormonde Parade, Hurstville, St George, Sydney, New South Wales, 2220, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Viet Rose, Melbourne": {
+  "found": true,
+  "lat": -37.796409,
+  "lon": 144.978609,
+  "display_name": "Viet Rose, 363, Brunswick Street, Fitzroy, Melbourne, Victoria, 3065, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Viet Rose, Melbourne, Australia": {
+  "found": true,
+  "lat": -37.796409,
+  "lon": 144.978609,
+  "display_name": "Viet Rose, 363, Brunswick Street, Fitzroy, Melbourne, Victoria, 3065, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Danny's Pizzeria, Montrose Avenue, Brooklyn": {
+  "found": false
+ },
+ "Danny's Pizzeria, Near Montrose Ave L stop, Brooklyn, New York, USA": {
+  "found": false
+ },
+ "Paulie Gee's, Greenpoint, Brooklyn": {
+  "found": true,
+  "lat": 40.7283593,
+  "lon": -73.9571898,
+  "display_name": "Paulie Gee's Slice Shop, 110, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Paulie Gee's, Greenpoint, Brooklyn, New York, USA": {
+  "found": true,
+  "lat": 40.7283593,
+  "lon": -73.9571898,
+  "display_name": "Paulie Gee's Slice Shop, 110, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Roberta's, Moore Street, Bushwick, Brooklyn": {
+  "found": false
+ },
+ "Roberta's, Bushwick, Brooklyn, New York, USA": {
+  "found": false
+ },
+ "Scarr's Pizza, Orchard Street, New York": {
+  "found": true,
+  "lat": 40.7157403,
+  "lon": -73.9915692,
+  "display_name": "Scarr's Pizza, 35, Orchard Street, Lower East Side, Manhattan Community Board 3, Manhattan, New York County, New York, 10002, United States",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Scarr's Pizza, Orchard Street, Lower East Side, New York, USA": {
+  "found": true,
+  "lat": 40.7157403,
+  "lon": -73.9915692,
+  "display_name": "Scarr's Pizza, 35, Orchard Street, Lower East Side, Manhattan Community Board 3, Manhattan, New York County, New York, 10002, United States",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Mousehouse Cheesehaus, Windsor, Wisconsin": {
+  "found": true,
+  "lat": 43.1963137,
+  "lon": -89.3436074,
+  "display_name": "Mousehouse Cheesehaus, 4494, Lake Circle, Lake Windsor, Windsor, Dane County, Wisconsin, 53598, United States",
+  "category": "shop",
+  "type": "cheese",
+  "place_rank": 30
+ },
+ "Mousehouse Cheesehaus, Windsor, Wisconsin, USA": {
+  "found": true,
+  "lat": 43.1963137,
+  "lon": -89.3436074,
+  "display_name": "Mousehouse Cheesehaus, 4494, Lake Circle, Lake Windsor, Windsor, Dane County, Wisconsin, 53598, United States",
+  "category": "shop",
+  "type": "cheese",
+  "place_rank": 30
+ },
+ "Joy, Figueroa Street, Highland Park, Los Angeles": {
+  "found": false
+ },
+ "Joy, Highland Park, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.1208582,
+  "lon": -118.2046634,
+  "display_name": "Joy, 5100, York Boulevard, Highland Park, Los Angeles, Los Angeles County, California, 90042, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Alamo Drafthouse Cinema, Brooklyn, New York": {
+  "found": true,
+  "lat": 40.6906381,
+  "lon": -73.983202,
+  "display_name": "Alamo Drafthouse Cinema, 445, Albee Square, Downtown Brooklyn, Brooklyn, Kings County, New York, 11201, United States",
+  "category": "amenity",
+  "type": "cinema",
+  "place_rank": 30
+ },
+ "Alamo Drafthouse Cinema Brooklyn, Downtown Brooklyn, New York, USA": {
+  "found": true,
+  "lat": 40.6906381,
+  "lon": -73.983202,
+  "display_name": "Alamo Drafthouse Cinema, 445, Albee Square, Downtown Brooklyn, Brooklyn, Kings County, New York, 11201, United States",
+  "category": "amenity",
+  "type": "cinema",
+  "place_rank": 30
+ },
+ "Edo, Crystal Palace, London": {
+  "found": false
+ },
+ "Edo, Crystal Palace, London, UK": {
+  "found": false
+ },
+ "Happy Maki, Brighton": {
+  "found": true,
+  "lat": 50.8247301,
+  "lon": -0.1395179,
+  "display_name": "Happy Maki, 49, Gardner Street, Round Hill, Brighton, Brighton and Hove, England, BN1 1UN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Happy Maki, Brighton, UK": {
+  "found": true,
+  "lat": 50.8247301,
+  "lon": -0.1395179,
+  "display_name": "Happy Maki, 49, Gardner Street, Round Hill, Brighton, Brighton and Hove, England, BN1 1UN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "San Juan, Chorlton, Manchester": {
+  "found": true,
+  "lat": 53.4385562,
+  "lon": -2.2801589,
+  "display_name": "Bar San Juan, 56, Beech Road, Chorlton-cum-Hardy, Manchester, Greater Manchester, England, M21 9EG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "San Juan, Chorlton, Manchester, UK": {
+  "found": true,
+  "lat": 53.4385562,
+  "lon": -2.2801589,
+  "display_name": "Bar San Juan, 56, Beech Road, Chorlton-cum-Hardy, Manchester, Greater Manchester, England, M21 9EG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "San Giovanni Italian restaurant Manchester": {
+  "found": false
+ },
+ "San Giovanni, Near her home, Greater Manchester area, UK (uncertain)": {
+  "found": false
+ },
+ "Dom's Subs, Hoxton, London": {
+  "found": false
+ },
+ "Dom's Subs, Hoxton, London, UK": {
+  "found": false
+ },
+ "The Araki, New Burlington Street, London": {
+  "found": true,
+  "lat": 51.5117878,
+  "lon": -0.1402334,
+  "display_name": "The Araki, 12, New Burlington Street, St. James's, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1S 3BH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Araki, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5117878,
+  "lon": -0.1402334,
+  "display_name": "The Araki, 12, New Burlington Street, St. James's, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1S 3BH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bertie Blossoms, Portobello Road, London": {
+  "found": true,
+  "lat": 51.5208929,
+  "lon": -0.2095714,
+  "display_name": "Bertie Blossoms, 323, Portobello Road, North Kensington, Royal Borough of Kensington and Chelsea, Greater London, England, W10 5GN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bertie Blossoms, Portobello Road, Notting Hill, London, UK": {
+  "found": false
+ },
+ "Carbone, Thompson Street, New York": {
+  "found": true,
+  "lat": 40.7280028,
+  "lon": -74.0002252,
+  "display_name": "Carbone, 181, Thompson Street, University Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10012, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Carbone, New York, USA": {
+  "found": true,
+  "lat": 40.7554192,
+  "lon": -73.9930152,
+  "display_name": "Carbone, 331, West 38th Street, Manhattan Community Board 4, Manhattan, New York County, New York, 10018, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Core by Clare Smyth, Kensington Park Road, London": {
+  "found": true,
+  "lat": 51.5127194,
+  "lon": -0.2031072,
+  "display_name": "Core by Clare Smyth, 92, Kensington Park Road, Notting Hill, Royal Borough of Kensington and Chelsea, Greater London, England, W11 2PN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Core by Clare Smyth, Notting Hill, London, UK": {
+  "found": true,
+  "lat": 51.5127194,
+  "lon": -0.2031072,
+  "display_name": "Core by Clare Smyth, 92, Kensington Park Road, Notting Hill, Royal Borough of Kensington and Chelsea, Greater London, England, W11 2PN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bulldog, Le Marais, Paris": {
+  "found": false
+ },
+ "Bulldog, Le Marais, Paris, France": {
+  "found": false
+ },
+ "Battersea Park Road, Battersea, London": {
+  "found": true,
+  "lat": 51.4722671,
+  "lon": -0.165005,
+  "display_name": "Battersea Park Road, Falcon Estate, Battersea, London Borough of Wandsworth, Greater London, England, SW11 2FW, United Kingdom",
+  "category": "highway",
+  "type": "trunk",
+  "place_rank": 26
+ },
+ "Notarianni's, Battersea, London, UK (ice cream made at the bottom of Battersea Park Road, sold from vans around Lavender Hill)": {
+  "found": false
+ },
+ "The Fat Duck, High Street, Bray": {
+  "found": true,
+  "lat": 51.5079166,
+  "lon": -0.7017133,
+  "display_name": "The Fat Duck, High Street, Bray Wick, Holyport, Maidenhead, Windsor and Maidenhead, England, SL6 2AQ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Fat Duck, Bray, Berkshire, UK": {
+  "found": false
+ },
+ "Shepherdess Cafe, City Road, London": {
+  "found": true,
+  "lat": 51.5283695,
+  "lon": -0.0916174,
+  "display_name": "The Shepherdess, 221, City Road, St Luke's, Finsbury, London Borough of Hackney, Greater London, England, EC1V 1JN, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "The Shepherdess, City Road, Old Street, London, UK": {
+  "found": false
+ },
+ "Balans, Old Compton Street, London": {
+  "found": true,
+  "lat": 51.5127729,
+  "lon": -0.1325693,
+  "display_name": "Balans Soho Society, 60-62, Old Compton Street, Soho, City of Westminster, Greater London, England, W1D 6HL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Balans, Old Compton Street, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5133235,
+  "lon": -0.131167,
+  "display_name": "Balans Soho Society Cafe, 34, Old Compton Street, Soho, City of Westminster, Greater London, England, W1D 4UG, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Quality Chop House, Farringdon Road, London": {
+  "found": true,
+  "lat": 51.5247707,
+  "lon": -0.1100541,
+  "display_name": "Quality Chop House, 88-94, Farringdon Road, Little Italy, Angel, Islington, London Borough of Islington, Greater London, England, EC1R 3EA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Quality Chop House, Farringdon Road, Clerkenwell, London, UK": {
+  "found": true,
+  "lat": 51.5247707,
+  "lon": -0.1100541,
+  "display_name": "Quality Chop House, 88-94, Farringdon Road, Little Italy, Angel, Islington, London Borough of Islington, Greater London, England, EC1R 3EA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Eagle, 159 Farringdon Road, London": {
+  "found": true,
+  "lat": 51.5241468,
+  "lon": -0.1097367,
+  "display_name": "The Eagle, 159, Farringdon Road, Little Italy, Angel, Clerkenwell, London Borough of Islington, Greater London, England, EC1R 3GB, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Eagle, Farringdon Road, Clerkenwell, London, UK": {
+  "found": true,
+  "lat": 51.5241468,
+  "lon": -0.1097367,
+  "display_name": "The Eagle, 159, Farringdon Road, Little Italy, Angel, Clerkenwell, London Borough of Islington, Greater London, England, EC1R 3GB, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "White Bear, 135-02 Roosevelt Avenue, Flushing, New York": {
+  "found": true,
+  "lat": 40.7587742,
+  "lon": -73.8316456,
+  "display_name": "White Bear, 135-02, Roosevelt Avenue, Flushing Chinatown, Queens, Queens County, New York, 11354, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "White Bear, Flushing, Queens, New York, USA": {
+  "found": true,
+  "lat": 40.7587742,
+  "lon": -73.8316456,
+  "display_name": "White Bear, 135-02, Roosevelt Avenue, Flushing Chinatown, Queens, Queens County, New York, 11354, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Tempura Mikawa, Tokyo": {
+  "found": false
+ },
+ "Tempura Mikawa, Tokyo, Japan": {
+  "found": false
+ },
+ "City Bakery, West 18th Street, New York": {
+  "found": true,
+  "lat": 40.7389549,
+  "lon": -73.9923463,
+  "display_name": "The City Bakery, West 18th Street, Chelsea District, Manhattan Community Board 5, Manhattan, New York County, New York, 10011, United States",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "City Bakery, New York City, USA": {
+  "found": true,
+  "lat": 40.7389549,
+  "lon": -73.9923463,
+  "display_name": "The City Bakery, West 18th Street, Chelsea District, Manhattan Community Board 5, Manhattan, New York County, New York, 10011, United States",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "Shokunin, 4 Street SW, Calgary": {
+  "found": true,
+  "lat": 51.0349135,
+  "lon": -114.0713194,
+  "display_name": "Shokunin, 2016, 4 Street SW, Fourth Street BRZ, Cliff Bungalow, Calgary, Alberta, T2S 1W3, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Shokunin, Calgary, Alberta, Canada": {
+  "found": true,
+  "lat": 51.0349135,
+  "lon": -114.0713194,
+  "display_name": "Shokunin, 2016, 4 Street SW, Fourth Street BRZ, Cliff Bungalow, Calgary, Alberta, T2S 1W3, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Soho Hotel, Richmond Mews, London": {
+  "found": true,
+  "lat": 51.5140175,
+  "lon": -0.1337701,
+  "display_name": "The Soho Hotel, 4, Richmond Mews, Soho, City of Westminster, Greater London, England, W1D 3DH, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "The Soho Hotel, Richmond Mews, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5140175,
+  "lon": -0.1337701,
+  "display_name": "The Soho Hotel, 4, Richmond Mews, Soho, City of Westminster, Greater London, England, W1D 3DH, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Mirepoix, Ariège, France": {
+  "found": true,
+  "lat": 43.0880677,
+  "lon": 1.874318,
+  "display_name": "Mirepoix, Pamiers, Ariège, Occitanie, France métropolitaine, 09500, France",
+  "category": "boundary",
+  "type": "administrative",
+  "place_rank": 16
+ },
+ "Goats' milk ice cream van (Mirepoix market), Mirepoix, Ariège, France": {
+  "found": false
+ },
+ "Domaine de l'Esplanade, Quillan, France": {
+  "found": false
+ },
+ "Domaine de l'Esplanade, Quillan, Aude, France": {
+  "found": false
+ },
+ "Pleasance Courtyard, Edinburgh": {
+  "found": false
+ },
+ "Oyster sellers at the Pleasance Courtyard, Pleasance Courtyard, Edinburgh, UK": {
+  "found": false
+ },
+ "The Nag's Head Hotel, Glebe, Sydney": {
+  "found": false
+ },
+ "The Nag's Head, Sydney, Australia": {
+  "found": false
+ },
+ "Memsaab, Islington, London": {
+  "found": true,
+  "lat": 51.5460192,
+  "lon": -0.1119218,
+  "display_name": "Memsaab, 14, Westbourne Road, Barnsbury, London Borough of Islington, Greater London, England, N7 8AU, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Memsaab, Islington, London, UK": {
+  "found": true,
+  "lat": 51.5460192,
+  "lon": -0.1119218,
+  "display_name": "Memsaab, 14, Westbourne Road, Barnsbury, London Borough of Islington, Greater London, England, N7 8AU, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Grillmarkaðurinn, Lækjargata, Reykjavík": {
+  "found": false
+ },
+ "Grillmarkaðurinn (Grill Market), Reykjavik, Iceland": {
+  "found": false
+ },
+ "Hitchen's Barn, Oakham": {
+  "found": true,
+  "lat": 52.6701075,
+  "lon": -0.7262936,
+  "display_name": "Hitchen's Barn, 12, Burley Road, Catmose, Oakham, Rutland, England, LE15 6DH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hitchen's Barn, Oakham, Rutland, UK": {
+  "found": true,
+  "lat": 52.6701075,
+  "lon": -0.7262936,
+  "display_name": "Hitchen's Barn, 12, Burley Road, Catmose, Oakham, Rutland, England, LE15 6DH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Communal bread oven ('The Scared Man'), Morocco": {
+  "found": false
+ },
+ "St Marks Place, East Village, New York": {
+  "found": true,
+  "lat": 40.7281016,
+  "lon": -73.9864861,
+  "display_name": "Saint Marks Place, East Village, Manhattan Community Board 3, Manhattan, New York County, New York, 10003, United States",
+  "category": "highway",
+  "type": "residential",
+  "place_rank": 26
+ },
+ "Nino's, St Mark's Place, East Village, New York City, USA (now closed)": {
+  "found": false
+ },
+ "Jar restaurant, Beverly Boulevard, Los Angeles": {
+  "found": false
+ },
+ "Jar, Beverly Boulevard, Los Angeles, California, USA": {
+  "found": false
+ },
+ "Hakkasan, Hanway Place, London": {
+  "found": true,
+  "lat": 51.5172143,
+  "lon": -0.1316699,
+  "display_name": "Hakkasan, 8, Hanway Place, St Giles, Bloomsbury, London Borough of Camden, Greater London, England, W1T 1HD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hakkasan, London, UK": {
+  "found": true,
+  "lat": 51.5172143,
+  "lon": -0.1316699,
+  "display_name": "Hakkasan, 8, Hanway Place, St Giles, Bloomsbury, London Borough of Camden, Greater London, England, W1T 1HD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Roka, Charlotte Street, London": {
+  "found": true,
+  "lat": 51.518936,
+  "lon": -0.13543,
+  "display_name": "Roka, 37, Charlotte Street, St Giles, Fitzrovia, London Borough of Camden, Greater London, England, W1T 1RR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "ROKA, London, UK": {
+  "found": true,
+  "lat": 51.5127815,
+  "lon": -0.1535946,
+  "display_name": "Roka, 30, North Audley Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1K 6ZF, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sweet Chick, London": {
+  "found": false
+ },
+ "Sweet Chick, London, UK": {
+  "found": false
+ },
+ "Zuma, Raphael Street, London": {
+  "found": true,
+  "lat": 51.5009278,
+  "lon": -0.1631825,
+  "display_name": "Zuma, 5, Raphael Street, Knightsbridge, City of Westminster, Greater London, England, SW7 1DL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sagar Sweet Centre, Bearwood Road, Smethwick": {
+  "found": true,
+  "lat": 52.4822316,
+  "lon": -1.9687742,
+  "display_name": "Sagar Sweet Centre, 287, Bearwood Road, Bearwood, Warley Wigorn, Sandwell, West Midlands, England, B66 4DR, United Kingdom",
+  "category": "shop",
+  "type": "pastry",
+  "place_rank": 30
+ },
+ "Sagar Sweet Centre, Bearwood, Birmingham, UK": {
+  "found": false
+ },
+ "Damascena, Moseley, Birmingham": {
+  "found": true,
+  "lat": 52.446304,
+  "lon": -1.8885115,
+  "display_name": "Damascena, 133, Alcester Road, Moseley, Balsall Heath, Birmingham, West Midlands, England, B13 8JP, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Damascena, Birmingham, UK": {
+  "found": true,
+  "lat": 52.446304,
+  "lon": -1.8885115,
+  "display_name": "Damascena, 133, Alcester Road, Moseley, Balsall Heath, Birmingham, West Midlands, England, B13 8JP, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Chung Ying, Birmingham": {
+  "found": true,
+  "lat": 52.524712,
+  "lon": -1.8098959,
+  "display_name": "Chung Ying, Sowerby March, Wylde Green, Castle Vale, Tyburn, Birmingham, West Midlands, England, B24 0LH, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Chung Ying, Chinese Quarter, Birmingham, UK": {
+  "found": true,
+  "lat": 52.4753983,
+  "lon": -1.8968091,
+  "display_name": "Chung Ying, Ladywell Passage, Chinese Quarter, Rea Valley, Digbeth, Birmingham, West Midlands, England, B5 4SZ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kimchi Cult, Argyle Street, Glasgow": {
+  "found": false
+ },
+ "Kimchi Cult, Finnieston, Glasgow, UK": {
+  "found": false
+ },
+ "Toppoki, Hurst Street, Birmingham": {
+  "found": false
+ },
+ "Toppoki, Gay Village, Birmingham, UK": {
+  "found": false
+ },
+ "Mildreds, Pancras Square, King's Cross, London": {
+  "found": false
+ },
+ "Mildreds, King's Cross, London, UK": {
+  "found": false
+ },
+ "Veggie Chippy, Birmingham": {
+  "found": true,
+  "lat": 52.4950572,
+  "lon": -1.913754,
+  "display_name": "The Veggie Chippy, 228, New John Street West, Jewellery Quarter, Birmingham, West Midlands, England, B19 3UA, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "The Veggie Chippy, Hockley, Birmingham, UK": {
+  "found": true,
+  "lat": 52.4950572,
+  "lon": -1.913754,
+  "display_name": "The Veggie Chippy, 228, New John Street West, Jewellery Quarter, Birmingham, West Midlands, England, B19 3UA, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Darjeeling Express, Garrick Street, London": {
+  "found": false
+ },
+ "Darjeeling Express, Covent Garden, London, UK": {
+  "found": true,
+  "lat": 51.5112881,
+  "lon": -0.1327536,
+  "display_name": "Darjeeling Express, 36-40, Rupert Street, St. James's, East Marylebone, Covent Garden, City of Westminster, Greater London, England, W1D 6DG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Balthazar, 4-6 Russell Street, London": {
+  "found": true,
+  "lat": 51.5123665,
+  "lon": -0.1212353,
+  "display_name": "Balthazar London, 4-6, Russell Street, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2B 5HZ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Balthazar, Covent Garden, London, UK": {
+  "found": true,
+  "lat": 51.5123665,
+  "lon": -0.1212353,
+  "display_name": "Balthazar London, 4-6, Russell Street, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2B 5HZ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Sportsman, Faversham Road, Seasalter, Whitstable": {
+  "found": true,
+  "lat": 51.3439111,
+  "lon": 0.9589045,
+  "display_name": "The Sportsman, Faversham Road, Seasalter, Whitstable, Kent, England, CT5 4BP, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Sportsman, Seasalter, Whitstable, Kent, UK": {
+  "found": true,
+  "lat": 51.3439111,
+  "lon": 0.9589045,
+  "display_name": "The Sportsman, Faversham Road, Seasalter, Whitstable, Kent, England, CT5 4BP, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Doddington Dairy, Wooler, Northumberland": {
+  "found": false
+ },
+ "Doddington Dairy, Wooler, Northumberland, UK": {
+  "found": false
+ },
+ "Caviar Kaspia, Place de la Madeleine, Paris": {
+  "found": true,
+  "lat": 48.8706016,
+  "lon": 2.3238683,
+  "display_name": "Caviar Kaspia, 17, Place de la Madeleine, Quartier de la Madeleine, Paris 8e Arrondissement, Paris, Île-de-France, France métropolitaine, 75008, France",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Caviar Kaspia, Place de la Madeleine, Paris, France": {
+  "found": true,
+  "lat": 48.8706016,
+  "lon": 2.3238683,
+  "display_name": "Caviar Kaspia, 17, Place de la Madeleine, Quartier de la Madeleine, Paris 8e Arrondissement, Paris, Île-de-France, France métropolitaine, 75008, France",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bestia, Los Angeles": {
+  "found": true,
+  "lat": 34.0337058,
+  "lon": -118.2292076,
+  "display_name": "Bestia, 2121, East 7th Place, Arts District, Boyle Heights, Los Angeles, Los Angeles County, California, 90021, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bestia, Arts District, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.0337058,
+  "lon": -118.2292076,
+  "display_name": "Bestia, 2121, East 7th Place, Arts District, Boyle Heights, Los Angeles, Los Angeles County, California, 90021, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Guisados, Los Angeles": {
+  "found": true,
+  "lat": 34.0465999,
+  "lon": -118.2506512,
+  "display_name": "Guisados, 541, South Spring Street, Gallery Row, Historic Core, Downtown, Los Angeles, Los Angeles County, California, 90013, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Guisados, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.0702234,
+  "lon": -118.2502772,
+  "display_name": "Guisados, 1261, West Sunset Boulevard, Angeleno Heights, Echo Park, Los Angeles, Los Angeles County, California, 90026, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bob Bob Ricard, Upper James Street, London": {
+  "found": true,
+  "lat": 51.5123435,
+  "lon": -0.1372546,
+  "display_name": "Bob Bob Ricard, Upper James Street, Soho, City of Westminster, Greater London, England, W1F 9DG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bob Bob Ricard, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5123435,
+  "lon": -0.1372546,
+  "display_name": "Bob Bob Ricard, Upper James Street, Soho, City of Westminster, Greater London, England, W1F 9DG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Truffles, Kilkenny, Ireland": {
+  "found": false
+ },
+ "Halen Môn, Brynsiencyn, Anglesey": {
+  "found": true,
+  "lat": 53.1642026,
+  "lon": -4.2771836,
+  "display_name": "Halen Mon, Llanidan, Brynsiencyn, Ynys Môn, Cymru / Wales, United Kingdom",
+  "category": "landuse",
+  "type": "commercial",
+  "place_rank": 24
+ },
+ "Halen Môn, Anglesey, Wales, UK": {
+  "found": true,
+  "lat": 53.1642026,
+  "lon": -4.2771836,
+  "display_name": "Halen Mon, Llanidan, Brynsiencyn, Ynys Môn, Cymru / Wales, United Kingdom",
+  "category": "landuse",
+  "type": "commercial",
+  "place_rank": 24
+ },
+ "Bragdy Mona, Anglesey": {
+  "found": false
+ },
+ "Bragdy Mona, Anglesey, Wales, UK": {
+  "found": false
+ },
+ "Dark Matter Brownies, Bristol": {
+  "found": false
+ },
+ "Dark Matter Brownies, Bristol, UK": {
+  "found": false
+ },
+ "La Fauxmagerie, London": {
+  "found": false
+ },
+ "La Fauxmagerie, London, UK": {
+  "found": false
+ },
+ "Bem Brasil, Manchester": {
+  "found": true,
+  "lat": 53.4814168,
+  "lon": -2.2482189,
+  "display_name": "Bem Brasil, 118-124, Deansgate, Civic Quarter, City Centre, Manchester, Greater Manchester, England, M3 2GQ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bem Brasil, Manchester, UK": {
+  "found": true,
+  "lat": 53.4814168,
+  "lon": -2.2482189,
+  "display_name": "Bem Brasil, 118-124, Deansgate, Civic Quarter, City Centre, Manchester, Greater Manchester, England, M3 2GQ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Home Sweet Home, Manchester": {
+  "found": false
+ },
+ "Home Sweet Home, Manchester, UK": {
+  "found": false
+ },
+ "Wild Horse Brewery, UK": {
+  "found": true,
+  "lat": 53.3179424,
+  "lon": -3.8306534,
+  "display_name": "Wild Horse Brewing Company, Cae Bach, Craig-y-don, Llandudno, Llanrhos, Llandudno, Conwy, Cymru / Wales, LL30 1DR, United Kingdom",
+  "category": "craft",
+  "type": "brewery",
+  "place_rank": 30
+ },
+ "Jacques-Imo's Cafe, Oak Street, New Orleans": {
+  "found": false
+ },
+ "Jacques-Imo's, Oak Street, Uptown, New Orleans, Louisiana, USA": {
+  "found": false
+ },
+ "Coop's Place, Decatur Street, New Orleans": {
+  "found": true,
+  "lat": 29.9601621,
+  "lon": -90.0598686,
+  "display_name": "Coop's Place, 1109, Decatur Street, French Quarter, New Orleans, Orleans Parish, Louisiana, 70116, United States",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Coop's Place, French Quarter, New Orleans, Louisiana, USA": {
+  "found": true,
+  "lat": 29.9601621,
+  "lon": -90.0598686,
+  "display_name": "Coop's Place, 1109, Decatur Street, French Quarter, New Orleans, Orleans Parish, Louisiana, 70116, United States",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Nishi, 9th Avenue, New York": {
+  "found": false
+ },
+ "Nishi, Chelsea, New York City, USA": {
+  "found": true,
+  "lat": 40.7443392,
+  "lon": -73.9987769,
+  "display_name": "Momofuku Nishi, West 22nd Street, Chelsea District, Manhattan Community Board 4, Manhattan, New York County, New York, 10011, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Crif Dogs, St Marks Place, New York": {
+  "found": true,
+  "lat": 40.727057,
+  "lon": -73.9837711,
+  "display_name": "Crif Dogs, 113, Saint Marks Place, East Village, Manhattan Community Board 3, Manhattan, New York County, New York, 10009, United States",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "PDT (Please Don't Tell) / Crif Dogs, St Marks Place, East Village, New York City, USA": {
+  "found": false
+ },
+ "Norman's Cafe, Junction Road, London": {
+  "found": true,
+  "lat": 51.5606364,
+  "lon": -0.1369488,
+  "display_name": "The Dynamic Spud, 167, Junction Road, Archway, London Borough of Islington, Greater London, England, N19 5PZ, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Norman's Cafe, Tufnell Park, London, UK": {
+  "found": false
+ },
+ "Millie's Cafe, Sunset Boulevard, Silver Lake, Los Angeles": {
+  "found": true,
+  "lat": 34.0892799,
+  "lon": -118.2769292,
+  "display_name": "Millie's Cafe, 3524, West Sunset Boulevard, Sunset Junction, Silver Lake, Echo Park, Los Angeles, Los Angeles County, California, 90026, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Millie's, Silver Lake, Los Angeles, California, USA": {
+  "found": true,
+  "lat": 34.0892799,
+  "lon": -118.2769292,
+  "display_name": "Millie's Cafe, 3524, West Sunset Boulevard, Sunset Junction, Silver Lake, Echo Park, Los Angeles, Los Angeles County, California, 90026, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "E. Pellicci, Bethnal Green Road, London": {
+  "found": true,
+  "lat": 51.5264955,
+  "lon": -0.0633785,
+  "display_name": "E. Pellicci, 332, Bethnal Green Road, Spitalfields, Bethnal Green, London Borough of Tower Hamlets, Greater London, England, E2 0AG, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "E. Pellicci, Bethnal Green Road, Bethnal Green, London, UK": {
+  "found": true,
+  "lat": 51.5264955,
+  "lon": -0.0633785,
+  "display_name": "E. Pellicci, 332, Bethnal Green Road, Spitalfields, Bethnal Green, London Borough of Tower Hamlets, Greater London, England, E2 0AG, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Exmouth Market, London": {
+  "found": true,
+  "lat": 51.5257422,
+  "lon": -0.1094445,
+  "display_name": "Exmouth Market, Spa Fields Lane, Clerkenwell Green, Angel, Clerkenwell, London Borough of Islington, Greater London, England, EC1R 4QE, United Kingdom",
+  "category": "amenity",
+  "type": "marketplace",
+  "place_rank": 30
+ },
+ "Exmouth Market, Clerkenwell, London, UK": {
+  "found": true,
+  "lat": 51.5257422,
+  "lon": -0.1094445,
+  "display_name": "Exmouth Market, Easton Street, Clerkenwell Green, Angel, Clerkenwell, London Borough of Islington, Greater London, England, WC1X 0DW, United Kingdom",
+  "category": "amenity",
+  "type": "marketplace",
+  "place_rank": 30
+ },
+ "Wings n Tingz, Brixton, London": {
+  "found": false
+ },
+ "Wings 'n' Tingz, Brixton, London, UK": {
+  "found": false
+ },
+ "Roti Joupa, Clapham High Street, London": {
+  "found": false
+ },
+ "Roti Joupa, Clapham, London, UK": {
+  "found": false
+ },
+ "Southside Shopping Centre, Wandsworth, London": {
+  "found": true,
+  "lat": 51.4554419,
+  "lon": -0.194131,
+  "display_name": "Southside Shopping Centre, Wandsworth, London Borough of Wandsworth, Greater London, England, SW18 4TF, United Kingdom",
+  "category": "highway",
+  "type": "footway",
+  "place_rank": 27
+ },
+ "Southside Wandsworth (Arndale Centre), Wandsworth, London, UK": {
+  "found": false
+ },
+ "Sargasso, Harbour Arm, Margate": {
+  "found": true,
+  "lat": 51.3913492,
+  "lon": 1.3793972,
+  "display_name": "Sargasso, 13, Margate Harbour Arm Stone Pier, Margate Old Town, Westbrook, Margate, Thanet, Kent, England, CT9 1AP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sargasso, Margate Harbour Arm, Margate, Kent, UK": {
+  "found": true,
+  "lat": 51.3913492,
+  "lon": 1.3793972,
+  "display_name": "Sargasso, 13, Margate Harbour Arm Stone Pier, Margate Old Town, Westbrook, Margate, Thanet, Kent, England, CT9 1AP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Four Seasons Restaurant, Seagram Building, New York": {
+  "found": false
+ },
+ "The Four Seasons, New York City, USA (now closed)": {
+  "found": false
+ },
+ "Restaurant Mark Greenaway, Edinburgh": {
+  "found": false
+ },
+ "Restaurant Mark Greenaway, Edinburgh, UK": {
+  "found": false
+ },
+ "Rovi, Wells Street, London": {
+  "found": true,
+  "lat": 51.5176105,
+  "lon": -0.138651,
+  "display_name": "ROVI, 59, Wells Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1A 3AE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Rovi, Fitzrovia, London, UK": {
+  "found": false
+ },
+ "Hôtel de Crillon, 10 Place de la Concorde, Paris": {
+  "found": true,
+  "lat": 48.8676219,
+  "lon": 2.3213665,
+  "display_name": "Hôtel de Crillon, 10, Place de la Concorde, Quartier de la Madeleine, Paris 8e Arrondissement, Paris, Île-de-France, France métropolitaine, 75008, France",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Les Ambassadeurs, Hôtel de Crillon, Place de la Concorde, Paris, France": {
+  "found": false
+ },
+ "New World, 1 Gerrard Place, London": {
+  "found": false
+ },
+ "New World, Chinatown, Soho, London, UK": {
+  "found": false
+ },
+ "Tsunami, Voltaire Road, Clapham, London": {
+  "found": true,
+  "lat": 51.4647836,
+  "lon": -0.1315889,
+  "display_name": "Tsunami Clapham, Voltaire Road, Stockwell Park, Clapham, London Borough of Lambeth, Greater London, England, SW4 6DQ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Tsunami, London, UK": {
+  "found": true,
+  "lat": 51.5201361,
+  "lon": -0.1350748,
+  "display_name": "Tsunami Axis, 24-25, Stephenson Way, Fitzrovia, London Borough of Camden, Greater London, England, NW1 2HD, United Kingdom",
+  "category": "office",
+  "type": "company",
+  "place_rank": 30
+ },
+ "Corrigan's Mayfair, Upper Grosvenor Street, London": {
+  "found": false
+ },
+ "Corrigan's Mayfair, Mayfair, London, UK": {
+  "found": false
+ },
+ "Brawn, Columbia Road, London": {
+  "found": true,
+  "lat": 51.528927,
+  "lon": -0.070261,
+  "display_name": "Brawn, 49, Columbia Road, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E2 7RG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Brawn, Columbia Road, Bethnal Green, London, UK": {
+  "found": true,
+  "lat": 51.528927,
+  "lon": -0.070261,
+  "display_name": "Brawn, 49, Columbia Road, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E2 7RG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Murano, Queen Street, Mayfair, London": {
+  "found": true,
+  "lat": 51.5071353,
+  "lon": -0.1472714,
+  "display_name": "Murano, 20, Queen Street, Mayfair, City of Westminster, Greater London, England, W1J 5PD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Murano, Queen Street, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5071353,
+  "lon": -0.1472714,
+  "display_name": "Murano, 20, Queen Street, Mayfair, City of Westminster, Greater London, England, W1J 5PD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "La Fromagerie, Moxon Street, Marylebone, London": {
+  "found": true,
+  "lat": 51.5198926,
+  "lon": -0.1522572,
+  "display_name": "La Fromagerie, 2-6, Moxon Street, East Marylebone, Marylebone, City of Westminster, Greater London, England, W1U 4EW, United Kingdom",
+  "category": "shop",
+  "type": "deli",
+  "place_rank": 30
+ },
+ "La Fromagerie, Marylebone, London, UK": {
+  "found": true,
+  "lat": 51.5198926,
+  "lon": -0.1522572,
+  "display_name": "La Fromagerie, 2-6, Moxon Street, East Marylebone, Marylebone, City of Westminster, Greater London, England, W1U 4EW, United Kingdom",
+  "category": "shop",
+  "type": "deli",
+  "place_rank": 30
+ },
+ "The French House, Dean Street, Soho, London": {
+  "found": false
+ },
+ "The French House, Dean Street, Soho, London, UK": {
+  "found": false
+ },
+ "St. John, St John Street, London": {
+  "found": true,
+  "lat": 51.5204809,
+  "lon": -0.1012748,
+  "display_name": "St. John, 26, St. John Street, Farringdon, Clerkenwell, London Borough of Islington, Greater London, England, EC1M 4AY, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "St. John, St John Street, Smithfield, London, UK": {
+  "found": false
+ },
+ "Il Riccio, Anacapri, Capri, Italy": {
+  "found": false
+ },
+ "Icebergs Dining Room and Bar, Notts Avenue, Bondi Beach, Sydney": {
+  "found": false
+ },
+ "Icebergs Dining Room and Bar, Bondi Beach, Sydney, Australia": {
+  "found": false
+ },
+ "Catalina, Sunderland Avenue, Rose Bay, Sydney": {
+  "found": false
+ },
+ "Catalina, Rose Bay, Sydney, Australia": {
+  "found": true,
+  "lat": -33.8704778,
+  "lon": 151.2628682,
+  "display_name": "Catalina, Lyne Park, New South Head Road, Rose Bay, Eastern Suburbs, Sydney, New South Wales, 2029, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Musso & Frank Grill, Hollywood Boulevard, Los Angeles": {
+  "found": true,
+  "lat": 34.1017556,
+  "lon": -118.3352976,
+  "display_name": "Musso & Frank, 6667, Hollywood Boulevard, Hollywood, Los Angeles, Los Angeles County, California, 90028, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Musso & Frank Grill, Hollywood Boulevard, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.1017556,
+  "lon": -118.3352976,
+  "display_name": "Musso & Frank, 6667, Hollywood Boulevard, Hollywood, Los Angeles, Los Angeles County, California, 90028, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The French House, 49 Dean Street, London": {
+  "found": false
+ },
+ "Brat, Redchurch Street, London": {
+  "found": true,
+  "lat": 51.5242656,
+  "lon": -0.0766909,
+  "display_name": "Brat, 4, Redchurch Street, Shoreditch, London Borough of Hackney, Greater London, England, E2 7DD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Brat, Shoreditch, London, UK": {
+  "found": true,
+  "lat": 51.5242656,
+  "lon": -0.0766909,
+  "display_name": "Brat, 4, Redchurch Street, Shoreditch, London Borough of Hackney, Greater London, England, E2 7DD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dukes Bar, St James's Place, London": {
+  "found": true,
+  "lat": 51.5055702,
+  "lon": -0.1396074,
+  "display_name": "DUKES bar, 35-36, St. James's Place, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, SW1A 1NY, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dukes Bar, St James's, London, UK": {
+  "found": true,
+  "lat": 51.5055702,
+  "lon": -0.1396074,
+  "display_name": "DUKES bar, 35-36, St. James's Place, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, SW1A 1NY, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "St. John, Smithfield, London, UK": {
+  "found": true,
+  "lat": 51.5079711,
+  "lon": -0.075952,
+  "display_name": "St John the Evangelist, Inner Ward, East Smithfield, Tower Hill, Whitechapel, London Borough of Tower Hamlets, Greater London, England, EC3N 4AB, United Kingdom",
+  "category": "amenity",
+  "type": "place_of_worship",
+  "place_rank": 30
+ },
+ "Maroush, Edgware Road, London": {
+  "found": true,
+  "lat": 51.5143808,
+  "lon": -0.1622807,
+  "display_name": "Maroush, 21, Edgware Road, Marylebone, City of Westminster, Greater London, England, W2 2JE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Maroush, Edgware Road, London, UK": {
+  "found": true,
+  "lat": 51.5143808,
+  "lon": -0.1622807,
+  "display_name": "Maroush, 21, Edgware Road, Marylebone, City of Westminster, Greater London, England, W2 2JE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Fakhreldin, Piccadilly, London": {
+  "found": false
+ },
+ "Fakhreldin, Piccadilly, London, UK": {
+  "found": false
+ },
+ "Punjabi Dhaba, India (lived in Mandaveli area, probably Chennai)": {
+  "found": false
+ },
+ "Mangal 2, Arcola Street, Dalston, London": {
+  "found": false
+ },
+ "Mangal 2, Dalston, London, UK": {
+  "found": false
+ },
+ "Indian Palace, Buxton": {
+  "found": false
+ },
+ "Indian Palace, Buxton, Derbyshire, UK": {
+  "found": false
+ },
+ "Social Eating House, 58 Poland Street, London": {
+  "found": false
+ },
+ "Social Eating House, Poland Street, Soho, London, UK": {
+  "found": false
+ },
+ "Licking Fried Chicken, Aberystwyth": {
+  "found": false
+ },
+ "Licking Fried Chicken, Aberystwyth, Wales, UK (his hometown)": {
+  "found": false
+ },
+ "Nobu, 19 Old Park Lane, London": {
+  "found": false
+ },
+ "Nobu London (Park Lane), Park Lane, Mayfair, London, UK": {
+  "found": false
+ },
+ "Windowsill Pies, New Orleans": {
+  "found": false
+ },
+ "Windowsill Pies, New Orleans, Louisiana, USA": {
+  "found": false
+ },
+ "Junior's Restaurant, Flatbush Avenue, Brooklyn, New York": {
+  "found": true,
+  "lat": 40.6901455,
+  "lon": -73.9819887,
+  "display_name": "Junior's, 386, Flatbush Avenue Extension, Downtown Brooklyn, Brooklyn, Kings County, New York, 11201, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Junior's, New York, USA": {
+  "found": true,
+  "lat": 40.6901455,
+  "lon": -73.9819887,
+  "display_name": "Junior's, 386, Flatbush Avenue Extension, Downtown Brooklyn, Brooklyn, Kings County, New York, 11201, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mikkeller Bar, Exmouth Market, London": {
+  "found": true,
+  "lat": 51.5259707,
+  "lon": -0.1092208,
+  "display_name": "Mikkeller Brewpub London, 37-39, Exmouth Market, Clerkenwell Green, Angel, Clerkenwell, London Borough of Islington, Greater London, England, EC1R 4QL, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Mikkeller, London, UK": {
+  "found": true,
+  "lat": 51.5273257,
+  "lon": -0.0769458,
+  "display_name": "Mikkeller Bar London, 2-4, Hackney Road, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E2 7NS, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "chip shop, Haggate, Royton, Oldham": {
+  "found": false
+ },
+ "Haggate Chippy, Oldham, UK": {
+  "found": false
+ },
+ "The Black Swan pub, North Yorkshire": {
+  "found": true,
+  "lat": 54.1360738,
+  "lon": -1.5257534,
+  "display_name": "The Black Swan, 21, Westgate, Borrage Green, Ripon, North Yorkshire, York and North Yorkshire, England, HG4 2BQ, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Black Swan, Maisie's home village (not named), Yorkshire, UK": {
+  "found": false
+ },
+ "Blackpool Pleasure Beach, Blackpool": {
+  "found": true,
+  "lat": 53.790694,
+  "lon": -3.0554665,
+  "display_name": "Blackpool Pleasure Beach, Clifton Drive, Squires Gate, Blackpool, Lancashire, England, FY4 1EZ, United Kingdom",
+  "category": "tourism",
+  "type": "theme_park",
+  "place_rank": 30
+ },
+ "Blackpool Pleasure Beach (curly fries stall by the Big Dipper), Blackpool, Lancashire, UK": {
+  "found": false
+ },
+ "Shuffle cocktail bar, Brighton": {
+  "found": false
+ },
+ "Shuffle, Brighton, UK": {
+  "found": true,
+  "lat": 50.8291363,
+  "lon": -0.135703,
+  "display_name": "Shuffle Bar And Kitchen, 27, York Place, Round Hill, Brighton, Brighton and Hove, England, BN1 4GU, United Kingdom",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Notarianni Ices, Waterloo Road, Blackpool": {
+  "found": false
+ },
+ "Notarianni Ices, Blackpool, UK (by the Queens Hotel)": {
+  "found": false
+ },
+ "Boho Gelato, Brighton": {
+  "found": true,
+  "lat": 50.8201078,
+  "lon": -0.1387594,
+  "display_name": "Boho Gelato, 6, Pool Valley, Queen's Park, Brighton, Brighton and Hove, England, BN1 1NJ, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Boho Gelato, Brighton, UK": {
+  "found": true,
+  "lat": 50.8201078,
+  "lon": -0.1387594,
+  "display_name": "Boho Gelato, 6, Pool Valley, Queen's Park, Brighton, Brighton and Hove, England, BN1 1NJ, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Queens Hotel, Blackpool": {
+  "found": true,
+  "lat": 53.8513471,
+  "lon": -3.0520394,
+  "display_name": "Queens Plaza Hotel, 256-258, Queen's Promenade, North Shore, Blackpool, Lancashire, England, FY2 9HB, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Queens Hotel, Blackpool, UK": {
+  "found": true,
+  "lat": 53.8513471,
+  "lon": -3.0520394,
+  "display_name": "Queens Plaza Hotel, 256-258, Queen's Promenade, North Shore, Blackpool, Lancashire, England, FY2 9HB, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Gaggan, Bangkok": {
+  "found": true,
+  "lat": 13.7407594,
+  "lon": 100.5675678,
+  "display_name": "Gaggan Anand, 68, ซอยสุขุมวิท 31 แยก 4, แขวงคลองตันเหนือ, เขตวัฒนา, กรุงเทพมหานคร, 10110, ประเทศไทย",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gaggan, Bangkok, Thailand": {
+  "found": true,
+  "lat": 13.7407594,
+  "lon": 100.5675678,
+  "display_name": "Gaggan Anand, 68, ซอยสุขุมวิท 31 แยก 4, แขวงคลองตันเหนือ, เขตวัฒนา, กรุงเทพมหานคร, 10110, ประเทศไทย",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "St. Anselm, Metropolitan Avenue, Brooklyn": {
+  "found": true,
+  "lat": 40.7142668,
+  "lon": -73.9560449,
+  "display_name": "St. Anselm, 355, Metropolitan Avenue, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "St. Anselm, Williamsburg, Brooklyn, New York, USA": {
+  "found": true,
+  "lat": 40.7142668,
+  "lon": -73.9560449,
+  "display_name": "St. Anselm, 355, Metropolitan Avenue, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Harry's Singapore Chilli Crab, Surry Hills, Sydney": {
+  "found": false
+ },
+ "Harry's Singapore Chilli Crab, Surry Hills, Sydney, Australia (now closed)": {
+  "found": false
+ },
+ "The European, Spring Street, Melbourne": {
+  "found": false
+ },
+ "The European, Spring Street, Melbourne, Australia": {
+  "found": false
+ },
+ "Campos Coffee, Missenden Road, Newtown, Sydney": {
+  "found": true,
+  "lat": -33.8930442,
+  "lon": 151.1831969,
+  "display_name": "Campos Coffee, 193, Missenden Road, Golden Grove, Newtown, Inner West, Sydney, New South Wales, 2042, Australia",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Campos Coffee, Newtown, Sydney, Australia": {
+  "found": true,
+  "lat": -33.8930442,
+  "lon": 151.1831969,
+  "display_name": "Campos Coffee, Longdown Street, Golden Grove, Newtown, Inner West, Sydney, New South Wales, 2042, Australia",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Supper Club, Spring Street, Melbourne": {
+  "found": false
+ },
+ "Supper Club, Spring Street, Melbourne, Australia": {
+  "found": false
+ },
+ "Hairy Canary, Little Collins Street, Melbourne": {
+  "found": false
+ },
+ "Hairy Canary, Little Collins Street, Melbourne, Australia": {
+  "found": false
+ },
+ "Kim's Mini Meals, Edinburgh": {
+  "found": true,
+  "lat": 55.943592,
+  "lon": -3.1847152,
+  "display_name": "Kim's Mini Meals, 5, Buccleuch Street, Pleasance, Southside, City of Edinburgh, Alba / Scotland, EH8 9JN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kim's Mini Meals, Edinburgh, UK": {
+  "found": true,
+  "lat": 55.943592,
+  "lon": -3.1847152,
+  "display_name": "Kim's Mini Meals, 5, Buccleuch Street, Pleasance, Southside, City of Edinburgh, Alba / Scotland, EH8 9JN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Frank's Pizza, Kettering": {
+  "found": true,
+  "lat": 52.406875,
+  "lon": -0.7213047,
+  "display_name": "Frank's Pizza Place, 155, Havelock Street, Avondale, Kettering, North Northamptonshire, England, NN16 9QA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Frank's Pizza, Kettering, UK": {
+  "found": true,
+  "lat": 52.406875,
+  "lon": -0.7213047,
+  "display_name": "Frank's Pizza Place, 155, Havelock Street, Avondale, Kettering, North Northamptonshire, England, NN16 9QA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Ritz London, 150 Piccadilly, London": {
+  "found": true,
+  "lat": 51.5071911,
+  "lon": -0.1414246,
+  "display_name": "The Ritz London, 150, Piccadilly, St. James's, Mayfair, City of Westminster, Greater London, England, W1J 9BR, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "The Ritz, Piccadilly, London, UK": {
+  "found": true,
+  "lat": 51.5071911,
+  "lon": -0.1414246,
+  "display_name": "The Ritz London, 150, Piccadilly, St. James's, Mayfair, City of Westminster, Greater London, England, W1J 9BR, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Mr Jerk, Wardour Street, London": {
+  "found": false
+ },
+ "Mr Jerk, Soho, London, UK (now closed)": {
+  "found": false
+ },
+ "Bespoke Butchers, Toronto": {
+  "found": false
+ },
+ "Bespoke Butchers, Toronto, Canada": {
+  "found": false
+ },
+ "Wun's Tea Room, Greek Street, London": {
+  "found": false
+ },
+ "Wun's Tea Room, Greek Street / Old Compton Street, Soho, London, UK": {
+  "found": false
+ },
+ "Sabor, Heddon Street, London": {
+  "found": true,
+  "lat": 51.5113855,
+  "lon": -0.1396714,
+  "display_name": "Sabor, 35-37, Heddon Street, St. James's, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1B 4BR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sabor, Heddon Street, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5113855,
+  "lon": -0.1396714,
+  "display_name": "Sabor, 35-37, Heddon Street, St. James's, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1B 4BR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Paul's corner shop, Kettering, Northamptonshire, UK": {
+  "found": false
+ },
+ "Shackfuyu, Old Compton Street, London": {
+  "found": false
+ },
+ "Shackfuyu, Soho, London, UK": {
+  "found": false
+ },
+ "La Mercerie, 53 Howard Street, New York": {
+  "found": true,
+  "lat": 40.7202081,
+  "lon": -74.0021478,
+  "display_name": "La Mercerie, 53, Howard Street, Little Italy, Manhattan Community Board 2, Manhattan, New York County, New York, 10013, United States",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "La Mercerie, New York City, USA": {
+  "found": true,
+  "lat": 40.7202081,
+  "lon": -74.0021478,
+  "display_name": "La Mercerie, 53, Howard Street, Little Italy, Manhattan Community Board 2, Manhattan, New York County, New York, 10013, United States",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Manteigaria, Rua do Loreto, Lisbon": {
+  "found": true,
+  "lat": 38.7107638,
+  "lon": -9.1440621,
+  "display_name": "Manteigaria - Fábrica de Pastéis de Nata, 2, Rua do Loreto, Bairro Alto, Misericórdia, Lisboa, 1200-242, Portugal",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "Manteigaria, Lisbon, Portugal": {
+  "found": true,
+  "lat": 38.7353039,
+  "lon": -9.1446566,
+  "display_name": "Manteigaria, 30B, Avenida Duque de Ávila, Campo Pequeno, Avenidas Novas, Lisboa, 1000-141, Portugal",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Sandy's Fishmongers, King Street, Twickenham": {
+  "found": false
+ },
+ "Sandy's, Twickenham, London, UK": {
+  "found": true,
+  "lat": 51.4402928,
+  "lon": -0.3064977,
+  "display_name": "Sandy Lane, Petersham, London Borough of Richmond upon Thames, Greater London, England, TW10 7EW, United Kingdom",
+  "category": "highway",
+  "type": "tertiary",
+  "place_rank": 26
+ },
+ "The Gritti Palace, Venice": {
+  "found": false
+ },
+ "The Gritti Palace, Grand Canal, Venice, Italy": {
+  "found": false
+ },
+ "Three Ways House Hotel, Mickleton": {
+  "found": true,
+  "lat": 52.0913705,
+  "lon": -1.7671772,
+  "display_name": "Three Ways House Hotel, Chapel Lane, Mickleton, Cotswold, Gloucestershire, England, GL55 6SD, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "The Pudding Club, Three Ways House Hotel, Mickleton, Gloucestershire, UK": {
+  "found": false
+ },
+ "Gandhi's, Kennington Road, London": {
+  "found": true,
+  "lat": 51.4872112,
+  "lon": -0.1111485,
+  "display_name": "Gandhi's, 347a, Kennington Road, Kennington Cross, Kennington, London Borough of Lambeth, Greater London, England, SE11 4LD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gandhi's, Kennington Road, Kennington, London, UK": {
+  "found": true,
+  "lat": 51.4872112,
+  "lon": -0.1111485,
+  "display_name": "Gandhi's, 347a, Kennington Road, Kennington Cross, Kennington, London Borough of Lambeth, Greater London, England, SE11 4LD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hop Burns & Black, East Dulwich Road, London": {
+  "found": true,
+  "lat": 51.4620926,
+  "lon": -0.0697516,
+  "display_name": "Hop, Burns and Black, 38, East Dulwich Road, East Dulwich, London Borough of Southwark, Greater London, England, SE22 9AX, United Kingdom",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Hop Burns & Black, East Dulwich, London, UK": {
+  "found": true,
+  "lat": 51.4620926,
+  "lon": -0.0697516,
+  "display_name": "Hop, Burns and Black, 38, East Dulwich Road, East Dulwich, London Borough of Southwark, Greater London, England, SE22 9AX, United Kingdom",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Fabulous Ice Fires ice cream, London": {
+  "found": false
+ },
+ "Fabulous Ice Fires, South London, UK (near his home)": {
+  "found": false
+ },
+ "Les Chocolats Belges, Woodbridge, Suffolk, UK": {
+  "found": true,
+  "lat": 52.0935444,
+  "lon": 1.3194852,
+  "display_name": "Les Chocolats Belges, 45, Thoroughfare, Whisstocks Place, Mill Hills, Woodbridge, East Suffolk, Suffolk, England, IP12 1AH, United Kingdom",
+  "category": "shop",
+  "type": "confectionery",
+  "place_rank": 30
+ },
+ "Artusi, Bellenden Road, London": {
+  "found": true,
+  "lat": 51.4666264,
+  "lon": -0.0727806,
+  "display_name": "Artusi, 161, Bellenden Road, Bellenden, London Borough of Southwark, Greater London, England, SE15 4DH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Artusi, Peckham, London, UK": {
+  "found": false
+ },
+ "The Dorchester, Park Lane, London": {
+  "found": true,
+  "lat": 51.5072956,
+  "lon": -0.1523634,
+  "display_name": "The Dorchester, 53, Park Lane, Mayfair, City of Westminster, Greater London, England, W1K 1QA, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "The Dorchester, Park Lane, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5072956,
+  "lon": -0.1523634,
+  "display_name": "The Dorchester, 53, Park Lane, Mayfair, City of Westminster, Greater London, England, W1K 1QA, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Padella, Borough Market, London": {
+  "found": false
+ },
+ "Padella, Borough Market, London, UK": {
+  "found": false
+ },
+ "Le Gavroche, Upper Brook Street, London": {
+  "found": false
+ },
+ "Le Gavroche, Upper Brook Street, Mayfair, London, UK": {
+  "found": false
+ },
+ "Mr. Dragon's Noodle House, Pasadena, California": {
+  "found": false
+ },
+ "Mr. Dragon's Noodle House, Pasadena area, Los Angeles, California, USA": {
+  "found": false
+ },
+ "Haidilao, Leicester Square, London": {
+  "found": false
+ },
+ "Haidilao, Leicester Square, London, UK": {
+  "found": false
+ },
+ "Natural Lawson, Akasaka, Tokyo": {
+  "found": true,
+  "lat": 35.666559,
+  "lon": 139.72814,
+  "display_name": "ナチュラルローソン, 外苑東通り, 赤坂九丁目, 赤坂, 港区, 東京都, 107-0052, 日本",
+  "category": "shop",
+  "type": "convenience",
+  "place_rank": 30
+ },
+ "Natural Lawson, Akasaka, Tokyo, Japan": {
+  "found": true,
+  "lat": 35.666559,
+  "lon": 139.72814,
+  "display_name": "ナチュラルローソン, 外苑東通り, 赤坂九丁目, 赤坂, 港区, 東京都, 107-0052, 日本",
+  "category": "shop",
+  "type": "convenience",
+  "place_rank": 30
+ },
+ "The Greenhouse, Dawson Street, Dublin": {
+  "found": true,
+  "lat": 53.3399897,
+  "lon": -6.2583649,
+  "display_name": "The Greenhouse, Dawson Street, Mansion House B Ward 1986, Dublin, County Dublin, Leinster, D02 TK33, Éire / Ireland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Greenhouse, Dublin, Ireland": {
+  "found": true,
+  "lat": 53.3399897,
+  "lon": -6.2583649,
+  "display_name": "The Greenhouse, Dawson Street, Mansion House B Ward 1986, Dublin, County Dublin, Leinster, D02 TK33, Éire / Ireland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Murphy's Ice Cream, Wicklow Street, Dublin": {
+  "found": true,
+  "lat": 53.3429715,
+  "lon": -6.261518,
+  "display_name": "Murphy's, Wicklow Street, Royal Exchange B Ward 1986, Dublin, County Dublin, Leinster, D02 FK27, Éire / Ireland",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Murphy's Ice Cream, Dublin, Ireland": {
+  "found": true,
+  "lat": 53.3429715,
+  "lon": -6.261518,
+  "display_name": "Murphy's, Wicklow Street, Royal Exchange B ED, Dublin, County Dublin, Leinster, D02 FK27, Éire / Ireland",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Chapter One, Parnell Square, Dublin": {
+  "found": true,
+  "lat": 53.3543759,
+  "lon": -6.2639223,
+  "display_name": "Chapter One, 16, Parnell Square North, Rotunda B ED, Dublin, County Dublin, Leinster, D01 E7C1, Éire / Ireland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chapter One, Parnell Square, Dublin, Ireland": {
+  "found": true,
+  "lat": 53.3543759,
+  "lon": -6.2639223,
+  "display_name": "Chapter One, 16, Parnell Square North, Rotunda B ED, Dublin, County Dublin, Leinster, D01 E7C1, Éire / Ireland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Etles Uyghur Restaurant, Walthamstow, London": {
+  "found": true,
+  "lat": 51.5818408,
+  "lon": -0.0182592,
+  "display_name": "Etles Uyghur Restaurant, 235, Hoe Street, Walthamstow Village, Leyton, London Borough of Waltham Forest, Greater London, England, E17 9PP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Etles, Walthamstow, London, UK": {
+  "found": true,
+  "lat": 51.5818408,
+  "lon": -0.0182592,
+  "display_name": "Etles Uyghur Restaurant, 235, Hoe Street, Walthamstow Village, Leyton, London Borough of Waltham Forest, Greater London, England, E17 9PP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Plimsoll, St Thomas's Road, London": {
+  "found": false
+ },
+ "The Plimsoll, Finsbury Park, London, UK": {
+  "found": true,
+  "lat": 51.5620311,
+  "lon": -0.1051355,
+  "display_name": "The Plimsoll, Plimsoll Road, Finsbury Park, London Borough of Islington, Greater London, England, N4 2EW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pappagone, 131 Stroud Green Road, London": {
+  "found": true,
+  "lat": 51.5694564,
+  "lon": -0.1128017,
+  "display_name": "Pappagone, 131, Stroud Green Road, Stroud Green, London Borough of Haringey, Greater London, England, N4 3PX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pappagone, Stroud Green Road, Finsbury Park, London, UK": {
+  "found": false
+ },
+ "Brown Eagle Caribbean restaurant, London": {
+  "found": false
+ },
+ "Brown Eagle, London, UK": {
+  "found": true,
+  "lat": 51.6203216,
+  "lon": -0.0167903,
+  "display_name": "Brown Eagle, Old Church Road, Chingford Mount, Highams Park, London Borough of Waltham Forest, Greater London, England, E4 6ST, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pophams Bakery, Islington, London": {
+  "found": false
+ },
+ "Pophams, London, UK": {
+  "found": true,
+  "lat": 51.536851,
+  "lon": -0.0963384,
+  "display_name": "Pophams, Popham Road, Angel, Islington, London Borough of Islington, Greater London, England, N1 8PF, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Jolene, Newington Green, London": {
+  "found": true,
+  "lat": 51.5512867,
+  "lon": -0.0844508,
+  "display_name": "Jolene, Newington Green, Highbury, London Borough of Islington, Greater London, England, N16 9PU, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Jolene, Newington Green, London, UK": {
+  "found": true,
+  "lat": 51.5512867,
+  "lon": -0.0844508,
+  "display_name": "Jolene, Newington Green, Highbury, London Borough of Islington, Greater London, England, N16 9PU, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Cafe Cecilia, Andrews Road, Hackney, London": {
+  "found": true,
+  "lat": 51.5345727,
+  "lon": -0.0601229,
+  "display_name": "Café Cecilia, 32, Andrews Road, Haggerston, London Borough of Hackney, Greater London, England, E8 4FX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Café Cecilia, Hackney, London, UK": {
+  "found": true,
+  "lat": 51.5345727,
+  "lon": -0.0601229,
+  "display_name": "Café Cecilia, 32, Andrews Road, Haggerston, London Borough of Hackney, Greater London, England, E8 4FX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "A Putia delle Cose Buone, Ortigia, Siracusa": {
+  "found": true,
+  "lat": 37.0608146,
+  "lon": 15.2942178,
+  "display_name": "A Putia delle Cose Buone, Via Roma, Ortigia, Siracusa, Sicilia, 96100, Italia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "A Putia delle Cose Buone, Ortigia, Syracuse, Sicily, Italy": {
+  "found": true,
+  "lat": 37.0608146,
+  "lon": 15.2942178,
+  "display_name": "A Putia delle Cose Buone, Via Roma, Ortigia, Siracusa, Sicilia, 96100, Italia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pecan Lodge, Main Street, Dallas, Texas": {
+  "found": true,
+  "lat": 32.7836718,
+  "lon": -96.7838446,
+  "display_name": "Pecan Lodge, 2702, Main Street, Deep Ellum PID, Dallas, Dallas County, Texas, 75226, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pecan Lodge, Deep Ellum, Dallas, Texas, USA": {
+  "found": true,
+  "lat": 32.7836718,
+  "lon": -96.7838446,
+  "display_name": "Pecan Lodge, 2702, Main Street, Deep Ellum PID, Dallas, Dallas County, Texas, 75226, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ezra & Gil, Hilton Street, Manchester": {
+  "found": true,
+  "lat": 53.4820736,
+  "lon": -2.2329917,
+  "display_name": "Ezra & Gil, 20, Hilton Street, Northern Quarter, City Centre, Manchester, Greater Manchester, England, M1 1FR, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Ezra & Gil, Northern Quarter, Manchester, UK": {
+  "found": true,
+  "lat": 53.4820736,
+  "lon": -2.2329917,
+  "display_name": "Ezra & Gil, 20, Hilton Street, Northern Quarter, City Centre, Manchester, Greater Manchester, England, M1 1FR, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Rules, Maiden Lane, Covent Garden, London": {
+  "found": true,
+  "lat": 51.5108285,
+  "lon": -0.1231906,
+  "display_name": "Rules, 34-35, Maiden Lane, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2E 7LB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Rules, Covent Garden, London, UK": {
+  "found": true,
+  "lat": 51.5108285,
+  "lon": -0.1231906,
+  "display_name": "Rules, 34-35, Maiden Lane, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2E 7LB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Barr, Strandgade, Copenhagen": {
+  "found": true,
+  "lat": 55.6779025,
+  "lon": 12.5962675,
+  "display_name": "Restaurant Barr, Strandgade, Gammelholm, Christianshavn, København, Københavns Kommune, Region Hovedstaden, 1428, Danmark",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Barr, Copenhagen, Denmark": {
+  "found": true,
+  "lat": 55.6779025,
+  "lon": 12.5962675,
+  "display_name": "Restaurant Barr, Strandgade, Gammelholm, Christianshavn, København, Københavns Kommune, Region Hovedstaden, 1428, Danmark",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Guinness Storehouse, St James's Gate, Dublin": {
+  "found": false
+ },
+ "Guinness Storehouse, Dublin, Ireland": {
+  "found": true,
+  "lat": 53.3418606,
+  "lon": -6.2867344,
+  "display_name": "Guinness Storehouse, Market Street South, Guinness Brewery, Ushers C ED, Dublin, County Dublin, Leinster, Éire / Ireland",
+  "category": "building",
+  "type": "yes",
+  "place_rank": 30
+ },
+ "Crown Liquor Saloon, Great Victoria Street, Belfast": {
+  "found": true,
+  "lat": 54.5947027,
+  "lon": -5.934065,
+  "display_name": "The Crown Liquor Saloon, 46, Great Victoria Street, Linen Quarter, Belfast City District, County Antrim, Northern Ireland / Tuaisceart Éireann, BT2 7BA, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Crown Liquor Saloon, Belfast, UK": {
+  "found": true,
+  "lat": 54.5947027,
+  "lon": -5.934065,
+  "display_name": "The Crown Liquor Saloon, 46, Great Victoria Street, Linen Quarter, Belfast City District, County Antrim, Northern Ireland / Tuaisceart Éireann, BT2 7BA, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Halifax, River Street, Hoboken, New Jersey": {
+  "found": true,
+  "lat": 40.7392561,
+  "lon": -74.0272813,
+  "display_name": "Halifax, 225, River Street, Downtown, Hoboken, Hudson County, New Jersey, 07030, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Halifax, Hoboken, New Jersey, USA": {
+  "found": true,
+  "lat": 40.7392561,
+  "lon": -74.0272813,
+  "display_name": "Halifax, 225, River Street, Downtown, Hoboken, Hudson County, New Jersey, 07030, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Joe Beef, Rue Notre-Dame Ouest, Montreal": {
+  "found": true,
+  "lat": 45.4830769,
+  "lon": -73.5751925,
+  "display_name": "Joe Beef, 2493, Rue Notre-Dame Ouest, Le Sud-Ouest, Montréal, Agglomération de Montréal, Montréal (région administrative), Québec, H3J 1N5, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Joe Beef, Little Burgundy, Montreal, Quebec, Canada": {
+  "found": false
+ },
+ "Hart's Bakery, Temple Meads, Bristol": {
+  "found": true,
+  "lat": 51.4490433,
+  "lon": -2.5817754,
+  "display_name": "Hart's Bakery, 35, Station Approach, The Dings, Temple Quarter, Redcliffe, Bristol, City of Bristol, West of England, England, BS1 6QS, United Kingdom",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "Hart's Bakery, Under Temple Meads Station, Bristol, UK": {
+  "found": false
+ },
+ "The Pineapple, Leverton Street, London": {
+  "found": true,
+  "lat": 51.5529728,
+  "lon": -0.1396355,
+  "display_name": "The Pineapple, 51, Leverton Street, Kentish Town, London Borough of Camden, Greater London, England, NW5 2NX, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Pineapple, Kentish Town, London, UK": {
+  "found": true,
+  "lat": 51.5529728,
+  "lon": -0.1396355,
+  "display_name": "The Pineapple, 51, Leverton Street, Kentish Town, London Borough of Camden, Greater London, England, NW5 2NX, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Brat, Redchurch Street, Shoreditch, London, UK": {
+  "found": true,
+  "lat": 51.5242656,
+  "lon": -0.0766909,
+  "display_name": "Brat, 4, Redchurch Street, Shoreditch, London Borough of Hackney, Greater London, England, E2 7DD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Elephant & Castle, Temple Bar, Dublin": {
+  "found": true,
+  "lat": 53.3456774,
+  "lon": -6.2624194,
+  "display_name": "Elephant & Castle, 18-19, Temple Bar, Royal Exchange A Ward 1986, Dublin, County Dublin, Leinster, D02 HY86, Éire / Ireland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Elephant & Castle, Temple Bar, Dublin, Ireland": {
+  "found": true,
+  "lat": 53.3456774,
+  "lon": -6.2624194,
+  "display_name": "Elephant & Castle, 18-19, Temple Bar, Royal Exchange A ED, Dublin, County Dublin, Leinster, D02 HY86, Éire / Ireland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "NoMad London, Bow Street, London": {
+  "found": true,
+  "lat": 51.5135578,
+  "lon": -0.1219374,
+  "display_name": "NoMad London, 28, Bow Street, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2E 7AW, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "NoMad London, Bow Street, Covent Garden, London, UK": {
+  "found": true,
+  "lat": 51.5135578,
+  "lon": -0.1219374,
+  "display_name": "NoMad London, 28, Bow Street, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2E 7AW, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "ROVI, Wells Street, London": {
+  "found": true,
+  "lat": 51.5176105,
+  "lon": -0.138651,
+  "display_name": "ROVI, 59, Wells Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1A 3AE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "ROVI, Wells Street, Fitzrovia, London, UK": {
+  "found": false
+ },
+ "KOL, Seymour Street, Marylebone, London, UK": {
+  "found": true,
+  "lat": 51.5147945,
+  "lon": -0.1575328,
+  "display_name": "KOL, 9, Seymour Street, Marylebone, City of Westminster, Greater London, England, W1H 7JW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Nomad Lounge, Disney's Animal Kingdom, Florida": {
+  "found": false
+ },
+ "Nomad Lounge, Animal Kingdom, Walt Disney World, Florida, USA": {
+  "found": false
+ },
+ "The Ivy, 1-5 West Street, London": {
+  "found": false
+ },
+ "The Ivy, West Street, Covent Garden, London, UK": {
+  "found": false
+ },
+ "Chinese Tapas House, Chinatown, London": {
+  "found": true,
+  "lat": 51.5117829,
+  "lon": -0.1287267,
+  "display_name": "愛吃鬼小屋Chinese Tapas House, 15, Little Newport Street, Chinatown, City of Westminster, Greater London, England, WC2H 7JJ, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Chinese Tapas House, Chinatown, London, UK": {
+  "found": true,
+  "lat": 51.5117829,
+  "lon": -0.1287267,
+  "display_name": "愛吃鬼小屋Chinese Tapas House, 15, Little Newport Street, Chinatown, City of Westminster, Greater London, England, WC2H 7JJ, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Bubala, Commercial Street, Spitalfields, London": {
+  "found": true,
+  "lat": 51.5178612,
+  "lon": -0.0741461,
+  "display_name": "Bubala, 65, Commercial Street, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E1 6BD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bubala, London, UK": {
+  "found": true,
+  "lat": 51.5388187,
+  "lon": -0.1247806,
+  "display_name": "Bubala, Lewis Cubitt Park, King's Cross, London Borough of Camden, Greater London, England, N1C 4ED, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Stand Comedy Club, York Place, Edinburgh": {
+  "found": true,
+  "lat": 55.9557169,
+  "lon": -3.1922867,
+  "display_name": "The Stand Comedy Club, 5, York Place, Gayfield, Broughton, New Town/Broughton, City of Edinburgh, Alba / Scotland, EH1 3EB, United Kingdom",
+  "category": "amenity",
+  "type": "theatre",
+  "place_rank": 30
+ },
+ "The Stand Comedy Club, Edinburgh, Scotland, UK": {
+  "found": true,
+  "lat": 55.9557169,
+  "lon": -3.1922867,
+  "display_name": "The Stand Comedy Club, 5, York Place, Gayfield, Broughton, New Town/Broughton, City of Edinburgh, Alba / Scotland, EH1 3EB, United Kingdom",
+  "category": "amenity",
+  "type": "theatre",
+  "place_rank": 30
+ },
+ "Fortitude Coffee, York Place, Edinburgh": {
+  "found": false
+ },
+ "Fortitude Coffee, Edinburgh, Scotland, UK": {
+  "found": true,
+  "lat": 55.956172,
+  "lon": -3.1718537,
+  "display_name": "Fortitude Coffee, 4, Abbey Mount, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH8 8EJ, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Bobby's, Belgrave Road, Leicester": {
+  "found": true,
+  "lat": 52.6491726,
+  "lon": -1.1232563,
+  "display_name": "Bobby's, 154-156, Belgrave Road, Latimer, Leicester, City of Leicester, England, LE4 5AT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bobby's, Belgrave Road, Leicester, UK": {
+  "found": true,
+  "lat": 52.6491726,
+  "lon": -1.1232563,
+  "display_name": "Bobby's, 154-156, Belgrave Road, Latimer, Leicester, City of Leicester, England, LE4 5AT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Lune Croissanterie, Fitzroy, Melbourne": {
+  "found": false
+ },
+ "Lune Croissanterie, Fitzroy, Melbourne, Australia": {
+  "found": false
+ },
+ "Haidilao, Coventry Street, Leicester Square, London": {
+  "found": false
+ },
+ "The Dusty Knuckle, Abbot Street, Dalston, London": {
+  "found": true,
+  "lat": 51.5471028,
+  "lon": -0.0741506,
+  "display_name": "The Dusty Knuckle, Abbot Street, De Beauvoir Town, Dalston, London Borough of Hackney, Greater London, England, E8 3DP, United Kingdom",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "The Dusty Knuckle, Dalston, London, UK": {
+  "found": true,
+  "lat": 51.5471028,
+  "lon": -0.0741506,
+  "display_name": "The Dusty Knuckle, Abbot Street, De Beauvoir Town, Dalston, London Borough of Hackney, Greater London, England, E8 3DP, United Kingdom",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "The French, Midland Hotel, Peter Street, Manchester": {
+  "found": false
+ },
+ "The French, The Midland Hotel, Manchester, UK": {
+  "found": false
+ },
+ "I Am Doner, Harrogate": {
+  "found": true,
+  "lat": 53.9944383,
+  "lon": -1.5387638,
+  "display_name": "I am Döner, Oxford Street, Low Harrogate, Harrogate, North Yorkshire, York and North Yorkshire, England, HG1 1QJ, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "I Am Doner, Harrogate, UK": {
+  "found": true,
+  "lat": 53.9944383,
+  "lon": -1.5387638,
+  "display_name": "I am Döner, Oxford Street, Low Harrogate, Harrogate, North Yorkshire, York and North Yorkshire, England, HG1 1QJ, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Kebab Kid, New King's Road, Fulham, London": {
+  "found": true,
+  "lat": 51.4723572,
+  "lon": -0.2028087,
+  "display_name": "Kebab Kid, 90, New King's Road, Hurlingham, Fulham, London Borough of Hammersmith and Fulham, Greater London, England, SW6 4LU, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Kebab Kid, New King's Road, Parsons Green, London, UK": {
+  "found": false
+ },
+ "ROVI, Foley Street, London": {
+  "found": false
+ },
+ "ROVI, Fitzrovia, London, UK": {
+  "found": false
+ },
+ "Hollywood Brown Derby, Disney's Hollywood Studios, Orlando": {
+  "found": false
+ },
+ "Hollywood Brown Derby, Disney's Hollywood Studios, Orlando, Florida, USA": {
+  "found": false
+ },
+ "Miel bakery, Warren Street, London": {
+  "found": true,
+  "lat": 51.5242155,
+  "lon": -0.1395932,
+  "display_name": "Miel, 60, Warren Street, Fitzrovia, London Borough of Camden, Greater London, England, W1T 5NU, United Kingdom",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "Miel, near Warren Street, London, UK": {
+  "found": false
+ },
+ "Amass, Refshalevej, Copenhagen": {
+  "found": false
+ },
+ "Amass, Refshaleoen, Copenhagen, Denmark": {
+  "found": false
+ },
+ "The Sportsman, Faversham Road, Seasalter": {
+  "found": true,
+  "lat": 51.3441282,
+  "lon": 0.9594636,
+  "display_name": "The Sportsman, Faversham Road, Seasalter, Canterbury, Kent, England, CT5 4BW, United Kingdom",
+  "category": "highway",
+  "type": "bus_stop",
+  "place_rank": 30
+ },
+ "Mamie Gateaux, Rue du Cherche-Midi, Paris": {
+  "found": false
+ },
+ "Mamie Gateaux, Paris, France": {
+  "found": false
+ },
+ "Bertels Salon, Copenhagen": {
+  "found": true,
+  "lat": 55.6775666,
+  "lon": 12.5765803,
+  "display_name": "Bertels salon, Kompagnistræde, Gammelholm, Indre By, København, Københavns Kommune, Region Hovedstaden, 1207, Danmark",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Bertels Salon, Copenhagen, Denmark": {
+  "found": true,
+  "lat": 55.6775666,
+  "lon": 12.5765803,
+  "display_name": "Bertels salon, Kompagnistræde, Gammelholm, Indre By, København, Københavns Kommune, Region Hovedstaden, 1207, Danmark",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Creme, Lexington Street, Soho, London": {
+  "found": false
+ },
+ "Crème, London, UK": {
+  "found": true,
+  "lat": 51.514864,
+  "lon": -0.1355125,
+  "display_name": "Crème, 4, D'Arblay Street, Soho, City of Westminster, Greater London, England, W1F 8DJ, United Kingdom",
+  "category": "shop",
+  "type": "confectionery",
+  "place_rank": 30
+ },
+ "The Hand and Flowers, West Street, Marlow": {
+  "found": false
+ },
+ "The Hand and Flowers, Marlow, Buckinghamshire, UK": {
+  "found": false
+ },
+ "Moro, Exmouth Market, London": {
+  "found": true,
+  "lat": 51.5258357,
+  "lon": -0.1090005,
+  "display_name": "Moro, 34-36, Exmouth Market, Clerkenwell Green, Angel, Clerkenwell, London Borough of Islington, Greater London, England, EC1R 4QE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Moro, Exmouth Market, Clerkenwell, London, UK": {
+  "found": true,
+  "lat": 51.5258357,
+  "lon": -0.1090005,
+  "display_name": "Moro, 34-36, Exmouth Market, Clerkenwell Green, Angel, Clerkenwell, London Borough of Islington, Greater London, England, EC1R 4QE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kempinski Hotel Falkenstein, Debusweg, Königstein im Taunus": {
+  "found": true,
+  "lat": 50.1921751,
+  "lon": 8.4798995,
+  "display_name": "Falkenstein Grand, 6-18, Debusweg, Falkenstein, Königstein im Taunus, Hochtaunuskreis, Hessen, 61462, Deutschland",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Kempinski Hotel Falkenstein, Falkenstein, Königstein im Taunus, near Frankfurt, Germany": {
+  "found": false
+ },
+ "Sam's Bar-B-Que, East 12th Street, Austin, Texas": {
+  "found": false
+ },
+ "Sam's Bar-B-Que, East Austin, Austin, Texas, USA": {
+  "found": false
+ },
+ "Magnolia Bakery, Bleecker Street, New York, USA": {
+  "found": true,
+  "lat": 40.7358879,
+  "lon": -74.005,
+  "display_name": "Magnolia Bakery, 401, Bleecker Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "shop",
+  "type": "pastry",
+  "place_rank": 30
+ },
+ "Paul A Young Fine Chocolates, Camden Passage, London": {
+  "found": false
+ },
+ "Paul A Young, London, UK": {
+  "found": false
+ },
+ "The Good Wine Shop, London": {
+  "found": true,
+  "lat": 51.4273252,
+  "lon": -0.3315111,
+  "display_name": "The Good Wine Shop, 47, High Street, Strawberry Hill, Teddington, Greater London, England, TW11 8HA, United Kingdom",
+  "category": "shop",
+  "type": "alcohol",
+  "place_rank": 30
+ },
+ "The Good Wine Shop, London, UK": {
+  "found": true,
+  "lat": 51.4781051,
+  "lon": -0.2863524,
+  "display_name": "The Good Wine Shop, 2;2a;2b, Royal Parade, Kew, London Borough of Ealing, Greater London, England, TW9 3QD, United Kingdom",
+  "category": "shop",
+  "type": "alcohol",
+  "place_rank": 30
+ },
+ "Dirty Jane's, Durham": {
+  "found": false
+ },
+ "Dirty Jane's, Durham, UK": {
+  "found": false
+ },
+ "Cafe Coco, Cowley Road, Oxford": {
+  "found": true,
+  "lat": 51.749589,
+  "lon": -1.2429356,
+  "display_name": "Cafe CoCo, 23, Cowley Road, East Oxford, Oxford, Oxfordshire, England, OX4 1HP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Cafe Coco, Cowley Road, Oxford, UK": {
+  "found": true,
+  "lat": 51.749589,
+  "lon": -1.2429356,
+  "display_name": "Cafe CoCo, 23, Cowley Road, East Oxford, Oxford, Oxfordshire, England, OX4 1HP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Lemon Tree, Walton Street, Oxford": {
+  "found": false
+ },
+ "The Lemon Tree, Oxford, UK (her dad's former restaurant, now closed)": {
+  "found": false
+ },
+ "Eirene's taverna (Greece), Greece (exact location not given)": {
+  "found": false
+ },
+ "The Connaught Hotel, Carlos Place, London": {
+  "found": false
+ },
+ "The Connaught Bar, The Connaught Hotel, Mayfair, London, UK": {
+  "found": false
+ },
+ "Dukes Hotel, St James's Place, London": {
+  "found": true,
+  "lat": 51.5054602,
+  "lon": -0.1394238,
+  "display_name": "Dukes Hotel, 35-36, St. James's Place, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, SW1A 1NY, United Kingdom",
+  "category": "building",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "DUKES Bar, Dukes Hotel, St James's, London, UK": {
+  "found": false
+ },
+ "Hawksmoor, London": {
+  "found": true,
+  "lat": 51.5031964,
+  "lon": -0.0149795,
+  "display_name": "Hawksmoor, 1, Water Street, Wood Wharf, Canary Wharf, London Borough of Tower Hamlets, Greater London, England, E14 5GX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hawksmoor, London, UK": {
+  "found": true,
+  "lat": 51.5031964,
+  "lon": -0.0149795,
+  "display_name": "Hawksmoor, 1, Water Street, Wood Wharf, Canary Wharf, London Borough of Tower Hamlets, Greater London, England, E14 5GX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Crown Liquor Saloon, Great Victoria Street, Belfast": {
+  "found": true,
+  "lat": 54.5947027,
+  "lon": -5.934065,
+  "display_name": "The Crown Liquor Saloon, 46, Great Victoria Street, Linen Quarter, Belfast City District, County Antrim, Northern Ireland / Tuaisceart Éireann, BT2 7BA, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Crown Liquor Saloon, Great Victoria Street, Belfast, Northern Ireland": {
+  "found": true,
+  "lat": 54.5947027,
+  "lon": -5.934065,
+  "display_name": "The Crown Liquor Saloon, 46, Great Victoria Street, Linen Quarter, Belfast City District, County Antrim, Northern Ireland / Tuaisceart Éireann, BT2 7BA, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Dorian, Talbot Road, Notting Hill, London": {
+  "found": true,
+  "lat": 51.516609,
+  "lon": -0.2005958,
+  "display_name": "Dorian, 105-107, Talbot Road, Notting Hill, Royal Borough of Kensington and Chelsea, Greater London, England, W11 2AT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dorian, Notting Hill, London, UK": {
+  "found": true,
+  "lat": 51.516609,
+  "lon": -0.2005958,
+  "display_name": "Dorian, 105-107, Talbot Road, Notting Hill, Royal Borough of Kensington and Chelsea, Greater London, England, W11 2AT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Harrods, Brompton Road, London": {
+  "found": true,
+  "lat": 51.4992104,
+  "lon": -0.1629893,
+  "display_name": "Harrods, 87-135, Brompton Road, Knightsbridge, Royal Borough of Kensington and Chelsea, Greater London, England, SW1X 7XL, United Kingdom",
+  "category": "shop",
+  "type": "department_store",
+  "place_rank": 30
+ },
+ "Harrods Food Hall, Knightsbridge, London, UK": {
+  "found": false
+ },
+ "Afghan Kitchen, Islington Green, London": {
+  "found": true,
+  "lat": 51.5357099,
+  "lon": -0.1031097,
+  "display_name": "Afghan Kitchen, 35, Islington Green, Angel, Islington, London Borough of Islington, Greater London, England, N1 8DU, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Afghan Kitchen, Islington Green, Islington, London, UK": {
+  "found": true,
+  "lat": 51.5357099,
+  "lon": -0.1031097,
+  "display_name": "Afghan Kitchen, 35, Islington Green, Angel, Islington, London Borough of Islington, Greater London, England, N1 8DU, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Caroline Street, Cardiff": {
+  "found": true,
+  "lat": 51.4779274,
+  "lon": -3.176458,
+  "display_name": "Caroline Street, Crockherbtown, Brewery Quarter, Castle, Cardiff, Cymru / Wales, CF10 1FF, United Kingdom",
+  "category": "highway",
+  "type": "pedestrian",
+  "place_rank": 26
+ },
+ "Chippy Lane (Caroline Street late-night takeaways), Cardiff, Wales, UK": {
+  "found": false
+ },
+ "Herman ze German, Wardour Street, London": {
+  "found": false
+ },
+ "Herman ze German, Soho, London, UK": {
+  "found": false
+ },
+ "Chapitô à Mesa, Costa do Castelo, Lisbon": {
+  "found": true,
+  "lat": 38.7114797,
+  "lon": -9.1338737,
+  "display_name": "Chapitô à Mesa, 7, Costa do Castelo, Castelo, Alfama, Madalena, Lisboa, 1149-079, Portugal",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chapitô à Mesa, Lisbon, Portugal": {
+  "found": true,
+  "lat": 38.7114797,
+  "lon": -9.1338737,
+  "display_name": "Chapitô à Mesa, 7, Costa do Castelo, Castelo, Alfama, Madalena, Lisboa, 1149-079, Portugal",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Taboo, Boulevard Kukulcan, Cancún": {
+  "found": false
+ },
+ "Taboo, Cancún, Mexico": {
+  "found": false
+ },
+ "Cafe Murano, 33 St James's Street, London": {
+  "found": true,
+  "lat": 51.5071786,
+  "lon": -0.1396554,
+  "display_name": "Cafe Murano, 33, St. James's Street, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, SW1A 1HD, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Café Murano, London, UK": {
+  "found": true,
+  "lat": 51.5196092,
+  "lon": -0.1547466,
+  "display_name": "Cafe Murano, 52-55, Dorset Street, East Marylebone, Marylebone, City of Westminster, Greater London, England, W1U 7NQ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "From The Ashes BBQ, Hackney, London": {
+  "found": false
+ },
+ "From The Ashes BBQ, Hackney, London, UK": {
+  "found": false
+ },
+ "Tao Tao Ju, London": {
+  "found": true,
+  "lat": 51.5115656,
+  "lon": -0.1307458,
+  "display_name": "Tao Tao Ju, 15, Lisle Street, Chinatown, City of Westminster, Greater London, England, WC2H 7BE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Tao Tao Ju, London, UK": {
+  "found": true,
+  "lat": 51.5115656,
+  "lon": -0.1307458,
+  "display_name": "Tao Tao Ju, 15, Lisle Street, Chinatown, City of Westminster, Greater London, England, WC2H 7BE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gardens of Taxco, Los Angeles": {
+  "found": true,
+  "lat": 34.0895317,
+  "lon": -118.375757,
+  "display_name": "The Gardens of Taxco, 8470, Santa Monica Boulevard, West Hollywood, Los Angeles County, California, 90069, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gardens of Taxco, Los Angeles, California, USA": {
+  "found": true,
+  "lat": 34.0895317,
+  "lon": -118.375757,
+  "display_name": "The Gardens of Taxco, 8470, Santa Monica Boulevard, West Hollywood, Los Angeles County, California, 90069, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "La Capannina, Capri": {
+  "found": false
+ },
+ "La Capannina, Capri, Italy": {
+  "found": false
+ },
+ "Cocotte, King's Road, London": {
+  "found": true,
+  "lat": 51.4722882,
+  "lon": -0.2018129,
+  "display_name": "Cocotte, 271, New King's Road, Hurlingham, Fulham, London Borough of Hammersmith and Fulham, Greater London, England, SW6 4RD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Cocotte, Chelsea, London, UK": {
+  "found": false
+ },
+ "Lucio, Fulham Road, London": {
+  "found": true,
+  "lat": 51.4889198,
+  "lon": -0.1760717,
+  "display_name": "Lucio, 257-259, Fulham Road, Brompton, Royal Borough of Kensington and Chelsea, Greater London, England, SW3 6HU, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Lucio, Fulham Road, London, UK": {
+  "found": true,
+  "lat": 51.4889198,
+  "lon": -0.1760717,
+  "display_name": "Lucio, 257-259, Fulham Road, Brompton, Royal Borough of Kensington and Chelsea, Greater London, England, SW3 6HU, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chez L'Ami Louis, Paris": {
+  "found": true,
+  "lat": 48.8670358,
+  "lon": 2.3581834,
+  "display_name": "Chez l'Ami Louis, 32, Rue du Vertbois, Quartier des Arts-et-Métiers, Paris 3e Arrondissement, Paris, Île-de-France, France métropolitaine, 75003, France",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chez L'Ami Louis, Paris, France": {
+  "found": true,
+  "lat": 48.8670358,
+  "lon": 2.3581834,
+  "display_name": "Chez l'Ami Louis, 32, Rue du Vertbois, Quartier des Arts-et-Métiers, Paris 3e Arrondissement, Paris, Île-de-France, France métropolitaine, 75003, France",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "La Grenouille, East 52nd Street, New York": {
+  "found": false
+ },
+ "La Grenouille, New York City, USA": {
+  "found": false
+ },
+ "Polo Lounge, Beverly Hills Hotel": {
+  "found": false
+ },
+ "The Polo Lounge, Beverly Hills, Los Angeles, USA": {
+  "found": false
+ },
+ "Polo Bar, East 55th Street, New York": {
+  "found": true,
+  "lat": 40.7615247,
+  "lon": -73.9743066,
+  "display_name": "The Polo Bar, 1, East 55th Street, Midtown East, Manhattan Community Board 5, Manhattan, New York County, New York, 10055, United States",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Polo Bar, New York City, USA": {
+  "found": true,
+  "lat": 40.7615247,
+  "lon": -73.9743066,
+  "display_name": "The Polo Bar, 1, East 55th Street, Midtown East, Manhattan Community Board 5, Manhattan, New York County, New York, 10055, United States",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Le Grottelle, Capri": {
+  "found": true,
+  "lat": 40.5498747,
+  "lon": 14.2548796,
+  "display_name": "Le Grottelle, Via Arco Naturale, Capri, Napoli, Campania, 80073, Italia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Le Grottelle, Capri, Italy": {
+  "found": true,
+  "lat": 40.5498747,
+  "lon": 14.2548796,
+  "display_name": "Le Grottelle, Via Arco Naturale, Capri, Napoli, Campania, 80073, Italia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Grand Central Oyster Bar, New York": {
+  "found": true,
+  "lat": 40.7524188,
+  "lon": -73.9773429,
+  "display_name": "Grand Central Oyster Bar and Restaurant, Park Avenue, Midtown, Manhattan Community Board 5, Manhattan, New York County, New York, 10168, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Grand Central Oyster Bar, Grand Central Terminal, New York, USA": {
+  "found": false
+ },
+ "Duke's Hotel Bar, St James's Place, London": {
+  "found": false
+ },
+ "Duke's Bar, St James's, London, UK": {
+  "found": false
+ },
+ "Apollo Banana Leaf, Tooting High Street, London": {
+  "found": true,
+  "lat": 51.4240789,
+  "lon": -0.1721335,
+  "display_name": "Apollo Banana Leaf, 190, Tooting High Street, Tooting Graveney, Summerstown, London Borough of Wandsworth, Greater London, England, SW17 0SF, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Apollo Banana Leaf, Tooting, South London, UK": {
+  "found": false
+ },
+ "Sladoledarnica Emiliana, Split, Croatia": {
+  "found": false
+ },
+ "Kudu, Queen's Road, Peckham, London": {
+  "found": true,
+  "lat": 51.4738404,
+  "lon": -0.0593547,
+  "display_name": "Kudu, 119, Queen's Road, Peckham, London Borough of Southwark, Greater London, England, SE15 2EZ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kudu, Peckham, London, UK": {
+  "found": true,
+  "lat": 51.4738404,
+  "lon": -0.0593547,
+  "display_name": "Kudu, 119, Queen's Road, Peckham, London Borough of Southwark, Greater London, England, SE15 2EZ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Get Baked, Leeds": {
+  "found": true,
+  "lat": 53.8209365,
+  "lon": -1.5791737,
+  "display_name": "Get Baked, 15, North Lane, Beckett Park, Headingley, Leeds, West Yorkshire, England, LS6 3HG, United Kingdom",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "Get Baked, Leeds, UK": {
+  "found": true,
+  "lat": 53.8209365,
+  "lon": -1.5791737,
+  "display_name": "Get Baked, 15, North Lane, Beckett Park, Headingley, Leeds, West Yorkshire, England, LS6 3HG, United Kingdom",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "Speranza, Sunset Boulevard, Los Angeles": {
+  "found": false
+ },
+ "Speranza, Silver Lake, Los Angeles, USA": {
+  "found": false
+ },
+ "Guisados, Sunset Boulevard, Echo Park, Los Angeles": {
+  "found": true,
+  "lat": 34.0702234,
+  "lon": -118.2502772,
+  "display_name": "Guisados, 1261, West Sunset Boulevard, Angeleno Heights, Echo Park, Los Angeles, Los Angeles County, California, 90026, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Guisados, Echo Park, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.0702234,
+  "lon": -118.2502772,
+  "display_name": "Guisados, 1261, West Sunset Boulevard, Angeleno Heights, Echo Park, Los Angeles, Los Angeles County, California, 90026, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "House of Pies, Los Feliz Boulevard, Los Angeles": {
+  "found": false
+ },
+ "House of Pies, Los Feliz, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.1050787,
+  "lon": -118.2920313,
+  "display_name": "House of Pies, 1869, North Vermont Avenue, Los Feliz Neighborhood Council District, Los Feliz, Los Angeles, Los Angeles County, California, 90027, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chucho's, Newcastle upon Tyne": {
+  "found": true,
+  "lat": 54.9781694,
+  "lon": -1.575392,
+  "display_name": "Chucho's, 279, Shields Road, Byker, Newcastle upon Tyne, Tyne and Wear, North East, England, NE6 1DQ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chucho's, Newcastle upon Tyne, UK": {
+  "found": true,
+  "lat": 54.9781694,
+  "lon": -1.575392,
+  "display_name": "Chucho's, 279, Shields Road, Byker, Newcastle upon Tyne, Tyne and Wear, North East, England, NE6 1DQ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Speedboat Bar, Rupert Street, London": {
+  "found": true,
+  "lat": 51.5111794,
+  "lon": -0.1326565,
+  "display_name": "Speedboat Bar, 30, Rupert Street, St. James's, East Marylebone, Covent Garden, City of Westminster, Greater London, England, W1D 6DL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Speedboat Bar, Rupert Street, Soho, London, UK": {
+  "found": false
+ },
+ "Forza Wine, Peckham, London": {
+  "found": true,
+  "lat": 51.469808,
+  "lon": -0.0681814,
+  "display_name": "Forza Wine, 133a, Rye Lane, Peckham, London Borough of Southwark, Greater London, England, SE15 4BQ, United Kingdom",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Forza Wine, Peckham, London, UK": {
+  "found": true,
+  "lat": 51.469808,
+  "lon": -0.0681814,
+  "display_name": "Forza Wine, 133a, Rye Lane, Peckham, London Borough of Southwark, Greater London, England, SE15 4BQ, United Kingdom",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "The Black Swan, Oldstead, North Yorkshire": {
+  "found": false
+ },
+ "The Black Swan at Oldstead, Oldstead, North Yorkshire, UK": {
+  "found": false
+ },
+ "L'Enclume, Cartmel, Cumbria": {
+  "found": false
+ },
+ "Xu, Rupert Street, London": {
+  "found": false
+ },
+ "Xu, Rupert Street, Soho, London, UK (now closed; site is Speedboat Bar)": {
+  "found": false
+ },
+ "Kudu, Peckham, London": {
+  "found": true,
+  "lat": 51.4738404,
+  "lon": -0.0593547,
+  "display_name": "Kudu, 119, Queen's Road, Peckham, London Borough of Southwark, Greater London, England, SE15 2EZ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Magic Kingdom, Walt Disney World, Florida": {
+  "found": false
+ },
+ "Magic Kingdom, Walt Disney World, Magic Kingdom, Walt Disney World, Orlando, Florida, USA": {
+  "found": false
+ },
+ "Magna Kusina, Portland, Oregon": {
+  "found": true,
+  "lat": 45.5035549,
+  "lon": -122.6398406,
+  "display_name": "Magna Kusina, 2525, Southeast Clinton Street, Hosford-Abernethy, Portland, Multnomah County, Oregon, 97202, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Magna Kusina, Portland, Oregon, USA": {
+  "found": true,
+  "lat": 45.5035549,
+  "lon": -122.6398406,
+  "display_name": "Magna Kusina, 2525, Southeast Clinton Street, Hosford-Abernethy, Portland, Multnomah County, Oregon, 97202, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Cafe Paci, Sydney": {
+  "found": true,
+  "lat": -33.8932135,
+  "lon": 151.1837224,
+  "display_name": "Cafe Paci, 131, King Street, Golden Grove, Newtown, Inner West, Sydney, New South Wales, 2042, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Cafe Paci, Sydney, Australia": {
+  "found": true,
+  "lat": -33.8932135,
+  "lon": 151.1837224,
+  "display_name": "Cafe Paci, 131, King Street, Golden Grove, Newtown, Inner West, Sydney, New South Wales, 2042, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ron Gastrobar, Amsterdam": {
+  "found": true,
+  "lat": 52.3521264,
+  "lon": 4.8567933,
+  "display_name": "Ron Gastrobar, 55, Sophialaan, Willemspark, Oud-Zuid, Zuid, Amsterdam, Noord-Holland, Nederland, 1075 BP, Nederland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Staff of Life, Todmorden": {
+  "found": false
+ },
+ "The Staff of Life, Todmorden, West Yorkshire, UK": {
+  "found": false
+ },
+ "E5 Bakehouse, Mentmore Terrace, London": {
+  "found": true,
+  "lat": 51.5412439,
+  "lon": -0.0575155,
+  "display_name": "E5 Bakehouse, 395, Mentmore Terrace, Hackney, London Borough of Hackney, Greater London, England, E8 3PH, United Kingdom",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "E5 Bakehouse, Hackney, London, UK": {
+  "found": true,
+  "lat": 51.5412439,
+  "lon": -0.0575155,
+  "display_name": "E5 Bakehouse, 395, Mentmore Terrace, Hackney, London Borough of Hackney, Greater London, England, E8 3PH, United Kingdom",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "Ichiban Sushi, Brixton, London": {
+  "found": false
+ },
+ "Kurisu Omakase at Ichiban Sushi, Brixton, London, UK": {
+  "found": false
+ },
+ "BAHR rooftop bar, Bairro Alto Hotel, Lisbon": {
+  "found": false
+ },
+ "BAHR, Lisbon, Portugal": {
+  "found": true,
+  "lat": 38.7102299,
+  "lon": -9.1433068,
+  "display_name": "Café Bar BA, Rua das Flores, Encarnação, Misericórdia, Lisboa, 1200-243, Portugal",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "The French, Midland Hotel, Manchester": {
+  "found": false
+ },
+ "The French (The Midland), Manchester, UK": {
+  "found": false
+ },
+ "CODA Dessert Dining, Berlin": {
+  "found": false
+ },
+ "CODA, Berlin, Germany": {
+  "found": true,
+  "lat": 52.4899519,
+  "lon": 13.4274368,
+  "display_name": "Coda, 47, Friedelstraße, Reuterkiez, Neukölln, Berlin, 12047, Deutschland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Atari Gastroleku, San Sebastian": {
+  "found": false
+ },
+ "Atari, San Sebastian, Spain": {
+  "found": true,
+  "lat": 43.3101925,
+  "lon": -1.9724783,
+  "display_name": "Atari, 1, Humboldt kalea, Amaraberri, Loiolako Erriberak, Centro, Donostia / San Sebastián, Gipuzkoa, Euskadi, 20011, España",
+  "category": "amenity",
+  "type": "doctors",
+  "place_rank": 30
+ },
+ "Trois Mec, Los Angeles": {
+  "found": false
+ },
+ "Trois Mec, Los Angeles, California, USA (now closed)": {
+  "found": false
+ },
+ "Quality Chophouse, Gray's Inn Road, London": {
+  "found": false
+ },
+ "Quality Chophouse, Farringdon, London, UK": {
+  "found": false
+ },
+ "Gelupo, Archer Street, London": {
+  "found": true,
+  "lat": 51.5115864,
+  "lon": -0.1337003,
+  "display_name": "Gelupo, 7, Archer Street, Soho, City of Westminster, Greater London, England, W1D 7AS, United Kingdom",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Gelupo, Archer Street, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5115864,
+  "lon": -0.1337003,
+  "display_name": "Gelupo, 7, Archer Street, Soho, City of Westminster, Greater London, England, W1D 7AS, United Kingdom",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Kricket, Soho, London": {
+  "found": true,
+  "lat": 51.5108012,
+  "lon": -0.1351471,
+  "display_name": "Kricket, 12, Denman Street, Soho, City of Westminster, Greater London, England, W1D 7HU, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Upland, Park Avenue South, New York": {
+  "found": true,
+  "lat": 40.7418061,
+  "lon": -73.9846404,
+  "display_name": "Upland, 345, Park Avenue South, Rose Hill, Manhattan Community Board 5, Manhattan, New York County, New York, 10010, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Upland, New York, USA": {
+  "found": true,
+  "lat": 40.7418061,
+  "lon": -73.9846404,
+  "display_name": "Upland, 345, Park Avenue South, Rose Hill, Manhattan Community Board 5, Manhattan, New York County, New York, 10010, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mad Rock Cafe, Bay Roberts, Newfoundland": {
+  "found": false
+ },
+ "Mad Rock Cafe & Crafts, Bay Roberts, Newfoundland, Canada": {
+  "found": false
+ },
+ "City Restaurant, Edinburgh": {
+  "found": true,
+  "lat": 55.9464609,
+  "lon": -3.1857555,
+  "display_name": "City Restaurant, 33-35, Nicolson Street, Pleasance, Southside, City of Edinburgh, Alba / Scotland, EH8 9BE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "City Restaurant, Edinburgh, Scotland, UK": {
+  "found": true,
+  "lat": 55.9464609,
+  "lon": -3.1857555,
+  "display_name": "City Restaurant, 33-35, Nicolson Street, Pleasance, Southside, City of Edinburgh, Alba / Scotland, EH8 9BE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ziggy Peelgood's, George Street, St. John's, Newfoundland": {
+  "found": false
+ },
+ "Ziggy Peelgood's, George Street, St. John's, Newfoundland, Canada": {
+  "found": false
+ },
+ "Babur, Westwood Hill, London": {
+  "found": false
+ },
+ "Babur, Forest Hill, South East London, UK": {
+  "found": false
+ },
+ "BiBi, North Audley Street, London": {
+  "found": false
+ },
+ "BiBi, Mayfair, London, UK": {
+  "found": false
+ },
+ "Mangal 2, Arcola Street, London": {
+  "found": false
+ },
+ "Mangal II, Dalston, London, UK": {
+  "found": true,
+  "lat": 51.5507971,
+  "lon": -0.0749171,
+  "display_name": "Mangal II, 27, Stoke Newington Road, Shacklewell, London Borough of Hackney, Greater London, England, N16 8BJ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Plimsoll, Isledon Road, London": {
+  "found": false
+ },
+ "Alhaji Suya, Peckham, London": {
+  "found": true,
+  "lat": 51.4826735,
+  "lon": -0.0653552,
+  "display_name": "Alhaji SUYA Peckham, 15, Peckham Park Road, Cooper's Estate, South Bermondsey, Peckham, London Borough of Southwark, Greater London, England, SE15 6TR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Alhaji Suya, Peckham, London, UK": {
+  "found": true,
+  "lat": 51.4826735,
+  "lon": -0.0653552,
+  "display_name": "Alhaji SUYA Peckham, 15, Peckham Park Road, Cooper's Estate, South Bermondsey, Peckham, London Borough of Southwark, Greater London, England, SE15 6TR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bao, King's Cross, London": {
+  "found": true,
+  "lat": 51.534124,
+  "lon": -0.1255193,
+  "display_name": "BAO King’s Cross, 4, Goods Way, King's Cross, London Borough of Camden, Greater London, England, N1C 4DP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bao, King's Cross, London, UK": {
+  "found": true,
+  "lat": 51.534124,
+  "lon": -0.1255193,
+  "display_name": "BAO King’s Cross, 4, Goods Way, King's Cross, London Borough of Camden, Greater London, England, N1C 4DP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Superiority Burger, East 9th Street, New York": {
+  "found": false
+ },
+ "Superiority Burger, East Village, New York, USA": {
+  "found": true,
+  "lat": 40.7264466,
+  "lon": -73.9834307,
+  "display_name": "Superiority Burger, 119, Avenue A, Alphabet City, Manhattan Community Board 3, Manhattan, New York County, New York, 10009, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Marksman, Hackney Road, London": {
+  "found": true,
+  "lat": 51.5308376,
+  "lon": -0.0695089,
+  "display_name": "The Marksman, 254, Hackney Road, Bethnal Green, London Borough of Tower Hamlets, Greater London, England, E2 7SJ, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Marksman, Hackney Road, London, UK": {
+  "found": true,
+  "lat": 51.5308376,
+  "lon": -0.0695089,
+  "display_name": "The Marksman, 254, Hackney Road, Bethnal Green, London Borough of Tower Hamlets, Greater London, England, E2 7SJ, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Happy Endings, Victoria Park, London": {
+  "found": false
+ },
+ "Happy Endings, London, UK (stand in Victoria Park)": {
+  "found": false
+ },
+ "Forza Win, Camberwell, London": {
+  "found": false
+ },
+ "Forza Win, Camberwell, London, UK": {
+  "found": false
+ },
+ "Ikoyi, London": {
+  "found": true,
+  "lat": 51.5124286,
+  "lon": -0.1151473,
+  "display_name": "Ikoyi, 180, Strand, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2R 1EA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ikoyi, St James's, London, UK": {
+  "found": false
+ },
+ "Chishuru, London": {
+  "found": true,
+  "lat": 51.5166206,
+  "lon": -0.1398848,
+  "display_name": "Chishuru, 3, Great Titchfield Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1W 8AX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chishuru, London, UK": {
+  "found": true,
+  "lat": 51.5166206,
+  "lon": -0.1398848,
+  "display_name": "Chishuru, 3, Great Titchfield Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1W 8AX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Speedboat Bar, Soho, London, UK": {
+  "found": false
+ },
+ "Plaza Khao Gaeng, Centre Point, London": {
+  "found": false
+ },
+ "Plaza Khao Gaeng, Arcade Food Hall, Centre Point, London, UK": {
+  "found": false
+ },
+ "Grunt (Japanese name unclear), Tokyo, Japan": {
+  "found": false
+ },
+ "The Wolseley, Piccadilly, London": {
+  "found": true,
+  "lat": 51.5073927,
+  "lon": -0.1409072,
+  "display_name": "The Wolseley, 157-160, Piccadilly, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, W1J 9EB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Wolseley, Piccadilly, London, UK": {
+  "found": true,
+  "lat": 51.5073927,
+  "lon": -0.1409072,
+  "display_name": "The Wolseley, 157-160, Piccadilly, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, W1J 9EB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Joe Allen, Exeter Street, London": {
+  "found": false
+ },
+ "Joe Allen, Covent Garden, London, UK": {
+  "found": true,
+  "lat": 51.5111264,
+  "lon": -0.1204476,
+  "display_name": "Joe Allen, 2, Burleigh Street, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2E 7PX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gaucho, Piccadilly, London": {
+  "found": false
+ },
+ "Gaucho, Soho, London, UK": {
+  "found": false
+ },
+ "Dean Street Townhouse, Dean Street, Soho, London": {
+  "found": true,
+  "lat": 51.513461,
+  "lon": -0.132646,
+  "display_name": "Dean Street Townhouse, 69-71, Dean Street, Soho, City of Westminster, Greater London, England, W1D 3SE, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Dean Street Townhouse, Soho, London, UK": {
+  "found": true,
+  "lat": 51.513461,
+  "lon": -0.132646,
+  "display_name": "Dean Street Townhouse, 69-71, Dean Street, Soho, City of Westminster, Greater London, England, W1D 3SE, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Hawksmoor, UK (steakhouse group)": {
+  "found": false
+ },
+ "The Yellow House, Beach north of Copenhagen, Denmark (Klampenborg area)": {
+  "found": false
+ },
+ "Dinner by Heston Blumenthal, Knightsbridge, London": {
+  "found": true,
+  "lat": 51.5023616,
+  "lon": -0.1602976,
+  "display_name": "Dinner by Heston Blumenthal, 66, Knightsbridge, City of Westminster, Greater London, England, SW1X 7LA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dinner by Heston Blumenthal, Mandarin Oriental, Knightsbridge, London, UK": {
+  "found": false
+ },
+ "Enish Nigerian restaurant, London": {
+  "found": false
+ },
+ "Enish, London, UK": {
+  "found": true,
+  "lat": 51.4824143,
+  "lon": -0.0943375,
+  "display_name": "Enish, 91, Camberwell Road, Camberwell, London Borough of Southwark, Greater London, England, SE5 0EW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Brigadiers, Bloomberg Arcade, London": {
+  "found": true,
+  "lat": 51.5126188,
+  "lon": -0.091782,
+  "display_name": "Brigadiers, 1-5, Bloomberg Arcade, Bloomberg Place - Walbrook Square, Bank, City of London, Greater London, England, EC4N 8AR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Brigadiers, London, UK": {
+  "found": true,
+  "lat": 51.5126188,
+  "lon": -0.091782,
+  "display_name": "Brigadiers, 1-5, Bloomberg Arcade, Bloomberg Place - Walbrook Square, Bank, City of London, Greater London, England, EC4N 8AR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Forza Win, Peckham, London": {
+  "found": false
+ },
+ "Forza Win, Peckham, London, UK": {
+  "found": false
+ },
+ "Supermarket in Las Arena(s), Chile, Chile (town near the telescope she worked at; exact town unclear)": {
+  "found": false
+ },
+ "Bar Tomas, Carrer Major de Sarria, Barcelona": {
+  "found": true,
+  "lat": 41.3975532,
+  "lon": 2.1230797,
+  "display_name": "Bar Tomás, Carrer Major de Sarrià, Sarrià, Sarrià - Sant Gervasi, Barcelona, Barcelonès, Barcelona, Catalunya, 08034, España",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bar Tomas, Sarria, Barcelona, Spain": {
+  "found": true,
+  "lat": 41.3975532,
+  "lon": 2.1230797,
+  "display_name": "Bar Tomás, Carrer Major de Sarrià, Sarrià, Sarrià - Sant Gervasi, Barcelona, Barcelonès, Barcelona, Catalunya, 08034, España",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Percy Ingle, Broadway Market, London": {
+  "found": false
+ },
+ "Percy Ingle, Broadway Market, Hackney, London, UK": {
+  "found": false
+ },
+ "Romeo & Giulietta gelateria, Stoke Newington, London": {
+  "found": true,
+  "lat": 51.5573343,
+  "lon": -0.0830577,
+  "display_name": "Gelateria Romeo & Giulietta, 137, Albion Road, Hackney, London Borough of Hackney, Greater London, England, N16 9JU, United Kingdom",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Romeo & Giulietta, Stoke Newington, London, UK": {
+  "found": true,
+  "lat": 51.5573343,
+  "lon": -0.0830577,
+  "display_name": "Gelateria Romeo & Giulietta, 137, Albion Road, Hackney, London Borough of Hackney, Greater London, England, N16 9JU, United Kingdom",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Hipping Hall, Cowan Bridge, Kirkby Lonsdale": {
+  "found": false
+ },
+ "Hipping Hall, Cowan Bridge, near Kirkby Lonsdale, Cumbria, UK": {
+  "found": false
+ },
+ "The Inn at Whitewell, Forest of Bowland": {
+  "found": false
+ },
+ "The Inn at Whitewell, Whitewell, Forest of Bowland, Lancashire, UK": {
+  "found": false
+ },
+ "The Windmill, Brighton": {
+  "found": true,
+  "lat": 50.8256419,
+  "lon": -0.148818,
+  "display_name": "The Windmill, 69, Upper North Street, Brunswick, Brighton, Brighton and Hove, England, BN1 3FL, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Windmill, Brighton, UK": {
+  "found": true,
+  "lat": 50.8256419,
+  "lon": -0.148818,
+  "display_name": "The Windmill, 69, Upper North Street, Brunswick, Brighton, Brighton and Hove, England, BN1 3FL, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Betty's Tea Rooms, Harrogate": {
+  "found": false
+ },
+ "Betty's Tea Rooms, Harrogate, North Yorkshire, UK": {
+  "found": false
+ },
+ "Rasa Sayang, Macclesfield Street, London": {
+  "found": true,
+  "lat": 51.511997,
+  "lon": -0.1314674,
+  "display_name": "Rasa Sayang, 5, Macclesfield Street, Chinatown, City of Westminster, Greater London, England, W1D 6AY, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Rasa Sayang, Chinatown, London, UK": {
+  "found": true,
+  "lat": 51.511997,
+  "lon": -0.1314674,
+  "display_name": "Rasa Sayang, 5, Macclesfield Street, Chinatown, City of Westminster, Greater London, England, W1D 6AY, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Baba Foundation, Norbury, London": {
+  "found": false
+ },
+ "Baba Foundation, Norbury, London, UK": {
+  "found": false
+ },
+ "Enish Nigerian Restaurant, London": {
+  "found": false
+ },
+ "Uncle Lim's, Croydon": {
+  "found": false
+ },
+ "Uncle Lim's, Croydon, London, UK": {
+  "found": false
+ },
+ "Bread by Bike, Holloway, London": {
+  "found": true,
+  "lat": 51.5496595,
+  "lon": -0.1300109,
+  "display_name": "Bread By Bike Bakery, 30, Brecknock Road, Tufnell Park, London Borough of Islington, Greater London, England, N7 0DD, United Kingdom",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "Bread by Bike, Holloway, London, UK": {
+  "found": true,
+  "lat": 51.5497123,
+  "lon": -0.1300456,
+  "display_name": "Bread By Bike Cafe, 32, Brecknock Road, Tufnell Park, London Borough of Islington, Greater London, England, N7 0DD, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Irvine Bar and Grill, London, UK (now closed)": {
+  "found": false
+ },
+ "The Local, Los Angeles, USA": {
+  "found": true,
+  "lat": 33.767008,
+  "lon": -118.1172848,
+  "display_name": "The Local Spot, 6200, East Pacific Coast Highway, Naples, Long Beach, Los Angeles County, California, 90744, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Greenwich Market, London": {
+  "found": true,
+  "lat": 51.4815833,
+  "lon": -0.0090449,
+  "display_name": "Greenwich Market, Turnpin Lane, Greenwich Town Centre, East Greenwich, Royal Borough of Greenwich, Greater London, England, SE10 9QD, United Kingdom",
+  "category": "amenity",
+  "type": "marketplace",
+  "place_rank": 30
+ },
+ "Greenwich Market stall, Greenwich Market, London, UK": {
+  "found": false
+ },
+ "No Catch, Brighton": {
+  "found": true,
+  "lat": 50.8217344,
+  "lon": -0.1498536,
+  "display_name": "No Catch, 127a, King's Road, Brunswick, Portslade by Sea, Brighton, Brighton and Hove, England, BN1 2FA, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "No Catch, Brighton, UK": {
+  "found": true,
+  "lat": 50.8217344,
+  "lon": -0.1498536,
+  "display_name": "No Catch, 127a, King's Road, Brunswick, Portslade by Sea, Brighton, Brighton and Hove, England, BN1 2FA, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Jai Krishna, Stroud Green Road, London": {
+  "found": true,
+  "lat": 51.5700857,
+  "lon": -0.114262,
+  "display_name": "Jai Krishna, 161, Stroud Green Road, Stroud Green, London Borough of Haringey, Greater London, England, N4 3PZ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Jai Krishna, Stroud Green, London, UK": {
+  "found": true,
+  "lat": 51.5700857,
+  "lon": -0.114262,
+  "display_name": "Jai Krishna, 161, Stroud Green Road, Stroud Green, London Borough of Haringey, Greater London, England, N4 3PZ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mono, Scotland, UK": {
+  "found": true,
+  "lat": 55.8556662,
+  "lon": -4.2461257,
+  "display_name": "Mono, 12, Kings Court, Glasgow Cross, City Centre, Glasgow, Glasgow City, Alba / Scotland, G1 5RB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Maison Bordier, Saint-Malo, France": {
+  "found": true,
+  "lat": 48.657242,
+  "lon": -1.9959252,
+  "display_name": "Maison Bordier Courtoisville, Avenue du Révérend Père Umbricht, Courtoisville, Courtoisville - Sillon - Moka, Saint-Malo, Ille-et-Vilaine, Bretagne, France métropolitaine, 35400, France",
+  "category": "shop",
+  "type": "dairy",
+  "place_rank": 30
+ },
+ "Bordier (Maison Bordier), Saint-Malo, France": {
+  "found": true,
+  "lat": 48.6287148,
+  "lon": -2.006074,
+  "display_name": "Maison Bordier La Balue, 6, Rue de la Balue, Le Rosais, Le Rosais - La Flourie, Saint-Malo, Ille-et-Vilaine, Bretagne, France métropolitaine, 35400, France",
+  "category": "shop",
+  "type": "dairy",
+  "place_rank": 30
+ },
+ "Lina Stores, Brewer Street, London": {
+  "found": true,
+  "lat": 51.5123019,
+  "lon": -0.1342086,
+  "display_name": "Lina Stores, 18, Brewer Street, Soho, City of Westminster, Greater London, England, W1F 0RJ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Lina Stores, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5123019,
+  "lon": -0.1342086,
+  "display_name": "Lina Stores, 18, Brewer Street, Soho, City of Westminster, Greater London, England, W1F 0RJ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Tussaux, Brighton, UK": {
+  "found": false
+ },
+ "Restaurant 24 (as heard: 'L'Restaurant 24'), Paris, France": {
+  "found": false
+ },
+ "The Canton Arms, South Lambeth Road, London": {
+  "found": true,
+  "lat": 51.4771539,
+  "lon": -0.122896,
+  "display_name": "The Canton Arms, 177, South Lambeth Road, Stockwell Park, Stockwell, London Borough of Lambeth, Greater London, England, SW8 1XP, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Canton Arms, Stockwell, London, UK": {
+  "found": true,
+  "lat": 51.4771539,
+  "lon": -0.122896,
+  "display_name": "The Canton Arms, 177, South Lambeth Road, Stockwell Park, Stockwell, London Borough of Lambeth, Greater London, England, SW8 1XP, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Brady's, Dunboyne, County Meath, Ireland": {
+  "found": true,
+  "lat": 53.4190917,
+  "lon": -6.4750779,
+  "display_name": "Brady’s, Main Street, Dunboyne ED, The Municipal District of Ratoath, County Meath, Leinster, A86 FX05, Éire / Ireland",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Grasmere Gingerbread Shop, Church Cottage, Grasmere, Cumbria": {
+  "found": false
+ },
+ "Grasmere Gingerbread (Sarah Nelson's), Grasmere, Cumbria, UK": {
+  "found": false
+ },
+ "Shalom Japan, Brooklyn, New York": {
+  "found": true,
+  "lat": 40.7092035,
+  "lon": -73.9558364,
+  "display_name": "Shalom Japan, 310, South 4th Street, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Shalom Japan, Brooklyn, New York, USA": {
+  "found": true,
+  "lat": 40.7092035,
+  "lon": -73.9558364,
+  "display_name": "Shalom Japan, 310, South 4th Street, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ristorante Paoli, Via dei Tavolini, Florence": {
+  "found": true,
+  "lat": 43.7709219,
+  "lon": 11.2558222,
+  "display_name": "Ristorante Paoli, 12 R, Via dei Tavolini, Quartiere 1, Firenze, Toscana, 50122, Italia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Paoli, Florence, Italy": {
+  "found": true,
+  "lat": 43.7781872,
+  "lon": 11.2842459,
+  "display_name": "Viale Pasquale Paoli, Campo di Marte, Quartiere 2, Firenze, Toscana, 50137, Italia",
+  "category": "highway",
+  "type": "tertiary",
+  "place_rank": 26
+ },
+ "Nepenthe, Highway 1, Big Sur, California": {
+  "found": true,
+  "lat": 36.2218116,
+  "lon": -121.7596565,
+  "display_name": "Nepenthe, 48510, Cabrillo Highway, Posts, Monterey County, California, 93920, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Nepenthe, Big Sur, California, USA": {
+  "found": true,
+  "lat": 36.2218116,
+  "lon": -121.7596565,
+  "display_name": "Nepenthe, 48510, Cabrillo Highway, Posts, Monterey County, California, 93920, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Black Bear Burger, Brixton, London": {
+  "found": false
+ },
+ "Black Bear Burger, Brixton, London, UK": {
+  "found": false
+ },
+ "The Gay Hussar, Greek Street, Soho, London": {
+  "found": true,
+  "lat": 51.514861,
+  "lon": -0.1312415,
+  "display_name": "Noble Rot, 2, Greek Street, Soho, City of Westminster, Greater London, England, W1D 4NB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Gay Hussar, Soho, London, UK": {
+  "found": true,
+  "lat": 51.514861,
+  "lon": -0.1312415,
+  "display_name": "Noble Rot, 2, Greek Street, Soho, City of Westminster, Greater London, England, W1D 4NB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kismet, Edinburgh": {
+  "found": false
+ },
+ "Kismet, Edinburgh, UK": {
+  "found": false
+ },
+ "Schwartz's Deli, Boulevard Saint-Laurent, Montreal": {
+  "found": false
+ },
+ "Schwartz's Deli, Montreal, Quebec, Canada": {
+  "found": false
+ },
+ "Maryland Farm, Somerset": {
+  "found": false
+ },
+ "Maryland Farm, Somerset, Somerset, UK": {
+  "found": false
+ },
+ "Heritage, Thornbury": {
+  "found": true,
+  "lat": 51.607645,
+  "lon": -2.526319,
+  "display_name": "Foxhills Coffee & Gift Shop, High Street, Thornbury, South Gloucestershire, West of England, England, BS35 2FN, United Kingdom",
+  "category": "shop",
+  "type": "gift",
+  "place_rank": 30
+ },
+ "Heritage, Thornbury, South Gloucestershire, UK": {
+  "found": true,
+  "lat": 51.6076465,
+  "lon": -2.5265307,
+  "display_name": "Foxhills Coffee & Gift Shop, 24, High Street, Thornbury, South Gloucestershire, West of England, England, BS35 2AH, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Sonny Stores, Bristol": {
+  "found": true,
+  "lat": 51.444154,
+  "lon": -2.6098947,
+  "display_name": "Sonny Stores, 47, Raleigh Road, Canon's Marsh, Southville, Bristol, City of Bristol, West of England, England, BS3 1QS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sonny Stores, Bristol, UK": {
+  "found": true,
+  "lat": 51.444154,
+  "lon": -2.6098947,
+  "display_name": "Sonny Stores, 47, Raleigh Road, Canon's Marsh, Southville, Bristol, City of Bristol, West of England, England, BS3 1QS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Black Axe Mangal, Islington, London": {
+  "found": false
+ },
+ "Black Axe Mangal, London, UK": {
+  "found": false
+ },
+ "Lampara, Sciacca, Sicily": {
+  "found": true,
+  "lat": 37.5048115,
+  "lon": 13.0838022,
+  "display_name": "La Lampara, Lungomare Cristoforo Colombo, Rabat, Perriera, Sciacca, Agrigento, Sicilia, 92019, Italia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Lampara, Sciacca, Sicily, Italy": {
+  "found": true,
+  "lat": 37.5048115,
+  "lon": 13.0838022,
+  "display_name": "La Lampara, Lungomare Cristoforo Colombo, Rabat, Perriera, Sciacca, Agrigento, Sicilia, 92019, Italia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Smith's Restaurant, Ongar, Essex": {
+  "found": false
+ },
+ "Smith's of Ongar, Ongar, Essex, UK": {
+  "found": false
+ },
+ "Scott's, Mount Street, Mayfair, London": {
+  "found": true,
+  "lat": 51.5098163,
+  "lon": -0.1509327,
+  "display_name": "Scott's, 20-22, Mount Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1K 2QL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Scott's, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5098163,
+  "lon": -0.1509327,
+  "display_name": "Scott's, 20-22, Mount Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1K 2ED, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Marrickville Library and Pavilion, Sydney": {
+  "found": false
+ },
+ "Marrickville Library and Pavilion, Marrickville, Sydney, Australia": {
+  "found": false
+ },
+ "Crunch & Co, Brighton": {
+  "found": true,
+  "lat": 50.8243266,
+  "lon": -0.1400986,
+  "display_name": "Crunch & Co, 7, Church Street, Round Hill, Brighton, Brighton and Hove, England, BN1 1US, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Crunch & Co, Brighton, UK": {
+  "found": true,
+  "lat": 50.8243266,
+  "lon": -0.1400986,
+  "display_name": "Crunch & Co, 7, Church Street, Round Hill, Brighton, Brighton and Hove, England, BN1 1US, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Xi'an Impression, Holloway Road, London": {
+  "found": true,
+  "lat": 51.5538347,
+  "lon": -0.1103928,
+  "display_name": "Xi'an Impression, 117, Benwell Road, Lower Holloway, Holloway, London Borough of Islington, Greater London, England, N7 7BW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Xi'an Impression, Holloway, near the Emirates Stadium, London, UK": {
+  "found": false
+ },
+ "Al Aseel, Lakemba, Sydney": {
+  "found": false
+ },
+ "Al Aseel, Lakemba, Sydney, Australia": {
+  "found": false
+ },
+ "Sticks'n'Sushi, London": {
+  "found": true,
+  "lat": 51.510955,
+  "lon": -0.1235028,
+  "display_name": "Sticks'n'Sushi, 11, Henrietta Street, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2E 8PY, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sticks'n'Sushi, London, UK": {
+  "found": true,
+  "lat": 51.5125365,
+  "lon": -0.1370387,
+  "display_name": "Sticks n Sushi, Beak Street, Soho, City of Westminster, Greater London, England, W1F 9RJ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ducksoup, Dean Street, London": {
+  "found": true,
+  "lat": 51.5133026,
+  "lon": -0.1321425,
+  "display_name": "Ducksoup, 41, Dean Street, Soho, City of Westminster, Greater London, England, W1D 4PY, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ducksoup, Dean Street, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5133026,
+  "lon": -0.1321425,
+  "display_name": "Ducksoup, 41, Dean Street, Soho, City of Westminster, Greater London, England, W1D 4PY, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pang Pang, Upper St Martin's Lane, London": {
+  "found": false
+ },
+ "Pang Pang, Upper St Martin's Lane, Covent Garden, London, UK": {
+  "found": false
+ },
+ "Tsujiri, Newport Court, London": {
+  "found": true,
+  "lat": 51.5119807,
+  "lon": -0.1290026,
+  "display_name": "TSUJIRI Matcha House, 33, Newport Court, Chinatown, City of Westminster, Greater London, England, WC2H 7PQ, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Tsujiri, Dessert Alley, Chinatown, London, UK (also Liverpool)": {
+  "found": false
+ },
+ "Hefaure, Shaftesbury Avenue, London": {
+  "found": true,
+  "lat": 51.512299,
+  "lon": -0.1309766,
+  "display_name": "Héfaure, 108, Shaftesbury Avenue, St. James's, East Marylebone, Covent Garden, City of Westminster, Greater London, England, W1D 5EH, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Hefaure, Shaftesbury Avenue, Soho, London, UK": {
+  "found": false
+ },
+ "Honey & Co, Warren Street, London": {
+  "found": false
+ },
+ "Honey & Co, Warren Street, Fitzrovia, London, UK": {
+  "found": false
+ },
+ "Cafe TPT, Wardour Street, London": {
+  "found": true,
+  "lat": 51.5110603,
+  "lon": -0.1320248,
+  "display_name": "大排檔 Café TPT, 21, Wardour Street, Chinatown, City of Westminster, Greater London, England, W1D 6PN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Cafe TPT, Wardour Street, Chinatown, London, UK": {
+  "found": true,
+  "lat": 51.5110603,
+  "lon": -0.1320248,
+  "display_name": "大排檔 Café TPT, 21, Wardour Street, Chinatown, City of Westminster, Greater London, England, W1D 6PN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mr Zhang's, Liverpool": {
+  "found": true,
+  "lat": 53.4008343,
+  "lon": -2.9664492,
+  "display_name": "Mr Zhang's Kitchen, 8-10, Myrtle Street, Canning / Georgian Quarter, Edge Hill, Liverpool, Liverpool City Region, England, L7 7DP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mr Zhang's, Liverpool, UK": {
+  "found": true,
+  "lat": 53.4008343,
+  "lon": -2.9664492,
+  "display_name": "Mr Zhang's Kitchen, 8-10, Myrtle Street, Canning / Georgian Quarter, Edge Hill, Liverpool, Liverpool City Region, England, L7 7DP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "KOL Mexican restaurant, Seymour Street, London": {
+  "found": false
+ },
+ "Mowgli Street Food, Charlotte Street, London": {
+  "found": true,
+  "lat": 51.5180964,
+  "lon": -0.1346355,
+  "display_name": "Mowgli Street Food, 5, Charlotte Street, St Giles, Fitzrovia, London Borough of Camden, Greater London, England, W1T 1RE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mowgli Street Food, Charlotte Street, London, UK (and Liverpool and elsewhere)": {
+  "found": false
+ },
+ "Mother India, Westminster Terrace, Glasgow": {
+  "found": false
+ },
+ "Mother India, Glasgow, Scotland, UK": {
+  "found": true,
+  "lat": 55.8652394,
+  "lon": -4.283925,
+  "display_name": "Mother India, 28, Sauchiehall Street, Stobcross, Kelvingrove, Finnieston, Glasgow, Glasgow City, Alba / Scotland, G3 7RU, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Es Pati restaurant, Mallorca": {
+  "found": false
+ },
+ "Es Pati, Mallorca, Spain": {
+  "found": true,
+  "lat": 39.6401724,
+  "lon": 3.005634,
+  "display_name": "es pati de Son Janer, Centre històric, Sineu, Pla de Mallorca, Illes Balears, 07510, España",
+  "category": "highway",
+  "type": "pedestrian",
+  "place_rank": 26
+ },
+ "Angels with Bagpipes, High Street, Edinburgh": {
+  "found": true,
+  "lat": 55.9498329,
+  "lon": -3.191092,
+  "display_name": "Angels with Bagpipes, 343, High Street, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH1 1PW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Angels with Bagpipes, Royal Mile, Edinburgh, Scotland, UK": {
+  "found": true,
+  "lat": 55.9498329,
+  "lon": -3.191092,
+  "display_name": "Angels with Bagpipes, 343, High Street, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH1 1PW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Harbour Bar, Bray, Ireland": {
+  "found": false
+ },
+ "The Harbour Bar, Bray, County Wicklow, Ireland": {
+  "found": false
+ },
+ "Aquadrome Cafe, Rickmansworth": {
+  "found": false
+ },
+ "Rickmansworth Aquadrome cafe, Rickmansworth, Hertfordshire, UK": {
+  "found": false
+ },
+ "Malik's, Gerrards Cross": {
+  "found": false
+ },
+ "Malik's, Gerrards Cross, Buckinghamshire, UK": {
+  "found": false
+ },
+ "The Ginger Man, Boston": {
+  "found": true,
+  "lat": 42.3593344,
+  "lon": -71.054186,
+  "display_name": "The Ginger Man, 148, State Street, Government Center/Faneuil Hall, Downtown, Boston, Suffolk County, Massachusetts, 02110, United States",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "The Gingerman, Boston, Massachusetts, USA": {
+  "found": false
+ },
+ "The Fairmont Olympic Hotel, Seattle": {
+  "found": false
+ },
+ "Olympic Hotel, Seattle, Washington, USA": {
+  "found": true,
+  "lat": 47.6080625,
+  "lon": -122.3339285,
+  "display_name": "Fairmont Olympic Hotel, 411, University Street, Central Business District, First Hill, Seattle, King County, Washington, 98101, United States",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Molly Moon's Homemade Ice Cream, Seattle": {
+  "found": true,
+  "lat": 47.6615058,
+  "lon": -122.338103,
+  "display_name": "Molly Moon's Homemade Ice Cream, 1622 1/2, North 45th Street, Wallingford, Seattle, King County, Washington, 98103, United States",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Molly Moon's, Seattle, Washington, USA": {
+  "found": true,
+  "lat": 47.5612196,
+  "lon": -122.3865559,
+  "display_name": "Molly Moon’s Homemade Ice Cream, 4556, California Avenue Southwest, Alaska Junction, West Seattle, Seattle, King County, Washington, 98116, United States",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Dim Sum restaurant, Glasgow": {
+  "found": true,
+  "lat": 55.8624337,
+  "lon": -4.2550981,
+  "display_name": "Dim Sum, 69, West Nile Street, Cowcaddens, City Centre, Glasgow, Glasgow City, Alba / Scotland, G1 2QB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dim Sum, Glasgow, UK": {
+  "found": true,
+  "lat": 55.8624337,
+  "lon": -4.2550981,
+  "display_name": "Dim Sum, 69, West Nile Street, Cowcaddens, City Centre, Glasgow, Glasgow City, Alba / Scotland, G1 2QB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dos Hermanos Bread, Portland, Oregon": {
+  "found": false
+ },
+ "Dos Hermanos Bread, Portland, Oregon, USA": {
+  "found": false
+ },
+ "Sushi Park, Sunset Boulevard, West Hollywood, Los Angeles": {
+  "found": true,
+  "lat": 34.0938969,
+  "lon": -118.3777064,
+  "display_name": "Sushi Park, 8539, West Sunset Boulevard, Sunset Strip, West Hollywood, Los Angeles County, California, 90069, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sushi Park, Los Angeles, California, USA": {
+  "found": true,
+  "lat": 34.0938969,
+  "lon": -118.3777064,
+  "display_name": "Sushi Park, 8539, West Sunset Boulevard, Sunset Strip, West Hollywood, Los Angeles County, California, 90069, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pacific Standard, Portland, Oregon": {
+  "found": true,
+  "lat": 45.5237742,
+  "lon": -122.661537,
+  "display_name": "Pacific Standard, 100, Northeast Martin Luther King Junior Boulevard, Kerns, Portland, Multnomah County, Oregon, 97232, United States",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Pacific Standard, Portland, Oregon, USA": {
+  "found": true,
+  "lat": 45.5237742,
+  "lon": -122.661537,
+  "display_name": "Pacific Standard, 100, Northeast Martin Luther King Junior Boulevard, Kerns, Portland, Multnomah County, Oregon, 97232, United States",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Ruby Jewel Scoops, Portland, Oregon": {
+  "found": false
+ },
+ "Ruby Jewel, Portland, Oregon, USA": {
+  "found": true,
+  "lat": 45.5344797,
+  "lon": -122.698625,
+  "display_name": "Tinis, 1650, Northwest 23rd Avenue, Slabtown, Northwest District, Portland, Multnomah County, Oregon, 97210, United States",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Katz's Delicatessen, East Houston Street, New York": {
+  "found": true,
+  "lat": 40.7223431,
+  "lon": -73.987353,
+  "display_name": "Katz's Delicatessen, 205, East Houston Street, Manhattan Community Board 3, Manhattan, New York County, New York, 10002, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Katz's Delicatessen, Lower East Side, New York, USA": {
+  "found": false
+ },
+ "Holiday Inn Belfast, Ormeau Avenue": {
+  "found": false
+ },
+ "Holiday Inn Belfast, Belfast, Northern Ireland, UK": {
+  "found": true,
+  "lat": 54.5926563,
+  "lon": -5.9349515,
+  "display_name": "Holiday Inn, Bruce Street, Sandy Row, Belfast City District, County Antrim, Northern Ireland / Tuaisceart Éireann, BT2 7SL, United Kingdom",
+  "category": "amenity",
+  "type": "parking",
+  "place_rank": 30
+ },
+ "Otto Enoteca Pizzeria, East 8th Street, New York": {
+  "found": false
+ },
+ "Otto Enoteca Pizzeria, Greenwich Village, New York, USA (now closed)": {
+  "found": false
+ },
+ "The Fat Shallot, Chicago": {
+  "found": true,
+  "lat": 41.8798317,
+  "lon": -87.6302435,
+  "display_name": "The Fat Shallot, 72, West Adams Street, Financial District, Loop, Chicago, South Chicago Township, Cook County, Illinois, 60603, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Fat Shallot, Chicago, USA": {
+  "found": true,
+  "lat": 41.8798317,
+  "lon": -87.6302435,
+  "display_name": "The Fat Shallot, 72, West Adams Street, Financial District, Loop, Chicago, South Chicago Township, Cook County, Illinois, 60603, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mildreds, London": {
+  "found": true,
+  "lat": 51.5115022,
+  "lon": -0.1273681,
+  "display_name": "Mildreds, 79, St Martin's Lane, East Marylebone, Covent Garden, City of Westminster, Greater London, England, WC2N 4AA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mildreds, London, UK": {
+  "found": true,
+  "lat": 51.4941067,
+  "lon": -0.1422977,
+  "display_name": "Mildreds, 128, Wilton Road, Westminster, Victoria, City of Westminster, Greater London, England, SW1V 1JZ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sam's Bar-B-Q, East 12th Street, Austin": {
+  "found": false
+ },
+ "Sam's Bar-B-Q, Austin, Texas, USA": {
+  "found": false
+ },
+ "Bentley's Oyster Bar & Grill, Swallow Street, London": {
+  "found": false
+ },
+ "Bentley's, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5094977,
+  "lon": -0.1377087,
+  "display_name": "Bentley's, Swallow Street, St. James's, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1B 4DG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Valley Cafe, Navan, County Meath, Ireland": {
+  "found": true,
+  "lat": 53.6536047,
+  "lon": -6.6834928,
+  "display_name": "Valley Cafe, Watergate Street, Navan Urban ED, The Municipal District of Navan, County Meath, Leinster, C15 KW25, Éire / Ireland",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "The Valley Cafe, Navan, County Meath, Ireland": {
+  "found": false
+ },
+ "Masa, Dublin, Ireland": {
+  "found": true,
+  "lat": 53.3413427,
+  "lon": -6.2641865,
+  "display_name": "Masa, 2-3, Drury Street, Royal Exchange B Ward 1986, Dublin, County Dublin, Leinster, D02 NV08, Éire / Ireland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Whelan's, Wexford Street, Dublin": {
+  "found": true,
+  "lat": 53.3365698,
+  "lon": -6.2658724,
+  "display_name": "Whelan’s, 25, Wexford Street, Royal Exchange A ED, Dublin, County Dublin, Leinster, D02 H527, Éire / Ireland",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Whelan's, Wexford Street, Dublin, Ireland": {
+  "found": true,
+  "lat": 53.3365698,
+  "lon": -6.2658724,
+  "display_name": "Whelan’s, 25, Wexford Street, Royal Exchange A Ward 1986, Dublin, County Dublin, Leinster, D02 H527, Éire / Ireland",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Hoppers, Frith Street, London": {
+  "found": true,
+  "lat": 51.5135833,
+  "lon": -0.1315974,
+  "display_name": "Hoppers, 49, Frith Street, Soho, City of Westminster, Greater London, England, W1D 4SG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hoppers, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5135833,
+  "lon": -0.1315974,
+  "display_name": "Hoppers, 49, Frith Street, Soho, City of Westminster, Greater London, England, W1D 4SG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mozza, Treehouse Hotel, Regent Street, London": {
+  "found": false
+ },
+ "Mozza, The Treehouse Hotel, Langham Place, London, UK": {
+  "found": false
+ },
+ "Hoppers, King's Cross, London": {
+  "found": true,
+  "lat": 51.5342476,
+  "lon": -0.1254959,
+  "display_name": "Hoppers, Goods Way, King's Cross, London Borough of Camden, Greater London, England, N1C 4DP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hoppers King's Cross, King's Cross, London, UK": {
+  "found": true,
+  "lat": 51.5342476,
+  "lon": -0.1254959,
+  "display_name": "Hoppers, 4, Goods Way, King's Cross, London Borough of Camden, Greater London, England, N1C 4DP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pizza Pilgrims, Kingly Street, London": {
+  "found": true,
+  "lat": 51.5125445,
+  "lon": -0.1390505,
+  "display_name": "Pizza Pilgrims, 11, Kingly Street, Soho, City of Westminster, Greater London, England, W1B 5PW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pizza Pilgrims, London, UK": {
+  "found": true,
+  "lat": 51.5075602,
+  "lon": -0.0231386,
+  "display_name": "Pizza Pilgrims, 12, Hertsmere Road, Canary Wharf, London Borough of Tower Hamlets, Greater London, England, E14 4AF, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Yard Sale Pizza, London": {
+  "found": true,
+  "lat": 51.5576725,
+  "lon": -0.1388174,
+  "display_name": "Yard Sale Pizza, 6, Dartmouth Park Hill, Tufnell Park, London Borough of Islington, Greater London, England, NW5 1HL, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Yard Sale Pizza, London, UK": {
+  "found": true,
+  "lat": 51.5351114,
+  "lon": -0.2047151,
+  "display_name": "Yard Sale Pizza, 65, Salusbury Road, Brondesbury Park, Queen's Park, London Borough of Brent, Greater London, England, NW6 6NJ, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Etta, Lygon Street, Brunswick East, Melbourne": {
+  "found": true,
+  "lat": -37.7768488,
+  "lon": 144.9710896,
+  "display_name": "Etta, 60, Lygon Street, Brunswick East, Melbourne, Victoria, 3057, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Etta, Brunswick East, Melbourne, Australia": {
+  "found": true,
+  "lat": -37.7768488,
+  "lon": 144.9710896,
+  "display_name": "Etta, 60, Lygon Street, Brunswick East, Melbourne, Victoria, 3057, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Carlton Wine Room, Rathdowne Street, Carlton, Melbourne": {
+  "found": false
+ },
+ "Carlton Wine Room, Carlton, Melbourne, Australia": {
+  "found": true,
+  "lat": -37.7986312,
+  "lon": 144.9686154,
+  "display_name": "Carlton Wine Room, 172-174, Faraday Street, Carlton, Melbourne, Victoria, 3053, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bar Margaux, Flinders Lane, Melbourne": {
+  "found": false
+ },
+ "Bar Margaux, Melbourne CBD, Australia": {
+  "found": false
+ },
+ "Brutto, Greville Street, Farringdon, London": {
+  "found": false
+ },
+ "Brutto, Clerkenwell, London, UK": {
+  "found": true,
+  "lat": 51.5198037,
+  "lon": -0.1024196,
+  "display_name": "Trattoria Brutto, 36-37, Greenhill Rents, Farringdon, Clerkenwell, London Borough of Islington, Greater London, England, EC1M 6BN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Attica, Glen Eira Road, Ripponlea, Melbourne": {
+  "found": true,
+  "lat": -37.8770317,
+  "lon": 144.9973116,
+  "display_name": "Attica, 74, Glen Eira Road, Ripponlea, Melbourne, Victoria, 3185, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Attica, Ripponlea, Melbourne, Australia": {
+  "found": true,
+  "lat": -37.8770317,
+  "lon": 144.9973116,
+  "display_name": "Attica, 74, Glen Eira Road, Ripponlea, Melbourne, Victoria, 3185, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "St. JOHN, St John Street, Clerkenwell, London": {
+  "found": true,
+  "lat": 51.5204809,
+  "lon": -0.1012748,
+  "display_name": "St. John, 26, St. John Street, Farringdon, Clerkenwell, London Borough of Islington, Greater London, England, EC1M 4AY, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "St. JOHN, Smithfield, London, UK": {
+  "found": true,
+  "lat": 51.5079711,
+  "lon": -0.075952,
+  "display_name": "St John the Evangelist, Inner Ward, East Smithfield, Tower Hill, Whitechapel, London Borough of Tower Hamlets, Greater London, England, EC3N 4AB, United Kingdom",
+  "category": "amenity",
+  "type": "place_of_worship",
+  "place_rank": 30
+ },
+ "Musso & Frank Grill, Hollywood, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.1017556,
+  "lon": -118.3352976,
+  "display_name": "Musso & Frank, 6667, Hollywood Boulevard, Hollywood, Los Angeles, Los Angeles County, California, 90028, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gimlet, Russell Street, Melbourne": {
+  "found": true,
+  "lat": -37.8158796,
+  "lon": 144.9693073,
+  "display_name": "Gimlet, 33, Russell Street, East End Theatre District, Melbourne, Victoria, 3000, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gimlet, Melbourne CBD, Australia": {
+  "found": true,
+  "lat": -37.8158796,
+  "lon": 144.9693073,
+  "display_name": "Gimlet, 33, Russell Street, East End Theatre District, Melbourne, Victoria, 3000, Australia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ox Club, Leeds": {
+  "found": false
+ },
+ "Ox Club, Leeds, UK": {
+  "found": false
+ },
+ "Doh'hut, Leeds": {
+  "found": true,
+  "lat": 53.7956664,
+  "lon": -1.5437764,
+  "display_name": "Doh'hut, 2, Trevelyan Square, Warehouse Hill, Arena Quarter, Lovell Park, Leeds, West Yorkshire, England, LS1 6ED, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Doh'hut, Leeds, UK": {
+  "found": true,
+  "lat": 53.7956664,
+  "lon": -1.5437764,
+  "display_name": "Doh'hut, 2, Trevelyan Square, Warehouse Hill, Arena Quarter, Lovell Park, Leeds, West Yorkshire, England, LS1 6ED, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Keens Steakhouse, West 36th Street, New York": {
+  "found": true,
+  "lat": 40.750773,
+  "lon": -73.9864091,
+  "display_name": "Keens Steakhouse, 72, West 36th Street, Midtown South, Manhattan Community Board 5, Manhattan, New York County, New York, 10018, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Keens Steakhouse, Midtown Manhattan, New York, USA": {
+  "found": true,
+  "lat": 40.750773,
+  "lon": -73.9864091,
+  "display_name": "Keens Steakhouse, 72, West 36th Street, Midtown South, Manhattan Community Board 5, Manhattan, New York County, New York, 10018, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pylos, East 7th Street, New York": {
+  "found": true,
+  "lat": 40.7261637,
+  "lon": -73.9840813,
+  "display_name": "Pylos Restaurant, 128, East 7th Street, East Village, Manhattan Community Board 3, Manhattan, New York County, New York, 10009, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pylos, East Village, New York, USA": {
+  "found": true,
+  "lat": 40.7261637,
+  "lon": -73.9840813,
+  "display_name": "Pylos Restaurant, 128, East 7th Street, East Village, Manhattan Community Board 3, Manhattan, New York County, New York, 10009, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Rovi, Wigmore Street, London": {
+  "found": false
+ },
+ "Kapow, Glasgow": {
+  "found": false
+ },
+ "Kapow, Glasgow, Scotland, UK": {
+  "found": false
+ },
+ "Madonna Inn, San Luis Obispo, California": {
+  "found": true,
+  "lat": 35.2669947,
+  "lon": -120.6751646,
+  "display_name": "Madonna Inn, 100, Madonna Road, San Luis Obispo, San Luis Obispo County, California, 93405, United States",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Madonna Inn Steakhouse, San Luis Obispo, California, USA": {
+  "found": false
+ },
+ "Cor, Bristol": {
+  "found": true,
+  "lat": 51.4405738,
+  "lon": -2.6049561,
+  "display_name": "COR, 81, North Street, The Chessels, Bedminster, Bristol, City of Bristol, West of England, England, BS3 1ES, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Cor, Bristol, UK": {
+  "found": true,
+  "lat": 51.4405738,
+  "lon": -2.6049561,
+  "display_name": "COR, 81, North Street, The Chessels, Bedminster, Bristol, City of Bristol, West of England, England, BS3 1ES, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Skof, Manchester": {
+  "found": false
+ },
+ "Skof, Manchester, UK": {
+  "found": false
+ },
+ "Mikkeller Bar, London": {
+  "found": true,
+  "lat": 51.5273257,
+  "lon": -0.0769458,
+  "display_name": "Mikkeller Bar London, 2-4, Hackney Road, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E2 7NS, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Mikkeller Bar, London, UK": {
+  "found": true,
+  "lat": 51.5273257,
+  "lon": -0.0769458,
+  "display_name": "Mikkeller Bar London, 2-4, Hackney Road, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E2 7NS, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Heaney's, Cardiff, Wales": {
+  "found": false
+ },
+ "Heaneys, Cardiff, Wales, UK": {
+  "found": true,
+  "lat": 51.4851724,
+  "lon": -3.2013394,
+  "display_name": "Heaneys, 6-10, Romilly Crescent, The Laundry Quarter, Pontcanna, Cardiff, Cymru / Wales, CF11 9NQ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Joe's Shanghai, New York": {
+  "found": true,
+  "lat": 40.7156823,
+  "lon": -73.9966551,
+  "display_name": "Joe's Shanghai, 46, Bowery, Five Points, Manhattan Community Board 3, Manhattan, New York County, New York, 10013, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Joe's Shanghai, New York, USA": {
+  "found": true,
+  "lat": 40.7156823,
+  "lon": -73.9966551,
+  "display_name": "Joe's Shanghai, 46, Bowery, Five Points, Manhattan Community Board 3, Manhattan, New York County, New York, 10013, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Adventure Island, Southend-on-Sea, UK": {
+  "found": true,
+  "lat": 51.5327119,
+  "lon": 0.717746,
+  "display_name": "Adventure Island, Marine Parade, Kursaal Estate, Southchurch, Southend-on-Sea, Essex, England, SS1 2HR, United Kingdom",
+  "category": "tourism",
+  "type": "theme_park",
+  "place_rank": 30
+ },
+ "Adventure Island, Southend-on-Sea, Essex, UK": {
+  "found": true,
+  "lat": 51.5327119,
+  "lon": 0.717746,
+  "display_name": "Adventure Island, Marine Parade, Kursaal Estate, Southchurch, Southend-on-Sea, Essex, England, SS1 2HR, United Kingdom",
+  "category": "tourism",
+  "type": "theme_park",
+  "place_rank": 30
+ },
+ "Wimpy, High Road, Loughton, Essex": {
+  "found": true,
+  "lat": 51.6466732,
+  "lon": 0.0541369,
+  "display_name": "Wimpy, 168A, High Road, Loughton, Debden Green, Epping Forest, Essex, England, IG10 1DN, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Wimpy, Loughton, Essex, UK": {
+  "found": true,
+  "lat": 51.6466732,
+  "lon": 0.0541369,
+  "display_name": "Wimpy, 168A, High Road, Loughton, Debden Green, Epping Forest, Essex, England, IG10 1DN, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "A Syrian restaurant opposite her hotel in Budapest, Budapest, Hungary": {
+  "found": false
+ },
+ "Everest Cash and Carry, Folkestone": {
+  "found": false
+ },
+ "Everest Cash and Carry, Folkestone, Kent, UK": {
+  "found": false
+ },
+ "Bubala, Soho, London": {
+  "found": true,
+  "lat": 51.51477,
+  "lon": -0.1369587,
+  "display_name": "Bubala, 15, Poland Street, Soho, City of Westminster, Greater London, England, W1F 8QE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bubala, Soho, London, UK": {
+  "found": true,
+  "lat": 51.51477,
+  "lon": -0.1369587,
+  "display_name": "Bubala, 15, Poland Street, Soho, City of Westminster, Greater London, England, W1F 8QE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Raj, Kettering, Northamptonshire, UK": {
+  "found": true,
+  "lat": 52.4039884,
+  "lon": -0.7265055,
+  "display_name": "The Raj Restaurant, 46, Rockingham Road, Avondale, Kettering, North Northamptonshire, England, NN16 8JT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Royal Bengal, Kettering": {
+  "found": true,
+  "lat": 52.4045338,
+  "lon": -0.7265809,
+  "display_name": "Royal Bengal, 64, Rockingham Road, Avondale, Kettering, North Northamptonshire, England, NN16 8JT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Royal Bengal, Kettering, Northamptonshire, UK": {
+  "found": true,
+  "lat": 52.4045338,
+  "lon": -0.7265809,
+  "display_name": "Royal Bengal, 64, Rockingham Road, Avondale, Kettering, North Northamptonshire, England, NN16 8JT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bistro Aix, Crouch End, London": {
+  "found": true,
+  "lat": 51.5816355,
+  "lon": -0.1213611,
+  "display_name": "Bistro Aix, 54, Tottenham Lane, Topsfield Parade, Crouch End, London Borough of Haringey, Greater London, England, N8 8PT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bistro Aix, Crouch End, London, UK": {
+  "found": true,
+  "lat": 51.5816355,
+  "lon": -0.1213611,
+  "display_name": "Bistro Aix, 54, Tottenham Lane, Topsfield Parade, Crouch End, London Borough of Haringey, Greater London, England, N8 8PT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The John Snow, Broadwick Street, Soho, London": {
+  "found": true,
+  "lat": 51.5132722,
+  "lon": -0.1365995,
+  "display_name": "The John Snow, 39, Broadwick Street, Soho, City of Westminster, Greater London, England, W1F 9QJ, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The John Snow, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5132722,
+  "lon": -0.1365995,
+  "display_name": "The John Snow, 39, Broadwick Street, Soho, City of Westminster, Greater London, England, W1F 9QJ, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Via Carota, Grove Street, New York": {
+  "found": true,
+  "lat": 40.73311,
+  "lon": -74.0036496,
+  "display_name": "Via Carota, 51, Grove Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dean Street Townhouse, Dean Street, London": {
+  "found": true,
+  "lat": 51.513461,
+  "lon": -0.132646,
+  "display_name": "Dean Street Townhouse, 69-71, Dean Street, Soho, City of Westminster, Greater London, England, W1D 3SE, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Central Tiffin Room, Malleshwaram, Bangalore": {
+  "found": true,
+  "lat": 12.9982568,
+  "lon": 77.5694946,
+  "display_name": "Shree Sagar CTR, 7th Cross Road, Malleswaram, Malleshwaram, Bengaluru West City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560003, India",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Central Tiffin Room (CTR), Malleshwaram, Bangalore, India": {
+  "found": false
+ },
+ "Al Kahf, Whitechapel, London": {
+  "found": true,
+  "lat": 51.5179965,
+  "lon": -0.0640118,
+  "display_name": "Al-Kahf, 112-116, Whitechapel Road, St. George in the East, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E1 1JE, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Al Kahf, Whitechapel, London, UK": {
+  "found": true,
+  "lat": 51.5179965,
+  "lon": -0.0640118,
+  "display_name": "Al-Kahf, 112-116, Whitechapel Road, St. George in the East, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E1 1JE, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Da Terra, Shoreditch, London": {
+  "found": false
+ },
+ "Da Terra, Shoreditch, London, UK": {
+  "found": false
+ },
+ "Katz's Delicatessen, Houston Street, New York": {
+  "found": true,
+  "lat": 40.7223431,
+  "lon": -73.987353,
+  "display_name": "Katz's Delicatessen, 205, East Houston Street, Manhattan Community Board 3, Manhattan, New York County, New York, 10002, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Katz's Delicatessen, New York, USA": {
+  "found": true,
+  "lat": 40.7223431,
+  "lon": -73.987353,
+  "display_name": "Katz's Delicatessen, 205, East Houston Street, Manhattan Community Board 3, Manhattan, New York County, New York, 10002, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Ritz Restaurant, Piccadilly, London": {
+  "found": false
+ },
+ "The Ritz Restaurant, Piccadilly, London, UK": {
+  "found": false
+ },
+ "Fluffy Torpedo, Melbourne": {
+  "found": true,
+  "lat": -37.7722967,
+  "lon": 144.9610877,
+  "display_name": "Fluffy Torpedo, 213, Sydney Road, Brunswick, Melbourne, Victoria, 3056, Australia",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Fluffy Torpedo, Melbourne, Australia": {
+  "found": true,
+  "lat": -37.7722967,
+  "lon": 144.9610877,
+  "display_name": "Fluffy Torpedo, 213, Sydney Road, Brunswick, Melbourne, Victoria, 3056, Australia",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Hart's Bakery, Under Temple Meads station, Bristol, UK": {
+  "found": false
+ },
+ "Charbonnel et Walker, Royal Arcade, Old Bond Street, London": {
+  "found": false
+ },
+ "Charbonnel et Walker, London, UK": {
+  "found": true,
+  "lat": 51.5091272,
+  "lon": -0.1412747,
+  "display_name": "Charbonnel et Walker, 1, Royal Arcade, St. James's, Mayfair, City of Westminster, Greater London, England, W1S 4BT, United Kingdom",
+  "category": "shop",
+  "type": "confectionery",
+  "place_rank": 30
+ },
+ "Reg the Veg, Bristol": {
+  "found": true,
+  "lat": 51.4552088,
+  "lon": -2.6181765,
+  "display_name": "Reg the Veg, 6, Boyces Avenue, Clifton Village, Clifton, Bristol, City of Bristol, West of England, England, BS8 4AA, United Kingdom",
+  "category": "shop",
+  "type": "greengrocer",
+  "place_rank": 30
+ },
+ "Reg the Veg, Bristol, UK": {
+  "found": true,
+  "lat": 51.4552088,
+  "lon": -2.6181765,
+  "display_name": "Reg the Veg, 6, Boyces Avenue, Clifton Village, Clifton, Bristol, City of Bristol, West of England, England, BS8 4AA, United Kingdom",
+  "category": "shop",
+  "type": "greengrocer",
+  "place_rank": 30
+ },
+ "Violet Bakery, Wilton Way, London": {
+  "found": false
+ },
+ "Violet Bakery, Dalston, London, UK": {
+  "found": false
+ },
+ "Dumpling Legend, Gerrard Street, London": {
+  "found": false
+ },
+ "Dumpling Legend, Chinatown, London, UK": {
+  "found": false
+ },
+ "Mountain restaurant, Soho, London": {
+  "found": true,
+  "lat": 51.5119723,
+  "lon": -0.1382219,
+  "display_name": "Mountain, 16-18, Beak Street, Soho, City of Westminster, Greater London, England, W1F 9RD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mountain, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5119723,
+  "lon": -0.1382219,
+  "display_name": "Mountain, 16-18, Beak Street, Soho, City of Westminster, Greater London, England, W1F 9RD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Quality Chop House, Farringdon Road, London": {
+  "found": false
+ },
+ "The Quality Chop House, Farringdon, London, UK": {
+  "found": false
+ },
+ "Federal Deli, Soho, London": {
+  "found": false
+ },
+ "Federal Deli, Soho, London, UK": {
+  "found": false
+ },
+ "Depot Eatery, Auckland": {
+  "found": false
+ },
+ "Depot Eatery, Auckland, New Zealand": {
+  "found": false
+ },
+ "Turtle and Hare (as transcribed), Auckland, New Zealand": {
+  "found": false
+ },
+ "Denheath's Pies and Cakes, Christchurch": {
+  "found": false
+ },
+ "Denheath's, Christchurch, New Zealand": {
+  "found": false
+ },
+ "El-Hak, London, UK": {
+  "found": true,
+  "lat": 51.4768791,
+  "lon": -0.1303178,
+  "display_name": "El Hak, 174, Wandsworth Road, Stockwell Park, Vauxhall, London Borough of Lambeth, Greater London, England, SW8 2LA, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Elco Panipuri Centre, Bandra, Mumbai": {
+  "found": false
+ },
+ "Elco Panipuri Centre, Bandra, Mumbai, India": {
+  "found": false
+ },
+ "Samakanda, Koggala, Galle, Sri Lanka": {
+  "found": false
+ },
+ "Samakanda, Near Galle, Sri Lanka": {
+  "found": false
+ },
+ "The River Cafe, Thames Wharf, London": {
+  "found": false
+ },
+ "The River Cafe, Hammersmith, London, UK": {
+  "found": true,
+  "lat": 51.4840371,
+  "lon": -0.224212,
+  "display_name": "The River Cafe, Rainville Road, Hammersmith, London Borough of Hammersmith and Fulham, Greater London, England, W6 9EX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Elio's, Barton-upon-Humber, North Lincolnshire, UK (now closed)": {
+  "found": false
+ },
+ "Fisherman's Wharf, Cavelossim, Goa": {
+  "found": true,
+  "lat": 15.157889,
+  "lon": 73.951799,
+  "display_name": "The Fisherman's Wharf, Orlim Road, Cavelossim, Salcete, South Goa, Goa, 403731, India",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Fisherman's Wharf, Goa, India": {
+  "found": true,
+  "lat": 15.493868,
+  "lon": 73.819623,
+  "display_name": "The Fisherman's Wharf - Panjim, Dayanand Bandodkar Marg, Campal, Santa Inez, Panaji, Tiswadi, North Goa, Goa, 403001, India",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ekstedt at The Yard, Great Scotland Yard, London": {
+  "found": true,
+  "lat": 51.506414,
+  "lon": -0.1261669,
+  "display_name": "Ekstedt at The Yard, 3-5, Great Scotland Yard, Westminster, Covent Garden, City of Westminster, Greater London, England, SW1A 2HN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ekstedt at The Yard, London, UK": {
+  "found": true,
+  "lat": 51.506414,
+  "lon": -0.1261669,
+  "display_name": "Ekstedt at The Yard, 3-5, Great Scotland Yard, Westminster, Covent Garden, City of Westminster, Greater London, England, SW1A 2HN, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Puerto Nuevo, Baja California, Mexico": {
+  "found": true,
+  "lat": 32.2430119,
+  "lon": -116.9341621,
+  "display_name": "Puerto Nuevo, Municipio de Playas de Rosarito, Baja California, 22740, México",
+  "category": "place",
+  "type": "village",
+  "place_rank": 19
+ },
+ "Puerto Nuevo lobster restaurants, Puerto Nuevo, Baja California, Mexico": {
+  "found": false
+ },
+ "Fonda, Mayfair, London": {
+  "found": true,
+  "lat": 51.5112099,
+  "lon": -0.1395812,
+  "display_name": "Fonda, Heddon Street, St. James's, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1B 4BS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Fonda, London, UK": {
+  "found": true,
+  "lat": 51.5112099,
+  "lon": -0.1395812,
+  "display_name": "Fonda, Heddon Street, St. James's, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1B 4BS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Trattoria Cammillo, Borgo San Jacopo, Florence": {
+  "found": false
+ },
+ "Cammillo, Florence, Italy": {
+  "found": true,
+  "lat": 43.7681082,
+  "lon": 11.2500234,
+  "display_name": "Trattoria Cammillo, 57 R, Borgo San Iacopo, Oltrarno, Quartiere 1, Firenze, Toscana, 50125, Italia",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hampton Chutney Co, Prince Street, New York": {
+  "found": false
+ },
+ "Hampton Chutney Co., New York, USA": {
+  "found": true,
+  "lat": 40.9741765,
+  "lon": -72.1409993,
+  "display_name": "Hampton Chutney Co, 12, Amagansett Square, Amagansett, Town of East Hampton, Suffolk County, New York, 11930, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Saltie Girl, Los Angeles": {
+  "found": true,
+  "lat": 34.0926508,
+  "lon": -118.379554,
+  "display_name": "Saltie Girl, 8615, West Sunset Boulevard, Sunset Strip, West Hollywood, Los Angeles County, California, 90069, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Saltie Girl, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.0926508,
+  "lon": -118.379554,
+  "display_name": "Saltie Girl, 8615, West Sunset Boulevard, Sunset Strip, West Hollywood, Los Angeles County, California, 90069, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Connie and Ted's, West Hollywood": {
+  "found": false
+ },
+ "Connie and Ted's, West Hollywood, Los Angeles, USA": {
+  "found": false
+ },
+ "GoldenEye, Oracabessa, Jamaica": {
+  "found": true,
+  "lat": 18.4107691,
+  "lon": -76.9448183,
+  "display_name": "Goldeneye Bridge, Liberty Castle, Coleraine, Oracabessa, Saint Mary, Middlesex County, Jamaica",
+  "category": "highway",
+  "type": "footway",
+  "place_rank": 27
+ },
+ "GoldenEye, Oracabessa, St Mary, Jamaica": {
+  "found": true,
+  "lat": 18.4107691,
+  "lon": -76.9448183,
+  "display_name": "Goldeneye Bridge, Liberty Castle, Coleraine, Oracabessa, Saint Mary, Middlesex County, Jamaica",
+  "category": "highway",
+  "type": "footway",
+  "place_rank": 27
+ },
+ "Rio Grande, Port Antonio, Jamaica": {
+  "found": true,
+  "lat": 18.1440933,
+  "lon": -76.477595,
+  "display_name": "Rafting on the Rio Grande, Red Hassel Road, Breastworks, Port Antonio, Portland, Surrey County, Jamaica",
+  "category": "tourism",
+  "type": "attraction",
+  "place_rank": 30
+ },
+ "Belinda's shack, Rio Grande, Rio Grande, near Port Antonio, Jamaica": {
+  "found": false
+ },
+ "Ham Yard Hotel, Ham Yard, London": {
+  "found": true,
+  "lat": 51.5111373,
+  "lon": -0.1350791,
+  "display_name": "Ham Yard Hotel, 1, Ham Yard, Soho, City of Westminster, Greater London, England, W1D 7LT, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Ham Yard, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5113077,
+  "lon": -0.1344957,
+  "display_name": "Ham Yard, Soho, City of Westminster, Greater London, England, W1D 7LT, United Kingdom",
+  "category": "highway",
+  "type": "residential",
+  "place_rank": 26
+ },
+ "Oma, Borough Market, London": {
+  "found": true,
+  "lat": 51.5053404,
+  "lon": -0.0900773,
+  "display_name": "OMA, 2-4, Bedale Street, Borough Market, Bermondsey Village, The Borough, London Borough of Southwark, Greater London, England, SE1 9AL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Oma, Borough Market, London, UK": {
+  "found": true,
+  "lat": 51.5053404,
+  "lon": -0.0900773,
+  "display_name": "OMA, 2-4, Bedale Street, Borough Market, Bermondsey Village, The Borough, London Borough of Southwark, Greater London, England, SE1 9AL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Restaurant in Bath (unnamed), Bath, UK": {
+  "found": false
+ },
+ "Capo, Santa Monica, California": {
+  "found": false
+ },
+ "Capo, Santa Monica, Los Angeles, USA": {
+  "found": false
+ },
+ "Sushi Bar, Encino, California": {
+  "found": false
+ },
+ "Sushi Bar, Encino, Los Angeles, USA": {
+  "found": false
+ },
+ "Kann, Portland, Oregon": {
+  "found": true,
+  "lat": 45.5213911,
+  "lon": -122.6599297,
+  "display_name": "Kann, 548, Southeast Ash Street, Central Eastside, Buckman, Portland, Multnomah County, Oregon, 97214, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kann, Portland, Oregon, USA": {
+  "found": true,
+  "lat": 45.5213911,
+  "lon": -122.6599297,
+  "display_name": "Kann, 548, Southeast Ash Street, Central Eastside, Buckman, Portland, Multnomah County, Oregon, 97214, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Prime Seafood Palace, Toronto": {
+  "found": true,
+  "lat": 43.6447626,
+  "lon": -79.4166819,
+  "display_name": "Prime Seafood Palace, 944, Queen Street West, West Queen West, Spadina—Fort York, Toronto, Ontario, M6J 1G8, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Prime Seafood Palace, Toronto, Canada": {
+  "found": true,
+  "lat": 43.6447626,
+  "lon": -79.4166819,
+  "display_name": "Prime Seafood Palace, 944, Queen Street West, West Queen West, Spadina—Fort York, Toronto, Ontario, M6J 1G8, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Burgers Never Say Die, Los Angeles": {
+  "found": true,
+  "lat": 34.0998866,
+  "lon": -118.2589148,
+  "display_name": "Burgers Never Say Die, 2389, Glendale Boulevard, Silver Lake Heights, Silver Lake, Los Angeles, Los Angeles County, California, 90039, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Burgers Never Say Die, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.0998866,
+  "lon": -118.2589148,
+  "display_name": "Burgers Never Say Die, 2389, Glendale Boulevard, Silver Lake Heights, Silver Lake, Los Angeles, Los Angeles County, California, 90039, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Tuna Fight Club, Notting Hill, London": {
+  "found": false
+ },
+ "Tuna Fight Club, Notting Hill, London, UK": {
+  "found": false
+ },
+ "Weeki Wachee Springs State Park, Florida": {
+  "found": true,
+  "lat": 28.5171252,
+  "lon": -82.5748321,
+  "display_name": "Weeki Wachee Springs State Park, 6131, Weeki Wachee, Spring Hill, Hernando County, Florida, 34606, United States",
+  "category": "leisure",
+  "type": "park",
+  "place_rank": 24
+ },
+ "Weeki Wachee Springs, Weeki Wachee, Florida, USA": {
+  "found": true,
+  "lat": 28.5172659,
+  "lon": -82.5732252,
+  "display_name": "Weeki Wachee Spring, Commercial Way, Weeki Wachee, Hernando County, Florida, 34608, United States",
+  "category": "natural",
+  "type": "spring",
+  "place_rank": 30
+ },
+ "Perilla, Newington Green, London": {
+  "found": true,
+  "lat": 51.5521836,
+  "lon": -0.0857708,
+  "display_name": "Perilla, 1-3, Green Lanes, Newington Green, Highbury, London Borough of Islington, Greater London, England, N16 9BT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Perilla, Newington Green, London, UK": {
+  "found": true,
+  "lat": 51.5521836,
+  "lon": -0.0857708,
+  "display_name": "Perilla, 1-3, Green Lanes, Newington Green, Highbury, London Borough of Islington, Greater London, England, N16 9BT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Keens Steakhouse, Midtown Manhattan, New York City, USA": {
+  "found": true,
+  "lat": 40.750773,
+  "lon": -73.9864091,
+  "display_name": "Keens Steakhouse, 72, West 36th Street, Midtown South, Manhattan Community Board 5, Manhattan, New York County, New York, 10018, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Colwyn Bay Pier, Wales": {
+  "found": true,
+  "lat": 53.2967419,
+  "lon": -3.7234196,
+  "display_name": "Colwyn Bay Pier, Promenade, Colwyn Bay, Conwy, Cymru / Wales, LL29 0AS, United Kingdom",
+  "category": "man_made",
+  "type": "pier",
+  "place_rank": 30
+ },
+ "Colwyn Bay seafront, Colwyn Bay, Wales, UK": {
+  "found": false
+ },
+ "Brasserie Zedel, Piccadilly, London, UK": {
+  "found": false
+ },
+ "Escocesa, Stoke Newington Church Street, London": {
+  "found": true,
+  "lat": 51.562099,
+  "lon": -0.0768549,
+  "display_name": "Escocesa, 67, Stoke Newington Church Street, Upper Clapton, West Hackney, London Borough of Hackney, Greater London, England, N16 0AR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Escocesa, Stoke Newington, London, UK": {
+  "found": true,
+  "lat": 51.562099,
+  "lon": -0.0768549,
+  "display_name": "Escocesa, 67, Stoke Newington Church Street, Upper Clapton, West Hackney, London Borough of Hackney, Greater London, England, N16 0AR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Crossroads Kitchen, Los Angeles": {
+  "found": true,
+  "lat": 34.0835522,
+  "lon": -118.370176,
+  "display_name": "Crossroads Kitchen, 8284, Melrose Avenue, Beverly Grove, Fairfax, Los Angeles, Los Angeles County, California, 90046, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Crossroads, Los Angeles, USA": {
+  "found": true,
+  "lat": 33.948397,
+  "lon": -118.164134,
+  "display_name": "Crossroads, South Gate, Los Angeles County, California, United States",
+  "category": "landuse",
+  "type": "retail",
+  "place_rank": 24
+ },
+ "Cornus, London": {
+  "found": true,
+  "lat": 51.494148,
+  "lon": -0.1479415,
+  "display_name": "Cornus, Eccleston Street, Belgravia, City of Westminster, Greater London, England, SW1W 9LX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Cornus, London, UK": {
+  "found": true,
+  "lat": 51.494148,
+  "lon": -0.1479415,
+  "display_name": "Cornus, Eccleston Street, Belgravia, City of Westminster, Greater London, England, SW1W 9LX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Brat, London, UK": {
+  "found": true,
+  "lat": 51.5242656,
+  "lon": -0.0766909,
+  "display_name": "Brat, 4, Redchurch Street, Shoreditch, London Borough of Hackney, Greater London, England, E2 7DD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Jikoni, Blandford Street, London": {
+  "found": true,
+  "lat": 51.5183469,
+  "lon": -0.1532203,
+  "display_name": "Jikoni, 19-21, Blandford Street, East Marylebone, Marylebone, City of Westminster, Greater London, England, W1U 3DE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Jikoni, Marylebone, London, UK": {
+  "found": true,
+  "lat": 51.5183469,
+  "lon": -0.1532203,
+  "display_name": "Jikoni, 19-21, Blandford Street, East Marylebone, Marylebone, City of Westminster, Greater London, England, W1U 3DE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dishoom, London": {
+  "found": true,
+  "lat": 51.5031149,
+  "lon": -0.0135114,
+  "display_name": "Dishoom, 13, Water Street, Wood Wharf, Canary Wharf, London Borough of Tower Hamlets, Greater London, England, E14 5GX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dishoom, London, UK": {
+  "found": true,
+  "lat": 51.5031149,
+  "lon": -0.0135114,
+  "display_name": "Dishoom, 13, Water Street, Wood Wharf, Canary Wharf, London Borough of Tower Hamlets, Greater London, England, E14 5GX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hoppers, London": {
+  "found": true,
+  "lat": 51.5135833,
+  "lon": -0.1315974,
+  "display_name": "Hoppers, 49, Frith Street, Soho, City of Westminster, Greater London, England, W1D 4SG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Costas Taverna, Corfu": {
+  "found": false
+ },
+ "Costas Taverna, Corfu, Greece": {
+  "found": false
+ },
+ "Teal, Hackney, London": {
+  "found": true,
+  "lat": 51.545538,
+  "lon": -0.0611291,
+  "display_name": "Teal, 52, Wilton Way, Shacklewell, London Borough of Hackney, Greater London, England, E8 1BG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Teal, Hackney, London, UK": {
+  "found": true,
+  "lat": 51.545538,
+  "lon": -0.0611291,
+  "display_name": "Teal, 52, Wilton Way, Shacklewell, London Borough of Hackney, Greater London, England, E8 1BG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Brigadiers, London": {
+  "found": true,
+  "lat": 51.5126188,
+  "lon": -0.091782,
+  "display_name": "Brigadiers, 1-5, Bloomberg Arcade, Bloomberg Place - Walbrook Square, Bank, City of London, Greater London, England, EC4N 8AR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Brigadiers, City of London, UK": {
+  "found": true,
+  "lat": 51.5126188,
+  "lon": -0.091782,
+  "display_name": "Brigadiers, 1-5, Bloomberg Arcade, Bloomberg Place - Walbrook Square, Bank, City of London, Greater London, England, EC4N 8AR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Champers Restaurant, Hastings, Christ Church, Barbados": {
+  "found": false
+ },
+ "Champers, Christ Church, Barbados": {
+  "found": true,
+  "lat": 13.0721759,
+  "lon": -59.5868477,
+  "display_name": "Champers, Skeetes Hill Road, Worthing, St. Lawrence, Christ Church, BB15137, Barbados",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Xi'an Impression, Highbury, London": {
+  "found": true,
+  "lat": 51.5538347,
+  "lon": -0.1103928,
+  "display_name": "Xi'an Impression, 117, Benwell Road, Lower Holloway, Holloway, London Borough of Islington, Greater London, England, N7 7BW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Xi'an Impression, Highbury, London, UK": {
+  "found": true,
+  "lat": 51.5538347,
+  "lon": -0.1103928,
+  "display_name": "Xi'an Impression, 117, Benwell Road, Lower Holloway, Holloway, London Borough of Islington, Greater London, England, N7 7BW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Honey & Smoke, Great Portland Street, London": {
+  "found": false
+ },
+ "Honey & Smoke, Great Portland Street, London, UK": {
+  "found": false
+ },
+ "Skewd, Cockfosters, London": {
+  "found": true,
+  "lat": 51.6485697,
+  "lon": -0.1482214,
+  "display_name": "Skewd, 115, Cockfosters Road, Cockfosters, London Borough of Enfield, Greater London, England, EN4 0AE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Skewd, Cockfosters, London, UK": {
+  "found": true,
+  "lat": 51.6485697,
+  "lon": -0.1482214,
+  "display_name": "Skewd, 115, Cockfosters Road, Cockfosters, London Borough of Enfield, Greater London, England, EN4 0AE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Palm Bay, Loughton, Essex": {
+  "found": false
+ },
+ "Palm Bay, Loughton, Essex, UK": {
+  "found": false
+ },
+ "The Ivy, London, UK": {
+  "found": true,
+  "lat": 51.5128731,
+  "lon": -0.1281086,
+  "display_name": "The Ivy, West Street, Seven Dials, Bloomsbury, London Borough of Camden, Greater London, England, WC2H 9NL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dans Le Noir, London": {
+  "found": false
+ },
+ "Dans Le Noir, London, UK": {
+  "found": false
+ },
+ "The Polo Bar, West 55th Street, New York": {
+  "found": false
+ },
+ "The Polo Bar, New York City, USA": {
+  "found": true,
+  "lat": 40.7615247,
+  "lon": -73.9743066,
+  "display_name": "The Polo Bar, 1, East 55th Street, Midtown East, Manhattan Community Board 5, Manhattan, New York County, New York, 10055, United States",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Rocca, Tampa, Florida": {
+  "found": false
+ },
+ "Rocca, Tampa, Florida, USA": {
+  "found": false
+ },
+ "Meat Market, Hyde Park, Tampa": {
+  "found": true,
+  "lat": 27.9358446,
+  "lon": -82.4760537,
+  "display_name": "Meat Market, 1606, West Snow Avenue, Hyde Park Village, Davis Islands, Tampa, Hillsborough County, Florida, 33606, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Meat Market, Hyde Park, Tampa, Florida, USA": {
+  "found": true,
+  "lat": 27.9358446,
+  "lon": -82.4760537,
+  "display_name": "Meat Market, 1606, West Snow Avenue, Hyde Park Village, Davis Islands, Tampa, Hillsborough County, Florida, 33606, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hideaway, Hide, Piccadilly, London": {
+  "found": false
+ },
+ "Hideaway (Hide), Mayfair, London, UK": {
+  "found": false
+ },
+ "Shot coffee, London": {
+  "found": true,
+  "lat": 51.537678,
+  "lon": -0.1453762,
+  "display_name": "One shot coffee, 82, Parkway, Primrose Hill, Chalk Farm, London Borough of Camden, Greater London, England, NW1 7AN, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Shot, London, UK": {
+  "found": true,
+  "lat": 51.525495,
+  "lon": -0.0705737,
+  "display_name": "Holy Shot, 155, Bethnal Green Road, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E2 7DG, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Romeo's, Coral Way, Miami, Florida, USA (now closed)": {
+  "found": false
+ },
+ "Blacklock, Soho, London": {
+  "found": true,
+  "lat": 51.5117726,
+  "lon": -0.1346407,
+  "display_name": "Blacklock, 24, Great Windmill Street, Soho, City of Westminster, Greater London, England, W1D 7LG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Blacklock, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5117726,
+  "lon": -0.1346407,
+  "display_name": "Blacklock, 24, Great Windmill Street, Soho, City of Westminster, Greater London, England, W1D 7LG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chishuru, Great Titchfield Street, London": {
+  "found": true,
+  "lat": 51.5166206,
+  "lon": -0.1398848,
+  "display_name": "Chishuru, 3, Great Titchfield Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1W 8AX, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chishuru, Fitzrovia, London, UK": {
+  "found": false
+ },
+ "Chapel Down Winery, Tenterden, Kent": {
+  "found": true,
+  "lat": 51.0430872,
+  "lon": 0.6960854,
+  "display_name": "Chapel Down Winery, Small Hythe, Tenterden, Ashford, Kent, England, United Kingdom",
+  "category": "landuse",
+  "type": "vineyard",
+  "place_rank": 24
+ },
+ "Chapel Down, Tenterden, Kent, UK": {
+  "found": true,
+  "lat": 51.0430872,
+  "lon": 0.6960854,
+  "display_name": "Chapel Down Winery, Small Hythe, Tenterden, Ashford, Kent, England, United Kingdom",
+  "category": "landuse",
+  "type": "vineyard",
+  "place_rank": 24
+ },
+ "Balans, Old Compton Street, Soho, London": {
+  "found": true,
+  "lat": 51.5127729,
+  "lon": -0.1325693,
+  "display_name": "Balans Soho Society, 60-62, Old Compton Street, Soho, City of Westminster, Greater London, England, W1D 6HL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Balans, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5133235,
+  "lon": -0.131167,
+  "display_name": "Balans Soho Society Cafe, 34, Old Compton Street, Soho, City of Westminster, Greater London, England, W1D 4UG, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "ROVI, Newman Street, London": {
+  "found": false
+ },
+ "Kricket, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5108012,
+  "lon": -0.1351471,
+  "display_name": "Kricket, 12, Denman Street, Soho, City of Westminster, Greater London, England, W1D 7HU, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Toffs fish and chips, Muswell Hill, London": {
+  "found": false
+ },
+ "Toff's, Muswell Hill, London, UK": {
+  "found": false
+ },
+ "Milan Indian Restaurant, Snow Hill, Birmingham": {
+  "found": false
+ },
+ "Milan, Next to Snow Hill station, Birmingham, UK": {
+  "found": false
+ },
+ "Du Pain et des Idées, Rue Yves Toudic, Paris": {
+  "found": true,
+  "lat": 48.871173,
+  "lon": 2.3629496,
+  "display_name": "Du pain et des idées, la table, Rue Yves Toudic, Quartier de la Porte-Saint-Martin, Paris 10e Arrondissement, Paris, Île-de-France, France métropolitaine, 75010, France",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Du Pain et des Idées, Paris, France": {
+  "found": true,
+  "lat": 48.8712472,
+  "lon": 2.3629042,
+  "display_name": "Du Pain et des Idées, Rue de Marseille, Quartier de la Porte-Saint-Martin, Paris 10e Arrondissement, Paris, Île-de-France, France métropolitaine, 75010, France",
+  "category": "shop",
+  "type": "bakery",
+  "place_rank": 30
+ },
+ "The Red Lion pub, Birmingham, UK": {
+  "found": true,
+  "lat": 52.4868791,
+  "lon": -1.9158102,
+  "display_name": "The Red Lion, 95, Warstone Lane, Jewellery Quarter, Birmingham, West Midlands, England, B18 6NG, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Red Lion, Birmingham, UK": {
+  "found": true,
+  "lat": 52.4868791,
+  "lon": -1.9158102,
+  "display_name": "The Red Lion, 95, Warstone Lane, Jewellery Quarter, Birmingham, West Midlands, England, B18 6NG, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Bao Borough, Lant Street, London": {
+  "found": false
+ },
+ "Bao, Borough, London, UK": {
+  "found": true,
+  "lat": 51.5057188,
+  "lon": -0.0916112,
+  "display_name": "BAO, 13, Stoney Street, Bankside, The Borough, London Borough of Southwark, Greater London, England, SE1 9AD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Noodles and Dumplings, Edinburgh": {
+  "found": false
+ },
+ "Noodles and Dumplings, Edinburgh, UK": {
+  "found": false
+ },
+ "Kipferl, Camden Passage, Islington, London": {
+  "found": true,
+  "lat": 51.5351595,
+  "lon": -0.1034742,
+  "display_name": "Kipferl Cafe & Kitchen, 20, Camden Passage, Angel, Islington, London Borough of Islington, Greater London, England, N1 8ED, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Kipferl, Islington, London, UK": {
+  "found": true,
+  "lat": 51.5351595,
+  "lon": -0.1034742,
+  "display_name": "Kipferl Cafe & Kitchen, 20, Camden Passage, Angel, Islington, London Borough of Islington, Greater London, England, N1 8ED, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Grains & Greens, London": {
+  "found": true,
+  "lat": 43.0117072,
+  "lon": -81.2005641,
+  "display_name": "Greens & Grains, 1001, Fanshawe College Boulevard, Huron Heights, London, Southwestern Ontario, Ontario, N5Y 5R6, Canada",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Grains & Greens, London, UK": {
+  "found": false
+ },
+ "Pizza Express, Canterbury, Kent": {
+  "found": false
+ },
+ "Pizza Express, Canterbury, Kent, UK": {
+  "found": false
+ },
+ "Utter Waffle, Herne Hill, London": {
+  "found": true,
+  "lat": 51.4528127,
+  "lon": -0.1035427,
+  "display_name": "Utter Waffle, 119, Dulwich Road, Herne Hill, London Borough of Lambeth, Greater London, England, SE24 0NG, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
  }
 }
