@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Off Menu Map</title>
+    <meta
+      name="description"
+      content="Every bar and restaurant recommended on the Off Menu podcast, with what to order and why."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="brand">
+        <h1>Off Menu Map</h1>
+        <p class="tagline" id="tagline">Loading the dream restaurant…</p>
+      </div>
+      <nav class="timeline" aria-label="Series">
+        <button type="button" class="series-all" id="series-all" aria-pressed="true">
+          <span class="s-name">All series</span>
+          <span class="s-dates" id="all-dates"></span>
+        </button>
+        <div class="track-wrap">
+          <div class="track" id="track" role="group" aria-label="Series by release date"></div>
+          <div class="years" id="years" aria-hidden="true"></div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <aside class="episodes" aria-label="Episodes">
+        <div class="episodes-head">
+          <label class="visually-hidden" for="search">Search episodes and places</label>
+          <input id="search" type="search" placeholder="Search guests, dishes, places" autocomplete="off" />
+          <p class="count" id="ep-count"></p>
+        </div>
+        <ol class="episode-list" id="episode-list"></ol>
+      </aside>
+
+      <section class="map-wrap" aria-label="Map">
+        <div id="map"></div>
+        <div class="legend" id="legend" aria-hidden="true"></div>
+      </section>
+
+      <aside class="details" id="details" aria-live="polite">
+        <div class="details-inner" id="details-inner"></div>
+      </aside>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
