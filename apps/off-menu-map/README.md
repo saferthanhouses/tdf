@@ -33,7 +33,7 @@ Map tiles come from CARTO (OpenStreetMap data), fonts from Google Fonts.
 
 Recommendations were extracted from the transcripts published on
 [offmenupodcast.co.uk/transcripts](https://www.offmenupodcast.co.uk/transcripts), which cover the
-episodes listed there, not every episode. Release dates come from the show's RSS feed. Quotes are capped at 45
+episodes listed there, not every episode. Release dates come from the show's RSS feed. Quotes are capped at 35
 words. Extraction and geocoding were automated, so expect the odd wrong pin; places Nominatim could only
 find at town level are drawn with a dashed outline and labelled "approximate location".
 

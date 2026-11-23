@@ -4,7 +4,7 @@
 //
 // manifest.json: [{ id, num, title, guest, date }] for each transcript.
 // Each extraction dir holds <id>.json files: { id, summary, recommendations }.
-// Later dirs win when an episode appears twice. Quotes are capped at 45 words so
+// Later dirs win when an episode appears twice. Quotes are capped at 35 words so
 // only short excerpts of the transcripts are kept.
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -19,7 +19,7 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
 
 const COURSES = new Set(["water", "bread", "starter", "main", "side", "drink", "dessert", "extra", "mention"]);
-const MAX_QUOTE_WORDS = 45;
+const MAX_QUOTE_WORDS = 35;
 
 const capQuote = (q) => {
   if (!q) return null;

@@ -1030,5 +1030,176 @@
   "category": "amenity",
   "type": "restaurant",
   "place_rank": 30
+ },
+ "Rye restaurant, Williamsburg, Brooklyn, New York": {
+  "found": false
+ },
+ "Rye, Williamsburg, Brooklyn, New York, USA (now closed)": {
+  "found": false
+ },
+ "Rucola, Dean Street, Brooklyn, New York": {
+  "found": true,
+  "lat": 40.6856132,
+  "lon": -73.9858591,
+  "display_name": "Rucola, 190, Dean Street, Boerum Hill, Brooklyn, Kings County, New York, 11217, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Rucola, Boerum Hill, Brooklyn, New York, USA": {
+  "found": true,
+  "lat": 40.6856132,
+  "lon": -73.9858591,
+  "display_name": "Rucola, 190, Dean Street, Boerum Hill, Brooklyn, Kings County, New York, 11217, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Woodman's of Essex, Main Street, Essex, Massachusetts": {
+  "found": true,
+  "lat": 42.630569,
+  "lon": -70.774719,
+  "display_name": "Woodman's, 119, Main Street, South Essex, Essex, Essex County, Massachusetts, 01929, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Woodman's of Essex, Essex, North Shore, Massachusetts, USA": {
+  "found": false
+ },
+ "Beauty Bar, East 14th Street, New York": {
+  "found": true,
+  "lat": 40.732876,
+  "lon": -73.9857799,
+  "display_name": "Beauty Bar, 231, East 14th Street, Gramercy, Manhattan Community Board 6, Manhattan, New York County, New York, 10003, United States",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Beauty Bar, East 14th Street, Manhattan, New York, USA": {
+  "found": true,
+  "lat": 40.732876,
+  "lon": -73.9857799,
+  "display_name": "Beauty Bar, 231, East 14th Street, Gramercy, Manhattan Community Board 6, Manhattan, New York County, New York, 10003, United States",
+  "category": "amenity",
+  "type": "bar",
+  "place_rank": 30
+ },
+ "Saigon Shack, MacDougal Street, New York": {
+  "found": true,
+  "lat": 40.729691,
+  "lon": -74.000637,
+  "display_name": "Saigon Shack, 114, MacDougal Street, University Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10012, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Saigon Shack, MacDougal Street, Greenwich Village, New York, USA": {
+  "found": true,
+  "lat": 40.729691,
+  "lon": -74.000637,
+  "display_name": "Saigon Shack, 114, MacDougal Street, University Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10012, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Ivy Richmond Brasserie, Hill Street, Richmond, London": {
+  "found": false
+ },
+ "The Ivy Richmond Brasserie, Richmond, London, UK": {
+  "found": false
+ },
+ "Flat Iron, Beak Street, Soho, London": {
+  "found": true,
+  "lat": 51.5121054,
+  "lon": -0.138357,
+  "display_name": "Flat Iron, 17, Beak Street, Soho, City of Westminster, Greater London, England, W1F 9RW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Flat Iron, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5106896,
+  "lon": -0.1350548,
+  "display_name": "Flat Iron Piccadilly, 21, Denman Street, Soho, City of Westminster, Greater London, England, W1D 7HS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Nusr-Et Steakhouse, Istanbul, Turkey": {
+  "found": true,
+  "lat": 41.0805296,
+  "lon": 29.0335554,
+  "display_name": "NUSR ET STEAKHOUSE, Nisbetiye Caddesi, Etiler Mahallesi, Beşiktaş, İstanbul, Marmara Bölgesi, 34337, Türkiye",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Nusr-Et, Turkey": {
+  "found": true,
+  "lat": 41.0103797,
+  "lon": 28.9697262,
+  "display_name": "Nusr-Et, Terziler Sokağı, Kapalı Çarşı, Beyazıt Mahallesi, İstanbul, Fatih, İstanbul, Marmara Bölgesi, 34126, Türkiye",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Zuma, Raphael Street, Knightsbridge, London": {
+  "found": true,
+  "lat": 51.5009278,
+  "lon": -0.1631825,
+  "display_name": "Zuma, 5, Raphael Street, Knightsbridge, City of Westminster, Greater London, England, SW7 1DL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Zuma, Knightsbridge, London, UK": {
+  "found": true,
+  "lat": 51.5009278,
+  "lon": -0.1631825,
+  "display_name": "Zuma, 5, Raphael Street, Knightsbridge, City of Westminster, Greater London, England, SW7 1DL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Nobu Malibu, Pacific Coast Highway, Malibu": {
+  "found": true,
+  "lat": 34.0389596,
+  "lon": -118.6696041,
+  "display_name": "Nobu, 22706, Pacific Coast Highway, Malibu, Los Angeles County, California, 90265, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Nobu Malibu, Malibu, California, USA": {
+  "found": true,
+  "lat": 34.0389596,
+  "lon": -118.6696041,
+  "display_name": "Nobu, 22706, Pacific Coast Highway, Malibu, Los Angeles County, California, 90265, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sushisamba Covent Garden, London": {
+  "found": true,
+  "lat": 51.512395,
+  "lon": -0.1224698,
+  "display_name": "SushiSamba Covent Garden, Covent Garden Piazza, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2E 8AA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Sushi Samba, Covent Garden, London, UK": {
+  "found": false
+ },
+ "Beaverbrook, Reigate Road, Leatherhead": {
+  "found": false
+ },
+ "Beaverbrook, Leatherhead, Surrey, UK": {
+  "found": false
+ },
+ "Ken 'N' Beck's, Martha's Vineyard, Massachusetts": {
+  "found": false
  }
 }
