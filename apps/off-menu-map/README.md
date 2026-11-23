@@ -44,6 +44,7 @@ To rebuild:
 node scripts/merge-extractions.mjs manifest.json extractions/
 # 2. look up new venues (one request a second, per Nominatim's usage policy)
 node scripts/geocode.mjs
+#    behind an HTTPS proxy, Node's fetch needs: NODE_USE_ENV_PROXY=1 node scripts/geocode.mjs
 # 3. build site/data.json
 node scripts/build-site-data.mjs
 ```
