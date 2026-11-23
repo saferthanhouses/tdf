@@ -128,7 +128,7 @@ button { font: inherit; color: inherit; }
 .series-all .s-dates { font: 11px/1.3 var(--f-mono); opacity: 0.8; }
 
 .track-wrap { flex: 1; min-width: 0; overflow-x: auto; padding-bottom: 2px; }
-.track, .years { position: relative; min-width: 1180px; }
+.track, .years { position: relative; min-width: 1400px; }
 .track { height: 46px; }
 .years { height: 16px; border-top: 1px solid var(--line); }
 .years span {
@@ -152,6 +152,8 @@ button { font: inherit; color: inherit; }
   text-align: left;
 }
 .seg:hover { border-color: var(--accent); }
+.seg:disabled { cursor: default; border-style: dashed; background: none; color: var(--muted); }
+.seg:disabled:hover { border-color: var(--line); }
 .seg[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .seg .s-name { font: 700 12.5px/1.1 var(--f-display); }
 .seg .s-dates { font: 10px/1.2 var(--f-mono); opacity: 0.75; }
@@ -321,12 +323,20 @@ button { font: inherit; color: inherit; }
 }
 .pin.approx { border-style: dashed; opacity: 0.85; }
 .pin.is-active { transform: scale(1.5); box-shadow: 0 0 0 3px var(--gold); }
+.marker-cluster {
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
 .marker-cluster div {
-  background: var(--accent) !important;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 50%;
+  background: var(--accent);
   color: var(--accent-ink);
+  text-align: center;
   font: 600 12px/30px var(--f-mono);
 }
-.marker-cluster { background: color-mix(in srgb, var(--accent) 30%, transparent) !important; }
 .leaflet-tooltip { font: 12px/1.3 var(--f-body); }
 .leaflet-container { font: inherit; }
 

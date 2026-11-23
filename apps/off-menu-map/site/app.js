@@ -146,10 +146,12 @@
 
     const track = $("track");
     data.series.forEach((s, i) => {
-      if (!s.episodes) return;
       const next = data.series[i + 1];
-      const from = pct(s.first);
-      const to = pct(next ? next.start : s.last) - 0.25;
+      // Series without transcripts still get a (disabled) slot so the timeline has no gaps.
+      const begin = s.first ?? s.start;
+      const end = s.last ?? (next ? new Date(Date.parse(next.start) - 864e5 * 30).toISOString().slice(0, 10) : s.start);
+      const from = pct(begin);
+      const to = pct(next ? next.start : end) - 0.25;
       const btn = el(
         "button",
         {
@@ -158,11 +160,14 @@
           style: `left:${from}%;width:${Math.max(to - from, 3)}%`,
           "aria-pressed": "false",
           "data-series": s.series,
-          title: `Series ${s.series}: ${fmtDate(s.first)} – ${fmtDate(s.last)}, ${s.episodes} episodes with transcripts`,
+          disabled: !s.episodes,
+          title: s.episodes
+            ? `Series ${s.series}: ${fmtDate(begin)} – ${fmtDate(end)}, ${s.episodes} episodes with transcripts`
+            : `Series ${s.series}: no transcripts published for this series`,
           onclick: () => selectSeries(s.series),
         },
         el("span", { class: "s-name" }, `S${s.series}`),
-        el("span", { class: "s-dates" }, `${fmtDate(s.first, { month: "short" })}–${fmtDate(s.last, { month: "short" })} ’${s.last.slice(2, 4)}`),
+        el("span", { class: "s-dates" }, s.episodes ? `${fmtDate(begin, { month: "short" })}–${fmtDate(end, { month: "short" })} ’${end.slice(2, 4)}` : "no transcripts"),
       );
       track.append(btn);
     });

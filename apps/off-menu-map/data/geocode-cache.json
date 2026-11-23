@@ -1201,5 +1201,299 @@
  },
  "Ken 'N' Beck's, Martha's Vineyard, Massachusetts": {
   "found": false
+ },
+ "Ken 'N' Beck's, Martha's Vineyard, Massachusetts, USA": {
+  "found": false
+ },
+ "Chez Piggy, Princess Street, Kingston, Ontario": {
+  "found": true,
+  "lat": 44.2311007,
+  "lon": -76.4815269,
+  "display_name": "Chez Piggy, 68, Princess Street, Sydenham, Kingston, Eastern Ontario, Ontario, K7L 1A5, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chez Piggy, Kingston, Ontario, Canada": {
+  "found": true,
+  "lat": 44.2311007,
+  "lon": -76.4815269,
+  "display_name": "Chez Piggy, 68, Princess Street, Sydenham, Kingston, Eastern Ontario, Ontario, K7L 1A5, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dianne's Fish Shack, Kingston, Ontario": {
+  "found": false
+ },
+ "Dianne's Fish Shack & Smokehouse, Kingston, Ontario, Canada": {
+  "found": true,
+  "lat": 44.22892,
+  "lon": -76.4807298,
+  "display_name": "Dianne's Fish Shack & Smokehouse, 195, Ontario Street, Sydenham, Kingston, Eastern Ontario, Ontario, K7L 2Y7, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Atomica, Kingston, Ontario": {
+  "found": true,
+  "lat": 44.2306933,
+  "lon": -76.4821424,
+  "display_name": "Atomica, Brock Street, Sydenham, Kingston, Eastern Ontario, Ontario, K7L 1R8, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Atomica, Kingston, Ontario, Canada": {
+  "found": true,
+  "lat": 44.2306933,
+  "lon": -76.4821424,
+  "display_name": "Atomica, Brock Street, Sydenham, Kingston, Eastern Ontario, Ontario, K7L 1R8, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Woodenheads, Ontario Street, Kingston, Ontario": {
+  "found": false
+ },
+ "Woodenheads, Kingston, Ontario, Canada": {
+  "found": false
+ },
+ "Tango Nuevo, Kingston, Ontario": {
+  "found": false
+ },
+ "Tango Nuevo, Kingston, Ontario, Canada": {
+  "found": false
+ },
+ "Le Latini, Montreal": {
+  "found": false
+ },
+ "Le Latini, Montreal, Quebec, Canada": {
+  "found": false
+ },
+ "Canoe Restaurant, Wellington Street West, Toronto": {
+  "found": true,
+  "lat": 43.6472606,
+  "lon": -79.3814529,
+  "display_name": "Canoe Restaurant & Bar, 66, Wellington Street West, Financial District, Downtown, Spadina—Fort York, Toronto, Ontario, M5K 1H6, Canada",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Canoe, Toronto, Ontario, Canada": {
+  "found": true,
+  "lat": 43.6390108,
+  "lon": -79.3965858,
+  "display_name": "Canoe Landing Park, 95, Downtown, Spadina—Fort York, Toronto, Ontario, Canada",
+  "category": "leisure",
+  "type": "park",
+  "place_rank": 24
+ },
+ "Hilton Toronto, Richmond Street West, Toronto": {
+  "found": true,
+  "lat": 43.6499386,
+  "lon": -79.3853804,
+  "display_name": "Hilton Toronto, 145, Richmond Street West, Financial District, Downtown, Spadina—Fort York, Toronto, Ontario, M5H 2L2, Canada",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Hilton Toronto bar, Toronto, Ontario, Canada": {
+  "found": false
+ },
+ "Casamia, Bristol": {
+  "found": false
+ },
+ "Casamia, Bristol, UK": {
+  "found": false
+ },
+ "L'Unico Trattoria, Trinity Beach, Cairns": {
+  "found": false
+ },
+ "L'Unico Trattoria, Trinity Beach, Cairns, Queensland, Australia": {
+  "found": false
+ },
+ "Hutong, One Peking, Tsim Sha Tsui, Hong Kong": {
+  "found": false
+ },
+ "Hutong, Tsim Sha Tsui, Kowloon, Hong Kong": {
+  "found": false
+ },
+ "La Poule au Pot, Ebury Street, London": {
+  "found": true,
+  "lat": 51.4909877,
+  "lon": -0.1525987,
+  "display_name": "La Poule au Pot, 231, Ebury Street, Belgravia, City of Westminster, Greater London, England, SW1W 8UT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "La Poule au Pot, Ebury Street, Belgravia, London, UK": {
+  "found": true,
+  "lat": 51.4909877,
+  "lon": -0.1525987,
+  "display_name": "La Poule au Pot, 231, Ebury Street, Belgravia, City of Westminster, Greater London, England, SW1W 8UT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Cafe Kino, Stokes Croft, Bristol": {
+  "found": true,
+  "lat": 51.4641412,
+  "lon": -2.5893858,
+  "display_name": "Café Kino, 108, Stokes Croft, St Paul's, Bristol, City of Bristol, West of England, England, BS1 3RU, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Cafe Kino, Stokes Croft, Bristol, UK": {
+  "found": true,
+  "lat": 51.4641412,
+  "lon": -2.5893858,
+  "display_name": "Café Kino, 108, Stokes Croft, St Paul's, Bristol, City of Bristol, West of England, England, BS1 3RU, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Cafe Gratitude, Larchmont Boulevard, Los Angeles": {
+  "found": true,
+  "lat": 34.0826957,
+  "lon": -118.3240362,
+  "display_name": "Cafe Gratitude, 639, North Larchmont Boulevard, Hollywood, Los Angeles, Los Angeles County, California, 90038, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Cafe Gratitude, Los Angeles, California, USA": {
+  "found": true,
+  "lat": 34.0826957,
+  "lon": -118.3240362,
+  "display_name": "Cafe Gratitude, 639, North Larchmont Boulevard, Hollywood, Los Angeles, Los Angeles County, California, 90038, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Doughnut Time, Soho, London": {
+  "found": false
+ },
+ "Doughnut Time, Soho, London, UK": {
+  "found": false
+ },
+ "The Stinking Rose, Columbus Avenue, San Francisco": {
+  "found": true,
+  "lat": 37.7990536,
+  "lon": -122.4081693,
+  "display_name": "The Stinking Rose, 430, Columbus Avenue, Telegraph Hill, North Beach, San Francisco, California, 94133, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Stinking Rose, North Beach, San Francisco, California, USA": {
+  "found": true,
+  "lat": 37.7990536,
+  "lon": -122.4081693,
+  "display_name": "The Stinking Rose, 430, Columbus Avenue, Telegraph Hill, North Beach, San Francisco, California, 94133, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mussel & Steak Bar, West Bow, Edinburgh": {
+  "found": true,
+  "lat": 55.9480205,
+  "lon": -3.1941463,
+  "display_name": "Mussel & Steak Bar, 110, West Bow, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH1 2HH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Mussel & Steak Bar, West Bow / Grassmarket, Edinburgh, UK": {
+  "found": false
+ },
+ "Dewaniam, Camberwell New Road, London": {
+  "found": true,
+  "lat": 51.477472,
+  "lon": -0.100962,
+  "display_name": "New Dewaniam, 225a, Camberwell New Road, Camberwell, London Borough of Southwark, Greater London, England, SE5 0TH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "New Dewaniam, Camberwell New Road, London, UK": {
+  "found": true,
+  "lat": 51.477472,
+  "lon": -0.100962,
+  "display_name": "New Dewaniam, 225a, Camberwell New Road, Camberwell, London Borough of Southwark, Greater London, England, SE5 0TH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Alpha State Brewing, Kent": {
+  "found": false
+ },
+ "Alpha State Brewing Co., Kent, UK": {
+  "found": false
+ },
+ "The Four Seasons Restaurant, New York": {
+  "found": false
+ },
+ "The Four Seasons Restaurant, New York City, USA": {
+  "found": false
+ },
+ "The Dining Room, High Street, Reigate": {
+  "found": false
+ },
+ "The Dining Room, Reigate, Surrey, UK": {
+  "found": false
+ },
+ "Osteria Mozza, Melrose Avenue, Los Angeles": {
+  "found": true,
+  "lat": 34.0832557,
+  "lon": -118.3388721,
+  "display_name": "Osteria Mozza, Melrose Avenue, Fairfax, Los Angeles, Los Angeles County, California, 90038, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Osteria Mozza, Melrose Avenue, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.0832557,
+  "lon": -118.3388721,
+  "display_name": "Osteria Mozza, Melrose Avenue, Fairfax, Los Angeles, Los Angeles County, California, 90038, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Fission Chips, St Agnes, Cornwall": {
+  "found": false
+ },
+ "Fission Chips, St Agnes, Cornwall, UK": {
+  "found": false
+ },
+ "Little Dom's, Hillhurst Avenue, Los Angeles": {
+  "found": true,
+  "lat": 34.1108665,
+  "lon": -118.2872699,
+  "display_name": "Little Dom's, 2128, Hillhurst Avenue, Los Feliz Neighborhood Council District, Los Feliz, Los Angeles, Los Angeles County, California, 90027, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Little Dom's, Los Feliz, Los Angeles, USA": {
+  "found": true,
+  "lat": 34.1108665,
+  "lon": -118.2872699,
+  "display_name": "Little Dom's, 2128, Hillhurst Avenue, Los Feliz Neighborhood Council District, Los Feliz, Los Angeles, Los Angeles County, California, 90027, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Chateau Marmont, Sunset Boulevard, Los Angeles": {
+  "found": true,
+  "lat": 34.0982497,
+  "lon": -118.3684049,
+  "display_name": "Chateau Marmont, 8221, West Sunset Boulevard, Sunset Strip, Los Angeles, Los Angeles County, California, 90046, United States",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
  }
 }
