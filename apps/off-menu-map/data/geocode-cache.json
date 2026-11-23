@@ -505,5 +505,182 @@
  },
  "Decatur, London, UK": {
   "found": false
+ },
+ "The Ivy, West Street, London": {
+  "found": true,
+  "lat": 51.5128731,
+  "lon": -0.1281086,
+  "display_name": "The Ivy, West Street, Seven Dials, Bloomsbury, London Borough of Camden, Greater London, England, WC2H 9NL, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Ivy, Covent Garden, London, UK": {
+  "found": true,
+  "lat": 51.5113602,
+  "lon": -0.1226525,
+  "display_name": "The Ivy, 1A, Henrietta Street, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2E 8PS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Alter, Leman Street, London": {
+  "found": false
+ },
+ "Alter, Leman Street, Whitechapel, London, UK (originally a pop-up next to The Dairy, Clapham)": {
+  "found": false
+ },
+ "Kathmandu Namaste, Edinburgh": {
+  "found": true,
+  "lat": 55.9461901,
+  "lon": -3.1912673,
+  "display_name": "Namaste Kathmandu, 17-19, Forrest Road, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH1 2QH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kathmandu Namaste, Edinburgh, Scotland, UK": {
+  "found": true,
+  "lat": 55.9461901,
+  "lon": -3.1912673,
+  "display_name": "Namaste Kathmandu, 17-19, Forrest Road, Abbeyhill, Old Town, City of Edinburgh, Alba / Scotland, EH1 2QH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Atelier Crenn, Fillmore Street, San Francisco": {
+  "found": false
+ },
+ "Atelier Crenn, San Francisco, California, USA": {
+  "found": false
+ },
+ "Tropicana Juice Bar, Melbourne": {
+  "found": false
+ },
+ "Tropicana, Melbourne, Australia": {
+  "found": true,
+  "lat": -37.8162086,
+  "lon": 144.9666799,
+  "display_name": "Tropicana, Swanston Street, East End Theatre District, Melbourne, Victoria, 3000, Australia",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Kricket, Denman Street, London": {
+  "found": true,
+  "lat": 51.5108012,
+  "lon": -0.1351471,
+  "display_name": "Kricket, 12, Denman Street, Soho, City of Westminster, Greater London, England, W1D 7HT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kricket, London, UK": {
+  "found": true,
+  "lat": 51.5106092,
+  "lon": -0.2255364,
+  "display_name": "Kricket, 101, Wood Lane, Shepherd's Bush, London Borough of Hammersmith and Fulham, Greater London, England, W12 7FR, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Da Terra, Town Hall Hotel, Bethnal Green, London": {
+  "found": false
+ },
+ "Da Terra, Bethnal Green, London, UK": {
+  "found": false
+ },
+ "Ron Gastrobar, Sophialaan, Amsterdam": {
+  "found": true,
+  "lat": 52.3521264,
+  "lon": 4.8567933,
+  "display_name": "Ron Gastrobar, 55, Sophialaan, Willemspark, Oud-Zuid, Zuid, Amsterdam, Noord-Holland, Nederland, 1075 BP, Nederland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Ron Gastrobar, Amsterdam, Netherlands": {
+  "found": true,
+  "lat": 52.3521264,
+  "lon": 4.8567933,
+  "display_name": "Ron Gastrobar, 55, Sophialaan, Willemspark, Oud-Zuid, Zuid, Amsterdam, Noord-Holland, Nederland, 1075 BP, Nederland",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Smokestak, Sclater Street, London": {
+  "found": true,
+  "lat": 51.5236575,
+  "lon": -0.072833,
+  "display_name": "Smokestak, 35, Sclater Street, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E1 6LB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Smokestak, Shoreditch, London, UK": {
+  "found": false
+ },
+ "Pitt Cue, Devonshire Square, London": {
+  "found": true,
+  "lat": 51.5163649,
+  "lon": -0.0782914,
+  "display_name": "Pitt Cue, 1, Devonshire Square, Bishopsgate Without, Aldgate, City of London, Greater London, England, EC2M 4WD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pitt Cue, City of London, UK": {
+  "found": true,
+  "lat": 51.5163649,
+  "lon": -0.0782914,
+  "display_name": "Pitt Cue, 1, Devonshire Square, Bishopsgate Without, Aldgate, City of London, Greater London, England, EC2M 4WD, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Berber & Q, Acton Mews, London": {
+  "found": true,
+  "lat": 51.536886,
+  "lon": -0.0756756,
+  "display_name": "Berber & Q, 338, Acton Mews, De Beauvoir Town, Haggerston, London Borough of Hackney, Greater London, England, E8 4EA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Berber & Q, Haggerston, London, UK": {
+  "found": true,
+  "lat": 51.536886,
+  "lon": -0.0756756,
+  "display_name": "Berber & Q, 338, Acton Mews, De Beauvoir Town, Haggerston, London Borough of Hackney, Greater London, England, E8 4EA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pecan Lodge, Main Street, Dallas": {
+  "found": true,
+  "lat": 32.7836718,
+  "lon": -96.7838446,
+  "display_name": "Pecan Lodge, 2702, Main Street, Deep Ellum PID, Dallas, Dallas County, Texas, 75226, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pecan Lodge, Dallas, Texas, USA": {
+  "found": true,
+  "lat": 32.7836718,
+  "lon": -96.7838446,
+  "display_name": "Pecan Lodge, 2702, Main Street, Deep Ellum PID, Dallas, Dallas County, Texas, 75226, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "KOL, Seymour Street, London": {
+  "found": true,
+  "lat": 51.5147945,
+  "lon": -0.1575328,
+  "display_name": "KOL, 9, Seymour Street, Marylebone, City of Westminster, Greater London, England, W1H 7JW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
  }
 }
