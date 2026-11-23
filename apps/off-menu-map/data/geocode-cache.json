@@ -1,1 +1,509 @@
-{}
+{
+ "Oli Baba's, Camden Market, London": {
+  "found": false
+ },
+ "Oli Baba's, Camden Market, London, UK": {
+  "found": false
+ },
+ "Bombay Nights, Near Stanford-le-Hope, Essex, UK (now closed)": {
+  "found": false
+ },
+ "Trullo, 300-302 St Paul's Road, London": {
+  "found": true,
+  "lat": 51.5462735,
+  "lon": -0.1014645,
+  "display_name": "Trullo, 300-302, St. Paul's Road, Canonbury, Highbury, London Borough of Islington, Greater London, England, N1 2LH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Trullo, Highbury Corner, Islington, London, UK": {
+  "found": false
+ },
+ "The Little Owl, 90 Bedford Street, New York": {
+  "found": true,
+  "lat": 40.7322791,
+  "lon": -74.0052939,
+  "display_name": "The Little Owl, 90, Bedford Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Little Owl, West Village, Manhattan, New York, USA": {
+  "found": true,
+  "lat": 40.7322791,
+  "lon": -74.0052939,
+  "display_name": "The Little Owl, 90, Bedford Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hide, 85 Piccadilly, London": {
+  "found": true,
+  "lat": 51.5061753,
+  "lon": -0.1443366,
+  "display_name": "HIDE, 85 - 87, Piccadilly, Mayfair, City of Westminster, Greater London, England, W1J 7NB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Hide, Piccadilly, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5061753,
+  "lon": -0.1443366,
+  "display_name": "HIDE, 85 - 87, Piccadilly, Mayfair, City of Westminster, Greater London, England, W1J 7NB, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bone Daddies, Peter Street, Soho, London": {
+  "found": true,
+  "lat": 51.5128373,
+  "lon": -0.1338889,
+  "display_name": "Bone Daddies, 30-31, Peter Street, Soho, City of Westminster, Greater London, England, W1F 0AP, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bone Daddies, London, UK": {
+  "found": true,
+  "lat": 51.5137685,
+  "lon": -0.1301482,
+  "display_name": "Bone Daddies, 14a, Old Compton Street, Soho, City of Westminster, Greater London, England, W1D 4TH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Dutch, 131 Sullivan Street, New York": {
+  "found": true,
+  "lat": 40.7265551,
+  "lon": -74.0021692,
+  "display_name": "The Dutch, 131, Sullivan Street, University Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10012, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Dutch, SoHo, New York, USA": {
+  "found": true,
+  "lat": 40.7265551,
+  "lon": -74.0021692,
+  "display_name": "The Dutch, 131, Sullivan Street, University Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10012, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Claridge's, Brook Street, London": {
+  "found": true,
+  "lat": 51.5125194,
+  "lon": -0.1475256,
+  "display_name": "Claridge's, 47-57, Brook Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1K 4HR, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Fera at Claridge's, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5125491,
+  "lon": -0.1479994,
+  "display_name": "Fera at Claridge's, Brook Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1K 4HJ, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "L'Enclume, Cartmel": {
+  "found": true,
+  "lat": 54.2017645,
+  "lon": -2.9538118,
+  "display_name": "L'Enclume, Cavendish Street, Lower Allithwaite, Cartmel, Westmorland and Furness, England, LA11 6QA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "L'Enclume, Cartmel, Cumbria, UK": {
+  "found": false
+ },
+ "Cora Pearl, Henrietta Street, London": {
+  "found": false
+ },
+ "Cora Pearl, Covent Garden, London, UK": {
+  "found": false
+ },
+ "Berners Tavern, Berners Street, London": {
+  "found": true,
+  "lat": 51.516666,
+  "lon": -0.1361822,
+  "display_name": "Berners Tavern, Berners Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1T 3LF, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Berners Tavern, Berners Street, Fitzrovia, London, UK": {
+  "found": false
+ },
+ "Kingdom of Sweets, London": {
+  "found": false
+ },
+ "Kingdom of Sweets, London, UK": {
+  "found": false
+ },
+ "Owl and Pussycat pub, Leicester": {
+  "found": false
+ },
+ "The Owl and Pussycat (kebab shack behind the pub), Leicester, UK": {
+  "found": false
+ },
+ "Jackson & Rye, Wardour Street, London": {
+  "found": false
+ },
+ "Jackson & Rye, Soho, London, UK": {
+  "found": false
+ },
+ "Gymkhana, Albemarle Street, London": {
+  "found": true,
+  "lat": 51.5084811,
+  "lon": -0.1414863,
+  "display_name": "Gymkhana, 42, Albemarle Street, St. James's, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1S 4JH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Gymkhana, Mayfair, London, UK": {
+  "found": true,
+  "lat": 51.5084811,
+  "lon": -0.1414863,
+  "display_name": "Gymkhana, 42, Albemarle Street, St. James's, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1S 4JH, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Trishna, Blandford Street, London": {
+  "found": true,
+  "lat": 51.5183432,
+  "lon": -0.1530705,
+  "display_name": "Trishna, 15-17, Blandford Street, East Marylebone, Marylebone, City of Westminster, Greater London, England, W1U 3DG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Trishna, Marylebone, London, UK": {
+  "found": true,
+  "lat": 51.5183432,
+  "lon": -0.1530705,
+  "display_name": "Trishna, 15-17, Blandford Street, East Marylebone, Marylebone, City of Westminster, Greater London, England, W1U 3DG, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Raj, Kettering": {
+  "found": true,
+  "lat": 52.4039884,
+  "lon": -0.7265055,
+  "display_name": "The Raj Restaurant, 46, Rockingham Road, Avondale, Kettering, North Northamptonshire, England, NN16 8JT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Raj, Kettering, UK": {
+  "found": true,
+  "lat": 52.4039884,
+  "lon": -0.7265055,
+  "display_name": "The Raj Restaurant, 46, Rockingham Road, Avondale, Kettering, North Northamptonshire, England, NN16 8JT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "House of Spice, Raynes Park, London": {
+  "found": true,
+  "lat": 51.41089,
+  "lon": -0.2182668,
+  "display_name": "The House of Spice, 507, Kingston Road, Cottenham Park, Raynes Park, London Borough of Merton, Greater London, England, SW20 8SF, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "House of Spice, Raynes Park, London, UK": {
+  "found": true,
+  "lat": 51.41089,
+  "lon": -0.2182668,
+  "display_name": "The House of Spice, 507, Kingston Road, Cottenham Park, Raynes Park, London Borough of Merton, Greater London, England, SW20 8SF, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bademiya, Colaba, Mumbai": {
+  "found": true,
+  "lat": 18.9231497,
+  "lon": 72.8325111,
+  "display_name": "Bademiya Seekh Kebab Stall, Tullock Road, Apollo Bandar, Colaba, A Ward, Mumbai Zone 1, Mumbai City District, Maharashtra, 400005, India",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Bademiya, Colaba, Mumbai, India": {
+  "found": true,
+  "lat": 18.9231497,
+  "lon": 72.8325111,
+  "display_name": "Bademiya Seekh Kebab Stall, Tullock Road, Apollo Bandar, Colaba, A Ward, Mumbai Zone 1, Mumbai City District, Maharashtra, 400005, India",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Honey Trap, Auckland": {
+  "found": false
+ },
+ "Honey Trap, Auckland, New Zealand": {
+  "found": false
+ },
+ "Burger & Lobster, Dean Street, Soho, London": {
+  "found": true,
+  "lat": 51.5135077,
+  "lon": -0.1322122,
+  "display_name": "Burger & Lobster, 36-38, Dean Street, Soho, City of Westminster, Greater London, England, W1D 4PS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Burger & Lobster, Soho, London, UK": {
+  "found": true,
+  "lat": 51.5135077,
+  "lon": -0.1322122,
+  "display_name": "Burger & Lobster, 36-38, Dean Street, Soho, City of Westminster, Greater London, England, W1D 4PS, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Café Gratitude, Larchmont Boulevard, Los Angeles": {
+  "found": true,
+  "lat": 34.0826957,
+  "lon": -118.3240362,
+  "display_name": "Cafe Gratitude, 639, North Larchmont Boulevard, Hollywood, Los Angeles, Los Angeles County, California, 90038, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Café Gratitude, Los Angeles, California, USA": {
+  "found": true,
+  "lat": 34.0826957,
+  "lon": -118.3240362,
+  "display_name": "Cafe Gratitude, 639, North Larchmont Boulevard, Hollywood, Los Angeles, Los Angeles County, California, 90038, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Burger & Lobster, London, UK": {
+  "found": true,
+  "lat": 51.5136252,
+  "lon": -0.0945431,
+  "display_name": "Burger & Lobster, 1, Bread Street, St Paul's, City of London, Greater London, England, EC4M 9BE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Purbeck House Hotel, Swanage": {
+  "found": true,
+  "lat": 50.6081633,
+  "lon": -1.9601076,
+  "display_name": "Purbeck House Hotel, High Street, Durlston, Swanage, Dorset, England, BH19 2LZ, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Purbeck House Hotel, Swanage, Dorset, UK": {
+  "found": true,
+  "lat": 50.6081633,
+  "lon": -1.9601076,
+  "display_name": "Purbeck House Hotel, High Street, Durlston, Swanage, Dorset, England, BH19 2LZ, United Kingdom",
+  "category": "tourism",
+  "type": "hotel",
+  "place_rank": 30
+ },
+ "Babur, Brockley Rise, London": {
+  "found": false
+ },
+ "Babur, Brockley / Honor Oak, London, UK": {
+  "found": true,
+  "lat": 51.4529118,
+  "lon": -0.0384123,
+  "display_name": "Babur to go, 443, Brockley Road, Crofton Park, Honor Oak, London Borough of Lewisham, Greater London, England, SE4 2PJ, United Kingdom",
+  "category": "amenity",
+  "type": "fast_food",
+  "place_rank": 30
+ },
+ "Dumplings' Legend, Gerrard Street, London": {
+  "found": true,
+  "lat": 51.5117338,
+  "lon": -0.1314656,
+  "display_name": "小籠皇 Dumplings' Legend, 15-16, Gerrard Street, Chinatown, City of Westminster, Greater London, England, W1D 6JE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Dumplings' Legend, Gerrard Street, Chinatown, London, UK": {
+  "found": true,
+  "lat": 51.5117338,
+  "lon": -0.1314656,
+  "display_name": "小籠皇 Dumplings' Legend, 15-16, Gerrard Street, Chinatown, City of Westminster, Greater London, England, W1D 6JE, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Via Carota, 51 Grove Street, New York": {
+  "found": true,
+  "lat": 40.73311,
+  "lon": -74.0036496,
+  "display_name": "Via Carota, 51, Grove Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Via Carota, West Village, New York City, USA": {
+  "found": true,
+  "lat": 40.73311,
+  "lon": -74.0036496,
+  "display_name": "Via Carota, 51, Grove Street, West Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10014, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Lavagna, 545 East 5th Street, New York": {
+  "found": false
+ },
+ "Lavagna, East Village, New York City, USA": {
+  "found": false
+ },
+ "Vic's, 31 Great Jones Street, New York": {
+  "found": true,
+  "lat": 40.7269244,
+  "lon": -73.9932027,
+  "display_name": "Vic's, 31, Great Jones Street, NoHo, Manhattan Community Board 2, Manhattan, New York County, New York, 10012, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Vic's, Great Jones Street, NoHo, New York City, USA": {
+  "found": true,
+  "lat": 40.7269244,
+  "lon": -73.9932027,
+  "display_name": "Vic's, 31, Great Jones Street, NoHo, Manhattan Community Board 2, Manhattan, New York County, New York, 10012, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pommes Frites, 128 MacDougal Street, New York": {
+  "found": true,
+  "lat": 40.7300993,
+  "lon": -74.0002841,
+  "display_name": "Pommes Frites, 128, MacDougal Street, University Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10012, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Pommes Frites, New York City, USA": {
+  "found": true,
+  "lat": 40.7300993,
+  "lon": -74.0002841,
+  "display_name": "Pommes Frites, 128, MacDougal Street, University Village, Manhattan Community Board 2, Manhattan, New York County, New York, 10012, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Kaffeine, Great Titchfield Street, London": {
+  "found": true,
+  "lat": 51.5184547,
+  "lon": -0.1403447,
+  "display_name": "Kaffeine, 66, Great Titchfield Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1W 7QJ, United Kingdom",
+  "category": "building",
+  "type": "retail",
+  "place_rank": 30
+ },
+ "Kaffeine, Fitzrovia, London, UK": {
+  "found": false
+ },
+ "Department of Coffee and Social Affairs, London": {
+  "found": true,
+  "lat": 51.5109411,
+  "lon": -0.135993,
+  "display_name": "Department Of Coffee And Social Affairs, 15-16, Sherwood Street, Soho, City of Westminster, Greater London, England, W1F 7BZ, United Kingdom",
+  "category": "shop",
+  "type": "coffee",
+  "place_rank": 30
+ },
+ "Department of Coffee and Social Affairs, London, UK": {
+  "found": true,
+  "lat": 51.5109411,
+  "lon": -0.135993,
+  "display_name": "Department Of Coffee And Social Affairs, 15-16, Sherwood Street, Soho, City of Westminster, Greater London, England, W1F 7BZ, United Kingdom",
+  "category": "shop",
+  "type": "coffee",
+  "place_rank": 30
+ },
+ "Broken Coconut, New York": {
+  "found": false
+ },
+ "Broken Coconut, New York City, USA": {
+  "found": false
+ },
+ "Extra Fancy, 302 Metropolitan Avenue, Brooklyn": {
+  "found": false
+ },
+ "Extra Fancy, Williamsburg, Brooklyn, New York, USA": {
+  "found": false
+ },
+ "The Harwood Arms, Walham Grove, Fulham, London": {
+  "found": true,
+  "lat": 51.4829175,
+  "lon": -0.1965094,
+  "display_name": "The Harwood Arms, Walham Grove, Walham Green, Fulham, London Borough of Hammersmith and Fulham, Greater London, England, SW6 1QP, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "The Harwood Arms, Fulham, London, UK": {
+  "found": true,
+  "lat": 51.4829175,
+  "lon": -0.1965094,
+  "display_name": "The Harwood Arms, Walham Grove, Walham Green, Fulham, London Borough of Hammersmith and Fulham, Greater London, England, SW6 1QP, United Kingdom",
+  "category": "amenity",
+  "type": "pub",
+  "place_rank": 30
+ },
+ "Noma, Refshalevej 96, Copenhagen": {
+  "found": false
+ },
+ "Noma, Copenhagen, Denmark": {
+  "found": true,
+  "lat": 55.6825096,
+  "lon": 12.6107888,
+  "display_name": "Noma, Bjørnekloen, Christiania, Holmen, Amagerbro, København, Københavns Kommune, Region Hovedstaden, 1441, Danmark",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "The Good Egg, Stoke Newington Church Street, London": {
+  "found": true,
+  "lat": 51.5620552,
+  "lon": -0.0787398,
+  "display_name": "The Good Egg, 93, Stoke Newington Church Street, Stoke Newington, London Borough of Hackney, Greater London, England, N16 0AS, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "The Good Egg, London, UK": {
+  "found": true,
+  "lat": 51.5127806,
+  "lon": -0.1389737,
+  "display_name": "The Good Egg, Kingly Court, Soho, City of Westminster, Greater London, England, W1B 5PW, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Refectory? (unclear) 'Reflex', London, UK": {
+  "found": false
+ },
+ "Decatur, Hackney, London": {
+  "found": false
+ },
+ "Decatur, London, UK": {
+  "found": false
+ }
+}
