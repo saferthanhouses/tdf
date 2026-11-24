@@ -9151,5 +9151,101 @@
  },
  "Cafe Kowloon, London, UK": {
   "found": false
+ },
+ "Forza Win, London, UK": {
+  "found": false
+ },
+ "Marrickville Library and Pavilion, Marrickville, Sydney": {
+  "found": false
+ },
+ "Xi'an Impression, near the Emirates Stadium, Islington, London, UK": {
+  "found": false
+ },
+ "Makimayo, London": {
+  "found": true,
+  "lat": 51.5845538,
+  "lon": -0.076762,
+  "display_name": "Makimayo, 75, West Green Road, Seven Sisters, Tottenham Hale, West Green, London Borough of Haringey, Greater London, England, N15 5DA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Makimayo, London, UK": {
+  "found": true,
+  "lat": 51.5845538,
+  "lon": -0.076762,
+  "display_name": "Makimayo, 75, West Green Road, Seven Sisters, Tottenham Hale, West Green, London Borough of Haringey, Greater London, England, N15 5DA, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Bread & Truffle, London": {
+  "found": true,
+  "lat": 51.5104887,
+  "lon": -0.0835969,
+  "display_name": "Bread & Truffle, Eastcheap, Leadenhall Market, Monument, City of London, Greater London, England, EC3M 1NP, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "Bread & Truffle, London, UK": {
+  "found": true,
+  "lat": 51.5104887,
+  "lon": -0.0835969,
+  "display_name": "Bread & Truffle, Eastcheap, Leadenhall Market, Monument, City of London, Greater London, England, EC3M 1NP, United Kingdom",
+  "category": "amenity",
+  "type": "cafe",
+  "place_rank": 30
+ },
+ "CTR (Central Tiffin Room), Bangalore, India": {
+  "found": false
+ },
+ "Al Kahf restaurant, Whitechapel, London": {
+  "found": false
+ },
+ "Da Terra, Bethnal Green, London": {
+  "found": false
+ },
+ "Kricket, London": {
+  "found": true,
+  "lat": 51.5108012,
+  "lon": -0.1351471,
+  "display_name": "Kricket, 12, Denman Street, Soho, City of Westminster, Greater London, England, W1D 7HT, United Kingdom",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Fluffy Torpedo ice cream, Melbourne": {
+  "found": true,
+  "lat": -37.7722967,
+  "lon": 144.9610877,
+  "display_name": "Fluffy Torpedo, 213, Sydney Road, Brunswick, Melbourne, Victoria, 3056, Australia",
+  "category": "amenity",
+  "type": "ice_cream",
+  "place_rank": 30
+ },
+ "Capo restaurant, Santa Monica, California": {
+  "found": false
+ },
+ "Kann restaurant, Portland, Oregon": {
+  "found": true,
+  "lat": 45.5213911,
+  "lon": -122.6599297,
+  "display_name": "Kann, 548, Southeast Ash Street, Central Eastside, Buckman, Portland, Multnomah County, Oregon, 97214, United States",
+  "category": "amenity",
+  "type": "restaurant",
+  "place_rank": 30
+ },
+ "Burgers Never Say Die, Toronto": {
+  "found": false
+ },
+ "Burgers Never Say Die, Toronto, Canada": {
+  "found": false
+ },
+ "Jamie's Italian, Covent Garden, London": {
+  "found": false
+ },
+ "Jamie's Italian, Covent Garden, London, UK": {
+  "found": false
  }
 }
